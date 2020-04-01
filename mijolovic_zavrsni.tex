@@ -1,0 +1,292 @@
+\documentclass[a4paper,12pt,oneside]{memoir}
+
+%matematički paketi
+
+\usepackage[intlimits]{amsmath}     %omogućava postavljanje granica integrala u formulama
+\usepackage{amsthm}     %matematički teoremi, leme i sl.
+\usepackage{siunitx}        %podrška za korištenje SI sustava mjernih jedinica
+
+%encoding fontova i jezika
+\usepackage[croatian]{babel}
+\usepackage[utf8x]{inputenc}        %encoding inputa
+\usepackage[enc=utf8]{hrlatex}
+\usepackage[T1]{fontenc}        %encoding fontova koji je prikazan u PDF-u
+\usepackage{amsfonts}
+\usepackage{dsfont}
+
+\usepackage[fixlanguage]{babelbib}
+\selectbiblanguage{croatian}
+\OnehalfSpacing
+
+%\usepackage[datetime2-croatian]{datetime2}
+
+%paketi tablica, naslova, poglavlja i sl.
+\usepackage[thinlines]{easytable}
+\usepackage{tocloft}        %upravljanje izgledom tablice sadržaja
+\usepackage{pdfpages}       %integracija eksternih PDF-ova
+\usepackage{booktabs}       %koristi se za formatiranje tablica sukladno standardu za znanstvene radove i članke
+\usepackage{indentfirst}     %dodaje tab za svaku prvu rečenicu odlomka
+\usepackage{subcaption}     %koristi se za podnaslove slika, formi i sl.
+\usepackage[font=it]{caption}
+\captionsetup[table]{position=above}
+\captionsetup[figure]{position=below}
+\captionsetup{labelsep=period}
+
+\usepackage[hidelinks]{hyperref}        %podrška za integraciju hyperlinkova
+\urlstyle{same}
+
+%grafički paketi
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{circuitikz}
+
+\pgfplotsset{compat=1.11}
+\usetikzlibrary{arrows,automata,patterns}
+
+%misc. paketi
+
+\usepackage{soul} %žuti marker
+\usepackage{times}
+
+%formatiranje dokumenta
+\pagestyle{myheadings}
+\setulmarginsandblock{2.5cm}{2.5cm}{*}
+\setlrmarginsandblock{2.5cm}{2cm}{*}
+\checkandfixthelayout
+
+\setlength{\parskip}{6pt} %razmak između odlomaka
+
+\usepackage{titlesec}   %nadomješta LaTeX makroe za naslove, odlonke, itd.
+
+\titleformat{\chapter}
+{\normalfont\fontsize{14}{14}\bfseries}
+{\thechapter}
+{1em}
+{}
+\titlespacing{\chapter}{0pt}{*4}{*1}
+\titleformat{\section}
+{\normalfont\fontsize{12}{14}\bfseries}
+{\thesection}
+{1em}
+{}
+\titlespacing{\section}{0pt}{*4}{*1}
+\setsecnumdepth{subsection}
+\maxtocdepth{subsection}
+\titleformat{\subsection}
+{\normalfont\fontsize{12}{14}}
+{\thesubsection}
+{1em}
+{}
+\titlespacing{\subsection}{0pt}{*4}{*1}
+
+%formatiranje dokumenta - dodavanje točaka u naslove
+
+\renewcommand{\thechapter}{\arabic{chapter}.}
+\renewcommand{\thesection}{\thechapter\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+
+%formatiranje dokumenta - promjena fonta naslova "Sadržaj"
+
+\renewcommand\printtoctitle[1]{\normalfont\fontsize{14}{14}\bfseries #1}
+
+%formatiranje dokumenta - promjena riječi "Dodatak" u sadržaju
+
+\renewcommand*{\cftappendixname}{Dodatak\space}
+
+%formatiranje dokumenta - numeriranja tablica i slika
+
+
+
+\renewcommand{\thetable}{\thechapter\arabic{table}}
+\renewcommand{\thefigure}{\thechapter\arabic{figure}}
+
+%teoremi
+
+\newtheorem{theorem}{Teorem}[chapter]
+\newtheorem{korolar}{Korolar}[chapter]
+\newtheorem{definition}{Definicija}[chapter]
+\newtheorem{lema}{Lema}[chapter]
+\newtheorem{prop}{Propozicija}[chapter]
+\newtheorem{primjer}{Primjer}[chapter]
+
+%formule
+
+\newcommand{\fourierovred}{f(x)= \frac{a_0}{2}+\sum_{n=1}^\infty (a_n cos(nx)+b_n sin(nx))}
+
+%formatiranje dokumenta - numeriranja jednadžbi, definicija i teorema
+
+\renewcommand\theequation{\thechapter\arabic{equation}}
+\renewcommand\thetheorem{\thechapter\arabic{theorem}}
+\renewcommand\thedefinition{\thechapter\arabic{definition}}
+\renewcommand\thekorolar{\thechapter\arabic{korolar}}
+\renewcommand\theprimjer{\thechapter\arabic{primjer}}
+
+
+\author{Denis Mijolović} 
+
+\begin{document}
+    \begin{titlingpage}
+        \begin{center}\linespread{1.8}\fontsize{16}{16}
+            \normalfont{
+                SVEUČILIŠTE U RIJECI
+            }\\
+            {\textbf{
+                TEHNIČKI FAKULTET
+                }
+            }\\
+        \fontsize{14}{14}\normalfont{
+            Preddiplomski sveučilišni studij elektrotehnike
+        }            
+        \end{center}
+        \vspace{6cm}
+        \begin{center}\linespread{1.8}
+            \fontsize{14}{14}\normalfont{
+                Završni rad
+            }\\
+            \fontsize{16}{16}{\textbf{
+                AUTOREGRESIJSKI MODELI U OBRADI SIGNALA
+                }
+            }
+        \end{center}
+        \vspace{6cm}
+        \vfill\noindent
+        \begin{tabular}[t]{l@{}}
+            \fontsize{14}{14}\normalfont{
+                Rijeka, \today
+            }
+        \end{tabular}
+        \hfill
+        \begin{tabular}[t]{l@{}}
+            \fontsize{14}{14}\normalfont{
+                Denis Mijolović
+            }\\
+            \fontsize{14}{14}\normalfont{
+                0069066432
+            }
+        \end{tabular}
+        \thispagestyle{empty}
+        \newpage
+            \begin{center}\linespread{1.8}
+                \fontsize{16}{16}\normalfont{
+                    SVEUČILIŠTE U RIJECI
+                }\\
+                {\textbf{
+                    TEHNIČKI FAKULTET
+                    }
+                }\\
+                \fontsize{14}{14}\normalfont{
+                    Preddiplomski sveučilišni studij elektrotehnike
+                }
+            \end{center}
+            \vspace{6cm}
+            \begin{center}\linespread{1.8}
+                \fontsize{14}{14}\normalfont{
+                    Završni rad
+                }\\
+                \fontsize{16}{16}{\textbf{
+                    AUTOREGRESIJSKI MODELI U OBRADI SIGNALA
+                    }
+                }\\
+                \fontsize{14}{14}\normalfont{
+                Mentor: doc. dr. sc. Ivan Dražić
+            }\\
+            \fontsize{14}{14}\normalfont{
+                Komentor: prof. dr. sc. Viktor Sučić
+            }
+            \end{center}
+        \vfill\noindent
+        \begin{tabular}[t]{@{}l}
+            \fontsize{14}{14}\normalfont{
+                Rijeka, \today
+            }        
+        \end{tabular}
+        \hfill
+        \begin{tabular}[t]{@{}l}
+            \fontsize{14}{14}\normalfont{
+                Denis Mijolović
+            }\\
+            \fontsize{14}{14}\normalfont{
+                0069066432
+            }
+        \end{tabular}
+        \thispagestyle{empty}
+        \newpage
+            \thispagestyle{empty}
+            Na mjesto ovo stranice je potrebno umetnunti izvornik zadatka
+        \newpage
+            \thispagestyle{empty}
+                \begin{center}\linespread{1.8}\fontsize{16}{16}
+                    {\textbf{
+                        IZJAVA
+                        }
+                    }
+                \end{center}
+            \vspace{5cm}
+            Sukladno članku 8. Pravilnika o završnom radu, završnom ispitu i završetku prediplomskih sveučilišnih studija/stručnih studija
+			Tehničkog fakulteta Sveučilišta u Rijeci od 1. veljače 2020., izjavljujem da sam samostalno izradio završni rad
+            prema zadatku preuzetom dana 18. ožujka 2019. godine.
+            \vspace{3cm}
+
+
+            \begin{tabular}[t]{@{}l}
+                \normalfont{
+                    Rijeka, \today
+                }
+            \end{tabular}
+            \hfill
+            \begin{tabular}[t]{@{}l} 
+                \fontsize{14}{14}\hrulefill\\
+                \fontsize{12}{12}\normalfont{
+                    \phantom{Raz}Denis Mijolović\phantom{Raz}
+                }
+            \end{tabular}
+            \newpage
+                \thispagestyle{empty}
+                $ $
+                    \vspace{5cm}
+                    \textit{
+                        \\
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et ante a mauris consequat tempor. Donec vulputate, nulla pharetra finibus finibus, ipsum ante molestie mauris, in tincidunt libero augue sit amet arcu. In hac habitasse platea dictumst. Nulla sagittis ante ac augue volutpat cursus. Ut gravida odio malesuada, vestibulum mi at, dignissim leo. Morbi semper finibus est, id maximus mauris auctor eget.
+                    }
+    \end{titlingpage}
+    \begin{KeepFromToc}
+        \tableofcontents
+    \end{KeepFromToc}
+    \chapter{Uvod}
+        \textbf{(Definicija podataka i informacija)}
+
+        Vratimo li se u prošlost, važnost podataka i njihova inerpretacija u svrhu stvaranja informacija bila je neminovna za civilizacijske strukture koje danas poznajemo. Od početka razvoja primitnivnih tehnologija i njezinoga korištenja za optimizaciju životnih procesa, do razvoja trgovine i financijskih instrumenata; čovjek je sve efikasnije koračao prema evolucijskom vrhu uspješnom utilizacijom svoje okoline. Daljnjim razvojem, čovjek je nadišao barijeru vlastite memorije za obradu podataka, te se počeo približavati točki zasićenja - uslijed koje se javila potreba za stvaranjem boljega i efikasnijega načina obrade podataka i njihove pretvorbe u sažetiju i jednako kvalitetnu informaciju.
+
+        Kao i kod većine velikih znanstvenih otkrića koja su obilježila svoje razdoblje kao pretkretnice stoljeća, tako je i tijekom Drugog svjetskog rata osmišljena Enigma - stroj koji je kodirao njemačke vojne i diplomatske poruke te čija se šifra smatrala nerješivom. Uzevši u obzir širenje nacističke Njemačke i prijetnju koja je prijetila ljudskim slobodama, javila se jasna potreba za stvaranjem rješenja koje će nadići čovjekova fizička i psihička ograničenja te biti u mogućnosti procesuirati veliku količinu podataka u vrlo kratkom vremenu -- radeći neprestano i ne osjećajući umor te, konzekventno, ne stvarajući greške. Imajući to na umu, Englezi su tada izumili \textit{Colossus} -- uređaj koji je pomogao kriptoanalitičarima da dešifriraju njemačke poruke i dao im stratešku prednost pri prognozorianju daljnih koraka tijekom ratnog razdoblja. Taj uređaj se u današnje vrijeme smatra pretečom prvoga računala kakvim ga danas poznajemo.
+
+        Baš kao i tada, te kroz cijelu ljudsku povijest, ispravna interpretacija podataka u informaciju -- koju krajnji korisnik može iskoristiti u svrhu kvalitetnijeg donošenja važnih odluka -- iskazala se kao značajan faktor u očuvanju civilizacijske i sveopće stabilnosti -- stanja koje je najpotentnije za budući razvoj, a time i blagostanje. Kako je civilizacija težila ka tehnološkom društvu, tako je eksponencijalno rasla i količina podataka koju je bilo potrebno interpretirati; te se javila potreba za sve preciznijim prognoziranjem budućega ponašanja sustava kako ne bi došlo do destrukcije vitalnih procesa i porasta volotilnosti sustava - a samim time i povećanjem vjerojatnosti za njegovim urušavanjem.
+
+        Slijedno tome, važnost prognoziranja proizlazi iz dvije osnovne činjenice:
+        \begin{enumerate}
+            \item budućnost je nepredvidiva
+            \item poduzete akcije u vrijeme donošenja odluke vrlo često nemaju trenutne posljedice sve do određenoga trenutka u budućnosti
+        \end{enumerate}
+
+        Imajući na umu prethodno navedene činjenice, slijedno je zaključiti da precizne prognoze budućih događaja pospješuju efikasnost postupka donošenja odluka. Štoviše, većina odluka od posebnog poslovnog ili političkog značaja imaju nužan uvjet pozitivnih prognostičkih indikatora prezentiranih kroz studije izvedivnosti ili ispitivanja javnoga mnijenja -- čija je zadaća što preciznije prognozirati buduću potražnju za proizvodima i uslugama koje su predmet proizvodnih, industrijskih ili inih procesa. U konkretnijem, mikroekonomskom smislu, dalo bi se konstatirati da je prognoziranje implementirano u gotovo sve odluke koje su dio naše svakodnevice: poduzeće će početi izgradnju nove proizvodne jedinice kako bi osiguralo rastuću potražnju na tržištu; zaposleni radnici početi će štedjeti kako bi si mogli priuštiti godišni odmor ili kupnju vrijednosnica s ciljem ostvarivanja prava na buduću kapitalnu dobit; 
+
+        % nastaviti sa još par primjera i preći na detaljnije primjene prognostike - povezivanjem prethodno spomenutih mikroekonomskih aktivnosti koje su u principu jedine na koje firma ili pojedinac mogu utjecati, za razliku od makroekonomskih (kombinirati informacije iz knjige)
+
+
+        Uvod u problematiku (nasrati nešto o podacima i informacijama, njihovom povijesnom značaju u "prekretnicama stoljeća", povezati sa stabilnošću i povezati sa današnjicom. Ergo, opisati forecasting i napraviti uvod u određene tehnike i terminologiju o signalima i tako dalje)
+        \section{Teorija signala i sustava}
+            Napraviti uvod o stručnoj terminologiji (kauzalni, nekauzalni signali).
+        \section{Industrijske metodologije prognoziranja}
+            Objasniti na temelju par primjera i utjecaj određenih varijabli (random walk, ...)
+
+            Započeti uvod prema vremenskim nizovima, a onda i prema AR, MA i ARMA modelima.
+    \chapter{Vremenski niz}
+        Ajoj ajoj kriva kuća krivi broj.
+    \chapter{Autoregresivni modeli}
+        \section{Autoregresija (AR)}
+        \section{Pomična srednja vrijednost (MA)}
+        \section{Autoregresivna pomična vrijednost (ARMA)}
+        \section{Autoregresivna integrirana pomična vrijednost (ARIMA)}
+    \chapter{Zaključak}
+        \ldots{}Ovo je neki tekst za kraj. To jest, drugi section.
+        $$\fourierovred$$
+\end{document}
