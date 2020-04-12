@@ -37,6 +37,8 @@
 
 %grafički paketi
 \usepackage{tikz}
+\usetikzlibrary{datavisualization}
+\usetikzlibrary{datavisualization.formats.functions}
 \usepackage{pgfplots}
 \usepackage{circuitikz}
 
@@ -285,7 +287,23 @@
 
         Kako bi izračunali vjerojatnost zakazivanja brtvi, koristiti ćemo podatke zakazivana brtvi prilikom prethodnih lansiranja -- budući da je lansiranje \textit{Challanger-a} bilo je 24. lansiranje aktualnog svemirskoga programa. Budući da su za svaku pomoćnu raketu korištena tri o-prstena te da su za dotadašnja lansiranja korištene dvije pomoćne rakete po lansiranju, razmatrati ćemo korištenje 6 o-prstena po lansiranju. Uslijed zavisnosti karakteristika brtve o temperaturi, razmotriti ćemo ovisnost zakazivanja brtve o temperaturi koline prilikom lansiranja.
 
-        \textbf{(Unesti podatke iz fig. 1.3. i pogledati mogućnosti izrade grafova u TeX-u. Preračunati u \SI{1337}{\celsius})}
+        \begin{tikzpicture}
+            \draw[very thin, color=gray] (12,3) grid (0,0);
+            \draw[-] (0,0) -- (12,0) node[below] {$t/\textit{\textdegree C}$};
+            \draw[-] (0,0) -- (0,3) node[left, align=center, text width=3cm] {Učestalost zakazivanja};
+            \filldraw
+                (1.25,0) circle (2pt) node[align=center, below] {61C};
+        \end{tikzpicture}
+
+        \begin{tikzpicture}
+            \datavisualization [scientific axes=clean, visualize as smooth line]
+                data [format=function] {
+                    var x : interval [0:5];
+                    func y = \value x * \value x;
+                };
+        \end{tikzpicture}
+
+        \textbf{(Unesti podatke iz fig. 1.3. i pogledati mogućnosti izrade grafova u TeX-u. Preračunati u \textdegree C)}
 
         \textbf{(Navesti metode prognoziranja (subjective, model-based) i podjelu modela na kauzalne i nekauzalne -- uvod u novo poglavlje o teoriji signala i sustava. Možda rastaviti sljedeći paragraf i ubaciti ovaj tekst između.)}
 
