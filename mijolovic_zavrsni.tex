@@ -37,6 +37,8 @@
 
 %grafički paketi
 \usepackage{tikz}
+\usetikzlibrary{datavisualization}
+\usetikzlibrary{datavisualization.formats.functions}
 \usepackage{pgfplots}
 \usepackage{circuitikz}
 
@@ -273,14 +275,40 @@
         Ostanemo li na mikroekonomskoj razini, možemo reći da je poslovanje poduzeća zahvaćeno trijema faktorima: makroekonomskim prilikama, industrijskim pokazateljima i samim uređenjem poduzeća. Obzirom da direktor takvoga poduzeća najčešće ima mogućnost direktnoga djelovanja jedino na poslijednja dva faktora, od iznimne je važnosti da bude što bolje informiran o vanjskim utjecajima i trendovima na koje ne može izravno djelovati -- poput donošenja novih zakonskih regulativa ili razvoja globalne virusne pandemije. Važnost ispravnog prognoziranja čimbenika na koje se nema direktan utjecaj od iznimne je važnosti za većinu projekta iznimno velike vrijednosti. Tako, na prijmer, projekti s velikim početnim ulaganjima poput izgradnje novih jedinica za opskrbu električnom energijom, mogu imati vrijeme izrade studije izvedivosti u trajanju od 10 ili više godina prije nego što li se započnu radovi. Budući da opskrba električnom energijom ovisi o stupnju razvijenosti regije ili područja, potrebno je izraditi valjane prognoze koje će pomoći u procjeni trenutne, kratkoročne i dugoročne isplativosti novih opskrbnih jedinica za opskrbljivača, ostale projektne partnere, te za lokalni i regijalni razvoj. U tom slučaju, prisutnost raznovrsnih rizika utječe na sve dionike projekta -- od nacionalne, regionalne ili lokalne uprave ili samouprave; do svih industrijskih poduzeća koja se nalaze na tom području. Ti rizici mogu biti smanjenje likvidnost tržišta, kreditni status\footnote{Usporedba potraživanja i dugovanja nekoga poduzeća koje se dalje koriste za utvrđivanje kreditnog rejtinga.}, kamatni rizik\footnote{Moguće smanjenje vrijednosti financijskih instrumenata javno dostupnoga poduzeća uslijed promjene razine kamatnih stopa na tržištu.},valutni rizik\footnote{Osjetljivost financijskih instrumenata na fluktuacije tečajeva stranih valuta. Značajno za multinacionalna poduzeća s viševalutnim potraživanjima i dugovanjima.}, strateški rizik\footnote{Rizik za prihode ili kapital koji nastaje kao posljedica neadekvatnih poslovnih odluka ili nepravilnog vođenja poduzeća.}, stanje tržišta rada i još mnogi drugi. Pritom je važno napomenti važnost osjetljivosti modela prognoziranja na fluktuacije u svakoj stavci procjene ukupnoga rizika, tj. isti prognostički model se ne bi trebao koristiti za prognoziranje u različitim zakonskim i regulativnim okvirima -- što pridonosi kompleksnosti izrade samoga modela i porastu troškova izrade kvalitetne studije.
 
 
-        U navedenim primjerima nastojali smo nešto konkretnije opisati važnost prognoziranja kroz opće primjere iz prakse. Kako bismo zaokružili sadržaj ovoga poglavlja, pozabaviti ćemo se stavrnim primjerom jedne od najutjecajnijih nesreća koje su obilježile prošlo stoljeće --  no ovoga puta fokusirajući se na ispravnoj interpretaciji prognostičkih procesa i važnosti najnasumičnijeg čimbenika u cijelome procesu odlučivanj, tj. čovjeka.
+        U navedenim primjerima nastojali smo nešto konkretnije opisati važnost prognoziranja kroz opće primjere iz prakse. Kako bismo zaokružili sadržaj ovoga poglavlja, osvrnuti ćemo se na stavrni primjer jedne od najutjecajnijih nesreća koje su obilježile prošlo stoljeće --  no ovoga puta fokusirajući se na ispravnoj interpretaciji prognostičkih procesa i važnosti najnasumičnijeg čimbenika u cijelome procesu odlučivanja, tj. čovjeka.
 
 
-        28. siječnja 1986. godine, space shuttle orbiter \textit{Challanger} eksplodirao je otprilike 70 sekundi nakon polijetanja iz Kennedy Space Center-a u Floridi. Sedmero astronauta je poginulo, a svemirska letjelica bila je u potpunosti je uništena. Uzrok nesreće bila je eksplozija spremnika za raketno gorivo, prouzrokovana zapaljenjem plina.
+        28. siječnja 1986. godine, svemirska letjelica \textit{Challanger} eksplodirala je otprilike 70 sekundi nakon polijetanja iz svemirskog centra John F. Kennedy u Floridi. Sedmero astronauta je poginulo, a svemirska letjelica u potpunosti je uništena. Uzrok nesreće bila je eksplozija spremnika za raketno gorivo, prouzrokovana zapaljenjem plina u pomoćnim raketama za uzlijetanje.
 
-        \textbf{(Navesti važnost prognoziranja za \textit{Challanger} program koji je završio tragično uslijed pritiska od strane menadžmenta, usprkos prognozama inženjera.)}
+        Pomoćne rakete za uzlijetanje bile su predmet zabrinutnosti još pri samim počecima razvoja aeronautike. Proizvodnja istih realizira se spajanjem više manjih segmenata uz veliki broj spojišta koji moraju zadovoljavati niz projektom predodređenih uvjeta -- među kojima je postizanje nepropusnosti spojišta brtvljenjem. U ovom konkretnom slučaju, korištene su meke profilne brtve s elastičnim deformacijama (također poznate kao o-prsteni) uz sloj ljepila. Prilikom zapaljenja raketnog motora, u sustavu se stvaraju visoke temperature i visoki tlak -- što utječe na otapanje ljepila i posljedično habanje brtve, te propuštanja eksplozivnog medija.
 
-        \textbf{(Navesti metode prognoziranja (subjective, model-based) i podjelu modela na kauzalne i nekauzalne -- uvod u novo poglavlje o teoriji signala i sustava)}
+        Nakon eksplozije, istražni stožer objavio je izvješće u kojemu su navedene okolnosti koje su dovele do uzroka nesreće. Utvrđeno je kako je prethodne večeri, 27. siječnja, donesena odluka o lansiranju letjelice sljedećega dana usprkos nepovoljnoj prognozi temperaturnih uvjeta određenih radnom temperaturom deklariranom od strane proizvođaća pomoćnih raketa. Protivno apelu inženjera za obustavom lansiranja, odluka uprave bila je da će se lansiranje ipak provesti, što je rezultiralo kobnim posljedicama.
+
+
+        Kako bi izračunali vjerojatnost zakazivanja brtvi, koristiti ćemo podatke zakazivana brtvi prilikom prethodnih lansiranja -- budući da je lansiranje \textit{Challanger-a} bilo je 24. lansiranje aktualnog svemirskoga programa. Budući da su za svaku pomoćnu raketu korištena tri o-prstena te da su za dotadašnja lansiranja korištene dvije pomoćne rakete po lansiranju, razmatrati ćemo korištenje 6 o-prstena po lansiranju. Uslijed zavisnosti karakteristika brtve o temperaturi, razmotriti ćemo ovisnost zakazivanja brtve o temperaturi koline prilikom lansiranja.
+
+        %https://history.nasa.gov/rogersrep/v1p146.htm
+        %F.M. Dekking, C. Kraaikamp, H.P. Lopuhaä, L.E. Meester-A Modern Introduction to Probability and Statistics (page 20.)
+        
+        \begin{tikzpicture}
+            \draw[very thin, color=gray] (12,3) grid (0,0);
+            \draw[-] (0,0) -- (12,0) node[below] {$t/\textit{\textdegree C}$};
+            \draw[-] (0,0) -- (0,3) node[left, align=center, text width=3cm] {Učestalost zakazivanja};
+            \filldraw
+                (1.25,0) circle (2pt) node[align=center, below] {61C};
+        \end{tikzpicture}
+
+        \begin{tikzpicture}
+            \datavisualization [scientific axes=clean, visualize as smooth line]
+                data [format=function] {
+                    var x : interval [0:5];
+                    func y = \value x * \value x;
+                };
+        \end{tikzpicture}
+
+        \textbf{(Unesti podatke iz fig. 1.3. i pogledati mogućnosti izrade grafova u TeX-u. Preračunati u \textdegree C)}
+
+        \textbf{(Navesti metode prognoziranja (subjective, model-based) i podjelu modela na kauzalne i nekauzalne -- uvod u novo poglavlje o teoriji signala i sustava. Možda rastaviti sljedeći paragraf i ubaciti ovaj tekst između.)}
 
         % F.M. Dekking, C. Kraaikamp, H.P. Lopuhaä, L.E. Meester-A Modern Introduction to Probability and Statistics
 
