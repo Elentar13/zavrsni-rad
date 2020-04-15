@@ -292,22 +292,16 @@
         %F.M. Dekking, C. Kraaikamp, H.P. Lopuhaä, L.E. Meester-A Modern Introduction to Probability and Statistics (page 20)
         \begin{center}
         \begin{tikzpicture}
-            \draw[ultra thin, color=lightgray] (12,3) grid (0,0);
-            \draw[-] (0,0) -- (12,0) node[below=0.6cm] {$t/\textit{\textdegree C}$};
+            \draw[ultra thin, color=lightgray] (15,3) grid (0,0);
+            \draw[-] (0,0) -- (15,0) node[below=0.6cm] {$t/\textit{\textdegree C}$};
             %\node[anchor=0.6cm, align=center] {$\text{tekst}$};
-            \node[anchor=north] at (0,0) {$-20$};
-            \node[anchor=north] at (1,0) {$-15$};
-            \node[anchor=north] at (2,0) {$-10$};
-            \node[anchor=north] at (3,0) {$-5$};
-            \node[anchor=north] at (4,0) {$0$};
-            \node[anchor=north] at (5,0) {$5$};
-            \node[anchor=north] at (6,0) {$10$};
-            \node[anchor=north] at (7,0) {$15$};
-            \node[anchor=north] at (8,0) {$20$};
-            \node[anchor=north] at (9,0) {$25$};
-            \node[anchor=north] at (10,0) {$30$};
-            \node[anchor=north] at (11,0) {$35$};
-            \node[anchor=north] at (12,0) {$40$};
+            \node[anchor=north] at (0,0) {$5$};
+            \node[anchor=north] at (3,0) {$10$};
+            \node[anchor=north] at (6,0) {$15$};
+            \node[anchor=north] at (9,0) {$20$};
+            \node[anchor=north] at (12,0) {$25$};
+            \node[anchor=north] at (15,0) {$30$};
+            %podijeliti celzijuse sa 1.67 kako bi se dobile koordinate na x-osi (popraviti cijeli tikz ispod ove linije)
             
             \draw[-] (0,0) -- (0,3);
             \node[anchor=east] at (0,0) {$0$};
@@ -315,9 +309,19 @@
             \node[anchor=east] at (0,2) {$2$};
             \node[anchor=east] at (0,3) {$3$};
             \filldraw
-                (6.334,3) circle (2pt) node[align=center, above] {STS 51-C}
-                (6.78,1) circle (2pt) node[align=center, above] {41B}
-                (6.88,1) circle (2pt) node[align=center, below] {61C};
+                (3.556,3) circle (2pt) node[align=center, above] {STS 51-C}
+                (4.171,1) circle (2pt) node[align=center, above] {41B}
+                (4.338,1) circle (2pt) node[align=center, below] {61C}
+                (5.171,1) circle (2pt) node[align=center, above] {41C}
+                (6.34,1.05) circle (2pt) node[align=center, above] {41D}
+                (6.34,0.95) circle (2pt) node[align=center, below] {STS-2}
+                (9.167,2) circle (2pt) node[align=center, above] {61A}
+
+                %successful launches
+                (5.6723,0) circle (2pt)
+                (5.838,0) circle (2pt)
+                (5.838,0.1) circle (2pt)
+                (5.838,0.2) circle (2pt);
         \end{tikzpicture}
 
         \begin{tikzpicture}
