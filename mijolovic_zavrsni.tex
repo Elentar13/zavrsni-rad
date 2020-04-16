@@ -35,6 +35,7 @@
 \usepackage[hidelinks]{hyperref}        %podrška za integraciju hyperlinkova
 \urlstyle{same}
 
+\usepackage{float}
 %grafički paketi
 \usepackage{tikz}
 \usetikzlibrary{datavisualization}
@@ -286,16 +287,16 @@
         Nakon eksplozije, istražni stožer objavio je izvješće u kojemu su navedene okolnosti koje su dovele do uzroka nesreće. Utvrđeno je kako je prethodne večeri, 27. siječnja, donesena odluka o lansiranju letjelice sljedećega dana usprkos nepovoljnoj prognozi temperaturnih uvjeta određenih radnom temperaturom deklariranom od strane proizvođaća pomoćnih raketa. Protivno apelu inženjera za obustavom lansiranja, odluka uprave bila je da će se lansiranje ipak provesti, što je rezultiralo kobnim posljedicama.
 
 
-        Kako bi izračunali vjerojatnost zakazivanja brtvi, koristiti ćemo podatke zakazivana brtvi prilikom prethodnih lansiranja -- budući da je lansiranje \textit{Challanger-a} bilo je 24. lansiranje aktualnog svemirskoga programa. Budući da su za svaku pomoćnu raketu korištena tri o-prstena te da su za dotadašnja lansiranja korištene dvije pomoćne rakete po lansiranju, razmatrati ćemo korištenje 6 o-prstena po lansiranju. Uslijed zavisnosti karakteristika brtve o temperaturi, razmotriti ćemo ovisnost zakazivanja brtve o temperaturi koline prilikom lansiranja.
+        Kako bi izračunali vjerojatnost zakazivanja brtvi, koristiti ćemo podatke o učestalosti kvarova brtvi prilikom prethodnih lansiranja -- budući da je lansiranje \textit{Challanger}-a bilo 24. lansiranje aktualnog svemirskoga programa. Budući da su za svaku pomoćnu raketu korištena tri o-prstena te da su za dotadašnja lansiranja korištene dvije pomoćne rakete po lansiranju, razmatrati ćemo korištenje 6 o-prstena po lansiranju. Uslijed zavisnosti karakteristika brtve o temperaturi, razmotriti ćemo ovisnost zakazivanja brtve o temperaturi koline prilikom lansiranja. Slika \ref{fig:M1} prikazuje kurac.
 
         %https://history.nasa.gov/rogersrep/v1p146.htm
         %DTIC_ADA171402 (page 151) --> temperature na page 136
         %F.M. Dekking, C. Kraaikamp, H.P. Lopuhaä, L.E. Meester-A Modern Introduction to Probability and Statistics (page 20)
-        \begin{figure}[b]
+        \begin{figure}[H]
             \centering
             \begin{tikzpicture}
                 \draw[ultra thin, color=lightgray] (15,3) grid (0,0);
-                \draw[-] (0,0) -- (15,0) node[below=0.6cm] {$t/\textit{\textdegree C}$};
+                \draw[-] (0,0) -- (15,0) node[pos=1, label={[below=0.8cm]center:$t/\textit{\textdegree C}$}] {} node[pos=0.5, align=center, label={[below=0.8cm]center:Temperatura spojišta}, label position=below] {};
                 %\node[anchor=0.6cm, align=center] {$\text{tekst}$};
                 \node[anchor=north] at (0,0) {$5$};
                 \node[anchor=north] at (3,0) {$10$};
@@ -305,7 +306,7 @@
                 \node[anchor=north] at (15,0) {$30$};
                 %podijeliti celzijuse sa 1.67 kako bi se dobile koordinate na x-osi (popraviti cijeli tikz ispod ove linije). Oduzezi 3 jer je početna vrijednost 5 umjesto 0.
             
-                \draw[-] (0,0) -- (0,3) node[pos=0.5, rotate=90, align=center, label={[rotate=90, left=1cm]center:Učestalost kvarova}, label position=above] {};
+                \draw[-] (0,0) -- (0,3) node[pos=0.5, rotate=90, align=center, label={[rotate=90, left=0.8cm]center:Učestalost kvarova}, label position=above] {};
                 \node[anchor=east] at (0,0) {$0$};
                 \node[anchor=east] at (0,1) {$1$};
                 \node[anchor=east] at (0,2) {$2$};
@@ -342,8 +343,10 @@
                 \draw[-] (8.25,0.15) -- (8.25,0.25) -- (13.35,0.25) -- (13.35,0.15);
                 \draw[-{Latex[length=3mm]}] (13,1.25) node[rectangle, fill=white, draw, very thick, font=\small, align=center] {USPJEŠNA\\LANSIRANJA} -- (11,1.25) -- (11,0.25);
             \end{tikzpicture}
-            \caption{Neki opisni tekst} \label{fig:M1}
+            \caption{Podaci o učestalosti kvarova brtvi prilikom testnih lansiranja koja su prethodila Challanger-u \cite{NASA}}
+            \label{fig:M1}
         \end{figure}
+
 
         \begin{tikzpicture}
             \datavisualization [scientific axes=clean, visualize as smooth line]
@@ -385,4 +388,7 @@
     \chapter{Zaključak}
         \ldots{}Ovo je neki tekst za kraj. To jest, drugi section.
         $$\fourierovred$$
+    \begin{thebibliography}{9}
+        \bibitem{NASA} Presidential Commission: "Report of the Presidential Commission on the Space Shuttle Challanger Accident", U.S. Government Printing Office, Washington, D.C., 1986.
+    \end{thebibliography}
 \end{document}
