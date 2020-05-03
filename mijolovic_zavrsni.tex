@@ -37,15 +37,21 @@
 
 \usepackage{float}
 %grafički paketi
+% \usepackage{pgfcore}
+% \usepgflibrary{datavisualization.formats.functions}
+\usepackage{pgfmath}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.11}
 \usepackage{tikz}
 \usetikzlibrary{datavisualization}
 \usetikzlibrary{datavisualization.formats.functions}
-\usetikzlibrary{positioning}
-\usepackage{pgfplots}
+\usetikzlibrary{arrows,automata,patterns,positioning}
 \usepackage{circuitikz}
+\newcommand{\pgfmathparseFPU}[1]{\begingroup%
+\pgfkeys{/pgf/fpu,/pgf/fpu/output format=fixed}%
+\pgfmathparse{#1}%
+\pgfmathsmuggle\pgfmathresult\endgroup}
 
-\pgfplotsset{compat=1.11}
-\usetikzlibrary{arrows,automata,patterns}
 
 %misc. paketi
 
@@ -116,6 +122,7 @@
 %formule
 
 \newcommand{\fourierovred}{f(x)= \frac{a_0}{2}+\sum_{n=1}^\infty (a_n cos(nx)+b_n sin(nx))}
+\newcommand{\nasavjerojatnost}{p(t)= \frac{e^{5.085-0.1156\cdot t}}{1+e^{5.085-0.1156\cdot t}}}
 
 %formatiranje dokumenta - numeriranja jednadžbi, definicija i teorema
 
@@ -287,7 +294,7 @@
         Nakon eksplozije, istražni stožer objavio je izvješće u kojemu su navedene okolnosti koje su dovele do uzroka nesreće. Utvrđeno je kako je prethodne večeri, 27. siječnja, donesena odluka o lansiranju letjelice sljedećega dana usprkos nepovoljnoj prognozi temperaturnih uvjeta određenih radnom temperaturom deklariranom od strane proizvođaća pomoćnih raketa. Protivno apelu inženjera za obustavom lansiranja, odluka uprave bila je da će se lansiranje ipak provesti, što je rezultiralo kobnim posljedicama.
 
 
-        Kako bi izračunali vjerojatnost zakazivanja brtvi, koristiti ćemo podatke o učestalosti kvarova brtvi prilikom prethodnih lansiranja -- budući da je lansiranje \textit{Challanger}-a bilo 24. lansiranje aktualnog svemirskoga programa. Budući da su za svaku pomoćnu raketu korištena tri o-prstena te da su za dotadašnja lansiranja korištene dvije pomoćne rakete po lansiranju, razmatrati ćemo korištenje 6 o-prstena po lansiranju. Uslijed zavisnosti karakteristika brtve o temperaturi, razmotriti ćemo ovisnost zakazivanja brtve o temperaturi koline prilikom lansiranja. Slika \ref{fig:M1} prikazuje kurac.
+        Kako bi izradili model vjerojatnosti zakazivanja brtvi, koristiti ćemo podatke o učestalosti kvarova brtvi prilikom prethodnih lansiranja -- budući da je lansiranje \textit{Challanger}-a bilo 24. lansiranje aktualnog svemirskoga programa. Budući da su za svaku pomoćnu raketu korištena tri o-prstena te da su za dotadašnja lansiranja korištene dvije pomoćne rakete po lansiranju, razmatrati ćemo korištenje 6 o-prstena po lansiranju. Uslijed zavisnosti karakteristika brtve o temperaturi, razmotriti ćemo ovisnost zakazivanja brtve o temperaturi koline prilikom lansiranja. Slika \ref{fig:M1} prikazuje podatke o učestalost kvarova brtvi pri određenim temperaturama prilikom testnih lansiranja. Iz navedene uočavamo veću učestalost kvarova pri nižim temperaturuama -- što odgovara svojstvu amorfnih materijala, koji na temperaturama nižim od temperature prelaska u staklo imaju veću tvrdoću i lomljivost.
 
         %https://history.nasa.gov/rogersrep/v1p146.htm
         %DTIC_ADA171402 (page 151) --> temperature na page 136
@@ -346,17 +353,42 @@
             \caption{Podaci o učestalosti kvarova brtvi prilikom testnih lansiranja koja su prethodila Challanger-u \cite{NASA}}
             \label{fig:M1}
         \end{figure}
+        
+        
+        Prikazani model na slici \ref{fig:M2} reprezentira vjerojatnost kvara $p(t)$ pojedine brtve u ovisnosti o temperaturi spojišta prilikom lansiranja.
 
-
-        \begin{tikzpicture}
-            \datavisualization [scientific axes=clean, visualize as smooth line]
-                data [format=function] {
-                    var x : interval [0:5];
-                    func y = \value x * \value x;
+        $$\nasavjerojatnost$$
+        
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \datavisualization[scientific axes=clean]
+                [
+                    visualize as scatter,
+                    scatter={
+                        style={mark=*,mark size=1.4pt}
+                    }
+                ]
+                data[format=table]    {
+                    x, y
+                    5, 2
+                    10, 1
+                    15, 1
+                    20, 0                        
+                }
+                [
+                    visualize as line,
+                    /pgf/data/evaluator=\pgfmathparseFPU
+                ]
+                data[format=function]   {
+                    var x : interval [30:90];
+                    func y = divide(exp(5.085-0.1156*\value x),(1+exp(5.085-0.1156*\value x)));
+                    %potrebno je modificirati formulu iz knjige budući da se ona odnosi na temperature u farenheitima - naći parametre a i b prema metodi "maximum likelihood" (page 319)
                 };
-        \end{tikzpicture}
-
-        \textbf{(Unesti podatke iz fig. 1.3. i pogledati mogućnosti izrade grafova u TeX-u. Preračunati u \textdegree C)}
+            \end{tikzpicture}
+            \caption{Podnaslov grafa}
+            \label{fig:M2}
+        \end{figure}
 
         \textbf{(Navesti metode prognoziranja (subjective, model-based) i podjelu modela na kauzalne i nekauzalne -- uvod u novo poglavlje o teoriji signala i sustava. Možda rastaviti sljedeći paragraf i ubaciti ovaj tekst između.)}
 
