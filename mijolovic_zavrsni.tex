@@ -39,6 +39,7 @@
 %grafički paketi
 % \usepackage{pgfcore}
 % \usepgflibrary{datavisualization.formats.functions}
+\usepackage{graphicx}
 \usepackage{pgfmath}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.11}
@@ -122,7 +123,7 @@
 %formule
 
 \newcommand{\fourierovred}{f(x)= \frac{a_0}{2}+\sum_{n=1}^\infty (a_n cos(nx)+b_n sin(nx))}
-\newcommand{\nasavjerojatnost}{p(t)= \frac{e^{5.085-0.1156\cdot t}}{1+e^{5.085-0.1156\cdot t}}}
+\newcommand{\nasavjerojatnost}{p(t)= \frac{e^{a+b\cdot t}}{1+e^{a+b\cdot t}}}
 
 %formatiranje dokumenta - numeriranja jednadžbi, definicija i teorema
 
@@ -264,7 +265,7 @@
         \tableofcontents
     \end{KeepFromToc}
     \chapter{Uvod}
-        \textbf{(Definicija podataka i informacija)}
+        \textbf{(Definicija podataka i informacija na zanimljiv način...ako je takvo što moguće)}
 
         Vratimo li se u prošlost, važnost podataka i njihova inerpretacija u svrhu stvaranja informacija bila je neminovna za civilizacijske strukture koje danas poznajemo. Od početka razvoja primitnivnih tehnologija i njezinoga korištenja za optimizaciju životnih procesa, do razvoja trgovine i financijskih instrumenata; čovjek je sve efikasnije koračao prema evolucijskom vrhu uspješnom utilizacijom svoje okoline. Daljnjim razvojem, čovjek je nadišao barijeru vlastite memorije za obradu podataka, te se počeo približavati točki zasićenja - uslijed koje se javila potreba za stvaranjem boljega i efikasnijega načina obrade podataka i njihove pretvorbe u sažetiju i jednako kvalitetnu informaciju.
 
@@ -277,6 +278,7 @@
             \item budućnost je nepredvidiva
             \item poduzete akcije u vrijeme donošenja odluke vrlo često nemaju trenutne posljedice sve do određenoga trenutka u budućnosti
         \end{enumerate}
+
 
         Imajući na umu prethodno navedene činjenice, slijedno je zaključiti da precizne prognoze budućih događaja pospješuju efikasnost postupka donošenja odluka. Štoviše, većina odluka od posebnog poslovnog ili političkog značaja imaju nužan uvjet pozitivnih prognostičkih indikatora prezentiranih kroz studije izvedivnosti ili ispitivanja javnoga mnijenja -- čija je zadaća što preciznije prognozirati buduću potražnju za proizvodima i uslugama koje su predmet proizvodnih, industrijskih ili inih procesa. U konkretnijem, mikroekonomskom smislu, dalo bi se konstatirati da je prognoziranje implementirano u gotovo sve odluke koje su dio naše svakodnevice: poduzeće će početi izgradnju nove proizvodne jedinice kako bi osiguralo rastuću potražnju na tržištu; zaposleni radnici početi će štedjeti kako bi si mogli priuštiti godišni odmor ili kupnju vrijednosnica s ciljem ostvarivanja prava na buduću kapitalnu dobit; rektor sveučilišta donesti će odluku o otvaranju novog studijskog programa kako bi povećao broj studenata i uskladio broj obrazovanih stručnjaka s budućim tržišnim potrebama. Ukratko, svaki od navedenih procesa zahtjeva inicijalnu percepciju utjecaja donešenih odluka na povećanje vjerojatnosti ostvarivanja zadanih ciljeva -- i to prije donošenja samih odluka.
 
@@ -355,14 +357,31 @@
         \end{figure}
         
         
-        Prikazani model na slici \ref{fig:M2} reprezentira vjerojatnost kvara $p(t)$ pojedine brtve u ovisnosti o temperaturi spojišta prilikom lansiranja.
+        Model prikazan jednadžbom \eqref{eq:U1} reprezentira vjerojatnost kvara $p(t)$ pojedine brtve u ovisnosti o temperaturi spojišta $t$ prilikom lansiranja.
+        
+        \begin{equation}
+            \nasavjerojatnost
+            \label{eq:U1}
+        \end{equation}
 
-        $$\nasavjerojatnost$$
+        gdje je:
+        \begin{table}[H]
+            \centering
+            \begin{tabular*}{0.9\textwidth}{>{\bfseries}l p{13cm}}
+                \textit{\textbf{t}} & \textit{temperatura brtve izražena u \textdegree F}\\
+                \textit{\textbf{a,b}} & \textit{konstante dobivene statističkim modeliranjem metodom procjene maksimalne vrijednsosti}\\
+            \end{tabular*}
+        \end{table}
+        % \indent\indent \textit{\textbf{t} \quad temperatura brtve izražena u \textdegree F}\\
+        % \indent\indent \textit{\textbf{a, b} \quad konstante dobivene statističkim modeliranjem metodom procjene maksimalne vrijednsosti}
+        
+
+        Vrijednost konstanti $a$ i $b$ određene su podacima, tj. odabirom vrijednosti $a$ i $b$ tako da dobijemo što točniju aproksimaciju u okolini podatkovnih točaka prikazanih na slici \ref{fig:M1}. Budući da sinteza navedenoga statističkoga modela ne obuhvaća temu ovoga rada, nećemo analizirati statistički izračun konstanti $a$ i $b$ za slučaj Celzijeve temperature, već ćemo koristiti postejeće konstante iz literature ($a=5.085$ i $b=-0.1156$)\cite{Dekking} u svrhu izrade grafičkog prikaza vjerojatnosti kvara brtvi pri određenim temperaturama -- kao što je prikazano na slici \ref{fig:M2}.
         
         \begin{figure}[H]
             \centering
             \begin{tikzpicture}
-                \datavisualization[scientific axes=clean]
+                \datavisualization[scientific axes=clean, x axis={length=10cm, label={Temperatura spojišta (\textdegree F)}}, y axis={length=5.5cm, label={Učestalost kvarova}}]
                 [
                     visualize as scatter,
                     scatter={
@@ -371,36 +390,54 @@
                 ]
                 data[format=table]    {
                     x, y
-                    5, 2
-                    10, 1
-                    15, 1
-                    20, 0                        
+                    53, 3
+                    57, 1
+                    58, 1
+                    63, 1   
+                    66, 0
+                    67, 0
+                    67, 0
+                    67, 0
+                    68, 0
+                    70, 0
+                    70, 0
+                    70, 1
+                    70, 1
+                    72, 0
+                    73, 0
+                    75, 0
+                    75, 2
+                    76, 0
+                    76, 0
+                    79, 0
+                    80, 0
+                    81, 0
+                    83, 0
+                    84, 0
                 }
                 [
                     visualize as line,
-                    /pgf/data/evaluator=\pgfmathparseFPU
+                    /pgf/data/evaluator=\pgfmathparseFPU %ovaj dio je zajedno sa prikladnim newcommand nužan za aproksimaciju složenih funkcija
                 ]
                 data[format=function]   {
                     var x : interval [30:90];
-                    func y = divide(exp(5.085-0.1156*\value x),(1+exp(5.085-0.1156*\value x)));
-                    %potrebno je modificirati formulu iz knjige budući da se ona odnosi na temperature u farenheitima - naći parametre a i b prema metodi "maximum likelihood" (page 319)
+                    func y = 6*divide(exp(5.085-0.1156*\value x),(1+exp(5.085-0.1156*\value x)));
+                }
+                info    {
+                    \draw[black] (visualization cs: x=45, y=3.5) node[above, font=\footnotesize] {$6 \cdot p(t)$};
                 };
             \end{tikzpicture}
-            \caption{Podnaslov grafa}
+            \caption{Grafički prikaz modela \eqref{eq:U1} u odnosu na diskretne vrijednosti mjerenih podataka \cite{Dekking}}
             \label{fig:M2}
         \end{figure}
-
-        \textbf{(Navesti metode prognoziranja (subjective, model-based) i podjelu modela na kauzalne i nekauzalne -- uvod u novo poglavlje o teoriji signala i sustava. Možda rastaviti sljedeći paragraf i ubaciti ovaj tekst između.)}
-
-        % F.M. Dekking, C. Kraaikamp, H.P. Lopuhaä, L.E. Meester-A Modern Introduction to Probability and Statistics
 
 
         Valjano je, temeljem prethodnih primjera, zaključiti da uspješnost ispunjavanja zadanih ciljeva uveliko ovisi o mogućnostima glavnih aktera da što brže i točnije predvide posljedice kako bi se što bolje pripremili za daljnje korake. Pouzdane prognoze upravo to i omogućuju -- da se donesu pravovremene odluke koje su temeljene na valjanim planovima. U poglavljima koja slijede, detaljnije ćemo definirati određene pojmove, pomoću kojih ćemo biti u mogućnosti lakše prevesti prognoziranje iz lingvističke apstrakcije u jezik matematike -- najprecizniji i najrašireniji jezik koji poznajemo.
 
-        \section{Teorija signala i sustava}
+        \section{Vrste signala i sustava}
+            \textbf{(Navesti metode prognoziranja (subjective, model-based) i podjelu modela na kauzalne i nekauzalne --  krenuti dalje sa blagom teoijom signala i sustava uz primjere vrsta signala. Objasniti signal kao podatak)}
+
             Napraviti uvod o stručnoj terminologiji (kauzalni, nekauzalni signali), a koji se ne tiče prestrikno više matematike.
-            \subsection{Vrste signala}
-            \subsection{Vrste sustava}
         \section{Metodologije prognoziranja} %potrebno je dodatno poraditi na naslovima i podnaslovima jer će se dalje spominjati random varijale i sl., pa je potrebno provjeriti medotologije koje su prikazane u knjizi
             Objasniti na temelju par primjera i utjecaj određenih varijabli (random walk, ...)
 
@@ -422,5 +459,6 @@
         $$\fourierovred$$
     \begin{thebibliography}{9}
         \bibitem{NASA} Presidential Commission: "Report of the Presidential Commission on the Space Shuttle Challanger Accident", U.S. Government Printing Office, Washington, D.C., 1986.
+        \bibitem{Dekking} F.M. Dekking i dr.: "A Modern Introduction to Probability and Statistics: Understanding Why and How", Springer, Sjedinjene Američke Države, 2006.
     \end{thebibliography}
 \end{document}
