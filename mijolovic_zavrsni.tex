@@ -432,13 +432,29 @@
         \end{figure}
 
 
-        Valjano je, temeljem prethodnih primjera, zaključiti da uspješnost ispunjavanja zadanih ciljeva uveliko ovisi o mogućnostima glavnih aktera da što brže i točnije predvide posljedice kako bi se što bolje pripremili za daljnje korake. Pouzdane prognoze upravo to i omogućuju -- da se donesu pravovremene odluke koje su temeljene na valjanim planovima. U poglavljima koja slijede, detaljnije ćemo definirati određene pojmove, pomoću kojih ćemo biti u mogućnosti lakše prevesti prognoziranje iz lingvističke apstrakcije u jezik matematike -- najprecizniji i najrašireniji jezik koji poznajemo.
+        Valjano je, temeljem prethodnih primjera, zaključiti da uspješnost ispunjavanja zadanih ciljeva uveliko ovisi o mogućnostima glavnih aktera da što brže i točnije predvide posljedice kako bi se što bolje pripremili za daljnje korake. Pouzdane prognoze upravo to i omogućuju -- da se donesu pravovremene odluke koje su temeljene na valjanim planovima. U poglavljima koja slijede, detaljnije ćemo definirati određene pojmove, pomoću kojih ćemo biti u mogućnosti lakše prevesti prognoziranje iz lingvističke apstrakcije u jezik matematike -- najprecizniji i najrašireniji jezik koji čovjek poznaje.
+
+        %znam da mi rad vjerojatno neće pročitati više od 5 osoba, ali se trudim da bude bar malo gripping.
 
         \section{Vrste signala i sustava}
-            \textbf{(Navesti metode prognoziranja (subjective, model-based) i podjelu modela na kauzalne i nekauzalne --  krenuti dalje sa blagom teoijom signala i sustava uz primjere vrsta signala. Objasniti signal kao podatak)}
+        %SiS_Oppenheim,_Willsky_-_Signals_and_Systems_(1997)
+        %Benoit Boulet  - Fundamentals of Signals and Systems   - 1584503815
+        %Praktički svih 10 knjiga koje imam sa FER2... potrebna brza analiza uvoda
 
-            Napraviti uvod o stručnoj terminologiji (kauzalni, nekauzalni signali), a koji se ne tiče prestrikno više matematike.
-        \section{Metodologije prognoziranja} %potrebno je dodatno poraditi na naslovima i podnaslovima jer će se dalje spominjati random varijale i sl., pa je potrebno provjeriti medotologije koje su prikazane u knjizi
+            Prije matematičkoga opisa prognostičkih modela, potrebno je pobliže opisati pojam signala kao realnu ili kompleksnu funkciju vremena. U elektrotehnici je takav opis signala od iznimne važnosti, pritom posebnu pažnju pridodajemo sinusoidnim signalima zbog karakterističnih svojstva takvih signala. Ta karakteristična svojstva pokazala su se od iznimne koristi za modeliranje fizikalnih pojava pomoću aproksimacije praktičih rezultata dobivenih pripadajućim mjernim metodama. Osim u elektrotehnici, signali su sveprisutni u gotovo svim znanstvenim disciplinama i granama. Usprkos svojoj sveprisutnosti, signali su u suštini zadržali svoju nominalnu jednostavnost -- a to je činjenica da je signal ništa više no funckija jedne ili više nezavisnih varijabli koje opisuju ponašanje promatranih fenomena.
+            
+            
+            Uz signale se nerijetko veže i ideja sustava, te je stoga potrebno definirati koncept sustava kao spone između ulaznoga i izlaznoga signala. Za razliku od jednostavnosti ideje signala, navedeno će možda izazvati određene poteškoće -- budući da je sustav u općem smislu shvaćen kao cjelokupno i dovršeno projektantsko rješenje (npr. sustav za prijenos električne energije), dok je matematička reprezentacija takvoga sustava predočena kao model sustava. Štoviše, opisujući sustav u užem smislu, i dalje dolazimo do vrlo širokoga polja istraživanja i unutar točno određenoga znanstvenoga područja. Zadržimo li se isključivo na području elektrotehnike, sustavi mogu biti određeni kao sustavi programske podrške, elektronički sustavi, ugradbeni sustavi, mehanički sustavi, elektromehanički sustavi i sl.. Valjano je zaključiti da je potrebno odrediti nužne granice razmatranja sustava kako bi izbjegli neizbježnu apstrakciju beskonačnog opisivanja sustava u sve užem smislu. Iz toga proizlazi ideja i potreba za prethodno spomenutim razmatranjem sustava kao poveznice između ulaznoga i izlaznoga signala, što se ispostavilo kao koristan alat inženjerima i njihovim stručnim suradnicima.
+
+
+            \textbf{(Navesti metode prognoziranja (subjective, model-based) i podjelu modela na kauzalne i nekauzalne --  krenuti dalje sa blagom teoijom signala i sustava uz primjere vrsta signala. Objasniti signal kao podatak)}
+            
+
+
+            \textbf{(Napraviti uvod o stručnoj terminologiji (kauzalni, nekauzalni signali), a koji se ne tiče prestrikno više matematike.)}
+
+
+        \section{Metodologije prognoziranja}%potrebno je dodatno poraditi na naslovima i podnaslovima jer će se dalje spominjati random varijale i sl., pa je potrebno provjeriti medotologije koje su prikazane u knjizi
             Objasniti na temelju par primjera i utjecaj određenih varijabli (random walk, ...)
 
             Započeti uvod prema vremenskim nizovima, a zatim povezati korištene metodologije sa matematičkim modeliranjem.
@@ -448,14 +464,27 @@
         Prazan krevet kao karantena, tebe ko i sreće ima-nema. Tu tu tu tururu
 
         \section{Osnovni principi}
+        %Signals and Systems DeMYSTiFieD A Self-Teaching Guide (dobro za elektrotehničke primjere autokorelacijske analize)
         \section{Stohastički proces}
     \chapter{Autoregresivni modeli}
+        \textbf{(Pitati Sučića/Stojkovića/Bulića mogu li me usmjeriti na neke konkretne primjere iz prakse kako bi se iskoristili uz ekonometrijske primjere. Franković će vjerojatno imati dobar dataset za HEP-ova postrojenja i energetsku učinkovitost/prognoziranje potrošnje za određene trenutke kako bi se mreža prilagodila)}
         \section{Pomična srednja vrijednost (MA)}
         \section{Autoregresivni procesi (AR)}
         \section{ARMA (p,q) proces}
         \section{ARIMA proces}
     \chapter{Zaključak}
-        \ldots{}Ovo je neki tekst za kraj. To jest, drugi section.
+        \textbf{(Tu ide rezime core teme rada. Dodatno se može iskoristiti "Ken Holden, David A. Peel, John L. Thompson - Economic Forecasting: An Introduction-Cambridge University Press (1990)" kao outro; nadograditi vrlo dobrim dodatnim zaključcima koji su dati u konkretnom primjeru, ali poopćiti budući da nakon uvoda treba održati elektrotehniku dominantnom temom.)} % (page 29 - 33)
+        \ldots{}
+
+
+        Temeljem stečenih saznanja, zaključujemo da se konstrukcija modela i njihovo korištenje u prognostici može sažeti u sljedeće korake:
+        \begin{enumerate}
+            \item Odabir valjane teorije koja najbolje opisuje ponašanje promatranih podataka i relevantnih faktora -- koje mogu biti klasificirani kao endogeni faktori, čije je ponašanje predmet konstruiranoga modela, ili egzogeni faktori, čije je ponašanje promatrano deterministički i neovisno o egzaktnom skupu parametara određenih konstruiranim modelom.
+            \item Matematički zapis korištene teorije, koji povezuje prethodno navedene faktore pomoću složene matematičke jednadžbe. Poseban naglasak pri određivanju međusobnog odnosa parametara ima rezultantni odnos prethođenja ili kašnjenja konstruiranoga modela spram varijable matematičkoga očekivanja i diskretnih mjernih podataka.
+            \item Pronalazak najreprezentativnijega skupa podataka, čije su vrijednosti u skladu s mjeriteljskim normama koje podržavaju korištenu opisnu teoriju.
+            \item Korištenje prikladnih kvantitativnih metoda za procjenu numeričkih vrijednosti nepoznatih parametara matematičke jednadžbe koji će najbolje aproksimirati vrijednosti u području korištenog skupa podataka.
+            \item Prognoziranje budućega ponašanja predmeta konstruiranoga modela temeljem prognoziranih vrijednosti kauzalnog modela egzogenih faktora -- iz kojih nadalje proizlaze prognozirane vrijednosti endogenih faktora. Vjerodostojnost navedenoga postupka proizlazi iz poznavanja budućega ponašanja egzogenih faktora, što spriječava neželjeni efekt projekcije prošlih vrijednosti na budućnost.
+        \end{enumerate}
         $$\fourierovred$$
     \begin{thebibliography}{9}
         \bibitem{NASA} Presidential Commission: "Report of the Presidential Commission on the Space Shuttle Challanger Accident", U.S. Government Printing Office, Washington, D.C., 1986.
