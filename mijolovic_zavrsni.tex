@@ -1,5 +1,8 @@
 \documentclass[a4paper,12pt,oneside]{memoir}
 
+%documentation search
+%http://texdoc.net/
+
 %matematički paketi
 
 \usepackage[intlimits]{amsmath}     %omogućava postavljanje granica integrala u formulama
@@ -42,7 +45,29 @@
 \usepackage{graphicx}
 \usepackage{pgfmath}
 \usepackage{pgfplots}
-\pgfplotsset{compat=1.11}
+\pgfplotsset{compat=1.17}
+\pgfplotsset{
+    standard/.style={
+        width = 7cm,
+        semithick,
+        tick style={major tick length=4pt,semithick,black},
+        every axis plot post/.style={mark options={fill=black}},
+        separate axis lines,
+        axis x line*=bottom,
+        axis x line shift=10pt,
+        %xlabel shift=5pt,
+        axis y line*=left,
+        axis y line shift=10pt,
+        %ylabel shift=0pt,
+        xtick align = outside,
+        ytick align = outside,
+        xlabel near ticks,
+        ylabel near ticks,
+        xmin = -1, xmax = 1,
+        ymin = -1, ymax = 1,
+        grid
+    }
+}
 \usepackage{tikz}
 \usetikzlibrary{datavisualization}
 \usetikzlibrary{datavisualization.formats.functions}
@@ -124,6 +149,12 @@
 
 \newcommand{\fourierovred}{f(x)= \frac{a_0}{2}+\sum_{n=1}^\infty (a_n cos(nx)+b_n sin(nx))}
 \newcommand{\nasavjerojatnost}{p(t)= \frac{e^{a+b\cdot t}}{1+e^{a+b\cdot t}}}
+
+%primjer parametriziranih TikZ grafova
+%http://www.texample.net/tikz/examples/parameterized-plots/
+
+%primjer normalne razdiobe
+%http://www.texample.net/tikz/examples/tikzdevice-demo/
 
 %formatiranje dokumenta - numeriranja jednadžbi, definicija i teorema
 
@@ -441,21 +472,74 @@
         %Benoit Boulet  - Fundamentals of Signals and Systems   - 1584503815
         %Praktički svih 10 knjiga koje imam sa FER2... potrebna brza analiza uvoda
 
-            Prije matematičkoga opisa prognostičkih modela, potrebno je pobliže opisati pojam signala kao realnu ili kompleksnu funkciju vremena. U elektrotehnici je takav opis signala od iznimne važnosti, pritom posebnu pažnju pridodajemo sinusoidnim signalima zbog karakterističnih svojstva takvih signala. Ta karakteristična svojstva pokazala su se od iznimne koristi za modeliranje fizikalnih pojava pomoću aproksimacije praktičih rezultata dobivenih pripadajućim mjernim metodama. Osim u elektrotehnici, signali su sveprisutni u gotovo svim znanstvenim disciplinama i granama. Usprkos svojoj sveprisutnosti, signali su u suštini zadržali svoju nominalnu jednostavnost -- a to je činjenica da je signal ništa više no funckija jedne ili više nezavisnih varijabli koje opisuju ponašanje promatranih fenomena.
+            Prije matematičkoga opisa prognostičkih modela, potrebno je pobliže opisati pojam \textit{signala} kao realnu ili kompleksnu funkciju vremena. U elektrotehnici je takav opis signala od iznimne važnosti, pritom posebnu pažnju pridodajemo sinusoidnim signalima zbog karakterističnih svojstva takvih signala. Ta karakteristična svojstva pokazala su se od iznimne koristi za modeliranje fizikalnih pojava pomoću aproksimacije praktičih rezultata dobivenih pripadajućim mjernim metodama. Osim u elektrotehnici, signali su sveprisutni u gotovo svim znanstvenim disciplinama i granama. Usprkos svojoj sveprisutnosti, signali su u suštini zadržali svoju nominalnu jednostavnost -- a to je činjenica da je signal ništa više no funckija jedne ili više nezavisnih varijabli koje opisuju ponašanje promatranih fenomena. Na primjer, govorni signal može se reprezentirati kao funkcija dviju prostornih varijabli.
+
+            %Primjer analize ponašanja signala propagacijom kroz punovalni ispravljač
+            %http://www.texample.net/tikz/examples/power-electronics-rectifier/            
             
-            
-            Uz signale se nerijetko veže i ideja sustava, te je stoga potrebno definirati koncept sustava kao spone između ulaznoga i izlaznoga signala. Za razliku od jednostavnosti ideje signala, navedeno će možda izazvati određene poteškoće -- budući da je sustav u općem smislu shvaćen kao cjelokupno i dovršeno projektantsko rješenje (npr. sustav za prijenos električne energije), dok je matematička reprezentacija takvoga sustava predočena kao model sustava. Štoviše, opisujući sustav u užem smislu, i dalje dolazimo do vrlo širokoga polja istraživanja i unutar točno određenoga znanstvenoga područja. Zadržimo li se isključivo na području elektrotehnike, sustavi mogu biti određeni kao sustavi programske podrške, elektronički sustavi, ugradbeni sustavi, mehanički sustavi, elektromehanički sustavi i sl.. Valjano je zaključiti da je potrebno odrediti nužne granice razmatranja sustava kako bi izbjegli neizbježnu apstrakciju beskonačnog opisivanja sustava u sve užem smislu. Iz toga proizlazi ideja i potreba za prethodno spomenutim razmatranjem sustava kao poveznice između ulaznoga i izlaznoga signala, što se ispostavilo kao koristan alat inženjerima i njihovim stručnim suradnicima.
+            Prema prirodi vremenske varijable, dvije najosnovnije vrste sustava su:
+            \begin{enumerate}
+                \item \textit{vremenski kontinuirani signali:} $x(t), t\in \mathcal{R}$
+                \item \textit{vremenski diskretni signali:} $x[n], n \in \mathcal{Z}$
+            \end{enumerate}
 
+            \textbf{Opis osnovnih vrsta signala}
 
-            \textbf{(Navesti metode prognoziranja (subjective, model-based) i podjelu modela na kauzalne i nekauzalne --  krenuti dalje sa blagom teoijom signala i sustava uz primjere vrsta signala. Objasniti signal kao podatak)}
-            
+            \begin{figure}[H]
+                %\centering
+                \begin{minipage}[b] {.4\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            standard,
+                            xlabel={$t$},
+                            ylabel={$x(t)$},
+                            enlarge x limits=false,
+                            domain = -1:1,
+                            samples = 21,                         
+                        ],
+                            \addplot [smooth, black, thick] {sin(2*180*x)};
+                        \end{axis} 
+                    \end{tikzpicture}
+                    \subcaption{Vremenski kontinuirani signal}
+                    \label{fig:M31}
+                \end{minipage}
+                \qquad\qquad
+                \begin{minipage}[b] {.4\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            standard,
+                            xlabel={$n$},
+                            ylabel={$x[n]$},
+                            enlarge x limits=false,
+                            domain = -1:1,
+                            samples = 21,                         
+                        ],
+                            \addplot+[ycomb, black, thick] {sin(2*180*x)};
+                        \end{axis} 
+                    \end{tikzpicture}
+                    \subcaption{Vremenski diskretni signal}      
+                    \label{fig:M32}
+                \end{minipage}
+                \caption{Prikaz vremenski kontinuiranoga i vremenski diskretnoga signala funkcije $sin(2 \pi t)$}
+                \label{fig:M3}    
+            \end{figure}
 
+            Uz signale se nerijetko veže i ideja \textit{sustava}, te je stoga potrebno definirati koncept sustava kao spone između ulaznoga i izlaznoga signala. Za razliku od jednostavnosti ideje signala, navedeno će možda izazvati određene poteškoće -- budući da je sustav u općem smislu shvaćen kao cjelokupno i dovršeno projektantsko rješenje (npr. sustav za prijenos električne energije), dok je matematička reprezentacija takvoga sustava predočena kao model sustava. Štoviše, opisujući sustav u užem smislu, i dalje dolazimo do vrlo širokoga polja istraživanja i unutar točno određenoga znanstvenoga područja. Zadržimo li se isključivo na području elektrotehnike, sustavi mogu biti određeni kao sustavi programske podrške, sustavi regulacije, elektronički sustavi, ugradbeni sustavi, mehanički sustavi, elektromehanički sustavi itd.. Valjano je zaključiti da je potrebno odrediti nužne granice idejnoga razmatranja sustava kako bi izbjegli neizbježnu apstrakciju beskonačne kvantizacije opisa sustava. Iz toga proizlazi ideja i potreba za prethodno spomenutim razmatranjem sustava kao poveznice između ulaznoga i izlaznoga signala, što se ispostavilo kao koristan alat inženjerima prilikom analize propagacije ulaznih signala u regulacijskim krugovima ili prilikom prognoziranja ponašanja sustava na određene pobude tijekom projektiranja samoga sustava.
 
-            \textbf{(Napraviti uvod o stručnoj terminologiji (kauzalni, nekauzalni signali), a koji se ne tiče prestrikno više matematike.)}
+            \subsection{Osnovna svojstva}
+
+            \textbf{(Napraviti uvod o stručnoj terminologiji (kauzalni, nekauzalni signali), a koji će biti od koristi poslije... manje matematičke stvari, više stvari vezane uz vremensku konstantu)}
 
 
         \section{Metodologije prognoziranja}%potrebno je dodatno poraditi na naslovima i podnaslovima jer će se dalje spominjati random varijale i sl., pa je potrebno provjeriti medotologije koje su prikazane u knjizi
             Objasniti na temelju par primjera i utjecaj određenih varijabli (random walk, ...)
+
+            \textbf{(Navesti metode prognoziranja (subjective, model-based) i podjelu modela na kauzalne i nekauzalne modele)}
+
+
+            
 
             Započeti uvod prema vremenskim nizovima, a zatim povezati korištene metodologije sa matematičkim modeliranjem.
     \chapter{Vremenski niz}
