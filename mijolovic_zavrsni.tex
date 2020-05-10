@@ -48,30 +48,32 @@
 \pgfplotsset{compat=1.17}
 \pgfplotsset{
     standard/.style={
-        width = 7cm,
+        width = 0.9\linewidth,
         semithick,
         tick style={major tick length=4pt,semithick,black},
         every axis plot post/.style={mark options={fill=black}},
         separate axis lines,
         axis x line*=bottom,
-        axis x line shift=10pt,
+        axis x line shift=5pt,
         %xlabel shift=5pt,
         axis y line*=left,
-        axis y line shift=10pt,
-        %ylabel shift=0pt,
+        axis y line shift=5pt,
+        ylabel shift=5pt,
         xtick align = outside,
         ytick align = outside,
         xlabel near ticks,
         ylabel near ticks,
-        xmin = -1, xmax = 1,
-        ymin = -1, ymax = 1,
-        grid
+        % xmin = -2, xmax = 2,
+        % ymin = -1, ymax = 1,
+        grid = both
     }
 }
 \usepackage{tikz}
 \usetikzlibrary{datavisualization}
 \usetikzlibrary{datavisualization.formats.functions}
 \usetikzlibrary{arrows,automata,patterns,positioning}
+\tikzstyle{int}=[draw, fill=gray!20, minimum size=2em]
+\tikzstyle{init} = [pin edge={to-,thin,black}]
 \usepackage{circuitikz}
 \newcommand{\pgfmathparseFPU}[1]{\begingroup%
 \pgfkeys{/pgf/fpu,/pgf/fpu/output format=fixed}%
@@ -467,7 +469,7 @@
 
         %znam da mi rad vjerojatno neće pročitati više od 5 osoba, ali se trudim da bude bar malo gripping.
 
-        \section{Vrste signala i sustava}
+        \section{Osnovne vrste signala i sustava}
         %SiS_Oppenheim,_Willsky_-_Signals_and_Systems_(1997)
         %Benoit Boulet  - Fundamentals of Signals and Systems   - 1584503815
         %Praktički svih 10 knjiga koje imam sa FER2... potrebna brza analiza uvoda
@@ -483,11 +485,11 @@
                 \item \textit{vremenski diskretni signali:} $x[n], n \in \mathcal{Z}$
             \end{enumerate}
 
-            U vremenski \textit{kontinuiranim signalima} vremenska konstanta $t$ je kontinuirana i njezina domena, što rezultira i konrinuiranim vrijednostima slike promatrane funkcije. Navedeno se može grafički predočiti pomoću glatke neprekidne linije kao što je prikazano na Slici \ref{fig:M31} koja prikazuje vremenski kontinuirani signal $x(t)=sin(2\pi t)$. Za razliku od vremenski kontinuiranih signala, u vremenski \textit{diskretnim signalima} vremenska konstanta je definirana u točno određenim -- diskretnim -- vremenima. Posljedično, vrijednosti slike promatrane funkcije biti poznate samo u prethodno definiranim diskretnim vremenima. Primjer vremenski diskretnog signala $x[n]=sin(2\pi n)$ grafički je prikazan na Slici \ref{fig:M32}.
+            U vremenski \textit{kontinuiranim signalima} vremenska konstanta $t$ je kontinuirana i njezina domena, što rezultira i konrinuiranim vrijednostima slike promatrane funkcije. Navedeno se može grafički predočiti pomoću glatke neprekidne linije kao što je prikazano na Slici \ref{fig:M31} koja prikazuje vremenski kontinuirani signal $x(t)=sin(\frac{n\pi}{2})$. Za razliku od vremenski kontinuiranih signala, u vremenski \textit{diskretnim signalima} vremenska konstanta je definirana u točno određenim -- diskretnim -- vremenima. Posljedično, vrijednosti slike promatrane funkcije biti poznate samo u prethodno definiranim diskretnim vremenima. Primjer vremenski diskretnog signala $x[n]=sin(\frac{n\pi}{2})$ grafički je prikazan na Slici \ref{fig:M32}.
 
             \begin{figure}[H]
-                %\centering
-                \begin{minipage}[b] {.4\linewidth}
+                \centering
+                \begin{subfigure}[b] {.48\linewidth}
                     \centering
                     \begin{tikzpicture}
                         \begin{axis}[
@@ -495,17 +497,19 @@
                             xlabel={$t$},
                             ylabel={$x(t)$},
                             enlarge x limits=false,
-                            domain = -1:1,
-                            samples = 21,                         
+                            domain = -4:4,
+                            xmin = -4, xmax = 4,
+                            ymin = -1, ymax = 1,
+                            xtick = {-4,...,4}                    
                         ],
-                            \addplot [smooth, black, thick] {sin(2*180*x)};
+                            \addplot [smooth, black, thick] {sin(180*x/2)};
                         \end{axis} 
                     \end{tikzpicture}
-                    \subcaption{Vremenski kontinuirani signal}
+                    \caption{Vremenski kontinuirani signal}
                     \label{fig:M31}
-                \end{minipage}
-                \qquad\qquad
-                \begin{minipage}[b] {.4\linewidth}
+                \end{subfigure}
+                \hfill
+                \begin{subfigure}[b] {.48\linewidth}
                     \centering
                     \begin{tikzpicture}
                         \begin{axis}[
@@ -513,26 +517,73 @@
                             xlabel={$n$},
                             ylabel={$x[n]$},
                             enlarge x limits=false,
-                            domain = -1:1,
-                            samples = 21,                         
+                            %domain = -3:3,
+                            %samples = 6,
+                            samples at = {-4,...,4},
+                            xmin = -4, xmax = 4,
+                            ymin = -1, ymax = 1,
+                            xtick = data,                    
                         ],
-                            \addplot+[ycomb, black, thick] {sin(2*180*x)};
+                            \addplot+[ycomb, black, thick] {sin(180*x/2)};
                         \end{axis} 
                     \end{tikzpicture}
-                    \subcaption{Vremenski diskretni signal}      
+                    \caption{Vremenski diskretni signal}      
                     \label{fig:M32}
-                \end{minipage}
-                \caption{Prikaz vremenski kontinuiranoga i vremenski diskretnoga signala funkcije $sin(2 \pi t)$}
+                \end{subfigure}
+                \caption{Prikaz vremenski kontinuiranoga i vremenski diskretnoga signala funkcije $sin(\frac{n\pi}{2})$}
                 \label{fig:M3}    
             \end{figure}
 
             
-            Primjer vremenski kontinuiranih signala su brzina, pozicija vozila, govor, zvuk iz audio sustava i sl.; dok su primjeri vremenski diskretnih signala mjesečna vrijednost dionica, demografski pokazatelji poput nataliteta i sl. Kao što smo već prethodno ustanovili, vremenski diskretni signali mogu reprezentirati bilo koje promatrani fenomen čije se vrijednosti mogu dobiti za točno određeni trenutak -- što nas dovodi do zaključka o postojanju mogućnosti prikazivanja vremenski kontinuiranih signala pomoću vremenski diskretnih signala. To je moguće sukcesivnim \textit{uzorkovanjem} vremenski kontinuiranoga signala (eng. \textit{sampling}), čime dolazimo do diskretnih vrijednosti signala. Rezolucijom uzorkovanog signala moguće je upravljati pomoću podešavanja frekvencije uzorkovanja (eng. \textit{sampling rate}). Tako je prethodno navedeni diskretni signal prikazan na Slici \ref{fig:M32} načinjen uzorkovanjem kontinuiranoga signala na Slici \ref{fig:M31} temeljem 21 uzorka.  Navedena klasa signala vrlo je korisna prilikom digitalne obrade signala. Uzmemo li u obzir prethodno spomenute prednosti brzine računalnog procesuiranja podatka, ali i postojeća ograničenja računalnih sustava radnom memorijom, procesorskim performansama, te digitaliziranom obradom podataka; važnost vremenski diskretnih signala i uzorkovanja je neminovna -- što je dokazano širokom i ekonomičnom integracijom funkcionalnosti obrade signala u različita tehnološka i ina rješenja (npr. mogućnost mobilnih uređaja da prepoznaju glasovne naredbe).
+            Neki od primjera vremenski kontinuiranih signala su brzina, pozicija vozila, govor ili zvuk iz audio sustava; dok su primjeri vremenski diskretnih signala mjesečne vrijednosti dionica, demografski pokazatelji poput nataliteta i sl..
+            
+            Kao što smo već prethodno ustanovili, vremenski diskretni signali mogu reprezentirati bilo koje promatrani fenomen čije se vrijednosti mogu dobiti za točno određeni trenutak -- što nas dovodi do zaključka o postojanju mogućnosti prikazivanja vremenski kontinuiranih signala pomoću vremenski diskretnih signala. To je moguće sukcesivnim \textit{uzorkovanjem} vremenski kontinuiranoga signala (eng. \textit{sampling}), čime dolazimo do diskretnih vrijednosti signala. Rezolucijom uzorkovanog signala moguće je upravljati pomoću podešavanja frekvencije uzorkovanja (eng. \textit{sampling rate}). Tako je prethodno navedeni diskretni signal prikazan na Slici \ref{fig:M32} načinjen uzorkovanjem kontinuiranoga signala na Slici \ref{fig:M31}.  Navedena klasa signala vrlo je korisna prilikom digitalne obrade signala. Uzmemo li u obzir prethodno spomenutu prednost visoke brzine računalnog procesuiranja podatka, ali i postojeća ograničenja računalnih sustava radnom memorijom, procesorskim performansama, te digitaliziranom reprezentacijom podataka; važnost vremenski diskretnih signala i uzorkovanja je neminovna -- što je dokazano širokom i ekonomičnom integracijom funkcionalnosti obrade signala u različita tehnološka i ina rješenja (npr. mogućnost mobilnih uređaja da prepoznaju glasovne naredbe). Naravno, operacija uzorkovanja signala nije toliko jednostavna kao što smo opisali jer kvalitetna izvedba zahtjeva dobro poznavanje spektralne analize -- što uključuje znanja iz područja matematičkih transformacija do realnih ograničenja poput preklapanja signala ili prisutnosti šuma. Analogno vrijedi i za rekonstrukciju uzorkovanih signala u vremenski kontinuirane signale.
 
 
             Uz signale se nerijetko veže i ideja \textit{sustava}, te je stoga potrebno definirati koncept sustava kao spone između ulaznoga i izlaznoga signala. Za razliku od jednostavnosti ideje signala, navedeno će možda izazvati određene poteškoće -- budući da je sustav u općem smislu shvaćen kao cjelokupno i dovršeno projektantsko rješenje (npr. sustav za prijenos električne energije), dok je matematička reprezentacija takvoga sustava predočena kao model sustava. Štoviše, opisujući sustav u užem smislu, i dalje dolazimo do vrlo širokoga polja istraživanja i unutar točno određenoga znanstvenoga područja. Zadržimo li se isključivo na području elektrotehnike, sustavi mogu biti određeni kao sustavi programske podrške, sustavi regulacije, elektronički sustavi, ugradbeni sustavi, mehanički sustavi, elektromehanički sustavi itd.. Valjano je zaključiti da je potrebno odrediti nužne granice idejnoga razmatranja sustava kako bi izbjegli neizbježnu apstrakciju beskonačne kvantizacije opisa sustava. Iz toga proizlazi ideja i potreba za prethodno spomenutim razmatranjem sustava kao poveznice između ulaznoga i izlaznoga signala, što se ispostavilo kao koristan alat inženjerima prilikom analize propagacije ulaznih signala u regulacijskim krugovima ili prilikom prognoziranja ponašanja sustava na određene pobude tijekom projektiranja samoga sustava.
 
-            \subsection{Osnovna svojstva}
+            Matematički, sustavi predstavljaju modele koji repretentiraju transformaciju ulaznog signala $x(t)$ u izlazni signal $y(t)$. Navedeno se može opisati relacijom $y(t)=Hx(t)$, gdje $H$ predstavlja matematički model transformacije signala -- tj. sustav. Analogna relacija vrijedi i za slučaj transformacije vremenski diskretnoga signala $x[n]$, kao što je prikazano na Slici \ref{fig:U4}.
+            
+            Kao i kod signala, dvije osnovne vrste sustava prema prirodi vremenske varijable su:
+            \begin{enumerate}
+                \item \textit{Vremenski kontinuirani sustavi:} ulazni signal $x(t)$ i izlazni signal $y(t)$ sustava su vremenski kontinuirani
+                \item \textit{Vremenski diskretni sustavi:} ulazni signal $x[n]$ i izlazni signal $y[n]$ su vremenski diskretni
+            \end{enumerate}
+
+            \begin{figure}[H]
+                \centering
+                \begin{subfigure}[b] {.48\linewidth}
+                    \centering
+                    \begin{tikzpicture}[node distance=2.5cm, auto, >=latex']
+                        \centering
+                        \node [int, align=center, midway] (a) {H};
+                        \node (b) [left of=a,node distance=2cm, coordinate] {a};
+                        \node [coordinate] (end) [right of=a, node distance=2cm]{};
+                        \path[->] (b) edge node {$x(t)$} (a);
+                        \path[->] (a) edge node {$y(t)$} (end);      
+                    \end{tikzpicture}
+                    \caption{}
+                    \label{fig:U41}
+                \end{subfigure}
+                \hfill
+                \begin{subfigure}[b] {.48\linewidth}
+                    \centering
+                    \begin{tikzpicture}[node distance=2.5cm, auto, >=latex']
+                        \centering
+                        \node [int, align=center, midway] (a) {G};
+                        \node (b) [left of=a,node distance=2cm, coordinate] {a};
+                        \node [coordinate] (end) [right of=a, node distance=2cm]{};
+                        \path[->] (b) edge node {$x[n]$} (a);
+                        \path[->] (a) edge node {$y[n]$} (end);      
+                    \end{tikzpicture}
+                    \caption{}
+                    \label{fig:U42}
+                \end{subfigure}
+                \caption{Blokovski prikaz vremenski kontinuiranoga sustava (a) i vremenski diskretnoga sustava (b).}
+                \label{fig:U4}
+            \end{figure}
+
+            \subsection{Kauzalnost sustava}
 
             \textbf{(Napraviti uvod o stručnoj terminologiji (kauzalni, nekauzalni signali), a koji će biti od koristi poslije... manje matematičke stvari, više stvari vezane uz vremensku konstantu)}
 
