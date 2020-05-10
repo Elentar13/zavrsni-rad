@@ -151,6 +151,8 @@
 
 \newcommand{\fourierovred}{f(x)= \frac{a_0}{2}+\sum_{n=1}^\infty (a_n cos(nx)+b_n sin(nx))}
 \newcommand{\nasavjerojatnost}{p(t)= \frac{e^{a+b\cdot t}}{1+e^{a+b\cdot t}}}
+\newcommand{\kauzalni}{y[n]=\frac{1}{M}\displaystyle\sum_{k=0}^{M-1 }x[n-k]}
+\newcommand{\nekauzalni}{y[n]=\displaystyle\sum_{k=-\infty}^{n}x[n-k]}
 
 %primjer parametriziranih TikZ grafova
 %http://www.texample.net/tikz/examples/parameterized-plots/
@@ -584,11 +586,24 @@
             \end{figure}
 
             \subsection{Kauzalnost sustava}
+                Iako signali i sustavi imaju niz matematičkih svojstava koji se koriste u svakodnevnoj primjeni, u svrhu pojašnjenja budićih termina ukratko ćemo pojasniti pojam kauzalnosti sustava.
 
-            \textbf{(Napraviti uvod o stručnoj terminologiji (kauzalni, nekauzalni signali), a koji će biti od koristi poslije... manje matematičke stvari, više stvari vezane uz vremensku konstantu)}
 
+                Sukladno definiciji, sustav je \textit{kauzalan} ukoliko signal koji propagira kroz sustav ovisi isključivo o trenutnim ili prošlim vrijednostima ulaznoga signala. Drugim rječima, izlazni signal ne predviđa vrijednosti odziva na buduće vrijednosti ulaznoga signala. Konvekventno, sustav \textit{nije kauzalan} ukoliko vrijednost izlaznoga signala ovisi o budućoj vrijednosti ulaznoga signala. Primjer kauzalnog sustava je
+                \begin{equation}
+                    \kauzalni
+                \end{equation}
+                dok je
+                \begin{equation}
+                    \nekauzalni
+                \end{equation}
+                primjer sustava koji nije kauzalan.
+
+                Iako su kauzalni sustavi vrlo važni zbog prirode realnih rješenja koji aktuiraju temeljem trenutne vrijednosti, već sada možemo naslutiti važnost nekauzalnih sustava prilikom uočavanja kretanja trendova prilikom prognoziranja ili sinteze sustava regulacije s ciljem otstranjivanja šumova i sl..
 
         \section{Metodologije prognoziranja}%potrebno je dodatno poraditi na naslovima i podnaslovima jer će se dalje spominjati random varijale i sl., pa je potrebno provjeriti medotologije koje su prikazane u knjizi
+
+
             Objasniti na temelju par primjera i utjecaj određenih varijabli (random walk, ...)
 
             \textbf{(Navesti metode prognoziranja (subjective, model-based) i podjelu modela na kauzalne i nekauzalne modele)}
