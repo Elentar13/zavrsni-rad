@@ -299,7 +299,8 @@
     \begin{KeepFromToc}
         \tableofcontents
     \end{KeepFromToc}
-    \chapter{Uvod}%Potrebno je prepraviti uvod na način da opisuje povod za pisanje završnog rada -- dodati malo elektrotehnike u priču
+    \chapter{Uvod}
+        %Potrebno je prepraviti uvod na način da opisuje povod za pisanje završnog rada -- dodati malo elektrotehnike u priču
         \textbf{(Definicija podataka i informacija na zanimljiv način...ako je takvo što moguće)}
 
         Vratimo li se u prošlost, važnost podataka i njihova inerpretacija u svrhu stvaranja informacija bila je neminovna za civilizacijske strukture koje danas poznajemo. Od početka razvoja primitnivnih tehnologija i njezinoga korištenja za optimizaciju životnih procesa, do razvoja trgovine i financijskih instrumenata; čovjek je sve efikasnije koračao prema evolucijskom vrhu uspješnom utilizacijom svoje okoline. Daljnjim razvojem, čovjek je nadišao barijeru vlastite memorije za obradu podataka, te se počeo približavati točki zasićenja - uslijed koje se javila potreba za stvaranjem boljega i efikasnijega načina obrade podataka i njihove pretvorbe u sažetiju i jednako kvalitetnu informaciju.
@@ -472,9 +473,8 @@
             %znam da mi rad vjerojatno neće pročitati više od 5 osoba, ali se trudim da bude bar malo gripping.
 
     \chapter{Teorijske osnove signala i sustava}
-    %SiS_Oppenheim,_Willsky_-_Signals_and_Systems_(1997)
-    %Benoit Boulet  - Fundamentals of Signals and Systems   - 1584503815
-    %Praktički svih 10 knjiga koje imam sa FER2... potrebna brza analiza uvoda
+        %SiS_Oppenheim,_Willsky_-_Signals_and_Systems_(1997)
+        %Benoit Boulet  - Fundamentals of Signals and Systems   - 1584503815
 
         Prije matematičkoga opisa prognostičkih modela, potrebno je pobliže opisati pojam \textit{signala} kao realnu ili kompleksnu funkciju vremena. U elektrotehnici je takav opis signala od iznimne važnosti, pritom posebnu pažnju pridodajemo sinusoidnim signalima zbog karakterističnih svojstva takvih signala. Ta karakteristična svojstva pokazala su se od iznimne koristi za modeliranje fizikalnih pojava pomoću aproksimacije praktičih rezultata dobivenih pripadajućim mjernim metodama. Osim u elektrotehnici, signali su sveprisutni u gotovo svim znanstvenim disciplinama i granama.U širem smislu, valjano je reći da je signal skup podataka ili informacija, pa tako možemo konstatirati da su neki od primjera signala struja i napon, sila i brzina, tlak i protok, govor, video ili burzovni indeksi. Usprkos svojoj sveprisutnosti, signali su u suštini zadržali svoju nominalnu jednostavnost -- a to je činjenica da je signal u suštini funckija jedne ili više nezavisnih varijabli koje opisuju ponašanje promatranih fenomena. 
 
@@ -604,7 +604,6 @@
                 Iako su kauzalni sustavi vrlo važni zbog prirode realnih rješenja koja aktuiraju temeljem prethodno očitanih vrijednosti, već sada možemo naslutiti važnost nekauzalnih sustava prilikom uočavanja kretanja trendova prilikom prognoziranja ili sinteze sustava regulacije s ciljem otstranjivanja šumova i sl..
 
     \chapter{Osnovne metodologije prognoziranja}
-    %potrebno je dodatno poraditi na naslovima i podnaslovima jer će se dalje spominjati random varijale i sl., pa je potrebno provjeriti medotologije koje su prikazane u knjizi
         Obzirom na sveprisutnost prognoziranja, baš kao i signala i sustava, klasificirati ćemo dvije osnovne vrste prognoza -- subjektivne prognoze i prognoze temeljene na statističkim modelima \cite{Holden}.
 
         \section{Subjektivne prognoze}
@@ -617,26 +616,44 @@
             Analogno prethodno spomenutim kauzalnim signalima, kauzalni prognostički modeli nastoje detaljno opisati matematičku genezu diskretnih mjernih podataka i pokušati pronaći relaciju koja opisuje determinirani način dobivanja vrijednosti zasebnih varijabli u svakoj točki prošloga vremena. Takvi modeli kreću od premise nužnosti što boljega poznavanja prošloga ponašanja kako bi se predvidjela budućnosti. Nadalje, kauzalne prognostičke signale možemo dalje podijeliti na \textit{kvalitativne} -- koji daju informaciju o tendenciji rasta ili pada budućih vrijednsoti -- te \textit{kvantitativne}, koji daju informaciju o brojčanoj vrijednosti rasta ili pada budućih vrijednosti.
             
             
-            U odnosu na kauzalne prognostičke modele, nekauzalni prognostički modeli nastoje predvidjeti buduće iznose vrijednosti podataka bez dubljega razumjevanja geneze prethodno mjerenih podataka; već fokusirajući se na projekciju njihova međusobnog odnosa na budućnost. Takvi modeli imaju prednost ekonomičnosti budući da se ne orijentiraju na detaljna istraživanja ponašanja svakog parametr, što je povoljno za prognoziranje trenda čimbenika niže važnosti. Navedena prednost može se gledati i kao nedostatak, budući da premisa o istovjetnosti ponašanja vrijednosti signala u prošlosti i budućnosti ne predviđa pojavu smetnji u sustavu -- poput pojave prenapona mreže, kratkog spoja u visokonaponskim energetskim sustavima ili pojave velike gospodarske krize.  \textbf{Prednosti i spominjanje kompleksnih nekauzalnih modela koji koriste vremenske nizove}
+            U odnosu na kauzalne prognostičke modele, nekauzalni prognostički modeli nastoje predvidjeti buduće iznose vrijednosti podataka bez dubljega razumjevanja geneze prethodno mjerenih podataka; već fokusirajući se na projekciju njihova međusobnog odnosa na budućnost. Takvi modeli imaju prednost ekonomičnosti budući da se ne orijentiraju na detaljna istraživanja ponašanja svakog parametra, što je povoljno za prognoziranje trenda čimbenika niže važnosti. Navedena prednost može se gledati i kao nedostatak, budući da premisa o istovjetnosti ponašanja vrijednosti signala u prošlosti i budućnosti ne predviđa pojavu smetnji u sustavu -- poput pojave prenapona mreže, kratkog spoja u visokonaponskim energetskim sustavima ili pojave velike gospodarske krize. 
+            
+            
+            Naravno, navedeno vrijedi u slučaju jednostavnih prognostičkih modela, te ćemo u sljedećim poglavljima proučiti detalje kompleksnih nekauzalnih prognostičkih modela temeljenih na vremenskim nizovima.
 
-
-        
-        %Objasniti na temelju par primjera i utjecaj određenih varijabli (random walk, ...)...ovo možda ipak za nešto drugo
-
-        \textbf{(Navesti model-based: kauzalni prednosti, nekauzalni prednosti...uvod iz nekauzalnih u vremenske nizove)}
-
-    \chapter{Vremenski niz}
+    \chapter{Osnovni statistički pokazatelji signala i vremenski nizovi}
 
         % Petrus M.T. Broersen - Automatic Autocorrelation and Spectral Analysis-Springer (2006)
-        Prazan krevet kao karantena, tebe ko i sreće ima-nema. Tu tu tu tururu
+        % Priestley M.B. - Spectral Analysis and Time Series. Volumes 1,2-AP (1981)
 
-        \section{Osnovni principi}
-        %Signals and Systems DeMYSTiFieD A Self-Teaching Guide (dobro za elektrotehničke primjere autokorelacijske analize)
-        \section{Stohastički proces}
+        Kroz prethodna poglavlja ustanovili smo osnovne značajke signala i sustava te prognostike kao discipline koja se bavi predikcijom ponašanja signala temeljem određenih metodologija. Navedene metodologije su kvalitetne koliko i njihova statistička repretentativnost. Kako bi kvantitativno mogli utvrditi statističku reprezentativnost modela za prognoziranje ponašanja signala, potrebno je izvršiti detaljniju \textit{analizu signala}.
+
+        
+        Kroz sveučilišne studije elektrotehnike, primat kroz više godine studija drži spektralna analiza signala, kojom se nastoji opisati frenkvencijske karakteristike promatranog iznalog signala (poput amplitudno-frenkvencijske karakteristike, fazno-frekvencijske karakteristike ili pojačanja sustava) Navedeno se najčešće realizira kroz određivanje prijenostnih i inih funkcija stustava koje su od značaja za ponašanje elektroničkih sustava čija su baza elektroničke komponente čije karakteristike nisu nužno konstantne pri određenim frekvencijskim pojasevima -- što omogućuje korištenje određenih elektroničkih sustava u svrhu niskopropusnoga ili visokopropusnoga filtriranja, te propusnoga filtriranja određenog frekvencijskog opsega.
+
+        
+        Drugi pristup analizi signala je analiza ponašanja signala u ovisnosti o vremenu. Štoviše, poznavajući pojam rekostrukcije vremenski kontinuiranih signala iz vremenski diskretnih signala, dolazimo do zaključka da ponašanje signala u vremenu možemo opisati pomoću beskonačno mnogo diskretnih vrijednosti u infinitemozno malim vremenskim razmacima, što nas dalje vodi do uvođenja \textit{vremenskih nizova} -- koje ćemo detaljnije opisati kroz nadolazeća potpoglavlja.
+
+        %https://www.youtube.com/watch?v=ZIWyGjrAlks&list=PLLHpWXO_4bKnIOpVWKtQR9aH58c6AmABO&index=2
+
+        %https://www.youtube.com/watch?v=uBeM1FUk4Ps
+
+        \section{Stohastički pristup}
+            %Objasniti na temelju par primjera i utjecaj određenih varijabli (random walk, ...)
+            \textbf{(Opis stohastičkih procesa, nasumičnosti, random walk, grafovi iz Priestleya)}
+
+        \section{Osnovni statistički pokazatelji}
+            %varijanca i kovarijanca -- potrebno poslije za pojašnjenje stacionarnih i nestacionarnih signala
+            \textbf{(stacionarni procesi, varijanca, kovarijanca,...)}
+
+        \section{Vremenski nizovi}
+            \textbf{(Doslovno sve o tome iz Priestlya i Petrusa)}     
+            %Signals and Systems DeMYSTiFieD A Self-Teaching Guide (dobro za elektrotehničke primjere autokorelacijske analize)
+
     \chapter{Autoregresivni modeli}
         \textbf{(Pitati Sučića/Stojkovića/Bulića mogu li me usmjeriti na neke konkretne primjere iz prakse kako bi se iskoristili uz ekonometrijske primjere. Franković će vjerojatno imati dobar dataset za HEP-ova postrojenja i energetsku učinkovitost/prognoziranje potrošnje za određene trenutke kako bi se mreža prilagodila)}
         \section{Pomična srednja vrijednost (MA)}
-        \section{Autoregresivni procesi (AR)}
+        \section{Autoregresijski procesi (AR)}
         \section{ARMA (p,q) proces}
         \section{ARIMA proces}
     \chapter{Zaključak}
