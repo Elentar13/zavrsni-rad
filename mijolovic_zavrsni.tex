@@ -604,14 +604,14 @@
                 Iako su kauzalni sustavi vrlo važni zbog prirode realnih rješenja koja aktuiraju temeljem prethodno očitanih vrijednosti, već sada možemo naslutiti važnost nekauzalnih sustava prilikom uočavanja kretanja trendova prilikom prognoziranja ili sinteze sustava regulacije s ciljem otstranjivanja šumova i sl..
 
     \chapter{Osnovne metodologije prognoziranja}
-        Obzirom na sveprisutnost prognoziranja, baš kao i signala i sustava, klasificirati ćemo dvije osnovne vrste prognoza -- subjektivne prognoze i prognoze temeljene na statističkim modelima \cite{Holden}.
+        Obzirom na sveprisutnost prognoziranja, baš kao i signala i sustava, klasificirati ćemo dvije osnovne vrste prognoza -- subjektivne prognoze i prognoze temeljene na statističkim modelima.\cite{Holden}
 
         \section{Subjektivne prognoze}
 
             Subjektivne prognoze temelje se na pogađanjima, prethodnim iskustvima i intuiciji. Takve prognoze nemaju predodređena i utvrđena pravila procesuiranja informacija, već se svode na donošenje zaključaka temeljem osobnog mišljenja osobe koja iznosi prognozu. Na primjer, dva će ekonomska analitičara iznesti različite prognoze za ponašanje tržišta i vrijednosti financijskih instrumenata u slučaju kriznih situacija poput pandemije koronavirusa. Dok će jedan analitičar smatrati da će vrijednosti financijskih instrumenata imati negativan trend u nadolazećem kvartalu uslijed restriktivnih mjera koje imaju nepovoljan utjecaj na tržište, drugi će prognozirati rast temeljem povećanog prilijeva kapitala od strane povećanog broja ulagača koji prvi puta ulaze na tržište kapitala uslijed straha neiskorištavanja volotilnosti tržišta za ostvarivanje dugoročnih kapitalnih dobitaka (eng. \textit{fear of missing-out}). Iako ovakve metode prognoziranja uistinu mogu rezultirati donekle točnim prognozama, kao što je to bilo u slučaju tzv. kratkih prodaja (eng. \textit{short-sell}) prilikom kraha američkog tržišta nekretnina ili prilikom razotkrivanja prikrivanja neispravnih rezultata mjerenja dušičnih oksida dizelskih automobila Volkswagen grupe; one su dokazano manje točne od prognoza temeljenih na statističkim modelima.
 
         \section{Prognoze temeljene na statističkim modelima}
-            Za razliku od subjektivnih prognoza, prognoze koje su temeljene na statističkim modelima prate jasno određeni i sistematizirani kvantitativni obrazac definiran međuodnosom utjecajnih varijabli. Navedeni modeli mogu se razvrstati na \textit{kauzalne modele} i \textit{nekauzalne modele} \cite{Holden}.
+            Za razliku od subjektivnih prognoza, prognoze koje su temeljene na statističkim modelima prate jasno određeni i sistematizirani kvantitativni obrazac definiran međuodnosom utjecajnih varijabli. Navedeni modeli mogu se razvrstati na \textit{kauzalne modele} i \textit{nekauzalne modele}.\cite{Holden}
             
             Analogno prethodno spomenutim kauzalnim signalima, kauzalni prognostički modeli nastoje detaljno opisati matematičku genezu diskretnih mjernih podataka i pokušati pronaći relaciju koja opisuje determinirani način dobivanja vrijednosti zasebnih varijabli u svakoj točki prošloga vremena. Takvi modeli kreću od premise nužnosti što boljega poznavanja prošloga ponašanja kako bi se predvidjela budućnosti. Nadalje, kauzalne prognostičke signale možemo dalje podijeliti na \textit{kvalitativne} -- koji daju informaciju o tendenciji rasta ili pada budućih vrijednsoti -- te \textit{kvantitativne}, koji daju informaciju o brojčanoj vrijednosti rasta ili pada budućih vrijednosti.
             
@@ -628,8 +628,9 @@
 
         Kroz prethodna poglavlja ustanovili smo osnovne značajke signala i sustava te prognostike kao discipline koja se bavi predikcijom ponašanja signala temeljem određenih metodologija. Navedene metodologije su kvalitetne koliko i njihova statistička repretentativnost. Kako bi kvantitativno mogli utvrditi statističku reprezentativnost modela za prognoziranje ponašanja signala, potrebno je izvršiti detaljniju \textit{analizu signala}.
 
+        \textbf{(Dodati Figure 1.9. iz Broersena)}
         
-        Kroz sveučilišne studije elektrotehnike, primat kroz više godine studija drži spektralna analiza signala, kojom se nastoji opisati frenkvencijske karakteristike promatranog iznalog signala (poput amplitudno-frenkvencijske karakteristike, fazno-frekvencijske karakteristike ili pojačanja sustava) Navedeno se najčešće realizira kroz određivanje prijenostnih i inih funkcija stustava koje su od značaja za ponašanje elektroničkih sustava čija su baza elektroničke komponente čije karakteristike nisu nužno konstantne pri određenim frekvencijskim pojasevima -- što omogućuje korištenje određenih elektroničkih sustava u svrhu niskopropusnoga ili visokopropusnoga filtriranja, te propusnoga filtriranja određenog frekvencijskog opsega.
+        U sklopu studijskog programa svuečilišnih studija elektrotehnike, primat kroz više godine studija drži spektralna analiza signala, kojom se nastoji opisati frenkvencijske karakteristike promatranog iznalog signala (poput amplitudno-frenkvencijske karakteristike, fazno-frekvencijske karakteristike ili pojačanja sustava) Navedeno se najčešće realizira kroz određivanje prijenostnih i inih funkcija stustava koje su od značaja za ponašanje elektroničkih sustava čija su baza elektroničke komponente čije karakteristike nisu nužno konstantne pri određenim frekvencijskim pojasevima -- što omogućuje korištenje određenih elektroničkih sustava u svrhu niskopropusnoga ili visokopropusnoga filtriranja, te propusnoga filtriranja određenog frekvencijskog opsega.
 
         
         Drugi pristup analizi signala je analiza ponašanja signala u ovisnosti o vremenu. Štoviše, poznavajući pojam rekostrukcije vremenski kontinuiranih signala iz vremenski diskretnih signala, dolazimo do zaključka da ponašanje signala u vremenu možemo opisati pomoću beskonačno mnogo diskretnih vrijednosti u infinitemozno malim vremenskim razmacima, što nas dalje vodi do uvođenja \textit{vremenskih nizova} -- koje ćemo detaljnije opisati kroz nadolazeća potpoglavlja.
@@ -638,17 +639,44 @@
 
         %https://www.youtube.com/watch?v=uBeM1FUk4Ps
 
-        \section{Stohastički pristup}
-            %Objasniti na temelju par primjera i utjecaj određenih varijabli (random walk, ...)
-            \textbf{(Opis stohastičkih procesa, nasumičnosti, random walk, grafovi iz Priestleya)}
+        \section{Vremenski nizovi}
+
+        Vremenske nizove povezujemo uz bilo kakavu reprezentzaciju vrijednosti u ovisnosti o vremenskoj konstanti -- neovisno radi li se o vrijednostima koje prate neko determinističko načelo ili načelo nasumičnosti. Drugim rječima, vremenske nizove možemo opisati kao stohastički signal s kronološki raspoređenim opažanjima uzorkovanim u redovitim vremenskim razmacima. Mogu se pojavljivati kao podaci o fizičkim veličinama, kao ekonomski ili financijski podaci, demografski podaci, itd.. Opažanja ili mjerenja navedenih podataka provedena su u proizvoljnim vremenskim intervalima -- svake sekunde, svakoga sata, svakoga dana, svakoga mjeseca, i sl.. U analizi vremenskih nizova, takve skupove podataka uobičajeno reprezentiramo konačnim brojem mjerenja promatranog nasumičnog procesa $X(t)$ za, primjerice, $t=1,2,\ldots,N$.\cite{Priestley}Vremenske nizove možemo analitički zapisati i na sljedeće načine:
+
+        \begin{equation}
+            X=\{X_1,X_2,\ldots\}
+        \end{equation}
+
+        ili
+
+        \begin{equation}
+            Y=\{Y_t: t\in T\}.
+        \end{equation}
+        
+        U daljnjim razmatranjima teme ovoga rada, a prateći generalni koncenzus u nomenklaturi stručnih izvora, pod analizom vremenskih nizova smatrati ćemo principe i modele koji analiziraju promatrane vrijednosti nasumičnih procesa -- koje ćemo detaljnije opisati u potpoglavlju \textit{\ref{stoh_proc}}.
+
+        \subsection{Primjeri vremenskih nizova u elektrotehnici}
+            %Priestley
+            %Estimation of transfer functions: Page 20
+            %Prediciton and filtering problems: Page 25)
+            %https://ieeexplore.ieee.org/document/6073967
+            %https://ieeexplore.ieee.org/document/6057422
+            %https://ieeexplore.ieee.org/document/4524543
+
+
+
+            \textbf{(Dodati neki primjer iz elektrotehnike. U Pristleyu ima primjer za filtriranje, IEEE Xplore)}
 
         \section{Osnovni statistički pokazatelji}
-            %varijanca i kovarijanca -- potrebno poslije za pojašnjenje stacionarnih i nestacionarnih signala
-            \textbf{(stacionarni procesi, varijanca, kovarijanca,...)}
+        %varijanca i kovarijanca -- potrebno poslije za pojašnjenje stacionarnih i nestacionarnih signala
+        \textbf{(srednja vrijednsot, varijanca, kovarijanca, stacionarni procesi, ...)}
 
-        \section{Vremenski nizovi}
-            \textbf{(Doslovno sve o tome iz Priestlya i Petrusa)}     
-            %Signals and Systems DeMYSTiFieD A Self-Teaching Guide (dobro za elektrotehničke primjere autokorelacijske analize)
+        \section{Stohastički procesi} \label{stoh_proc}
+            %Objasniti na temelju par primjera i utjecaj određenih varijabli (random walk, ...)
+            %https://www.youtube.com/watch?v=TuTmC8aOQJE
+            \textbf{(Opis stohastičkih procesa, nasumičnosti, random walk, grafovi iz Priestleya)}
+   
+        %Signals and Systems DeMYSTiFieD A Self-Teaching Guide (dobro za elektrotehničke primjere autokorelacijske analize)
 
     \chapter{Autoregresivni modeli}
         \textbf{(Pitati Sučića/Stojkovića/Bulića mogu li me usmjeriti na neke konkretne primjere iz prakse kako bi se iskoristili uz ekonometrijske primjere. Franković će vjerojatno imati dobar dataset za HEP-ova postrojenja i energetsku učinkovitost/prognoziranje potrošnje za određene trenutke kako bi se mreža prilagodila)}
@@ -671,8 +699,11 @@
         \end{enumerate}
         $$\fourierovred$$
     \begin{thebibliography}{9}
+        \bibitem{Priestley} Priestley, M.B.: "Spectral Analysis and Time Series (Vols. 1 \& 2)", Academic Press, London, 1981.
+        \bibitem{Broersen} Broersen, Piet M.T.: "Automatic Autocorrelation and Spectral Analysis", Springer, London, 2006.
+        \bibitem{Dekking} F.M. Dekking i dr.: "A Modern Introduction to Probability and Statistics: Understanding Why and How", Springer, London, 2006.
+        \bibitem{Holden} Holden, K.; Peel, D.A.; Thompson, J.L: "Economic forecasting: an introduction", Cambridge University Press, Cambridge, 1990.
         \bibitem{NASA} Presidential Commission: "Report of the Presidential Commission on the Space Shuttle Challanger Accident", U.S. Government Printing Office, Washington, D.C., 1986.
-        \bibitem{Dekking} F.M. Dekking i dr.: "A Modern Introduction to Probability and Statistics: Understanding Why and How", Springer, Sjedinjene Američke Države, 2006.
-        \bibitem{Holden} Holden, K.; Peel, D.A.; Thompson, J.L: "Economic forecasting: an introduction", Cambridge University Press, Sjedinjene Američke Države, 1990.
+
     \end{thebibliography}
 \end{document}
