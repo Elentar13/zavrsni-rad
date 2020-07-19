@@ -599,7 +599,7 @@
             \end{figure}
 
             \subsection{Svojstvo kauzalnosti sustava}
-                Iako signali i sustavi imaju niz matematičkih svojstava koji se koriste u svakodnevnoj primjeni, u svrhu pojašnjenja budićih termina ukratko ćemo pojasniti pojam kauzalnosti sustava.
+                Iako signali i sustavi imaju niz matematičkih svojstva koja se koriste u svakodnevnoj primjeni, u svrhu pojašnjenja budićih termina ukratko ćemo pojasniti pojam kauzalnosti sustava.
 
 
                 Sukladno definiciji, sustav je \textit{kauzalan} ukoliko signal koji propagira kroz sustav ovisi isključivo o trenutnim ili prošlim vrijednostima ulaznoga signala. Drugim rječima, izlazni signal ne predviđa vrijednosti odziva na buduće vrijednosti ulaznoga signala. Konzekventno, sustav \textit{nije kauzalan} ukoliko vrijednost izlaznoga signala ovisi o budućoj vrijednosti ulaznoga signala. Primjer kauzalnog sustava je
@@ -668,12 +668,15 @@
 
         \subsection{Primjeri analize vremenskih nizova u elektrotehnici}
             %Priestley:
-            %Estimation of transfer functions: Page 20,
-            %Prediciton and filtering problems: Page 25,
-            %Estimation in time domain: Page 291)
+                %Estimation of transfer functions: Page 20,
+                %Prediciton and filtering problems: Page 25,
+                %Estimation in time domain: Page 291,
+                %The prediction problem: Page 727,
+                %The Wiener Approach: Page 748
             %https://ieeexplore.ieee.org/document/6073967
             %https://ieeexplore.ieee.org/document/6057422
             %https://ieeexplore.ieee.org/document/4524543
+            %https://www.wikiwand.com/en/Wiener_filter
             Temeljem definicije vremenskog niza, prirodno se nameće korelacija i korištenje istih u ekonomiji i poslovnim sustavima, koji navedene koriste za prognostičko modeliranje u prije spomenute svrhe koje će polučiti konkretni rezultat koji će poslije biti predmet daljnjeg proučavanja.
 
             Korištene metodologije u takvim procesima nisu samostalno svrsihodne u inženjerstvu, tj. nadopunjuju se tehničkom terminologijom i stručnim saznanjima o fenomenima, ograničenjima primjene i fizikalnim pojavama promatranih sustava. Iz toga proizlazi teza o korištenju analize vremenskih nizova kao jednog od alata za daljnje inženjerske analize.
@@ -685,7 +688,7 @@
             
             Iz procesa pronalaska navedenoga rješenja, proizašao je današnji \textit{Wienerov filter}, koji ima široku primjenu u elektrotehnici i drugim inženjerskim branšama -- ponajviše prilikom obrade signala, digitalne obrade slike, sinteze sustava upravljanja, te u razvoju digitalnih komunikacija. U općem smislu, koristi je za identifikaciju sustava, dekonvoluciju, odšumljivanje i uočavanje signala.
 
-            Temeljem prethodno navedenoga povoda za razvojem Wienerova filtra možemo lakše zaključiti njegovu funkciju, a to je statistički proračun ponašanja nepoznatog signala pomoću referentnog ulaznog signala koji, propagacijom kroz filter, daje izlaznu (prognoziranu) vrijednost. Jedna od konkretnih primjena Wienerova filtra u elektrotehnici je uočavanje pojave neočekivanoga šuma u električnoj mreži. Rezultat tog šuma jest pojava signala greške koji, ukoliko ne koristimo neko od pripadajućih rješenja regulacije sustava upravljanja, može rezultirati oštećenjima sustava i njegovih komponenti, pojavom nestabilnosti u sustavu, te drugim nepoželjnim svojstvima.
+            Temeljem prethodno navedenoga povoda za razvojem Wienerova filtra možemo lakše shvatiti njegovu funkciju, a to je statistički proračun ponašanja nepoznatog signala pomoću referentnog ulaznog signala koji, propagacijom kroz filter, daje izlaznu (prognoziranu) vrijednost. Točnije, za kauzalne diskretne signale s konačnom vrijednošću Wienerov filter pronalazi optimalne koeficijente pomoću statističkog modeliranja pomoću poznatih prethodnih vrijednosti ulaznog i izlaznog signala -- populirajući matricu ulaznih signala s prognoziranim vrijednostima autokorelacije ulaznog signala, dok vrši sličnu radnju populacijom matrice izlaznih signala s prognoziranim vrijednostima unakrsne korelacije između izlaznih i ulaznih signala.
 
             \begin{figure}[H]
                 \centering
@@ -705,16 +708,34 @@
                 \caption{Blokovski prikaz FIR Wiener filtra za diskretne signale.}
                 \label{fig:U5}
             \end{figure}
+            Iz blokovnskog prikaza FIR Wiener filtra sa slike \ref{fig:U5}, uočavamo propagaciju diskretnog ulaznog signala $w[n]$ kroz Wienerov filtar -- kojim se modelira učestalost otipkavanja $N$ i odabir koeficijenata ${a_0,\dotsm,a_N}$. Izlazni signal $x[n]$ iz FIR Wienerova filtra zadan je sljedećim izrazom:
 
             \begin{equation}
                 x[n]=\displaystyle\sum_{i=0}^{N}a_i w[n-i]
             \end{equation}
 
+            Na temelju zadanoga izraza, možemo uočiti prethodno navedeno korištenje vremenskih nizova kao dio većeg "sustava alata" kojima se inženjeri koriste u svakodnevici. U konkretnom slučaju, FIR Wiener filtara prognozira vrijednosti signala $x[n]$ temeljem prethodnih vrijednosti ulaznog signala $w[n-i]$ uz ugođavanje autokorelacijskih koeficijenta $a_i$ -- pritom imajući na umu temeljne pretpostavke i uvjete. Jedan od tih uvjeta je minimizacija srednje kvadrane pogreške koja se koristi kao jedan od analitičkih faktora ocjene kvalitete sustava.
 
+            Kako bismo pronašli srednju kvadratnu pogrešku sustava $E[e^2[n]]$, potrebno je definirati signal pogreške $e[n]$. U slučaju blokovskog prikaza sa slike \ref{fig:U5}, signal pogreške definiramo kao razliku vrijednosti izlaznog signala iz FIR Wienerova filtra $x[n]$ i vrijednosti referentnog signala $s[n]$, dolazimo do sljedećih izraza:
 
+            \begin{equation}
+                e[n]=x[n]-s[n]
+            \end{equation}
+        
+            \begin{equation}
+                \begin{split}
+                    E\left[e^2[n]\right]&=E\left[\left(x[n]-s[n]\right)^2\right] \\
+                    & = E\left[x^2[n]\right]-2E\left[x[n]s[n]\right]+E\left[s^2[n]\right] \\
+                    & = E\left[\left(\displaystyle\sum_{i=0}^{N}a_i w[n-i]\right)^2\right]-2E\left[\displaystyle\sum_{i=0}^{N}a_i w[n-i]s[n]\right]+E\left[s^2[n]\right]
+                \end{split}
+                \label{eq:U2}
+            \end{equation}
 
+            Parcijalnim deriviranjem jednadžbe \ref{eq:U2} po autokorelacijskom koeficijentu $a_i$, možemo doći do konkretnog izraza za izračun minimuma funkcije srednje kvadratne pogreške $\frac{\partial E[e^2[n]]}{\partial a_i}$. Daljnji proračun tog izraza nećemo dalje analizirati i promatrati jer nadilazi svrhu ovoga potpoglavlja.
+            
+            Zaključno, u ovom potpoglavlju smo ustanovili tezu o korisnosti kroištenja statističke analize vremenskih nizova u elektrotehničkim primjenama. Jedna od konkretnih primjena Wienerova filtra u elektrotehnici je uočavanje pojave neočekivanoga šuma u električnoj mreži i daljnja regulacija sustava temeljem vrijednosti signala pogreške koji nastaje uslijed pojave navedenoga šuma. Korištenje FIR Wienerova filtra i filtra sličnih funkcija od iznimne je koristi za pravovremenost regulacije sustava upravljanja. U slučaju izostanka pravovremene regulacije sustava upravljanja, može doći do oštećenja sustava i njegovih komponenti, pojave nestabilnosti u sustavu, te drugih nepoželjnih svojstva.
 
-            \textbf{(Dodati neki primjer iz elektrotehnike. U Pristleyu ima primjer za filtriranje, IEEE Xplore)}
+            \textbf{(Dodati neki primjer iz elektrotehnike. U Pristleyu ima predetaljno razrađeni primjer za filtriranje (može se koristiti za dobivanje više stranica, više naginje korištenju vremenskih nizova i nekog općeg nasumičnog signala...ovo trenutno napisano je nekako više "stručno", ali se može staviti kao konkretizacija tog općeg primjera), IEEE Xplore kao dodatni primjeri (uz rastavljanje potpoglavnja))}
 
         \section{Osnovni statistički pokazatelji}
         %varijanca i kovarijanca -- potrebno poslije za pojašnjenje stacionarnih i nestacionarnih signala
