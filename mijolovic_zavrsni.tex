@@ -71,8 +71,19 @@
 \usepackage{tikz}
 \usetikzlibrary{datavisualization}
 \usetikzlibrary{datavisualization.formats.functions}
-\usetikzlibrary{arrows,automata,patterns,positioning}
-\tikzstyle{int}=[draw, fill=gray!20, minimum size=2em]
+\usetikzlibrary{arrows,automata,patterns,positioning,shapes}
+\tikzstyle{block}=[draw, fill=gray!20, rectangle, minimum size=1.5em]
+\tikzstyle{sum} = [draw, fill=gray!20, circle, node distance=4cm, minimum size=2em]
+% \tikzset{
+%     sum/.style n arg = {4}[draw, circle, node distance = 2cm, minimum size=5mm, alias=sum, append after command={
+%     node at (sum.north) [port, below=1pt] {$#1$}
+%     node at (sum.west) [port, right=1pt] {$#2$}
+%     node at (sum.south) [port, above=1pt] {$#3$}
+%     node at (sum.east) [port, left=1pt] {$#4$}
+% }]}
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
 \tikzstyle{init} = [pin edge={to-,thin,black}]
 \usepackage{circuitikz}
 \newcommand{\pgfmathparseFPU}[1]{\begingroup%
@@ -560,7 +571,7 @@
                     \centering
                     \begin{tikzpicture}[node distance=2.5cm, auto, >=latex']
                         \centering
-                        \node [int, align=center, midway] (a) {H};
+                        \node [block, align=center, midway] (a) {H};
                         \node (b) [left of=a,node distance=2cm, coordinate] {a};
                         \node [coordinate] (end) [right of=a, node distance=2cm]{};
                         \path[->] (b) edge node {$x(t)$} (a);
@@ -574,7 +585,7 @@
                     \centering
                     \begin{tikzpicture}[node distance=2.5cm, auto, >=latex']
                         \centering
-                        \node [int, align=center, midway] (a) {G};
+                        \node [block, align=center, midway] (a) {G};
                         \node (b) [left of=a,node distance=2cm, coordinate] {a};
                         \node [coordinate] (end) [right of=a, node distance=2cm]{};
                         \path[->] (b) edge node {$x[n]$} (a);
@@ -641,27 +652,65 @@
 
         \section{Vremenski nizovi}
 
-        Vremenske nizove povezujemo uz bilo kakavu reprezentzaciju vrijednosti u ovisnosti o vremenskoj konstanti -- neovisno radi li se o vrijednostima koje prate neko determinističko načelo ili načelo nasumičnosti. Drugim rječima, vremenske nizove možemo opisati kao stohastički signal s kronološki raspoređenim opažanjima uzorkovanim u redovitim vremenskim razmacima. Mogu se pojavljivati kao podaci o fizičkim veličinama, kao ekonomski ili financijski podaci, demografski podaci, itd.. Opažanja ili mjerenja navedenih podataka provedena su u proizvoljnim vremenskim intervalima -- svake sekunde, svakoga sata, svakoga dana, svakoga mjeseca, i sl.. U analizi vremenskih nizova, takve skupove podataka uobičajeno reprezentiramo konačnim brojem mjerenja promatranog nasumičnog procesa $X(t)$ za, primjerice, $t=1,2,\ldots,N$.\cite{Priestley}Vremenske nizove možemo analitički zapisati i na sljedeće načine:
+            Vremenske nizove povezujemo uz bilo kakavu reprezentzaciju vrijednosti u ovisnosti o vremenskoj konstanti -- neovisno radi li se o vrijednostima koje prate neko determinističko načelo ili načelo nasumičnosti. Drugim rječima, vremenske nizove možemo opisati kao stohastički signal s kronološki raspoređenim opažanjima uzorkovanim u redovitim vremenskim razmacima. Mogu se pojavljivati kao podaci o fizičkim veličinama, kao ekonomski ili financijski podaci, demografski podaci, itd.. Opažanja ili mjerenja navedenih podataka provedena su u proizvoljnim vremenskim intervalima -- svake sekunde, svakoga sata, svakoga dana, svakoga mjeseca, i sl.. U analizi vremenskih nizova, takve skupove podataka uobičajeno reprezentiramo konačnim brojem mjerenja promatranog nasumičnog procesa $X(t)$ za, primjerice, $t=1,2,\ldots,N$.\cite{Priestley}Vremenske nizove možemo analitički zapisati i na sljedeće načine:
 
-        \begin{equation}
-            X=\{X_1,X_2,\ldots\}
-        \end{equation}
+            \begin{equation}
+                X=\{X_1,X_2,\ldots\}
+            \end{equation}
 
-        ili
+            ili
 
-        \begin{equation}
-            Y=\{Y_t: t\in T\}.
-        \end{equation}
-        
-        U daljnjim razmatranjima teme ovoga rada, a prateći generalni koncenzus u nomenklaturi stručnih izvora, pod analizom vremenskih nizova smatrati ćemo principe i modele koji analiziraju promatrane vrijednosti nasumičnih procesa -- koje ćemo detaljnije opisati u potpoglavlju \textit{\ref{stoh_proc}}.
+            \begin{equation}
+                Y=\{Y_t: t\in T\}.
+            \end{equation}
+            
+            U daljnjim razmatranjima teme ovoga rada, prateći generalni koncenzus u nomenklaturi stručnih izvora, pod analizom vremenskih nizova smatrati ćemo principe i modele koji analiziraju promatrane vrijednosti nasumičnih procesa -- koje ćemo detaljnije opisati u nadolazećim potpoglavljima.
 
-        \subsection{Primjeri vremenskih nizova u elektrotehnici}
-            %Priestley
-            %Estimation of transfer functions: Page 20
-            %Prediciton and filtering problems: Page 25)
+        \subsection{Primjeri analize vremenskih nizova u elektrotehnici}
+            %Priestley:
+            %Estimation of transfer functions: Page 20,
+            %Prediciton and filtering problems: Page 25,
+            %Estimation in time domain: Page 291)
             %https://ieeexplore.ieee.org/document/6073967
             %https://ieeexplore.ieee.org/document/6057422
             %https://ieeexplore.ieee.org/document/4524543
+            Temeljem definicije vremenskog niza, prirodno se nameće korelacija i korištenje istih u ekonomiji i poslovnim sustavima, koji navedene koriste za prognostičko modeliranje u prije spomenute svrhe koje će polučiti konkretni rezultat koji će poslije biti predmet daljnjeg proučavanja.
+
+            Korištene metodologije u takvim procesima nisu samostalno svrsihodne u inženjerstvu, tj. nadopunjuju se tehničkom terminologijom i stručnim saznanjima o fenomenima, ograničenjima primjene i fizikalnim pojavama promatranih sustava. Iz toga proizlazi teza o korištenju analize vremenskih nizova kao jednog od alata za daljnje inženjerske analize.
+
+
+            U uvodnom poglavlju naveli smo neke od temeljnih važnosti i značajki prognoiziranja u ostvarivanju tržišnih. strateških i sigurnostnih ciljeva -- gdje smo čvrsto ustanovili sveprisutnost potrebe za statističkim modeliranjem, tj. prognoziranjem. Baš kao i u navedenim primjerima ekonomske i upravljačke prirode, prognoziranje i odgovarajuće metodologije od iznimne su koristi današnjim inženjerima pri analizi fizikalnih sustava. 
+            
+            Primjer korištenja istih može se uočiti na primjeru ranoga razvoja modernih vojnih rješenja za protuavionsku obranu. Navedena rješenja proizlašla su kao odgovor na postojeći problem brzorastućeg razvoja ofenzivnih oružja za vrijeme 2. svjetskog rata, što je dovelo do prirodne potrebe za odgovarajućim sustavima zaštite u svrhu očuvanja nacionalne  sigurnosti. Razvoj protuavionskih obrambenih sustava temeljio se na pronalasku korelacije koja će s visokom uspješnošću predvidjeti poziciju neautoriziranih objekata u zračnom prostoru u odnosu na trenutnu poziciju obrambenog projektila u svrhu najučinkovitijega nahođena koje će rezultirati terminacijom potencijalne prijetnje.
+            
+            Iz procesa pronalaska navedenoga rješenja, proizašao je današnji \textit{Wienerov filter}, koji ima široku primjenu u elektrotehnici i drugim inženjerskim branšama -- ponajviše prilikom obrade signala, digitalne obrade slike, sinteze sustava upravljanja, te u razvoju digitalnih komunikacija. U općem smislu, koristi je za identifikaciju sustava, dekonvoluciju, odšumljivanje i uočavanje signala.
+
+            Temeljem prethodno navedenoga povoda za razvojem Wienerova filtra možemo lakše zaključiti njegovu funkciju, a to je statistički proračun ponašanja nepoznatog signala pomoću referentnog ulaznog signala koji, propagacijom kroz filter, daje izlaznu (prognoziranu) vrijednost. Jedna od konkretnih primjena Wienerova filtra u elektrotehnici je uočavanje pojave neočekivanoga šuma u električnoj mreži. Rezultat tog šuma jest pojava signala greške koji, ukoliko ne koristimo neko od pripadajućih rješenja regulacije sustava upravljanja, može rezultirati oštećenjima sustava i njegovih komponenti, pojavom nestabilnosti u sustavu, te drugim nepoželjnim svojstvima.
+
+            \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}[node distance=2.5cm, auto,>=latex']
+                    \centering
+                    \node [input, name=input] {};
+                    \node [block, align=center, right of=input, node distance=4cm] (wiener_filter) {$G(z)=\displaystyle\sum_{i=0}^{N}a_i z^{-i}$};
+                    \node [sum, right of=wiener_filter, label={[above=0.20cm]center:$-$}, label={[left=0.20cm]center:$+$}] (sum) {};
+                    \node [input, above of=sum] (error) {};
+                    \node [output, right of=sum] (output) {};
+
+                    \path[->] (input) edge node {$w[n]$} (wiener_filter);
+                    \path[->] (wiener_filter) edge node {$x[n]$} (sum);
+                    \path[->] (error) edge node {$s[n]$} (sum);
+                    \path[->] (sum) edge node {$e[n]$} (output);
+                \end{tikzpicture}
+                \caption{Blokovski prikaz FIR Wiener filtra za diskretne signale.}
+                \label{fig:U5}
+            \end{figure}
+
+            \begin{equation}
+                x[n]=\displaystyle\sum_{i=0}^{N}a_i w[n-i]
+            \end{equation}
+
+
 
 
 
