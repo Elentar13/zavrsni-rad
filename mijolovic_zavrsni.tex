@@ -733,25 +733,75 @@
 
             Parcijalnim deriviranjem jednadžbe \ref{eq:U2} po autokorelacijskom koeficijentu $a_i$, možemo doći do konkretnog izraza za izračun minimuma funkcije srednje kvadratne pogreške $\frac{\partial E[e^2[n]]}{\partial a_i}$. Daljnji proračun tog izraza nećemo dalje analizirati i promatrati jer nadilazi svrhu ovoga potpoglavlja.
             
-            Zaključno, u ovom potpoglavlju smo ustanovili tezu o korisnosti kroištenja statističke analize vremenskih nizova u elektrotehničkim primjenama. Jedna od konkretnih primjena Wienerova filtra u elektrotehnici je uočavanje pojave neočekivanoga šuma u električnoj mreži i daljnja regulacija sustava temeljem vrijednosti signala pogreške koji nastaje uslijed pojave navedenoga šuma. Korištenje FIR Wienerova filtra i filtra sličnih funkcija od iznimne je koristi za pravovremenost regulacije sustava upravljanja. U slučaju izostanka pravovremene regulacije sustava upravljanja, može doći do oštećenja sustava i njegovih komponenti, pojave nestabilnosti u sustavu, te drugih nepoželjnih svojstva.
+            Zaključno, u ovom potpoglavlju smo potvrdili tezu o korisnosti kroištenja statističke analize vremenskih nizova u elektrotehnici. Jedna od konkretnih primjena Wienerova filtra u elektrotehnici je uočavanje pojave neočekivanoga šuma u električnoj mreži i daljnja regulacija sustava temeljem vrijednosti signala pogreške koji nastaje uslijed pojave navedenoga šuma. Korištenje FIR Wienerova filtra i filtra sličnih funkcija od iznimne je koristi za pravovremenost regulacije sustava upravljanja. U slučaju izostanka pravovremene regulacije sustava upravljanja, može doći do oštećenja sustava i njegovih komponenti, pojave nestabilnosti u sustavu, te drugih nepoželjnih svojstva.
 
             \textbf{(Dodati neki primjer iz elektrotehnike. U Pristleyu ima predetaljno razrađeni primjer za filtriranje (može se koristiti za dobivanje više stranica, više naginje korištenju vremenskih nizova i nekog općeg nasumičnog signala...ovo trenutno napisano je nekako više "stručno", ali se može staviti kao konkretizacija tog općeg primjera), IEEE Xplore kao dodatni primjeri (uz rastavljanje potpoglavnja))}
 
         \section{Osnovni statistički pokazatelji}
-        %varijanca i kovarijanca -- potrebno poslije za pojašnjenje stacionarnih i nestacionarnih signala
-        \textbf{(srednja vrijednsot, varijanca, kovarijanca, stacionarni procesi, ...)}
+            varijanca i kovarijanca -- potrebno poslije za pojašnjenje stacionarnih i nestacionarnih signala
+            \textbf{(uzorak (sample space), srednja vrijednost, varijanca, kovarijanca, stacionarni procesi, autokovarijanca...)}
 
+            Dekking:\\
+            Sample Spaces: Page 13,
+
+
+            
+            Montgomery and Runger:\\
+            Collecting Engineering Data: Chap 1. Page 5,\\
+            Sample Spaces and Events: Chap 2. Page 17,\\
+            Mean and Variance of a Discrete Random Variable: Chap 3. Page 66,\\
+            Mean and Variance of a Continous Random Variable: Chap 4. Page 105,\\
+            Data Summary and Display: Page 230,\\
+
+
+            Priestley:\\
+                Probability Spaces: 34,\\
+                Random Variables: Page 37,\\
+                Means, Variances and Moments: Page 47,\\
+                Properties of Means and Variances of Random samples: Page 96,\\
         \section{Stohastički procesi} \label{stoh_proc}
             %Objasniti na temelju par primjera i utjecaj određenih varijabli (random walk, ...)
             %https://www.youtube.com/watch?v=TuTmC8aOQJE
+            Montgomery and Rugner:\\
+            Random Variables: Chap. 2 Page 53,\\
+
+            Holden:\\
+            Stohastic models of time series: Page 45,\\
+            Deterministic and Stohastic Trends: Page 80,\\
+
+            Dekking:\\
+            Discrete Random Variables: Page 41,\\
+            Continous Random Variables: Page 57,\\
+            Variance: Page 96,\\
+            Covariance and Correlation: Page 135,\\
+
+
+            Broersen:\\
+            Random Variables: Page 11,\\
+            Functions of Random Variables: Page 18,\\
+            Stohastic Processes: Page 29,\\
+            Autocorrelation Function: Page 31,\\
+            Estimation of Mean and Variance: Page 38,\\
+            Autocorrelation Estimation: Page 40,\\
+
+            Priestley:\\
+            Random Processes: Page 10,\\
+            Stationary Random Processes: Page 14,\\
+            Random Variables: Page 37,\\
+            Stationary Random Processes: Page 100,\\
+            Stationary Processes: Page 104,\\
+            The Autocovariance and Autocorrelation Functions: Page 106,\\
+            Special Discrete Parameter Models (White Noise): Page 114,\\
             \textbf{(Opis stohastičkih procesa, nasumičnosti, random walk, grafovi iz Priestleya)}
    
         %Signals and Systems DeMYSTiFieD A Self-Teaching Guide (dobro za elektrotehničke primjere autokorelacijske analize)
 
     \chapter{Autoregresivni modeli}
-        \textbf{(Pitati Sučića/Stojkovića/Bulića mogu li me usmjeriti na neke konkretne primjere iz prakse kako bi se iskoristili uz ekonometrijske primjere. Franković će vjerojatno imati dobar dataset za HEP-ova postrojenja i energetsku učinkovitost/prognoziranje potrošnje za određene trenutke kako bi se mreža prilagodila)}
+
         \section{Pomična srednja vrijednost (MA)}
         \section{Autoregresijski procesi (AR)}
+            Priestley:\\
+                First Order Autoregressive Process (Linear Markov Process): Page 116\\
         \section{ARMA (p,q) proces}
         \section{ARIMA proces}
     \chapter{Zaključak}
