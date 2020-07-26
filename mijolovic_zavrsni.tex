@@ -90,6 +90,9 @@
 \pgfkeys{/pgf/fpu,/pgf/fpu/output format=fixed}%
 \pgfmathparse{#1}%
 \pgfmathsmuggle\pgfmathresult\endgroup}
+\pgfmathdeclarefunction{gauss}{2}{%
+  \pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
+}
 
 
 %misc. paketi
@@ -614,11 +617,10 @@
 
                 Iako su kauzalni sustavi vrlo važni zbog prirode realnih rješenja koja aktuiraju temeljem prethodno očitanih vrijednosti, već sada možemo naslutiti važnost nekauzalnih sustava prilikom uočavanja kretanja trendova prilikom prognoziranja ili sinteze sustava regulacije s ciljem otstranjivanja šumova i sl..
 
-    \chapter{Osnovne metodologije prognoziranja}
+    \chapter{Opće metodologije prognoziranja}
         Obzirom na sveprisutnost prognoziranja, baš kao i signala i sustava, klasificirati ćemo dvije osnovne vrste prognoza -- subjektivne prognoze i prognoze temeljene na statističkim modelima.\cite{Holden}
 
         \section{Subjektivne prognoze}
-
             Subjektivne prognoze temelje se na pogađanjima, prethodnim iskustvima i intuiciji. Takve prognoze nemaju predodređena i utvrđena pravila procesuiranja informacija, već se svode na donošenje zaključaka temeljem osobnog mišljenja osobe koja iznosi prognozu. Na primjer, dva će ekonomska analitičara iznesti različite prognoze za ponašanje tržišta i vrijednosti financijskih instrumenata u slučaju kriznih situacija poput pandemije koronavirusa. Dok će jedan analitičar smatrati da će vrijednosti financijskih instrumenata imati negativan trend u nadolazećem kvartalu uslijed restriktivnih mjera koje imaju nepovoljan utjecaj na tržište, drugi će prognozirati rast temeljem povećanog prilijeva kapitala od strane povećanog broja ulagača koji prvi puta ulaze na tržište kapitala uslijed straha neiskorištavanja volotilnosti tržišta za ostvarivanje dugoročnih kapitalnih dobitaka (eng. \textit{fear of missing-out}). Iako ovakve metode prognoziranja uistinu mogu rezultirati donekle točnim prognozama, kao što je to bilo u slučaju tzv. kratkih prodaja (eng. \textit{short-sell}) prilikom kraha američkog tržišta nekretnina ili prilikom razotkrivanja prikrivanja neispravnih rezultata mjerenja dušičnih oksida dizelskih automobila Volkswagen grupe; one su dokazano manje točne od prognoza temeljenih na statističkim modelima.
 
         \section{Prognoze temeljene na statističkim modelima}
@@ -630,7 +632,87 @@
             U odnosu na kauzalne prognostičke modele, nekauzalni prognostički modeli nastoje predvidjeti buduće iznose vrijednosti podataka bez dubljega razumjevanja geneze prethodno mjerenih podataka; već fokusirajući se na projekciju njihova međusobnog odnosa na budućnost. Takvi modeli imaju prednost ekonomičnosti budući da se ne orijentiraju na detaljna istraživanja ponašanja svakog parametra, što je povoljno za prognoziranje trenda čimbenika niže važnosti. Navedena prednost može se gledati i kao nedostatak, budući da premisa o istovjetnosti ponašanja vrijednosti signala u prošlosti i budućnosti ne predviđa pojavu smetnji u sustavu -- poput pojave prenapona mreže, kratkog spoja u visokonaponskim energetskim sustavima ili pojave velike gospodarske krize. 
             
             
-            Naravno, navedeno vrijedi u slučaju jednostavnih prognostičkih modela, te ćemo u sljedećim poglavljima proučiti detalje kompleksnih nekauzalnih prognostičkih modela temeljenih na vremenskim nizovima.
+            Naravno, navedeno vrijedi u slučaju jednostavnih prognostičkih modela, te ćemo u nadolazećim poglavljima proučiti detalje kompleksnih nekauzalnih prognostičkih modela temeljenih na vremenskim nizovima.
+
+        \section{Procjena maksimalne vrijednosti}
+
+            %Priestley:
+            %   Method of maximum likelihood: Page 305,
+            %   Properties of maximum likelihood estimators: Page 307,
+            Procjena maksimalne vrijednosti jedna je od općih metoda prognoziranja koja služi za analizu kompleksnijih sustava koji nemaju jasno raznatljiv način određivanja koeficijenata procjene. Ova metoda čini temelj za razne ostale metode procjene vrijednosti, a najveća joj je prednost primjenjivost u bilo kojem problemu za koji je moguće odrediti zajedničku distribuciju vjerojatnosti temeljem promatranja, tj. mjerenja.
+
+            Pretpostavimo li analizu nasumičnog uzorka podataka s $n$ uzorkovanja $x_1,\ldots,x_n$ koji je određen distribucijom vjerojatnosti kontinuirane varijable $f(x,\theta)$ sa jednim nepoznatim parametrom $\theta$, izradom vektorske funkcije koja kao članove ima skup uzorkovanih podataka $X=(x_1,\ldots,x_n)$ možemo doći do izraza za zajedničku distribuciju vjerojatnosti \cite{Priestley}
+
+            \begin{equation}
+                f(x,\theta)=f(x_1,\theta)f(x_2,\theta)\ldots f(x_n,\theta).
+                \label{eq:31}
+            \end{equation}
+
+            Iz navedenog izraza možemo zaključiti kako je zajednička distribucija vjerojojatnosti rezultantni produkt distribucije vjerojatnosti za svakog pojedinog člana $x_n$. Izraz za zajedničku distribuciju vjerojatnosti $f(x,\theta)$ iz jednadžbe \ref{eq:31} koristi se u teoriji vjerojatnosti za procjenu vrijednosti skupa $X$ kada je poznata vrijednost parametra $\theta$. Ukoliko vrijedi
+
+            \begin{equation}
+                f(x_1,\theta)> f(x_2,\theta),
+                \label{eq:32}
+            \end{equation}
+
+            možemo konvencionalno konstatirati kako je veća vjerojatnost pojavljivanja člana $x_1$ kao vrijednosti skupa $X$ u nekom određenom trenutku promatranja kada vrijedi ta relacija. Iako navedena konstatacija vrijedi, u prognoziranju je puno učestalije razmatranje vrijednosti $\theta$ obzirom na češću primjenu prilikom analize statističke interferencije -- koja nastoji opisati ponašanje nepoznatog parametra $\theta$ u ovisnosti o različitim ulaznim vrijednostima skupa $X$ koje su nam poznate. Takva instanca funkcije zajedničke distribucije poznata je i kao funkcija vjerodostojnosti.
+            
+            Kako bi lakše predočili razliku između vjerojatnosti i vjerodostojnosti, pretpostavimo zadani skup podataka s normalnom distribucijom kao što je prikazano na slici \ref{fig:31}. Vjerojatnost možemo opisati kao površinu ispod krivulje normalne distribucije skupa $X$. Iz navedenoga, odaberemo li nasumičan član navedenoga skupa, vjerojatnost da je nasumični član skupa unutar granica $\mu\pm1\sigma$ iznosi \SI{68.27}{\percent}.
+            
+            Za razliku od vjerojatnosti, vjerodostojnost možemo opisati kao vrijednost ordinatnog položaja točke $\mathbf{A}$ na ordinati. Kako bismo znali odrediti prethodno navedeni položaj, potrebno je poznavati srednju vrijednost $\mu$ i standardnu devijaciju $\sigma$ promatranog skupa -- temeljem kojih možemo odrediti točku $\mathbf{A}$ kao sjecište pravca okomitog na apcisu u točki $\mu\pm\sigma$ i krivulje normalne distribucije skupa $X$.
+
+            \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}
+                    \begin{axis}[
+                        standard,
+                        xlabel={$\sigma$},
+                        enlarge x limits=false,
+                        domain = -4:4,
+                        xmin = -4, xmax = 4,
+                        ymin = 0, ymax = 0.4,
+                        xtick = {-4,...,4},
+                        height = 5cm,                    
+                    ],
+                        \addplot [very thick, domain=-1:0, pattern color=black, pattern=north east lines] {gauss(0,1)} \closedcycle;
+                        \addplot [smooth, black, thick] {gauss(0,1)};
+                        \node [circle, fill=black, label=60:$\mathbf{A}$, scale=0.3] at (1,0.24) {};
+                        \node [rectangle, fill=white, draw, very thick, font=\small, align=center, scale=0.75] at (-0.5,0.15) {\SI{34.135}{\percent}};
+                    \end{axis} 
+                \end{tikzpicture}
+                \caption{Prikaz normalne distribucije}
+                \label{fig:31}
+            \end{figure}
+            
+            
+            Sada kada znamo osnovnu razliku između vjerojatnosti i vjerodostojnosti, promotrimo li funkciju vjerodostojnosti $f(x,\theta)$ uz konstantnu izmjerenu vrijednost $x$ uz relaciju
+
+            \begin{equation}
+                f(x,\theta_1)>f(x,\theta_2),
+                \label{eq:33}
+            \end{equation}
+
+           dolazimo do zaključka kako se veća vrijednost nepoznatog parametra $\theta_2$ može pripisati kao vjerodostojnija, a samim time je i vjerojatnosti pojavljivanja izmjerenoga člana $x$ kao vrijednosti skupa $X$ veća. Takva razmatranja ne mogu se pripisati \textit{a priori}, već se pretpostavljena vrijednost nepoznatog parametra $\theta$ dodatno testira substitucijom u jednadžbu \ref{eq:31} -- nakon čega se vrši usporedba dobivenih vrijednosti sa izmjerenim vrijednostima iz skupa $X$ \cite{Broersen}.
+
+            Konačno, slijedi osnovni postulat metode procjene maksimalne vrijednosti koji nalaže postupak procjenjivanja vrijednosti parametra $\theta$ i odabir one vrijednosti koja će dati najvjerodostojniji rezultat. U praktičnoj primjeni, češće se koristi logaritamski oblik funkcije vjerodostojnosti
+            
+            \begin{equation}
+                L=L(x,\theta)=log_e\left\{f(x,\theta)\right\}.
+            \end{equation}
+    
+            Prethodno stečenim matematičkim znanjem, možemo pretpostaviti proces dobivanja maksimuma funkcije vjerodostojnosti izračunavanjem izraza
+            
+            \begin{equation}
+                \frac{\partial L}{\partial \theta}=0.
+            \end{equation}
+            
+            Daljnji proračun nadilazi potrebna znanja za shvaćanje teme ovoga rada te ćemo krenuti s pojašnjenjem sljedeće opće metode prognoziranja -- metode najmanjih kvadrata.
+
+        \section{Metoda najmanjih kvadrata}
+            Metoda
+        
+
+
 
     \chapter{Osnovni statistički pokazatelji signala i vremenski nizovi}
 
@@ -708,10 +790,10 @@
                 \caption{Blokovski prikaz FIR Wiener filtra za diskretne signale.}
                 \label{fig:U5}
             \end{figure}
-            Iz blokovnskog prikaza FIR Wiener filtra sa slike \ref{fig:U5}, uočavamo propagaciju diskretnog ulaznog signala $w[n]$ kroz Wienerov filtar -- kojim se modelira učestalost otipkavanja $N$ i odabir koeficijenata ${a_0,\dotsm,a_N}$. Izlazni signal $x[n]$ iz FIR Wienerova filtra zadan je sljedećim izrazom:
+            Iz blokovnskog prikaza FIR Wiener filtra sa slike \ref{fig:U5}, uočavamo propagaciju diskretnog ulaznog signala $w[n]$ kroz Wienerov filtar -- kojim se modelira učestalost otipkavanja $N$ i odabir koeficijenata ${a_0,\dotsm,a_N}$. Izlazni signal $x[n]$ iz FIR Wienerova filtra zadan je izrazom
 
             \begin{equation}
-                x[n]=\displaystyle\sum_{i=0}^{N}a_i w[n-i]
+                x[n]=\displaystyle\sum_{i=0}^{N}a_i w[n-i].
             \end{equation}
 
             Na temelju zadanoga izraza, možemo uočiti prethodno navedeno korištenje vremenskih nizova kao dio većeg "sustava alata" kojima se inženjeri koriste u svakodnevici. U konkretnom slučaju, FIR Wiener filtara prognozira vrijednosti signala $x[n]$ temeljem prethodnih vrijednosti ulaznog signala $w[n-i]$ uz ugođavanje autokorelacijskih koeficijenta $a_i$ -- pritom imajući na umu temeljne pretpostavke i uvjete. Jedan od tih uvjeta je minimizacija srednje kvadrane pogreške koja se koristi kao jedan od analitičkih faktora ocjene kvalitete sustava.
@@ -719,14 +801,14 @@
             Kako bismo pronašli srednju kvadratnu pogrešku sustava $E[e^2[n]]$, potrebno je definirati signal pogreške $e[n]$. U slučaju blokovskog prikaza sa slike \ref{fig:U5}, signal pogreške definiramo kao razliku vrijednosti izlaznog signala iz FIR Wienerova filtra $x[n]$ i vrijednosti referentnog signala $s[n]$, dolazimo do sljedećih izraza:
 
             \begin{equation}
-                e[n]=x[n]-s[n]
+                e[n]=x[n]-s[n],
             \end{equation}
         
             \begin{equation}
                 \begin{split}
                     E\left[e^2[n]\right]&=E\left[\left(x[n]-s[n]\right)^2\right] \\
                     & = E\left[x^2[n]\right]-2E\left[x[n]s[n]\right]+E\left[s^2[n]\right] \\
-                    & = E\left[\left(\displaystyle\sum_{i=0}^{N}a_i w[n-i]\right)^2\right]-2E\left[\displaystyle\sum_{i=0}^{N}a_i w[n-i]s[n]\right]+E\left[s^2[n]\right]
+                    & = E\left[\left(\displaystyle\sum_{i=0}^{N}a_i w[n-i]\right)^2\right]-2E\left[\displaystyle\sum_{i=0}^{N}a_i w[n-i]s[n]\right]+E\left[s^2[n]\right].
                 \end{split}
                 \label{eq:U2}
             \end{equation}
@@ -806,6 +888,7 @@
             follows from the context. Petrus)}
    
         %Signals and Systems DeMYSTiFieD A Self-Teaching Guide (dobro za elektrotehničke primjere autokorelacijske analize)
+    
         
         \section{Bijeli šum}
                 Petrus:\\
@@ -852,25 +935,59 @@
 
             Sada kada smo ustanovili prednosti i mane korištenja autoregresijskog modela u praksi, možemo započeti sa dubinskom matematičkom analizom istoga.
 
-            Autoregresijski $AR(p)$ model je reprezentacija nasumičnog procesa čija izlazna vrijednost u trenutku $x_t$ linearno ovisi o vlastitim prethodnim vrijednostima $x_{t-p}$. Navedeno načelo možemo matematički definirati kao
+            Autoregresijski $AR(p)$ model je reprezentacija nasumičnog stacionarnog procesa čija izlazna vrijednost u trenutku $x_t$ linearno ovisi o vlastitim vrijednostima u trenucima koji su prethodili, a mogu se definirati kao $x_{t-p}$. Navedeno opće načelo možemo matematički definirati kao
 
             \begin{equation}
-                (x_t-\mu_x)=\phi_1(x_{t-1}-\mu_x)+\phi_2(x_{t-2}-\mu_x)+\cdots+\phi_p(x_{t-p}-\mu_x)+\omega_t
-                \label{eq:U3}
+                \epsilon_t=x_t-\mu_x+\phi_1(x_{t-1}-\mu_x)+\phi_2(x_{t-2}-\mu_x)+\cdots+\phi_p(x_{t-p}-\mu_x)+\omega_t,
+                \label{eq:51}
             \end{equation}
-
             gdje su:
 
             \begin{table}[H]
                 \centering
                 \begin{tabular*}{0.9\textwidth}{>{\bfseries}l p{13cm}}
-                    \textit{\textbf{$\boldsymbol{x_t}$}} & \textit{vrijednost funkcije u vremenu \textbf{t}}\\
-                    \textit{\textbf{$\boldsymbol{\mu_x}$}} & \textit{srednja vrijednost funkcije}\\
+                    \textit{\textbf{$\boldsymbol{\epsilon_t}$}} & \textit{nasumični stacionarni proces}\\
+                    \textit{\textbf{$\boldsymbol{x_t}$}} & \textit{član nasumičnog procesa}\\
+                    \textit{\textbf{$\boldsymbol{\mu_x}$}} & \textit{srednja vrijednost nasumičnog procesa}\\
                     \textit{\textbf{$\boldsymbol{\phi_p}$}} & \textit{autoregresijski koeficijent}\\
                     \textit{\textbf{$\boldsymbol{\omega_t}$}} & \textit{bijeli šum}\\
                     \textit{\textbf{$\boldsymbol{p}$}} & \textit{red autoregresijskog modela}\\
                 \end{tabular*}
             \end{table}
+
+            \textbf{Dodati raspis Leasts Squares approach za $\epsilon_t^2$ ili ono kraće iz Broersena}
+
+            \begin{equation}
+                (x_t-\mu_x)=\phi_1(x_{t-1}-\mu_x)+\phi_2(x_{t-2}-\mu_x)+\cdots+\phi_p(x_{t-p}-\mu_x)+\omega_t,
+                \label{eq:52}
+            \end{equation}
+
+            Jednadžba \ref{eq:52} predstavlja opći eksplicitni prikaz autoregresijskog modela reda $p$. Za tu jednadžbu pretpostaviti ćemo temeljne pretpostavke koje će nam omogućiti jednostaviniju reprezentaciju.
+            
+            Uz temeljne pretpostavke da vrijednost autoregresijskog koeficijenta zaprima isključivo ne nulte vrijednosti ($\phi_p\neq0$), te da srednja vrijednost stacionarnog nasumičnog procesa $x_t$ odgovara vrijednosti $\mathbb{E}[x_t]=\mu_x$; najčešće pretpostavljamo sljedeće dodatne pretpostavke:
+
+            \begin{itemize}
+                \item Vrijednost srednje vrijednosti nasumičnog proces iznosi $\mu_x=0$, iz čega slijedi izraz
+                \begin{equation}
+                    x_t=\phi_1x_{t-1}+\phi_2x_{t-2}+\cdots+\phi_px_{t-p}+\omega_t,
+                    \label{eq:53}
+                \end{equation}
+                \item Uvodi se pojam autoregresijskog operatora definiranog izrazom
+                \begin{equation}
+                    \phi(B)=1-\phi_1B-\phi_2B^2-\cdots-\phi_pB^p,
+                    \label{eq:54}
+                \end{equation}
+                gdje $B^px_t=x_{t-p}$ definiramo kao \textbf{backshift operator}. Izvršimo li substituciju \textbf{backshift operatora} u jednadžbama \ref{eq:53} i \ref{eq:54}, dolazimo do sažetijeg izraza za autoregresijski operator
+                \begin{equation}
+                    \phi(B)(x_t-\mu_x)=\omega_t,
+                \end{equation}
+                tj.
+                \begin{equation}
+                    \phi(B)(x_t)=\omega_t.
+                \end{equation}
+            \end{itemize}
+
+            \textbf{Dodati intro u sljedeća potpoglavlja s nastojanjem pojašnjenja konkretnih svojstava autoregresijskih modela na primjueru modela nižeg reda}
 
             \subsection{Autoregresijski model 1. reda}
             \subsection{Autoregresijski model 2. reda}
@@ -884,6 +1001,7 @@
 
         \section{ARMA (p,q) proces}
         \section{ARIMA proces}
+    \chapter{Pokus}
     \chapter{Zaključak}
         \textbf{(Tu ide rezime core teme rada. Dodatno se može iskoristiti "Ken Holden, David A. Peel, John L. Thompson - Economic Forecasting: An Introduction-Cambridge University Press (1990)" kao outro; nadograditi vrlo dobrim dodatnim zaključcima koji su dati u konkretnom primjeru, ali poopćiti budući da nakon uvoda treba održati elektrotehniku dominantnom temom.)} % (page 29 - 33)
         \ldots{}
