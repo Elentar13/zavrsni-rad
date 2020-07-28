@@ -45,6 +45,7 @@
 \usepackage{graphicx}
 \usepackage{pgfmath}
 \usepackage{pgfplots}
+\usepackage{pgfplotstable}
 \pgfplotsset{compat=1.17}
 \pgfplotsset{
     standard/.style={
@@ -632,87 +633,156 @@
             U odnosu na kauzalne prognostičke modele, nekauzalni prognostički modeli nastoje predvidjeti buduće iznose vrijednosti podataka bez dubljega razumjevanja geneze prethodno mjerenih podataka; već fokusirajući se na projekciju njihova međusobnog odnosa na budućnost. Takvi modeli imaju prednost ekonomičnosti budući da se ne orijentiraju na detaljna istraživanja ponašanja svakog parametra, što je povoljno za prognoziranje trenda čimbenika niže važnosti. Navedena prednost može se gledati i kao nedostatak, budući da premisa o istovjetnosti ponašanja vrijednosti signala u prošlosti i budućnosti ne predviđa pojavu smetnji u sustavu -- poput pojave prenapona mreže, kratkog spoja u visokonaponskim energetskim sustavima ili pojave velike gospodarske krize. 
             
             
-            Naravno, navedeno vrijedi u slučaju jednostavnih prognostičkih modela, te ćemo u nadolazećim poglavljima proučiti detalje kompleksnih nekauzalnih prognostičkih modela temeljenih na vremenskim nizovima.
+            Naravno, navedeno vrijedi u slučaju jednostavnih prognostičkih modela, te ćemo u nadolazećim poglavljima proučiti detalje kompleksnih nekauzalnih prognostičkih modela temeljenih na vremenskim nizovima. No, prije toga ćemo definirati dvije opće prognostičke metode koje će nam služiti kao osnova budućih razmatranja.
 
-        \section{Procjena maksimalne vrijednosti}
+            \subsection{Procjena maksimalne vrijednosti}
 
-            %Priestley:
-            %   Method of maximum likelihood: Page 305,
-            %   Properties of maximum likelihood estimators: Page 307,
-            Procjena maksimalne vrijednosti jedna je od općih metoda prognoziranja koja služi za analizu kompleksnijih sustava koji nemaju jasno raznatljiv način određivanja koeficijenata procjene. Ova metoda čini temelj za razne ostale metode procjene vrijednosti, a najveća joj je prednost primjenjivost u bilo kojem problemu za koji je moguće odrediti zajedničku distribuciju vjerojatnosti temeljem promatranja, tj. mjerenja.
+                %Priestley:
+                %   Method of maximum likelihood: Page 305,
+                %   Properties of maximum likelihood estimators: Page 307,
+                Procjena maksimalne vrijednosti jedna je od općih metoda prognoziranja koja služi za analizu kompleksnijih sustava koji nemaju jasno raznatljiv način određivanja koeficijenata procjene. Ova metoda čini temelj za razne ostale metode procjene vrijednosti, a najveća joj je prednost primjenjivost u bilo kojem problemu za koji je moguće odrediti zajedničku distribuciju vjerojatnosti temeljem promatranja, tj. mjerenja.
 
-            Pretpostavimo li analizu nasumičnog uzorka podataka s $n$ uzorkovanja $x_1,\ldots,x_n$ koji je određen distribucijom vjerojatnosti kontinuirane varijable $f(x,\theta)$ sa jednim nepoznatim parametrom $\theta$, izradom vektorske funkcije koja kao članove ima skup uzorkovanih podataka $X=(x_1,\ldots,x_n)$ možemo doći do izraza za zajedničku distribuciju vjerojatnosti \cite{Priestley}
+                Pretpostavimo li analizu nasumičnog uzorka podataka s $n$ uzorkovanja $x_1,\ldots,x_n$ koji je određen distribucijom vjerojatnosti kontinuirane varijable $f(x,\theta)$ sa jednim nepoznatim parametrom $\theta$, izradom vektorske funkcije koja kao članove ima skup uzorkovanih podataka $X=(x_1,\ldots,x_n)$ možemo doći do izraza za zajedničku distribuciju vjerojatnosti \cite{Priestley}
 
-            \begin{equation}
-                f(x,\theta)=f(x_1,\theta)f(x_2,\theta)\ldots f(x_n,\theta).
-                \label{eq:31}
-            \end{equation}
+                \begin{equation}
+                    f(x,\theta)=f(x_1,\theta)f(x_2,\theta)\ldots f(x_n,\theta).
+                    \label{eq:31}
+                \end{equation}
 
-            Iz navedenog izraza možemo zaključiti kako je zajednička distribucija vjerojojatnosti rezultantni produkt distribucije vjerojatnosti za svakog pojedinog člana $x_n$. Izraz za zajedničku distribuciju vjerojatnosti $f(x,\theta)$ iz jednadžbe \ref{eq:31} koristi se u teoriji vjerojatnosti za procjenu vrijednosti skupa $X$ kada je poznata vrijednost parametra $\theta$. Ukoliko vrijedi
+                Iz navedenog izraza možemo zaključiti kako je zajednička distribucija vjerojojatnosti rezultantni produkt distribucije vjerojatnosti za svakog pojedinog člana $x_n$. Izraz za zajedničku distribuciju vjerojatnosti $f(x,\theta)$ iz jednadžbe \ref{eq:31} koristi se u teoriji vjerojatnosti za procjenu vrijednosti skupa $X$ kada je poznata vrijednost parametra $\theta$. Ukoliko vrijedi
 
-            \begin{equation}
-                f(x_1,\theta)> f(x_2,\theta),
-                \label{eq:32}
-            \end{equation}
+                \begin{equation}
+                    f(x_1,\theta)> f(x_2,\theta),
+                    \label{eq:32}
+                \end{equation}
 
-            možemo konvencionalno konstatirati kako je veća vjerojatnost pojavljivanja člana $x_1$ kao vrijednosti skupa $X$ u nekom određenom trenutku promatranja kada vrijedi ta relacija. Iako navedena konstatacija vrijedi, u prognoziranju je puno učestalije razmatranje vrijednosti $\theta$ obzirom na češću primjenu prilikom analize statističke interferencije -- koja nastoji opisati ponašanje nepoznatog parametra $\theta$ u ovisnosti o različitim ulaznim vrijednostima skupa $X$ koje su nam poznate. Takva instanca funkcije zajedničke distribucije poznata je i kao funkcija vjerodostojnosti.
-            
-            Kako bi lakše predočili razliku između vjerojatnosti i vjerodostojnosti, pretpostavimo zadani skup podataka s normalnom distribucijom kao što je prikazano na slici \ref{fig:31}. Vjerojatnost možemo opisati kao površinu ispod krivulje normalne distribucije skupa $X$. Iz navedenoga, odaberemo li nasumičan član navedenoga skupa, vjerojatnost da je nasumični član skupa unutar granica $\mu\pm1\sigma$ iznosi \SI{68.27}{\percent}.
-            
-            Za razliku od vjerojatnosti, vjerodostojnost možemo opisati kao vrijednost ordinatnog položaja točke $\mathbf{A}$ na ordinati. Kako bismo znali odrediti prethodno navedeni položaj, potrebno je poznavati srednju vrijednost $\mu$ i standardnu devijaciju $\sigma$ promatranog skupa -- temeljem kojih možemo odrediti točku $\mathbf{A}$ kao sjecište pravca okomitog na apcisu u točki $\mu\pm\sigma$ i krivulje normalne distribucije skupa $X$.
+                možemo konvencionalno konstatirati kako je veća vjerojatnost pojavljivanja člana $x_1$ kao vrijednosti skupa $X$ u nekom određenom trenutku promatranja kada vrijedi ta relacija. Iako navedena konstatacija vrijedi, u prognoziranju je puno učestalije razmatranje vrijednosti $\theta$ obzirom na češću primjenu prilikom analize statističke interferencije -- koja nastoji opisati ponašanje nepoznatog parametra $\theta$ u ovisnosti o različitim ulaznim vrijednostima skupa $X$ koje su nam poznate. Takva instanca funkcije zajedničke distribucije poznata je i kao funkcija vjerodostojnosti.
+                
+                Kako bi lakše predočili razliku između vjerojatnosti i vjerodostojnosti, pretpostavimo zadani skup podataka s normalnom distribucijom kao što je prikazano na slici \ref{fig:31}. Vjerojatnost možemo opisati kao površinu ispod krivulje normalne distribucije skupa $X$. Iz navedenoga, odaberemo li nasumičan član navedenoga skupa, vjerojatnost da je nasumični član skupa unutar granica $\mu\pm1\sigma$ iznosi \SI{68.27}{\percent}.
+                
+                Za razliku od vjerojatnosti, vjerodostojnost možemo opisati kao vrijednost ordinatnog položaja točke $\mathbf{A}$. Kako bismo znali odrediti prethodno navedeni položaj, potrebno je poznavati srednju vrijednost $\mu$ i standardnu devijaciju $\sigma$ promatranog skupa -- temeljem kojih možemo odrediti točku $\mathbf{A}$ kao sjecište pravca okomitog na apcisu u točki $\mu\pm\sigma$ i krivulje normalne distribucije skupa $X$.
 
-            \begin{figure}[H]
-                \centering
-                \begin{tikzpicture}
-                    \begin{axis}[
-                        standard,
-                        xlabel={$\sigma$},
-                        enlarge x limits=false,
-                        domain = -4:4,
-                        xmin = -4, xmax = 4,
-                        ymin = 0, ymax = 0.4,
-                        xtick = {-4,...,4},
-                        height = 5cm,                    
-                    ],
-                        \addplot [very thick, domain=-1:0, pattern color=black, pattern=north east lines] {gauss(0,1)} \closedcycle;
-                        \addplot [smooth, black, thick] {gauss(0,1)};
-                        \node [circle, fill=black, label=60:$\mathbf{A}$, scale=0.3] at (1,0.24) {};
-                        \node [rectangle, fill=white, draw, very thick, font=\small, align=center, scale=0.75] at (-0.5,0.15) {\SI{34.135}{\percent}};
-                    \end{axis} 
-                \end{tikzpicture}
-                \caption{Prikaz normalne distribucije}
-                \label{fig:31}
-            \end{figure}
-            
-            
-            Sada kada znamo osnovnu razliku između vjerojatnosti i vjerodostojnosti, promotrimo li funkciju vjerodostojnosti $f(x,\theta)$ uz konstantnu izmjerenu vrijednost $x$ uz relaciju
+                \begin{figure}[H]
+                    \centering
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            standard,
+                            xlabel={$\sigma$},
+                            enlarge x limits=false,
+                            domain = -4:4,
+                            xmin = -4, xmax = 4,
+                            ymin = 0, ymax = 0.4,
+                            xtick = {-4,...,4},
+                            height = 7cm,                    
+                        ],
+                            \addplot [very thick, domain=0:1, pattern color=black, pattern=north east lines] {gauss(0,1)} \closedcycle;
+                            \addplot [very thick, domain=1:2, pattern color=gray, pattern=dots] {gauss(0,1)} \closedcycle;
+                            \addplot [smooth, black, thick] {gauss(0,1)};
+                            \draw [dashed] (-4,0.24) -- (-1,0.24);
+                            \node [circle, fill=black, label=120:$\mathbf{A}$, scale=0.3] at (-1,0.24) {};
+                            \node [rectangle, fill=white, draw, very thick, font=\small, align=center, scale=0.75] at (0.5,0.15) {\SI{34.1}{\percent}};
+                            \node [rectangle, fill=white, draw, very thick, font=\small, align=center, scale=0.75] at (1.5,0.04) {\SI{13.60}{\percent}};
+                        \end{axis} 
+                    \end{tikzpicture}
+                    \caption{Prikaz normalne distribucije s naznačenom vjerojatnošću i vjerodostojnošću}
+                    \label{fig:31}
+                \end{figure}
+                
+                
+                Sada kada znamo osnovnu razliku između vjerojatnosti i vjerodostojnosti, promotrimo li funkciju vjerodostojnosti $f(x,\theta)$ uz konstantnu izmjerenu vrijednost $x$ uz relaciju
 
-            \begin{equation}
-                f(x,\theta_1)>f(x,\theta_2),
-                \label{eq:33}
-            \end{equation}
+                \begin{equation}
+                    f(x,\theta_1)>f(x,\theta_2),
+                    \label{eq:33}
+                \end{equation}
 
-           dolazimo do zaključka kako se veća vrijednost nepoznatog parametra $\theta_2$ može pripisati kao vjerodostojnija, a samim time je i vjerojatnosti pojavljivanja izmjerenoga člana $x$ kao vrijednosti skupa $X$ veća. Takva razmatranja ne mogu se pripisati \textit{a priori}, već se pretpostavljena vrijednost nepoznatog parametra $\theta$ dodatno testira substitucijom u jednadžbu \ref{eq:31} -- nakon čega se vrši usporedba dobivenih vrijednosti sa izmjerenim vrijednostima iz skupa $X$ \cite{Broersen}.
+            dolazimo do zaključka kako se veća vrijednost nepoznatog parametra $\theta_2$ može pripisati kao vjerodostojnija, a samim time je i vjerojatnosti pojavljivanja izmjerenoga člana $x$ kao vrijednosti skupa $X$ veća. Takva razmatranja ne mogu se pripisati \textit{a priori}, već se pretpostavljena vrijednost nepoznatog parametra $\theta$ dodatno testira substitucijom u jednadžbu \ref{eq:31} -- nakon čega se vrši usporedba dobivenih vrijednosti sa izmjerenim vrijednostima iz skupa $X$ \cite{Broersen}.
 
-            Konačno, slijedi osnovni postulat metode procjene maksimalne vrijednosti koji nalaže postupak procjenjivanja vrijednosti parametra $\theta$ i odabir one vrijednosti koja će dati najvjerodostojniji rezultat. U praktičnoj primjeni, češće se koristi logaritamski oblik funkcije vjerodostojnosti
-            
-            \begin{equation}
-                L=L(x,\theta)=log_e\left\{f(x,\theta)\right\}.
-            \end{equation}
-    
-            Prethodno stečenim matematičkim znanjem, možemo pretpostaviti proces dobivanja maksimuma funkcije vjerodostojnosti izračunavanjem izraza
-            
-            \begin{equation}
-                \frac{\partial L}{\partial \theta}=0.
-            \end{equation}
-            
-            Daljnji proračun nadilazi potrebna znanja za shvaćanje teme ovoga rada te ćemo krenuti s pojašnjenjem sljedeće opće metode prognoziranja -- metode najmanjih kvadrata.
-
-        \section{Metoda najmanjih kvadrata}
-            Metoda
+                Konačno, slijedi osnovni postulat metode procjene maksimalne vrijednosti koji nalaže postupak procjenjivanja vrijednosti parametra $\theta$ i odabir one vrijednosti koja će dati najvjerodostojniji rezultat. U praktičnoj primjeni, češće se koristi logaritamski oblik funkcije vjerodostojnosti
+                
+                \begin{equation}
+                    L=L(x,\theta)=log_e\left\{f(x,\theta)\right\}.
+                \end{equation}
         
+                Prethodno stečenim matematičkim znanjem, možemo pretpostaviti proces dobivanja maksimuma funkcije vjerodostojnosti izračunavanjem izraza
+                
+                \begin{equation}
+                    \frac{\partial L}{\partial \theta}=0.
+                \end{equation}
+                
+                Daljnji proračun nadilazi potrebna znanja za shvaćanje teme ovoga rada te ćemo krenuti s pojašnjenjem sljedeće opće metode prognoziranja -- metode najmanjih kvadrata.
 
+            \subsection{Metoda najmanjih kvadrata}
+                Metoda najmanjih kvadrata je jedna od najranijih metoda prognoziranja, no njezina primjena zamjetna je i danas. Cilj korištenja metode najmanjih kvadrata je pronalazak pravca koji minimalizira sumu svih kvadratnih grešaka koje nastaju rezultat korelacijskih jednadžbi, kao što je prikazano na slici \ref{fig:32}. Važno je naglasiti kako prethodno somenuta teza vrijedi isključivo za linearnu metodu najmanjih kvadrata. Uz navedenu, postoji i nelinerana metoda najmanjih kvadrata koju nećemo promatrati.
 
+                \begin{figure}[H]
+                    \centering
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            standard,
+                            xlabel=Godina,
+                            ylabel=Anualna srednja vrijednost dionice,
+                            enlarge x limits=false,
+                            domain = 2010:2019,
+                            xmin = 2010, xmax = 2019,
+                            ymin = 0, ymax = 350,
+                            xtick = {2010,...,2019},
+                            x tick label style={/pgf/number format/1000 sep=},
+                            height = 10cm,
+                            width = 13cm,
+                            legend pos = north west,
+                            legend cell align = {left}            
+                        ],
+                            \addplot [black, only marks] table[x=t, y=r] {test_data/r_vs_t.dat};
+                            \addplot [black, very thick] table[x=t, y={create col/linear regression={y=r}}] {test_data/r_vs_t.dat};
+                            \addlegendentry{Stvarna vrijednost}
+                            \addlegendentry{Prognozirana vrijednost}
+                        \end{axis} 
+                    \end{tikzpicture}
+                    \caption{Prikaz stvarne i prognozirane vrijednosti dionica poduzeća "Tesla, Inc"\\ (Izvor: https://www.macrotrends.net/stocks/charts/TSLA/tesla/stock-price-history)}
+                    \label{fig:32}
+                \end{figure}
+
+                Praktičnu primjenu navedene metode je najintuitivnije, poput prethodno spomenute metode procjene maksimalne vrijednosti, predočiti kroz primjenu u procesu investiranja. Uzmemo li primjer investitora koji nastoji donesti odluku o dugoročnom investiranju u poduzeće "Tesla, Inc" (\$TSLA) s naumom ostvarivanja dobiti kroz idućih 10 godina, korištenjem metode najmanjih kvadrata moguće je izraditi prognostički model koji će pobliže opisati i predočiti trend promjene vrijednosti dionica poduzeća u odnosu na prethodno desetljeće. Rezultat navedene metode jest pravac prikazan na slici \ref{fig:32}, iz kojega investitor može steći subjektivni dojam o trendu vrijednosti dionice, a koji će mu pomoći pri donošenju odluke o insvestiranje. Kao i kod otalih metoda, korištenje ove metode može samo pobliže opisati određeni trend u odnosu na referentni vremenski period ili neku drugu nezavisnu varijablu, no u našem konkretnom primjeru, zbog volatilnosti tržišta kapitala nastoji se izbjegavati donošenje konkretnih odluka temeljem metode najmanjih kvadrata uslijed preširokog vremenskog intervala koji može dati krive rezultate prilikom neočekivanih događaja. Kao što je bilo navedeno i kroz prethodni primjer, jedan od neočekivanih događanja može biti i pojava financijske krize -- koja se otprilike ponavlja svakih 10 godina. Upravo zbog toga, izrada prognostičkih modela ima više čimbenika i indikatora temeljem kojih se može donesti sud o ispravnosti budućih odluka temeljem dubljih analiza na temelju različitih prognostičkih modela -- za koje je nužna logička valjanost korelacije između zavisne i nezavisne varijable. U protivnom, obzirom na proizvoljan odabir zavisne i nezavisne varijable za koju ćemo vršiti promatranja, može doći do logičke neistovjetnosti korelacije i kauzaliteta.
+
+                Nakon usustavljivanja osnovne predodžbe metode najmanjih kvadrata, svojstva iste nastojati ćemo opisati kroz analizu nasumičnog mjerenje dostavljenih otpornika, čije rezultate možemo prikazati kao opći izraz
+
+                \begin{equation}
+                    E(y)=\theta_1x_1+\theta_2x_2+\ldots+\theta_qx_q,
+                    \label{eq:36}
+                \end{equation}
+
+                gdje su vrijednosti varijabli $x_1,x_2,\ldots,x_q$ poznanice (vrijednosti mjerenih otpora), a vrijednosti nepoznatog parametara $theta_1,\theta_2,\ldots,\theta_q$ nepoznanice. Nadalje, izraz \ref{eq:36} možemo razvesti kao
+
+                \begin{equation}
+                    y=\theta_1x_1+\theta_2x_2+\ldots+\theta_qx_q+\epsilon,
+                    \label{eq:37}
+                \end{equation}
+
+                za koji pretpostavljamo $E(\epsilon)=0$. Nasumičnu varijablu $\epsilon$ nazivamo mjernom pogreškom \cite{Priestley}. Mjerna pogreška ili odstupanje može nastati iz različitih razloga, od kojih su u elektrotehnici najčešći nesavršenosti mjerne opreme, neispravnost mjernog postupka, nevjerodostojno stanje mjernog objekta, vanjski utjecaji, itd.
+
+                Izraz \ref{eq:36} daje nam linearnu korelaciju vrijednosti $y$ kao sume $q$ članova poznatih vrijednosti $x$. Želimo li odrediti vrijednost $y$ za točno određeni broj članova, izraz \ref{eq:36} možemo zapisati i kao
+                
+                \begin{equation}
+                    y_i=\theta_1x_{1i}+\theta_2x_{2i}+\ldots+\theta_qx_{qi}+\epsilon_i, \quad i=1,\ldots,n,
+                    \label{eq:38}
+                \end{equation}
+                
+                uz analogno navedenu pretpostavku $E(\epsilon_i)=0$, te vrijednosti $\epsilon_i$ kao mjerne pogreške određenog mjerenja $i$. Uz sve navedene pretpostavke i poznate vrijednosti podataka, kao jedina nepoznanica nameće se vrijednost nepoznatog parametra $\theta$. "Princip najmanjih kvadrata" nalaže odabir nepoznatih parametara $\theta_1,\ldots,\theta_q$ s pripadajućim vrijednostima $\widehat{\theta_1},\ldots,\widehat{\theta_q}$ koje će minimizirati količinu članova \cite{Priestley}
+
+                \begin{equation}
+                    Q(\theta_1,\ldots,\theta_q)=\displaystyle\sum_{i=1}^{n}\left\{y_i-\theta_1x_{1i}-\theta_2x_{2i}-\ldots-\theta_qx_{qi}\right\}^2.
+                    \label{eq:39}
+                \end{equation}
+
+                Korištenjem prethodno stečenih matematičkih znanja, možemo pretpostaviti daljnji pronalazak pripadajućih vrijednosti izračunom minimuma funkcije $Q(\theta_1,\ldots,\theta_q)$ parcijalnom derivacijom po svakom $\theta_i$, te izjednačavanjem te parcijalne derivacije s 0 kako slijedi:
+
+                \begin{equation}
+                    \frac{\partial Q}{\partial \theta_i}=(-2)\displaystyle\sum_{i=1}^{n}x_{ji}\left\{y_i-\theta_1x_{1i}-\theta_2x_{2i}-\ldots-\theta_qx_{qi}\right\}=0, \quad j=1,\ldots,q.
+                    \label{eq:310}
+                \end{equation}
+
+                Jednadžbom \ref{eq:310} zaključujemo ovo poglavlje. U sljedećem poglavlju opisati ćemo osnovne statističke pokazatelje signala i vremenskih nizova koji čine osnovu svih statističkih modela, pa tako i onih navedenih u ovom potpoglavlju.        
 
     \chapter{Osnovni statistički pokazatelji signala i vremenski nizovi}
 
