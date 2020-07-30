@@ -713,6 +713,7 @@
                 Daljnji proračun nadilazi potrebna znanja za shvaćanje teme ovoga rada te ćemo krenuti s pojašnjenjem sljedeće opće metode prognoziranja -- metode najmanjih kvadrata.
 
             \subsection{Metoda najmanjih kvadrata}
+            \label{subs:LS}
                 Metoda najmanjih kvadrata je jedna od najranijih metoda prognoziranja, no njezina primjena zamjetna je i danas. Cilj korištenja metode najmanjih kvadrata je pronalazak pravca koji minimalizira sumu svih kvadratnih grešaka koje nastaju rezultat korelacijskih jednadžbi, kao što je prikazano na slici \ref{fig:32}. Važno je naglasiti kako prethodno somenuta teza vrijedi isključivo za linearnu metodu najmanjih kvadrata. Uz navedenu, postoji i nelinerana metoda najmanjih kvadrata koju nećemo promatrati.
 
                 \begin{figure}[H]
@@ -883,7 +884,7 @@
                 \label{eq:U2}
             \end{equation}
 
-            Parcijalnim deriviranjem jednadžbe \ref{eq:U2} po autokorelacijskom koeficijentu $a_i$, možemo doći do konkretnog izraza za izračun minimuma funkcije srednje kvadratne pogreške $\frac{\partial E[e^2[n]]}{\partial a_i}$. Daljnji proračun tog izraza nećemo dalje analizirati i promatrati jer nadilazi svrhu ovoga potpoglavlja.
+            Parcijalnim deriviranjem jednadžbe \ref{eq:U2} po autokorelacijskom koeficijentu $a_i$, možemo doći do konkretnog izraza za izračun minimuma funkcije srednje kvadratne pogreške $\frac{\partial E[e^2[n]]}{\partial a_i}$. Daljnji proračun tog izraza možemo intuitivno povezati s postupkom minimizacije funkcije metode najmanjih kvadrata opisanoj u potpoglavlju \ref{subs:LS}, te ga nije potrebno dalje analizirati.
             
             Zaključno, u ovom potpoglavlju smo potvrdili tezu o korisnosti kroištenja statističke analize vremenskih nizova u elektrotehnici. Jedna od konkretnih primjena Wienerova filtra u elektrotehnici je uočavanje pojave neočekivanoga šuma u električnoj mreži i daljnja regulacija sustava temeljem vrijednosti signala pogreške koji nastaje uslijed pojave navedenoga šuma. Korištenje FIR Wienerova filtra i filtra sličnih funkcija od iznimne je koristi za pravovremenost regulacije sustava upravljanja. U slučaju izostanka pravovremene regulacije sustava upravljanja, može doći do oštećenja sustava i njegovih komponenti, pojave nestabilnosti u sustavu, te drugih nepoželjnih svojstva.
 
@@ -994,7 +995,6 @@
 
         \section{Autoregresijski model (AR)}
             % Priestley:\\
-            %     First Order Autoregressive Process (Linear Markov Process): Page 116\\
             %     Estimation of Parameters in Standard Models: Page 346,\\
 
             % Petrus:\\
@@ -1005,10 +1005,10 @@
 
             Sada kada smo ustanovili prednosti i mane korištenja autoregresijskog modela u praksi, možemo započeti sa dubinskom matematičkom analizom istoga.
 
-            Autoregresijski $AR(p)$ model je reprezentacija nasumičnog stacionarnog procesa čija izlazna vrijednost u trenutku $x_t$ linearno ovisi o vlastitim vrijednostima u trenucima koji su prethodili, a mogu se definirati kao $x_{t-p}$. Navedeno opće načelo možemo matematički definirati kao
+            Autoregresijski $AR(p)$ model je reprezentacija nasumičnog stacionarnog procesa čija izlazna vrijednost u trenutku $x_t$ linearno ovisi o vlastitim vrijednostima u trenucima koji su prethodili, a mogu se definirati kao $x_{t-p}$. Navedeno opće načelo možemo definirati izrazom
 
             \begin{equation}
-                \epsilon_t=x_t-\mu_x+\phi_1(x_{t-1}-\mu_x)+\phi_2(x_{t-2}-\mu_x)+\cdots+\phi_p(x_{t-p}-\mu_x)+\omega_t,
+                \epsilon_t=x_t-\mu_x+\phi_1(x_{t-1}-\mu_x)+\phi_2(x_{t-2}-\mu_x)+\ldots+\phi_p(x_{t-p}-\mu_x),
                 \label{eq:51}
             \end{equation}
             gdje su:
@@ -1016,30 +1016,29 @@
             \begin{table}[H]
                 \centering
                 \begin{tabular*}{0.9\textwidth}{>{\bfseries}l p{13cm}}
-                    \textit{\textbf{$\boldsymbol{\epsilon_t}$}} & \textit{nasumični stacionarni proces}\\
-                    \textit{\textbf{$\boldsymbol{x_t}$}} & \textit{član nasumičnog procesa}\\
+                    \textit{\textbf{$\boldsymbol{\epsilon_t}$}} & \textit{\textbf{bijeli šum}, nasumični stacionarni proces s pripadajućim statističkim parametrima $\mu_x$ i $\sigma_x^2$}\\
+                    \textit{\textbf{$\boldsymbol{x_t}$}} & \textit{nezavisna varijabla zadanoga skupa}\\
                     \textit{\textbf{$\boldsymbol{\mu_x}$}} & \textit{srednja vrijednost nasumičnog procesa}\\
                     \textit{\textbf{$\boldsymbol{\phi_p}$}} & \textit{autoregresijski koeficijent}\\
-                    \textit{\textbf{$\boldsymbol{\omega_t}$}} & \textit{bijeli šum}\\
                     \textit{\textbf{$\boldsymbol{p}$}} & \textit{red autoregresijskog modela}\\
                 \end{tabular*}
             \end{table}
 
-            \textbf{Dodati raspis Leasts Squares approach za $\epsilon_t^2$ ili ono kraće iz Broersena}
+            Izraz \ref{eq:51} možemo raspisati i kao
 
             \begin{equation}
-                (x_t-\mu_x)=\phi_1(x_{t-1}-\mu_x)+\phi_2(x_{t-2}-\mu_x)+\cdots+\phi_p(x_{t-p}-\mu_x)+\omega_t,
+                (x_t-\mu_x)=\epsilon_t-\phi_1(x_{t-1}-\mu_x)-\phi_2(x_{t-2}-\mu_x)-\ldots-\phi_p(x_{t-p}-\mu_x).
                 \label{eq:52}
             \end{equation}
 
-            Jednadžba \ref{eq:52} predstavlja opći eksplicitni prikaz autoregresijskog modela reda $p$. Za tu jednadžbu pretpostaviti ćemo temeljne pretpostavke koje će nam omogućiti jednostaviniju reprezentaciju.
+            Izraz \ref{eq:52} predstavlja opći eksplicitni prikaz autoregresijskog modela reda $p$. U svrhu lakšeg pronalaska vrijednosti autoregresijskih koeficijenata, potrebno je definirati temeljne pretpostavke koje će nam biti korisne u budućim razmatranjima. Detaljnija pojašnjenja spomenutih pretpostavki detaljnije ćemo opisati kroz primjere AR(1) i AR(2) u potpoglavnjima \ref{subs:512} i \ref{subs:513}.
             
             Uz temeljne pretpostavke da vrijednost autoregresijskog koeficijenta zaprima isključivo ne nulte vrijednosti ($\phi_p\neq0$), te da srednja vrijednost stacionarnog nasumičnog procesa $x_t$ odgovara vrijednosti $\mathbb{E}[x_t]=\mu_x$; najčešće pretpostavljamo sljedeće dodatne pretpostavke:
 
             \begin{itemize}
                 \item Vrijednost srednje vrijednosti nasumičnog proces iznosi $\mu_x=0$, iz čega slijedi izraz
                 \begin{equation}
-                    x_t=\phi_1x_{t-1}+\phi_2x_{t-2}+\cdots+\phi_px_{t-p}+\omega_t,
+                    x_t=\phi_1x_{t-1}+\phi_2x_{t-2}+\ldots+\phi_px_{t-p}+\omega_t,
                     \label{eq:53}
                 \end{equation}
                 \item Uvodi se pojam autoregresijskog operatora definiranog izrazom
@@ -1047,7 +1046,7 @@
                     \phi(B)=1-\phi_1B-\phi_2B^2-\cdots-\phi_pB^p,
                     \label{eq:54}
                 \end{equation}
-                gdje $B^px_t=x_{t-p}$ definiramo kao \textbf{backshift operator}. Izvršimo li substituciju \textbf{backshift operatora} u jednadžbama \ref{eq:53} i \ref{eq:54}, dolazimo do sažetijeg izraza za autoregresijski operator
+                gdje $B^px_t=x_{t-p}$ definiramo kao \textit{operator pomaka}. Izvršimo li substituciju operatora pomaka u jednadžbama \ref{eq:53} i \ref{eq:54}, dolazimo do sažetijeg izraza za autoregresijski operator
                 \begin{equation}
                     \phi(B)(x_t-\mu_x)=\omega_t,
                 \end{equation}
@@ -1057,10 +1056,42 @@
                 \end{equation}
             \end{itemize}
 
+
+
             \textbf{Dodati intro u sljedeća potpoglavlja s nastojanjem pojašnjenja konkretnih svojstava autoregresijskih modela na primjueru modela nižeg reda}
 
+            \subsection{Metode određivanja vrijednosti nepoznatih koeficijenata}
+
+            \subsubsection{Metoda najmanjih kvadrata}
+
+            Jedna od metoda dobivanja vrijednosti parametara \textbf{ovaj shit nadopuniti}. Prisjetimo li metode najmanjih kvadrata u potpoglavlju \ref{subs:LS}, njezinom direktnom primjenom slijedi odabir vrijednosti parametara $\mu,\phi_1,\ldots,\phi_p$ koji će zadovoljavati uvjet minimizacije funkcije srednje kvadratne greške
+            
+            \begin{equation}
+                \begin{split}
+                    \mathbb{E(\mu,\phi_1,\ldots,\phi_p)}&=\displaystyle\sum_{t=p+1}^N\epsilon_t^2\\
+                    & =\displaystyle\sum_{t=p+1}^N\left\{x_t-\mu_x+\phi_1\left(x_{t-1}-\mu_x\right)+\ldots+\phi_p\left(x_{t-p}-\mu_x\right)+\omega_t\right\}^2.
+                \end{split}
+                \label{eq:55}
+            \end{equation}
+
+            Minimizacijom izraza \ref{eq:55} dolazimo do izraza
+            
+            \begin{equation}
+                \displaystyle\sum_{t=p+1}^N\left\{x_t-\mu_x+\phi_1\left(x_{t-1}-\mu_x\right)+\ldots+\phi_p\left(x_{t-p}-\mu_x\right)+\omega_t\right\}=0,
+            \end{equation}
+            \label{subs:511}
+
+            iz kojega konačno slijedi izraz
+
+
             \subsection{Autoregresijski model 1. reda}
+            \label{subs:512}
+            % Priestley:
+            %   First Order Autoregressive Process (Linear Markov Processes): Page 116,
+            % Petrus:
+            %   AR(1) Processes: Page 64,
             \subsection{Autoregresijski model 2. reda}
+            \label{subs:513}
 
 
 
