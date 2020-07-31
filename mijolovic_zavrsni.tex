@@ -1027,9 +1027,17 @@
             Izraz \ref{eq:51} možemo raspisati i kao
 
             \begin{equation}
-                (x_t-\mu_x)=\epsilon_t-\phi_1(x_{t-1}-\mu_x)-\phi_2(x_{t-2}-\mu_x)-\ldots-\phi_p(x_{t-p}-\mu_x).
+                \phi(B)x_t=\epsilon_t,
+            \end{equation}
+
+            ili u razvijenom obliku
+
+            \begin{equation}
+                (x_t-\mu_x)=\epsilon_t-\phi_1(x_{t-1}-\mu_x)-\phi_2(x_{t-2}-\mu_x)-\ldots-\phi_p(x_{t-p}-\mu_x)
                 \label{eq:52}
             \end{equation}
+
+            s pripadajućim polovima jednadžbe definiranih
 
             Izraz \ref{eq:52} predstavlja opći eksplicitni prikaz autoregresijskog modela reda $p$. U svrhu lakšeg pronalaska vrijednosti autoregresijskih koeficijenata, potrebno je definirati temeljne pretpostavke koje će nam biti korisne u budućim razmatranjima. Detaljnija pojašnjenja spomenutih pretpostavki detaljnije ćemo opisati kroz primjere AR(1) i AR(2) u potpoglavnjima \ref{subs:512} i \ref{subs:513}.
             
@@ -1052,7 +1060,7 @@
                 \end{equation}
                 tj.
                 \begin{equation}
-                    \phi(B)(x_t)=\omega_t.
+                    \phi(B)(x_t)=\phi_t.
                 \end{equation}
             \end{itemize}
 
@@ -1061,6 +1069,9 @@
             \textbf{Dodati intro u sljedeća potpoglavlja s nastojanjem pojašnjenja konkretnih svojstava autoregresijskih modela na primjueru modela nižeg reda}
 
             \subsection{Metode određivanja vrijednosti nepoznatih koeficijenata}
+
+            % Broersen:
+            %   AR Estimation Methods: Page 124,
 
             \subsubsection{Metoda najmanjih kvadrata}
 
