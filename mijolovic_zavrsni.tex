@@ -1005,10 +1005,10 @@
 
             Sada kada smo ustanovili prednosti i mane korištenja autoregresijskog modela u praksi, možemo započeti sa dubinskom matematičkom analizom istoga.
 
-            Autoregresijski $AR(p)$ model je reprezentacija nasumičnog stacionarnog procesa čija izlazna vrijednost u trenutku $x_t$ linearno ovisi o vlastitim vrijednostima u trenucima koji su prethodili, a mogu se definirati kao $x_{t-p}$. Navedeno opće načelo možemo definirati izrazom
+            Autoregresijski \textit{AR(p)} modeli opisuju nasumične stacionarne procese čija izlazna vrijednost u trenutku $x_t$ linearno ovisi o vlastitim vrijednostima koji su prethodili tom trenutku $(x_{t-p})$. Navedeno opće načelo možemo definirati izrazom
 
             \begin{equation}
-                \epsilon_t=x_t-\mu_x+\phi_1(x_{t-1}-\mu_x)+\phi_2(x_{t-2}-\mu_x)+\ldots+\phi_p(x_{t-p}-\mu_x),
+                \epsilon_t=x_t-\mu_x+\phi_1(x_{t-1}-\mu_x)+\phi_2(x_{t-2}-\mu_x)+\ldots+\phi_p(x_{t-p}-\mu_x)+\theta_0,
                 \label{eq:51}
             \end{equation}
             gdje su:
@@ -1016,54 +1016,85 @@
             \begin{table}[H]
                 \centering
                 \begin{tabular*}{0.9\textwidth}{>{\bfseries}l p{13cm}}
-                    \textit{\textbf{$\boldsymbol{\epsilon_t}$}} & \textit{\textbf{bijeli šum}, nasumični stacionarni proces s pripadajućim statističkim parametrima $\mu_x$ i $\sigma_x^2$}\\
-                    \textit{\textbf{$\boldsymbol{x_t}$}} & \textit{nezavisna varijabla zadanoga skupa}\\
-                    \textit{\textbf{$\boldsymbol{\mu_x}$}} & \textit{srednja vrijednost nasumičnog procesa}\\
-                    \textit{\textbf{$\boldsymbol{\phi_p}$}} & \textit{autoregresijski koeficijent}\\
+                    \textit{\textbf{$\boldsymbol{\epsilon_t}$}} & \textit{bijeli šum; nasumični stacionarni proces s pripadajućim statističkim parametrima $\mu_x$ i $\sigma_x^2$}\\
+                    \textit{\textbf{$\boldsymbol{x_t}$}} & \textit{nezavisna varijabla promatranog skupa}\\
+                    \textit{\textbf{$\boldsymbol{\mu_x}$}} & \textit{očekivana vrijednost slučajne varijable}\\
+                    \textit{\textbf{$\boldsymbol{\phi_p}$}} & \textit{autoregresijski parametar}\\
+                    \textit{\textbf{$\theta_0$}} & \textit{konstantni član}\\
                     \textit{\textbf{$\boldsymbol{p}$}} & \textit{red autoregresijskog modela}\\
                 \end{tabular*}
             \end{table}
 
-            Izraz \ref{eq:51} možemo raspisati i kao
+            Ukoliko iz izraza \ref{eq:51} želimo definirati vrijednost člana procesa $x_n$, dolazimo do izvedenice
 
             \begin{equation}
-                \phi(B)x_t=\epsilon_t,
-            \end{equation}
-
-            ili u razvijenom obliku
-
-            \begin{equation}
-                (x_t-\mu_x)=\epsilon_t-\phi_1(x_{t-1}-\mu_x)-\phi_2(x_{t-2}-\mu_x)-\ldots-\phi_p(x_{t-p}-\mu_x)
+                (x_t-\mu_x)=\epsilon_t-\phi_1(x_{t-1}-\mu_x)-\phi_2(x_{t-2}-\mu_x)-\ldots-\phi_p(x_{t-p}-\mu_x)+\theta_0.
                 \label{eq:52}
             \end{equation}
 
-            s pripadajućim polovima jednadžbe definiranih
+            Izraz \ref{eq:52} predstavlja opći eksplicitni prikaz autoregresijskog modela reda $p$.
 
-            Izraz \ref{eq:52} predstavlja opći eksplicitni prikaz autoregresijskog modela reda $p$. U svrhu lakšeg pronalaska vrijednosti autoregresijskih koeficijenata, potrebno je definirati temeljne pretpostavke koje će nam biti korisne u budućim razmatranjima. Detaljnija pojašnjenja spomenutih pretpostavki detaljnije ćemo opisati kroz primjere AR(1) i AR(2) u potpoglavnjima \ref{subs:512} i \ref{subs:513}.
-            
-            Uz temeljne pretpostavke da vrijednost autoregresijskog koeficijenta zaprima isključivo ne nulte vrijednosti ($\phi_p\neq0$), te da srednja vrijednost stacionarnog nasumičnog procesa $x_t$ odgovara vrijednosti $\mathbb{E}[x_t]=\mu_x$; najčešće pretpostavljamo sljedeće dodatne pretpostavke:
+            Neke od općih pretpostavki kojima se ne gubi općenitost prethodno opisanih izraza, a koje će nam biti od u budućim raspisima, su:
 
             \begin{itemize}
-                \item Vrijednost srednje vrijednosti nasumičnog proces iznosi $\mu_x=0$, iz čega slijedi izraz
+                \item autoregresijski parametri zaprimaju isključivo ne-nulte vrijednosti ($\phi_p\neq0$),
+                \item utjecaj konstantnog člana možemo zanemariti ($\theta_0=0$),
+                \item u budućim razmatranjima, vršiti ćemo analizu centriranog procesa opisanog jednadžbom:
+                
                 \begin{equation}
-                    x_t=\phi_1x_{t-1}+\phi_2x_{t-2}+\ldots+\phi_px_{t-p}+\omega_t,
+                    Z_t=x_t-E(x_t)=x_t-\mu_x.
                     \label{eq:53}
-                \end{equation}
-                \item Uvodi se pojam autoregresijskog operatora definiranog izrazom
-                \begin{equation}
-                    \phi(B)=1-\phi_1B-\phi_2B^2-\cdots-\phi_pB^p,
-                    \label{eq:54}
-                \end{equation}
-                gdje $B^px_t=x_{t-p}$ definiramo kao \textit{operator pomaka}. Izvršimo li substituciju operatora pomaka u jednadžbama \ref{eq:53} i \ref{eq:54}, dolazimo do sažetijeg izraza za autoregresijski operator
-                \begin{equation}
-                    \phi(B)(x_t-\mu_x)=\omega_t,
-                \end{equation}
-                tj.
-                \begin{equation}
-                    \phi(B)(x_t)=\phi_t.
                 \end{equation}
             \end{itemize}
 
+            Ukoliko s $B$ označimo \textit{operator pomaka}, te primjenimo li pretpostavku definiranu jednadžbom \ref{eq:53}, dolazimo do definicijskog izraza
+
+            \begin{align}
+                \begin{split}
+                    BZ_t&=Z_{t-1},\\
+                    B^2Z_t&=B(BZ_t)=BZ_{t-1}=Z_{t-2},\\
+                    &\vdots\\
+                    B^pZ_t&=Z_{t-p}.
+                \end{split}
+                \label{eq:54}
+            \end{align}
+
+            Daljnjim uvrštavanjem izraza \ref{eq:54} u izraz \ref{eq:51} dobivamo
+
+            \begin{align}
+                \begin{split}
+                    \epsilon_t&=Z_t+\phi_1BZ_t+\phi_2B^2Z_t+\ldots+\phi_pB^pZ_t,\\
+                    \epsilon_t&=Z_t(1+\phi_1B+\phi_2B^2+\ldots+\phi_pB^p).
+                \end{split}
+                \label{eq:55}
+            \end{align}
+
+            
+        
+            Iz izraza \ref{eq:55} možemo definirati razvoj općeg polinoma koji opisuje autoregresijske parametre kako slijedi:
+
+            \begin{equation}
+                \phi(B)=1+\phi_1B+\phi_2B^2+\ldots+\phi_pB^p.
+                \label{eq:56}
+            \end{equation}
+
+            Zaključno, iz prethodnih izraza slijedi sažetiji opći oblik \textit{AR(p)} modela:
+
+            \begin{equation}
+                \phi(B)Z_t=\epsilon_t.
+                \label{eq:57}
+            \end{equation}
+
+            \subsection{Dodatne pretpostavke}
+            
+            U svrhu lakšeg pronalaska vrijednosti autoregresijskih koeficijenata, potrebno je definirati dodatne pretpostavke koje će nam biti korisne u budućim razmatranjima. \textbf{Opisati zašto $\mu_x=0$ i važnost svojstva stacionarnosti te povezivanje sa MA(q)}
+            
+            
+            Detaljnija pojašnjenja spomenutih pretpostavki detaljnije ćemo opisati kroz primjere \textit{AR(1)} i \textit{AR(2)} u potpoglavnjima \ref{subs:512} i \ref{subs:513}.
+            
+            
+            
+            % Temeljne pretpostavke da vrijednost autoregresijskog koeficijenta zaprima isključivo ne nulte vrijednosti ($\phi_p\neq0$), te da srednja vrijednost stacionarnog nasumičnog procesa $x_t$ odgovara vrijednosti $\mathbb{E}[x_t]=\mu_x$; najčešće pretpostavljamo sljedeće dodatne pretpostavke:
 
 
             \textbf{Dodati intro u sljedeća potpoglavlja s nastojanjem pojašnjenja konkretnih svojstava autoregresijskih modela na primjueru modela nižeg reda}
@@ -1082,7 +1113,7 @@
                     \mathbb{E(\mu,\phi_1,\ldots,\phi_p)}&=\displaystyle\sum_{t=p+1}^N\epsilon_t^2\\
                     & =\displaystyle\sum_{t=p+1}^N\left\{x_t-\mu_x+\phi_1\left(x_{t-1}-\mu_x\right)+\ldots+\phi_p\left(x_{t-p}-\mu_x\right)+\omega_t\right\}^2.
                 \end{split}
-                \label{eq:55}
+                \label{eq:56}
             \end{equation}
 
             Minimizacijom izraza \ref{eq:55} dolazimo do izraza
