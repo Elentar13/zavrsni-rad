@@ -8,6 +8,7 @@
 \usepackage[intlimits]{amsmath}     %omogućava postavljanje granica integrala u formulama
 \usepackage{amsthm}         %matematički teoremi, leme i sl.
 \usepackage{siunitx}        %podrška za korištenje SI sustava mjernih jedinica
+\usepackage{mathrsfs}
 
 %encoding fontova i jezika
 \usepackage[croatian]{babel}
@@ -34,6 +35,7 @@
 \captionsetup[table]{position=above}
 \captionsetup[figure]{position=below}
 \captionsetup{labelsep=period}
+\captionsetup{justification=centering}
 
 \usepackage[hidelinks]{hyperref}        %podrška za integraciju hyperlinkova
 \urlstyle{same}
@@ -43,6 +45,7 @@
 % \usepackage{pgfcore}
 % \usepgflibrary{datavisualization.formats.functions}
 \usepackage{graphicx}
+\usepackage{multirow}
 \usepackage{pgfmath}
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
@@ -556,7 +559,7 @@
             
             Neki od primjera vremenski kontinuiranih signala su brzina, pozicija vozila, govor ili zvuk iz audio sustava; dok su primjeri vremenski diskretnih signala mjesečne vrijednosti dionica, demografski pokazatelji poput nataliteta i sl..
             
-            Kao što smo već prethodno ustanovili, vremenski diskretni signali mogu reprezentirati bilo koje promatrani fenomen čije se vrijednosti mogu dobiti za točno određeni trenutak -- što nas dovodi do zaključka o postojanju mogućnosti prikazivanja vremenski kontinuiranih signala pomoću vremenski diskretnih signala. To je moguće sukcesivnim \textit{uzorkovanjem} vremenski kontinuiranoga signala (eng. \textit{sampling}), čime dolazimo do diskretnih vrijednosti signala. Rezolucijom uzorkovanog signala moguće je upravljati pomoću podešavanja frekvencije uzorkovanja (eng. \textit{sampling rate}). Tako je prethodno navedeni diskretni signal prikazan na Slici \ref{fig:M32} načinjen uzorkovanjem kontinuiranoga signala na Slici \ref{fig:M31}.  Navedena klasa signala vrlo je korisna prilikom digitalne obrade signala. Uzmemo li u obzir prethodno spomenutu prednost visoke brzine računalnog procesuiranja podatka, ali i postojeća ograničenja računalnih sustava radnom memorijom, procesorskim performansama, te digitaliziranom reprezentacijom podataka; važnost vremenski diskretnih signala i uzorkovanja je neminovna -- što je dokazano širokom i ekonomičnom integracijom funkcionalnosti obrade signala u različita tehnološka i ina rješenja (npr. mogućnost mobilnih uređaja da prepoznaju glasovne naredbe). Naravno, operacija uzorkovanja signala nije toliko jednostavna kao što smo opisali jer kvalitetna izvedba zahtjeva dobro poznavanje spektralne analize -- što uključuje znanja iz područja matematičkih transformacija do realnih ograničenja poput preklapanja signala ili prisutnosti šuma. Analogno vrijedi i za rekonstrukciju uzorkovanih signala u vremenski kontinuirane signale.
+            Kao što smo već prethodno ustanovili, vremenski diskretni signali mogu reprezentirati bilo koje promatrani fenomen čije se vrijednosti mogu dobiti za točno određeni trenutak -- što nas dovodi do zaključka o postojanju mogućnosti prikazivanja vremenski kontinuiranih signala pomoću vremenski diskretnih signala. To je moguće sukcesivnim \textit{uzorkovanjem} vremenski kontinuiranoga signala (engl. \textit{sampling}), čime dolazimo do diskretnih vrijednosti signala. Rezolucijom uzorkovanog signala moguće je upravljati pomoću podešavanja frekvencije uzorkovanja (engl. \textit{sampling rate}). Tako je prethodno navedeni diskretni signal prikazan na Slici \ref{fig:M32} načinjen uzorkovanjem kontinuiranoga signala na Slici \ref{fig:M31}.  Navedena klasa signala vrlo je korisna prilikom digitalne obrade signala. Uzmemo li u obzir prethodno spomenutu prednost visoke brzine računalnog procesuiranja podatka, ali i postojeća ograničenja računalnih sustava radnom memorijom, procesorskim performansama, te digitaliziranom reprezentacijom podataka; važnost vremenski diskretnih signala i uzorkovanja je neminovna -- što je dokazano širokom i ekonomičnom integracijom funkcionalnosti obrade signala u različita tehnološka i ina rješenja (npr. mogućnost mobilnih uređaja da prepoznaju glasovne naredbe). Naravno, operacija uzorkovanja signala nije toliko jednostavna kao što smo opisali jer kvalitetna izvedba zahtjeva dobro poznavanje spektralne analize -- što uključuje znanja iz područja matematičkih transformacija do realnih ograničenja poput preklapanja signala ili prisutnosti šuma. Analogno vrijedi i za rekonstrukciju uzorkovanih signala u vremenski kontinuirane signale.
 
         \section{Vrste sustava}
             Uz signale se nerijetko veže i ideja \textit{sustava}, te je stoga potrebno definirati koncept sustava kao spone između ulaznoga i izlaznoga signala. Za razliku od jednostavnosti ideje signala, navedeno će možda izazvati određene poteškoće -- budući da je sustav u općem smislu shvaćen kao cjelokupno i dovršeno projektantsko rješenje (npr. sustav za prijenos električne energije), dok je matematička reprezentacija takvoga sustava predočena kao model sustava. Štoviše, opisujući sustav u užem smislu, i dalje dolazimo do vrlo širokoga polja istraživanja i unutar točno određenoga znanstvenoga područja. Zadržimo li se isključivo na području elektrotehnike, sustavi mogu biti određeni kao sustavi programske podrške, sustavi regulacije, elektronički sustavi, ugradbeni sustavi, mehanički sustavi, elektromehanički sustavi itd.. Valjano je zaključiti da je potrebno odrediti nužne granice idejnoga razmatranja sustava kako bi izbjegli neizbježnu apstrakciju beskonačne kvantizacije opisa sustava. Iz toga proizlazi ideja i potreba za prethodno spomenutim razmatranjem sustava kao poveznice između ulaznoga i izlaznoga signala, što se ispostavilo kao koristan alat inženjerima prilikom analize propagacije ulaznih signala u regulacijskim krugovima ili prilikom prognoziranja ponašanja sustava na određene pobude tijekom projektiranja samoga sustava.
@@ -598,7 +601,7 @@
                     \caption{}
                     \label{fig:U42}
                 \end{subfigure}
-                \caption{Blokovski prikaz vremenski kontinuiranoga sustava (a) i vremenski diskretnoga sustava (b).}
+                \caption{Blokovski prikaz vremenski kontinuiranoga sustava (a) i vremenski diskretnoga sustava (b)}
                 \label{fig:U4}
             \end{figure}
 
@@ -622,7 +625,7 @@
         Obzirom na sveprisutnost prognoziranja, baš kao i signala i sustava, klasificirati ćemo dvije osnovne vrste prognoza -- subjektivne prognoze i prognoze temeljene na statističkim modelima.\cite{Holden}
 
         \section{Subjektivne prognoze}
-            Subjektivne prognoze temelje se na pogađanjima, prethodnim iskustvima i intuiciji. Takve prognoze nemaju predodređena i utvrđena pravila procesuiranja informacija, već se svode na donošenje zaključaka temeljem osobnog mišljenja osobe koja iznosi prognozu. Na primjer, dva će ekonomska analitičara iznesti različite prognoze za ponašanje tržišta i vrijednosti financijskih instrumenata u slučaju kriznih situacija poput pandemije koronavirusa. Dok će jedan analitičar smatrati da će vrijednosti financijskih instrumenata imati negativan trend u nadolazećem kvartalu uslijed restriktivnih mjera koje imaju nepovoljan utjecaj na tržište, drugi će prognozirati rast temeljem povećanog prilijeva kapitala od strane povećanog broja ulagača koji prvi puta ulaze na tržište kapitala uslijed straha neiskorištavanja volotilnosti tržišta za ostvarivanje dugoročnih kapitalnih dobitaka (eng. \textit{fear of missing-out}). Iako ovakve metode prognoziranja uistinu mogu rezultirati donekle točnim prognozama, kao što je to bilo u slučaju tzv. kratkih prodaja (eng. \textit{short-sell}) prilikom kraha američkog tržišta nekretnina ili prilikom razotkrivanja prikrivanja neispravnih rezultata mjerenja dušičnih oksida dizelskih automobila Volkswagen grupe; one su dokazano manje točne od prognoza temeljenih na statističkim modelima.
+            Subjektivne prognoze temelje se na pogađanjima, prethodnim iskustvima i intuiciji. Takve prognoze nemaju predodređena i utvrđena pravila procesuiranja informacija, već se svode na donošenje zaključaka temeljem osobnog mišljenja osobe koja iznosi prognozu. Na primjer, dva će ekonomska analitičara iznesti različite prognoze za ponašanje tržišta i vrijednosti financijskih instrumenata u slučaju kriznih situacija poput pandemije koronavirusa. Dok će jedan analitičar smatrati da će vrijednosti financijskih instrumenata imati negativan trend u nadolazećem kvartalu uslijed restriktivnih mjera koje imaju nepovoljan utjecaj na tržište, drugi će prognozirati rast temeljem povećanog prilijeva kapitala od strane povećanog broja ulagača koji prvi puta ulaze na tržište kapitala uslijed straha neiskorištavanja volotilnosti tržišta za ostvarivanje dugoročnih kapitalnih dobitaka (engl. \textit{fear of missing-out}). Iako ovakve metode prognoziranja uistinu mogu rezultirati donekle točnim prognozama, kao što je to bilo u slučaju tzv. kratkih prodaja (engl. \textit{short-sell}) prilikom kraha američkog tržišta nekretnina ili prilikom razotkrivanja prikrivanja neispravnih rezultata mjerenja dušičnih oksida dizelskih automobila Volkswagen grupe; one su dokazano manje točne od prognoza temeljenih na statističkim modelima.
 
         \section{Prognoze temeljene na statističkim modelima}
             Za razliku od subjektivnih prognoza, prognoze koje su temeljene na statističkim modelima prate jasno određeni i sistematizirani kvantitativni obrazac definiran međuodnosom utjecajnih varijabli. Navedeni modeli mogu se razvrstati na \textit{kauzalne modele} i \textit{nekauzalne modele}.\cite{Holden}
@@ -740,11 +743,11 @@
                             \addlegendentry{Prognozirana vrijednost}
                         \end{axis} 
                     \end{tikzpicture}
-                    \caption{Prikaz stvarne i prognozirane vrijednosti dionica poduzeća "Tesla, Inc"\\ (Izvor: https://www.macrotrends.net/stocks/charts/TSLA/tesla/stock-price-history)}
+                    \caption{Prikaz stvarne i prognozirane vrijednosti dionica poduzeća "Tesla, Inc."}
                     \label{fig:32}
                 \end{figure}
 
-                Praktičnu primjenu navedene metode je najintuitivnije, poput prethodno spomenute metode procjene maksimalne vrijednosti, predočiti kroz primjenu u procesu investiranja. Uzmemo li primjer investitora koji nastoji donesti odluku o dugoročnom investiranju u poduzeće "Tesla, Inc" (\$TSLA) s naumom ostvarivanja dobiti kroz idućih 10 godina, korištenjem metode najmanjih kvadrata moguće je izraditi prognostički model koji će pobliže opisati i predočiti trend promjene vrijednosti dionica poduzeća u odnosu na prethodno desetljeće. Rezultat navedene metode jest pravac prikazan na slici \ref{fig:32}, iz kojega investitor može steći subjektivni dojam o trendu vrijednosti dionice, a koji će mu pomoći pri donošenju odluke o insvestiranje. Kao i kod otalih metoda, korištenje ove metode može samo pobliže opisati određeni trend u odnosu na referentni vremenski period ili neku drugu nezavisnu varijablu, no u našem konkretnom primjeru, zbog volatilnosti tržišta kapitala nastoji se izbjegavati donošenje konkretnih odluka temeljem metode najmanjih kvadrata uslijed preširokog vremenskog intervala koji može dati krive rezultate prilikom neočekivanih događaja. Kao što je bilo navedeno i kroz prethodni primjer, jedan od neočekivanih događanja može biti i pojava financijske krize -- koja se otprilike ponavlja svakih 10 godina. Upravo zbog toga, izrada prognostičkih modela ima više čimbenika i indikatora temeljem kojih se može donesti sud o ispravnosti budućih odluka temeljem dubljih analiza na temelju različitih prognostičkih modela -- za koje je nužna logička valjanost korelacije između zavisne i nezavisne varijable. U protivnom, obzirom na proizvoljan odabir zavisne i nezavisne varijable za koju ćemo vršiti promatranja, može doći do logičke neistovjetnosti korelacije i kauzaliteta.
+                Praktičnu primjenu navedene metode je najintuitivnije, poput prethodno spomenute metode procjene maksimalne vrijednosti, predočiti kroz primjenu u procesu investiranja. Uzmemo li primjer investitora koji nastoji donesti odluku o dugoročnom investiranju u poduzeće "Tesla, Inc." (\$TSLA) s naumom ostvarivanja dobiti kroz idućih 10 godina, korištenjem metode najmanjih kvadrata moguće je izraditi prognostički model koji će pobliže opisati i predočiti trend promjene vrijednosti dionica poduzeća u odnosu na prethodno desetljeće. Rezultat navedene metode jest pravac prikazan na slici \ref{fig:32}, iz kojega investitor može steći subjektivni dojam o trendu vrijednosti dionice, a koji će mu pomoći pri donošenju odluke o insvestiranje. Kao i kod otalih metoda, korištenje ove metode može samo pobliže opisati određeni trend u odnosu na referentni vremenski period ili neku drugu nezavisnu varijablu, no u našem konkretnom primjeru, zbog volatilnosti tržišta kapitala nastoji se izbjegavati donošenje konkretnih odluka temeljem metode najmanjih kvadrata uslijed preširokog vremenskog intervala koji može dati krive rezultate prilikom neočekivanih događaja. Kao što je bilo navedeno i kroz prethodni primjer, jedan od neočekivanih događanja može biti i pojava financijske krize -- koja se otprilike ponavlja svakih 10 godina. Upravo zbog toga, izrada prognostičkih modela ima više čimbenika i indikatora temeljem kojih se može donesti sud o ispravnosti budućih odluka temeljem dubljih analiza na temelju različitih prognostičkih modela -- za koje je nužna logička valjanost korelacije između zavisne i nezavisne varijable. U protivnom, obzirom na proizvoljan odabir zavisne i nezavisne varijable za koju ćemo vršiti promatranja, može doći do logičke neistovjetnosti korelacije i kauzaliteta.
 
                 Nakon usustavljivanja osnovne predodžbe metode najmanjih kvadrata, svojstva iste nastojati ćemo opisati kroz analizu nasumičnog mjerenje dostavljenih otpornika, čije rezultate možemo prikazati kao opći izraz
 
@@ -785,14 +788,26 @@
 
                 Jednadžbom \ref{eq:310} zaključujemo ovo poglavlje. U sljedećem poglavlju opisati ćemo osnovne statističke pokazatelje signala i vremenskih nizova koji čine osnovu svih statističkih modela, pa tako i onih navedenih u ovom potpoglavlju.        
 
-    \chapter{Osnovni statistički pokazatelji signala i vremenski nizovi}
+    \chapter{Osnovni pojmovi teorije vjerojatnosti i statistike pri obradi signala}
 
         % Petrus M.T. Broersen - Automatic Autocorrelation and Spectral Analysis-Springer (2006)
         % Priestley M.B. - Spectral Analysis and Time Series. Volumes 1,2-AP (1981)
 
-        Kroz prethodna poglavlja ustanovili smo osnovne značajke signala i sustava te prognostike kao discipline koja se bavi predikcijom ponašanja signala temeljem određenih metodologija. Navedene metodologije su kvalitetne koliko i njihova statistička repretentativnost. Kako bi kvantitativno mogli utvrditi statističku reprezentativnost modela za prognoziranje ponašanja signala, potrebno je izvršiti detaljniju \textit{analizu signala}.
+        Kroz prethodna poglavlja ustanovili smo osnovne značajke signala i sustava te prognostike kao discipline koja se bavi predikcijom ponašanja signala temeljem određenih metodologija. Navedene metodologije su kvalitetne koliko i njihova statistička repretentativnost. Kako bi kvantitativno mogli utvrditi statističku reprezentativnost modela za prognoziranje ponašanja signala, potrebno je izvršiti detaljniju \textit{analizu (obradu) signala}.
 
-        \textbf{(Dodati Figure 1.9. iz Broersena)}
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[node distance=5cm, >=latex', very thick]
+                \node[draw, fill=gray!20, circle, minimum size=1.5em, text width=3cm, text centered, midway](measured_value) {Mjerni podaci};
+                \node[draw, fill=gray!20, rectangle, right of=measured_value, text width=3cm, text centered, midway, minimum height=2cm](signal_processing) {Obrada signala};
+                \node[draw, fill=gray!20, circle, right of=signal_processing, text width=3cm, text centered](math_theory) {Teorijski opis pomoću matematičkih relacija};
+
+                \path[very thick, ->] (measured_value) edge node {} (signal_processing);
+                \path[very thick, ->] (signal_processing) edge node {} (math_theory);
+            \end{tikzpicture}
+            \caption{Obrada signala čini poveznicu između akumuliranih podataka o nekom fenomenu i teorijskih pojašnjenja tog istog fenomena \cite{Broersen}}
+            \label{fig:41}
+        \end{figure}
         
         U sklopu studijskog programa svuečilišnih studija elektrotehnike, primat kroz više godine studija drži spektralna analiza signala, kojom se nastoji opisati frenkvencijske karakteristike promatranog iznalog signala (poput amplitudno-frenkvencijske karakteristike, fazno-frekvencijske karakteristike ili pojačanja sustava) Navedeno se najčešće realizira kroz određivanje prijenostnih i inih funkcija stustava koje su od značaja za ponašanje elektroničkih sustava čija su baza elektroničke komponente čije karakteristike nisu nužno konstantne pri određenim frekvencijskim pojasevima -- što omogućuje korištenje određenih elektroničkih sustava u svrhu niskopropusnoga ili visokopropusnoga filtriranja, te propusnoga filtriranja određenog frekvencijskog opsega.
 
@@ -802,6 +817,40 @@
         %https://www.youtube.com/watch?v=ZIWyGjrAlks&list=PLLHpWXO_4bKnIOpVWKtQR9aH58c6AmABO&index=2
 
         %https://www.youtube.com/watch?v=uBeM1FUk4Ps
+
+        \section{Slučajni događaj}
+            
+            Predmet istraživanja teorije vjerojatnosti su eksperimenti koji promatraju fenomene za koje nije moguće predvidjeti ishode s neupitnom sigurnošću. Takve eksperimente nazivamo \textit{slučajnim eksperimentima} $\mathscr{E}$, a definiramo ih kao postupke koje se može proizvoljan broj puta ponavljati, te koji završavaju sa dva ili više ishoda \cite{Bahovec}. Iako ne možemo sa stopostotnom sigurnošću konstatirati pojavu jednog od određenih ishoda, na temelju raznih parametara možemo pretpostaviti koji će od tih ishoda imati veću vjerojatnost pojavljivanja u odnosu na ostale ishode eksperimenta.
+
+            Skup svih rezultata slučajnog eksperimenta naziva se \textit{prostor elementarnih događanja} ili \textit{prostor uzorka} (engl. sample space) \cite{Bahovec}, kojeg označavamo s $\Omega$. Uzmemo li bacanje novčića kao najosnovniji primjer teorije vjerojatnosti, uz izuzetak mogućnosti pada na rub novčića, prostor uzorka eksperimenta ćemo onda definirati kao $\Omega=\left\{G,P\right\}$ -- gdje smo s $G$ označili slučaj pada novčića s vidljivom stranom "glave", dok smo s $P$ označili slučaj pada novčića s vidljivom stranom "pisma" \cite{Dekking}. Isto tako, vršimo li eksperiment kratkog spoja sinkronog stroja, iz prakse možemo konstatirati kako ćemo mjerenjem dobiti neku konačnu apsolutnu vrijednost struje kratkog spoja. No, teoretski apsolutna vrijednost struje kratkog spoja može zauzeti bilo koju vrijednost ovisno o konstrukcijskim karakteristikama samoga stroja. Shodno tome, statistički je točnije navesti kako prostor uzoraka za navedeni eksperiment iznosi $\Omega=(0,\infty)$ budući da apsolutna vrijednost struje može teorijski iznositi bilo koji pozitivan broj.
+
+            Svaki podskup prostora uzorka $\Omega$ je \textit{slučajni događaj}. Slučajni događaj ostvaruje se ukoliko se ostvari barem jedan od rezultata slučajnog eksperimenta koji su elemnt tog podskupa \cite{Bahovec}. Uzmemo li primjer dimenzioniranja sabirnica elektroenergetskog postrojenja, izabrati ćemo jedan od ponuđenih presjeka sabirnica iz tablice \ref{tab:41}.
+
+            \begin{table}[H]
+                \centering
+                \caption{Dopuštena trajna opterećenja u A okruglih profila \cite{Požar}}
+                \renewcommand{\arraystretch}{2}
+                \begin{tabular}{|c|c|c|c|c|}
+                    \hline
+                    \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Promjer\\ mm\end{tabular}} & \multicolumn{2}{c|}{Bakar} & \multicolumn{2}{c|}{Aluminij} \\ \cline{2-5} 
+                    & obojeni vodič & neobojeni vodič & obojeni vodič & neobojeni vodič \\
+                    \hline
+                    6 & 125 & 120 & 65 & 60 \\
+                    8 & 160 & 150 & -- & -- \\
+                    10 & 250 & 210 & 200 & 160 \\
+                    16 & 480 & 410 & 380 & 316 \\
+                    20 & 640 & 540 & 500 & 410 \\
+                    30 & 1100 & 900 & 870 & 680 \\
+                    \hline
+                \end{tabular}
+                \renewcommand{\arraystretch}{1}
+                \label{tab:41}
+            \end{table}
+
+            \textbf{Navesti primjere za različite presjeke skupova kada se očita neka vrijednost maksimalne struje u odnosu na sve moguće vrijednosti koje ta struja teoretski može zauzeti. Na temelju primjera datuma u Dekkingu}
+
+            \subsection{Vjerojatnost slučajnih događaja}
+            \subsection{Slučajne varijable i distribucije vjerojatnosti}
 
         \section{Vremenski nizovi}
 
@@ -888,7 +937,8 @@
             
             Zaključno, u ovom potpoglavlju smo potvrdili tezu o korisnosti kroištenja statističke analize vremenskih nizova u elektrotehnici. Jedna od konkretnih primjena Wienerova filtra u elektrotehnici je uočavanje pojave neočekivanoga šuma u električnoj mreži i daljnja regulacija sustava temeljem vrijednosti signala pogreške koji nastaje uslijed pojave navedenoga šuma. Korištenje FIR Wienerova filtra i filtra sličnih funkcija od iznimne je koristi za pravovremenost regulacije sustava upravljanja. U slučaju izostanka pravovremene regulacije sustava upravljanja, može doći do oštećenja sustava i njegovih komponenti, pojave nestabilnosti u sustavu, te drugih nepoželjnih svojstva.
 
-            \textbf{(Dodati neki primjer iz elektrotehnike. U Pristleyu ima predetaljno razrađeni primjer za filtriranje (može se koristiti za dobivanje više stranica, više naginje korištenju vremenskih nizova i nekog općeg nasumičnog signala...ovo trenutno napisano je nekako više "stručno", ali se može staviti kao konkretizacija tog općeg primjera), IEEE Xplore kao dodatni primjeri (uz rastavljanje potpoglavnja))}
+            % \textbf{(Dodati neki primjer iz elektrotehnike. U Pristleyu ima predetaljno razrađeni primjer za filtriranje (može se koristiti za dobivanje više stranica, više naginje korištenju vremenskih nizova i nekog općeg nasumičnog signala...ovo trenutno napisano je nekako više "stručno", ali se može staviti kao konkretizacija tog općeg primjera), IEEE Xplore kao dodatni primjeri (uz rastavljanje potpoglavnja))}
+
 
         \section{Osnovni statistički pokazatelji}
             varijanca i kovarijanca -- potrebno poslije za pojašnjenje stacionarnih i nestacionarnih signala
@@ -912,6 +962,11 @@
                 Random Variables: Page 37,\\
                 Means, Variances and Moments: Page 47,\\
                 Properties of Means and Variances of Random samples: Page 96,\\
+            \subsection{Srednja vrijednost}
+            \subsection{Varijanca}
+            \subsection{Kovarijanca}
+                \subsubsection{Autokovarijanca}
+            \subsection{Očekivana vrijednost slučajne varijable}
 
         \section{Stohastički procesi} \label{stoh_proc}
             %Objasniti na temelju par primjera i utjecaj određenih varijabli (random walk, ...)
@@ -1161,10 +1216,12 @@
         $$\fourierovred$$
     \begin{thebibliography}{9}
         \bibitem{Priestley} Priestley, M.B.: "Spectral Analysis and Time Series (Vols. 1 \& 2)", Academic Press, London, 1981.
+        \bibitem{Bahovec} Bahovec, V.; Erjavec, N.: "Uvod u ekonometrijsku analizu", Element, Zagreb, 2009.
         \bibitem{Broersen} Broersen, Piet M.T.: "Automatic Autocorrelation and Spectral Analysis", Springer, London, 2006.
         \bibitem{Dekking} F.M. Dekking i dr.: "A Modern Introduction to Probability and Statistics: Understanding Why and How", Springer, London, 2006.
         \bibitem{Holden} Holden, K.; Peel, D.A.; Thompson, J.L: "Economic forecasting: an introduction", Cambridge University Press, Cambridge, 1990.
         \bibitem{NASA} Presidential Commission: "Report of the Presidential Commission on the Space Shuttle Challanger Accident", U.S. Government Printing Office, Washington, D.C., 1986.
+        \bibitem{Požar} Požar, H.: "Visokonaponska rasklopna postrojenja", Tehnička knjiga, Zagreb, 1978.
 
     \end{thebibliography}
 \end{document}
