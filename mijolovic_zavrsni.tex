@@ -9,6 +9,7 @@
 \usepackage{amsthm}         %matematički teoremi, leme i sl.
 \usepackage{siunitx}        %podrška za korištenje SI sustava mjernih jedinica
 \usepackage{mathrsfs}
+\usepackage{venndiagram}
 
 %encoding fontova i jezika
 \usepackage[croatian]{babel}
@@ -822,9 +823,9 @@
             
             Predmet istraživanja teorije vjerojatnosti su eksperimenti koji promatraju fenomene za koje nije moguće predvidjeti ishode s neupitnom sigurnošću. Takve eksperimente nazivamo \textit{slučajnim eksperimentima} $\mathscr{E}$, a definiramo ih kao postupke koje se može proizvoljan broj puta ponavljati, te koji završavaju sa dva ili više ishoda \cite{Bahovec}. Iako ne možemo sa stopostotnom sigurnošću konstatirati pojavu jednog od određenih ishoda, na temelju raznih parametara možemo pretpostaviti koji će od tih ishoda imati veću vjerojatnost pojavljivanja u odnosu na ostale ishode eksperimenta.
 
-            Skup svih rezultata slučajnog eksperimenta naziva se \textit{prostor elementarnih događanja} ili \textit{prostor uzorka} (engl. sample space) \cite{Bahovec}, kojeg označavamo s $\Omega$. Uzmemo li bacanje novčića kao najosnovniji primjer teorije vjerojatnosti, uz izuzetak mogućnosti pada na rub novčića, prostor uzorka eksperimenta ćemo onda definirati kao $\Omega=\left\{G,P\right\}$ -- gdje smo s $G$ označili slučaj pada novčića s vidljivom stranom "glave", dok smo s $P$ označili slučaj pada novčića s vidljivom stranom "pisma" \cite{Dekking}. Isto tako, vršimo li eksperiment kratkog spoja sinkronog stroja, iz prakse možemo konstatirati kako ćemo mjerenjem dobiti neku konačnu apsolutnu vrijednost struje kratkog spoja. No, teoretski apsolutna vrijednost struje kratkog spoja može zauzeti bilo koju vrijednost ovisno o konstrukcijskim karakteristikama samoga stroja. Shodno tome, statistički je točnije navesti kako prostor uzoraka za navedeni eksperiment iznosi $\Omega=(0,\infty)$ budući da apsolutna vrijednost struje može teorijski iznositi bilo koji pozitivan broj.
+            Skup svih rezultata slučajnog eksperimenta $\mathscr{E}$ naziva se \textit{prostor elementarnih događanja} ili \textit{prostor uzorka} (engl. sample space) \cite{Bahovec}, kojeg označavamo s $\Omega$. Uzmemo li bacanje novčića kao najosnovniji primjer teorije vjerojatnosti, uz izuzetak mogućnosti pada na rub novčića, prostor uzorka eksperimenta ćemo onda definirati kao $\Omega=\left\{G,P\right\}$ -- gdje smo s $G$ označili slučaj pada novčića s vidljivom stranom "glave", dok smo s $P$ označili slučaj pada novčića s vidljivom stranom "pisma" \cite{Dekking}. Isto tako, vršimo li eksperiment kratkog spoja sinkronog stroja, iz prakse možemo konstatirati kako ćemo mjerenjem dobiti neku konačnu apsolutnu vrijednost struje kratkog spoja. No, teoretski apsolutna vrijednost struje kratkog spoja može zauzeti bilo koju vrijednost ovisno o konstrukcijskim karakteristikama samoga stroja. Shodno tome, statistički je točnije navesti kako prostor uzoraka za navedeni eksperiment iznosi $\Omega=(0,\infty)$ budući da apsolutna vrijednost struje može teorijski iznositi bilo koji pozitivan broj.
 
-            Svaki podskup prostora uzorka $\Omega$ je \textit{slučajni događaj}. Slučajni događaj ostvaruje se ukoliko se ostvari barem jedan od rezultata slučajnog eksperimenta koji su elemnt tog podskupa \cite{Bahovec}. Uzmemo li primjer dimenzioniranja sabirnica elektroenergetskog postrojenja, izabrati ćemo jedan od ponuđenih presjeka sabirnica iz tablice \ref{tab:41}.
+            Svaki podskup prostora uzorka $\Omega$ je \textit{slučajni događaj} $E$. Slučajni događaj ostvaruje se ukoliko se ostvari barem jedan od rezultata slučajnog eksperimenta koji su elemnt tog podskupa \cite{Bahovec}. Uzmemo li primjer dimenzioniranja sabirnica elektroenergetskog postrojenja, izabrati ćemo jedan od ponuđenih presjeka sabirnica iz tablice \ref{tab:41}.
 
             \begin{table}[H]
                 \centering
@@ -847,9 +848,52 @@
                 \label{tab:41}
             \end{table}
 
-            \textbf{Navesti primjere za različite presjeke skupova kada se očita neka vrijednost maksimalne struje u odnosu na sve moguće vrijednosti koje ta struja teoretski može zauzeti. Na temelju primjera datuma u Dekkingu}
+            Koristimo li analognu tezu iz prethodnog primjera za prostor uzorka vrijednosti struje $\Omega=(0,\infty)$, odaberemo li izvedbu bakrenih sabirnica okruglog profila s obojenjem i promjerom od 16mm iz tablice \ref{tab:41}, slučajni događaj može poprimiti bilo koju vrijednost skupa $A=(0,480)$. Točnije, moramo imati na umu da u bilo kojem trenutku normalnoga rada pogona struja kroz sabirnice ne nadmašuje \SI{480}{\ampere}. Nastane li slučajani događaji prilikom kojih očitamo vrijednosti $B=\left\{100,250,300,420,550\right\}$, presjekom skupova $A\cap B$ možemo filtirati ona mjerenja koja su zadovoljila uvjet dimenziniranja sabirnice i čije vrijednosti ne premašuju dopuštenja naprezanja definirana u tablici \ref{tab:41}.
+            
+            Doduše, u praksi je proces dimenzioniranja sabirnice obrnut -- vrši se proračun maksimalnih struja u normalnom pogonu za najnepovoljniji slučaj, po čemu se odabire profil sabirnice na način da se odabere profil sabirnice koji može podnijeti vrijendosti veće od maksimalne dobivene vrijednosti struje u normalnom pogonu. Gornji primjer smo naveli kao hipotetski za slučaj u kojem nisu poznate vrijednosti maksimalne vrijednosti struje u normalnom pogonu, ali u kojem smo imali mogućnost izvesti testna mjerenja uz poznavanje promjera sabirnice.
 
-            \subsection{Vjerojatnost slučajnih događaja}
+            Slučajni se događaji označavaju velikim slovima abecede: $A,B,C,\ldots$, a rezultati slučajnog eksperimenta nazivaju se \textit{elementarni događaji}. U našem primjeru, elementarna događanja slučajnog događaja $A$ su $100,250,300,420,550$.
+
+            Na sve skupove možemo primijeniti osnovne skupovne operacije, pa ćemo tako do novih slučajnih događaja doći njihovom primjenom nad postojećim skupom slučajnih događaja \cite{Bahovec}:
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular*}{0.9\textwidth}{l p{13cm}}
+                    \textit{$A\cup B\equiv A+B$} & nastupio je događaj $A$ \textit{ili} događaj $B$,\\
+                    \textit{$A\cap B\equiv AB$} & nastupio je događaj $A$ \textit{i} događaj $B$,\\
+                    \textit{$\overline{A}$} ili \textit{$A^c$} & nije nastupio događaj $A$. $\overline{A}$ je suprotni događaj od A ili \textit{ne} A.\\
+                \end{tabular*}
+            \end{table}
+
+            \begin{figure}[H]
+                \centering
+                \begin{subfigure}[b]{.30\linewidth}
+                    \centering
+                    \begin{venndiagram2sets}[labelNotAB={$\Omega$}]
+                        \fillACapB
+                    \end{venndiagram2sets}
+                    \caption{Presjek $A\cap B$}
+                \end{subfigure}
+                \hfill
+                \begin{subfigure}[b]{.30\linewidth}
+                    \centering
+                    \begin{venndiagram2sets}[labelNotAB={$\Omega$}]
+                        \fillA
+                        \fillB
+                    \end{venndiagram2sets}
+                    \caption{Unija $A\cup B$}
+                \end{subfigure}
+                \hfill
+                \begin{subfigure}[b]{.30\linewidth}
+                    \centering
+                    \begin{venndiagram2sets}[labelNotAB={$\Omega$}]
+                        \fillNotAorB
+                    \end{venndiagram2sets}
+                    \caption{Komplement $(A\cup B)^c$}
+                \end{subfigure}
+                \caption{Vennovi dijagrami presjeka, unije i komplementa unije}
+            \end{figure}
+
             \subsection{Slučajne varijable i distribucije vjerojatnosti}
 
         \section{Vremenski nizovi}
