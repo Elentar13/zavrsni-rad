@@ -896,6 +896,87 @@
 
             \subsection{Slučajne varijable i distribucije vjerojatnosti}
 
+                Kada govorimo o slučajnim i elementarnim događajima, najčešće govorimo o grupiranju dobivenih rezultata u smislene cjeline koje su dio većeg skupa dobivenih podataka. Kako bismo mogli izvršiti detaljnu prognostičku analizu slučajnih događaja, potrebno je osmisliti način preslikavanja elementarnih događaja u prigodniji oblik za obradu podataka. Navedeno postižemo procesom \textit{kvantifikacije}, tj. određivanjem realnih numeričih vrijednosti kojima ćemo pripisati neka fizikalna svojstva. Na primjer, želimo li odraditi računalnu statističku analizu za prethodno navedeni pokus bacanja novčića, možemo kvantificirati elementarne događaje \textit{pismo} i \textit{glava} kao realne vrijednosti $0$ i $1$ -- koje se pripisuju kao moguće rezultantne vrijednosti \textit{slučajne varijable}
+
+                \begin{equation*}
+                    X=\begin{cases}
+                        0   &   \quad \text{ako je rezultat } \textit{pismo}\\
+                        1   &   \quad \text{ako je rezultat } \textit{glava}
+                    \end{cases}
+                \end{equation*}
+                
+                Iz navedenoga možemo zaključiti kako je domena slučajne varijable $X$ prostor uzorka $S$, a područje vrijednosti je skup realnih brojeva $R$ \cite{Bahovec}.
+
+                Naravno, potreba za preslikavanjem elementarnih događaja iz prostora uzorka postaje sve veća sa većim prostorom uzorka -- što proizlazi iz kompleksnosti i slabe čitljivosti fizikalnog opisivanja velikih skupova podataka, ali i zbog manjka praktičnosti deskriptivnih ulaznih podataka prilikom računalne obrade podataka uslijed tehničke izvedbe samih računala i njihovih procesa.
+
+                Slučajne varijable možemo raspodijeliti u dvije kategorije: \textit{diskretne slučajne varijable} i \textit{kontinuirane slučajne varijable}.
+                
+                Općenitije, diskretnu slučajnu varijablu formalno definiramo kao:
+
+                \begin{definition}[\cite{Dekking,Bahovec}]
+                    Neka je $\Omega$ prostor uzorka. Diskretna slučajna varijabla je funkcija $X:\Omega\to\mathbb{R}$ koja poprima konačno mnogo vrijednosti $x_1,x_2,\ldots,x_i$ s vjerojatnostima
+
+                    \begin{equation*}
+                        P(X=x_i)=p(x_i) \quad   \text{za } -\infty<x_i<\infty,
+                    \end{equation*}\\
+                    pri čemu vrijedi:
+                    \begin{equation*}
+                        p(x_i)\geq 0 \quad \land \quad \displaystyle\sum_{i}^{}p(x_i)=1
+                    \end{equation*}
+                    \label{random_discrete_variable}
+                \end{definition}
+
+                Funkcija $p(x_i)$ iz definicije \ref{random_discrete_variable} svakoj vrijednosti slučajne varijable pridružuje određenu vjerojatnost, te se naziva \textit{funkcija vjerojatnosti diskretne slučajne varijable}. Na primjer, ukoliko slučajna diskretna varijabla $X$ može poprimiti vrijednosti $x_1,x_2,\ldots,x_i$, onda temeljem definicije \ref{random_discrete_variable} vrijedi $p(x_i)>0$, $p(x_1)+p(x_2)+\ldots+p(x_i)=1$, dok za sve ostale vrijednosti $x$ vrijedi $p(x)=0$.
+
+                Funkcija vjerojatnosti diskretne varijable $p(x_i)$ može biti zadana analitički, grafički ili tabelarno. Želimo li pronaći vjerojatnost poprimanja vrijednosti $x\leq5$, primjenom definicije \ref{random_discrete_variable} to ćemo zapisati kao $P[X\leq 5]$ -- uz uvjet promatranja isključivo cjelobronih brojeva iz skupa realnih brojeva $\mathbb{R}$, tj. podskupa cijelih brojeva $\mathbb{Z}$. U protivnom, promatranjem skupa realnih brojeva $\mathbb{R}$ bez odgovarajućih ograničenja mogli bismo doći do krivih zaključaka uslijed teoretske mogućnosti poprimanja infinitemozno mnogo vrijednosti -- što je kontradiktorno diskretnoj slučajnoj varijabli. Takav slučaj promatranja infinitemozno mnogo vrijednosti pripisati ćemo svojstvima kontinuirane slučajne varijable, koju ćemo pravovremeno definirati.
+
+                Skup uređenih parova
+                \begin{equation}
+                    \left\{\left(x_i,p(x_i)\right), \quad i\in\mathbb{N}\right\}
+                \end{equation}
+                
+                naziva se \textit{distribucija vjerojatnosti diskretne slučajne varijable}. Svakoj slučajnoj varijabli može se pridružiti \textit{funkcija distribucije vjerojatnosti} koja je definirana izrazom \cite{Bahovec}:
+
+                \begin{definition}[\cite{Dekking}]
+                    Funkcija distribucije vjerojatnosti F nasumične diskretne slučajne varijable X je funkcija $F:\mathbb{R}\to\left[0,1\right]$ koja je definirana relacijom
+
+                    \begin{equation*}
+                        F(x)=P(X\leq x)     \quad   \text{za } -\infty<x<\infty.
+                    \end{equation*}
+                    \label{random_discrete_distribution_function}
+                \end{definition}
+
+                Iz definicije \ref{random_discrete_variable} i definicije \ref{random_discrete_distribution_function} možemo zaključiti kako će nam odabir jedne od navedenih vjerojatnostnih značajki biti dovoljna za vjerojatnostni opis nasumičnih diskretnih varijabli. Štoviše, poveznicu između funkcije vjerojatnosti diskretne slučajne varijable i funkcije distribucije vjerojatnosti diskretne slučajne varijable možemo opisati kao
+
+                \begin{equation}
+                    F(x)=\displaystyle\sum_{a_i<a}^{}p(x_i).
+                \end{equation}
+
+                \textbf{Primjer i možda dodati Fig. 4.1. iz Dekkinga (57/485)}
+
+                \textbf{Uvjeti za funkcije distribucije vjerojatnosti su dani u Dekking (58/485) i Priestley (56/908)}
+
+                % \begin{definition}
+                %     Neka su $a$ i $b$ proizvoljni realni brojevi za koje vrijedi $a\leq b$. Pridruživanje vjerojatnosti svakoj slučajnoj varijabli $X$ opisana je funkcijom vjerojatnosti diskretne slučajne varijable $p:\mathbb{R}\to[0,1]$ koja je definirana relacijom
+
+
+
+                %     \label{def:discrete_probability}
+                % \end{definition}
+
+                \textit{Kontinuiranu slučajnu varijablu} definiramo kao:
+
+                \begin{definition}
+                    I hate my life
+                \end{definition}
+
+                \begin{definition}
+
+                    \begin{equation*}
+                        p(a)=.
+                    \end{equation*}
+                \end{definition}
+
         \section{Vremenski nizovi}
 
             Vremenske nizove povezujemo uz bilo kakavu reprezentzaciju vrijednosti u ovisnosti o vremenskoj konstanti -- neovisno radi li se o vrijednostima koje prate neko determinističko načelo ili načelo nasumičnosti. Drugim rječima, vremenske nizove možemo opisati kao stohastički signal s kronološki raspoređenim opažanjima uzorkovanim u redovitim vremenskim razmacima. Mogu se pojavljivati kao podaci o fizičkim veličinama, kao ekonomski ili financijski podaci, demografski podaci, itd.. Opažanja ili mjerenja navedenih podataka provedena su u proizvoljnim vremenskim intervalima -- svake sekunde, svakoga sata, svakoga dana, svakoga mjeseca, i sl.. U analizi vremenskih nizova, takve skupove podataka uobičajeno reprezentiramo konačnim brojem mjerenja promatranog nasumičnog procesa $X(t)$ za, primjerice, $t=1,2,\ldots,N$.\cite{Priestley}Vremenske nizove možemo analitički zapisati i na sljedeće načine:
@@ -1266,6 +1347,5 @@
         \bibitem{Holden} Holden, K.; Peel, D.A.; Thompson, J.L: "Economic forecasting: an introduction", Cambridge University Press, Cambridge, 1990.
         \bibitem{NASA} Presidential Commission: "Report of the Presidential Commission on the Space Shuttle Challanger Accident", U.S. Government Printing Office, Washington, D.C., 1986.
         \bibitem{Požar} Požar, H.: "Visokonaponska rasklopna postrojenja", Tehnička knjiga, Zagreb, 1978.
-
     \end{thebibliography}
 \end{document}
