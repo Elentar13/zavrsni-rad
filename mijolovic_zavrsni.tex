@@ -10,6 +10,7 @@
 \usepackage{siunitx}        %podrška za korištenje SI sustava mjernih jedinica
 \usepackage{mathrsfs}
 \usepackage{venndiagram}
+\usepackage{nicefrac}
 
 %encoding fontova i jezika
 \usepackage[croatian]{babel}
@@ -49,6 +50,7 @@
 \usepackage{multirow}
 \usepackage{pgfmath}
 \usepackage{pgfplots}
+\usepgfplotslibrary{statistics}
 \usepackage{pgfplotstable}
 \pgfplotsset{compat=1.17}
 \pgfplotsset{
@@ -640,6 +642,7 @@
             Naravno, navedeno vrijedi u slučaju jednostavnih prognostičkih modela, te ćemo u nadolazećim poglavljima proučiti detalje kompleksnih nekauzalnih prognostičkih modela temeljenih na vremenskim nizovima. No, prije toga ćemo definirati dvije opće prognostičke metode koje će nam služiti kao osnova budućih razmatranja.
 
             \subsection{Procjena maksimalne vrijednosti}
+            \label{subs:ML}
 
                 %Priestley:
                 %   Method of maximum likelihood: Page 305,
@@ -671,12 +674,13 @@
                     \begin{tikzpicture}
                         \begin{axis}[
                             standard,
-                            xlabel={$\sigma$},
+                            %xlabel={$\sigma$},
                             enlarge x limits=false,
                             domain = -4:4,
                             xmin = -4, xmax = 4,
                             ymin = 0, ymax = 0.4,
                             xtick = {-4,...,4},
+                            xticklabels = {$-4\sigma$,$-3\sigma$,$-2\sigma$,$-1\sigma$,$0\sigma$,$1\sigma$,$2\sigma$,$3\sigma$,$4\sigma$},
                             height = 7cm,                    
                         ],
                             \addplot [very thick, domain=0:1, pattern color=black, pattern=north east lines] {gauss(0,1)} \closedcycle;
@@ -916,9 +920,9 @@
                 \begin{definition}[\cite{Dekking,Bahovec}]
                     Neka je $\Omega$ prostor uzorka. Diskretna slučajna varijabla je funkcija $X:\Omega\to\mathbb{R}$ koja poprima konačno mnogo vrijednosti $x_1,x_2,\ldots,x_i$ s vjerojatnostima
 
-                    \begin{equation*}
+                    \begin{equation}
                         P(X=x_i)=p(x_i) \quad   \text{za } -\infty<x_i<\infty,
-                    \end{equation*}\\
+                    \end{equation}\\
                     pri čemu vrijedi:
                     \begin{equation*}
                         p(x_i)\geq 0 \quad \land \quad \displaystyle\sum_{i}^{}p(x_i)=1
@@ -940,46 +944,181 @@
                 \begin{definition}[\cite{Dekking}]
                     Funkcija distribucije vjerojatnosti F nasumične diskretne slučajne varijable X je funkcija $F:\mathbb{R}\to\left[0,1\right]$ koja je definirana relacijom
 
-                    \begin{equation*}
+                    \begin{equation}
                         F(x)=P(X\leq x)     \quad   \text{za } -\infty<x<\infty.
-                    \end{equation*}
+                    \end{equation}
                     \label{random_discrete_distribution_function}
                 \end{definition}
 
-                Iz definicije \ref{random_discrete_variable} i definicije \ref{random_discrete_distribution_function} možemo zaključiti kako će nam odabir jedne od navedenih vjerojatnostnih značajki biti dovoljna za vjerojatnostni opis nasumičnih diskretnih varijabli. Štoviše, poveznicu između funkcije vjerojatnosti diskretne slučajne varijable i funkcije distribucije vjerojatnosti diskretne slučajne varijable možemo opisati kao
+                Iako iz definicije \ref{random_discrete_variable} i definicije \ref{random_discrete_distribution_function} uočavamo bitne razlike u svojstvima navedenih značajki, iz istih možemo zaključiti kako će odabir samo jedne od navedenih vjerojatnostnih značajki biti dovoljan za vjerojatnostni opis nasumičnih diskretnih varijabli. Štoviše, poveznicu između funkcije vjerojatnosti diskretne slučajne varijable i funkcije distribucije vjerojatnosti diskretne slučajne varijable možemo zapisati izrazom
 
                 \begin{equation}
-                    F(x)=\displaystyle\sum_{a_i<a}^{}p(x_i).
+                    F(x)=\displaystyle\sum_{x_i<x}^{}p(x_i).
                 \end{equation}
 
-                \textbf{Primjer i možda dodati Fig. 4.1. iz Dekkinga (57/485)}
+                Do navedenoga zaključka mogli smo doći analitički putem prethodno spomenutih definicija, ali do istoga smo mogli doći i grafički temeljem slike \ref{fig:43} -- na kojoj možemo uočiti povećanje vrijednosti funkcije distribucije vjerojatnosti diskretne slučajne varijable $X$ sa svakim sukcesivnim $x_i$, tj. zaključujemo kako impulsno povećanje vrijednosti $F$ odgovara promjeni $p(x_i)$.
 
-                \textbf{Uvjeti za funkcije distribucije vjerojatnosti su dani u Dekking (58/485) i Priestley (56/908)}
+                \begin{figure}[H]
+                    \centering
+                    \begin{subfigure}[b]{.48\linewidth}
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                standard,
+                                grid = none,
+                                xlabel=$x$,
+                                ylabel=$p(x)$,
+                                enlarge x limits=false,
+                                domain = 0:6,
+                                xmin = 0, xmax = 7,
+                                ymin = 0, ymax = 1,
+                                xtick = {0,...,7},
+                                xticklabels = {,1,...,6,},
+                                ytick = {0,1},
+                                yticklabels = {,1},
+                                extra y ticks = {1/36,3/36,5/36,7/36,9/36,11/36},
+                                extra y tick labels = {1/36,3/36,5/36,7/36,9/36,11/36},
+                                extra y tick style={/pgf/number format/frac, font=\tiny},
+                            ],
+                                \addplot [black, only marks] table[x=a, y=p] {test_data/discrete_random_variable_posibility.dat};
+                            \end{axis}
+                        \end{tikzpicture}    
+                    \end{subfigure}
+                    \hfill
+                    \begin{subfigure}[b]{.48\linewidth}
+                        \begin{tikzpicture} %this graph shouldn't be done like this
+                            \begin{axis}[
+                                standard,
+                                grid = none,
+                                xlabel=$x$,
+                                ylabel=$F(x)$,
+                                enlarge x limits=false,
+                                domain = 0:7,
+                                xmin = 0, xmax = 7,
+                                ymin = 0, ymax = 1,
+                                xtick = {0,...,7},
+                                xticklabels = {,1,...,6,},
+                                ytick = {0,1},
+                                yticklabels = {,1},
+                                extra y ticks = {1/36,4/36,9/36,16/36,25/36},
+                                extra y tick labels = {1/36,4/36,9/36,16/36,25/36},
+                                extra y tick style={/pgf/number format/frac, font=\tiny},
+                            ],
+                                \addplot+ [jump mark left, black] table[x=a, y=F] {test_data/discrete_random_variable_posibility_distribution.dat};
+                                \draw[-, very thick] (0,0) -- (1,0);
+                                \draw[-, very thick] (6,1) -- (7,1);
+                            \end{axis}
+                        \end{tikzpicture}   
+                    \end{subfigure}
+                    \caption{Funkcija vjerojatnosti i funkcija distribucije vjerojatnosti diskretne slučajne varijable $X$.}
+                    \label{fig:43}
+                \end{figure}
 
-                % \begin{definition}
-                %     Neka su $a$ i $b$ proizvoljni realni brojevi za koje vrijedi $a\leq b$. Pridruživanje vjerojatnosti svakoj slučajnoj varijabli $X$ opisana je funkcijom vjerojatnosti diskretne slučajne varijable $p:\mathbb{R}\to[0,1]$ koja je definirana relacijom
+                Kao što smo već prethodno konstatirali, diskretne slučajne varijable moramo ograničiti kako zabunom ne bismo došli do krivih zaključaka. Navedeno, baš kao i kod diskretnih i kontinuiranih signala, slijedi iz razlike u definiciji i prirodi diskretnih te kontinuiranih slučajnih varijabli.
 
+                Kontinuiranu slučajnu varijablu definiramo kao slučajnu varijablu koja poprima beskonačno mnogo vrijednosti. Naravno, i za njih vrijedi ograničenje na skup realnih brojeva $\mathbb{R}$, te ih možemo opisati temeljnim vjerojatnostnim značajkama. Općenito, kontinuirane slučajne varijable možemo definirati kao:
 
+                \begin{definition}[\cite{Dekking}]
+                    Nasumična varijabla $X$ je kontinuirana za neku funkciju $f:\mathbb{R}\to \mathbb{R}$ i proizvoljno odabrane realne brojeve $a$ i $b$ za koje vrijedi $a\leq b$,
 
-                %     \label{def:discrete_probability}
-                % \end{definition}
+                    \begin{equation}
+                        P(a\leq X\leq b)=\displaystyle\int_{a}^{b}f(x)dx.
+                        \label{eq:46}
+                    \end{equation}
 
-                \textit{Kontinuiranu slučajnu varijablu} definiramo kao:
-
-                \begin{definition}
-                    I hate my life
+                    Funkcija $f$ mora zadovoljavati uvjet $f(x)\geq 0$ za svaki x, te uvjet $\int_{-\infty}^{\infty}f(x)dx=1$. Funkcija $f$ naziva se funkcija gustoće vjerojatnosti (engl. probability density function).
                 \end{definition}
 
-                \begin{definition}
+                Vjerojatnost da kontinuirana slučajna varijabla poprimi vrijednosti iz proizvoljnog intervala $\left[a,b\right]\subset\mathbb{R}$ proizlazi iz svojstva konvergencije sume i definicije integrala, tj. vjerojatnost možemo promatrati kao površinu ispod krivulje -- kao što smo već konstatirali u potpoglavlju \ref{subs:ML}.
 
-                    \begin{equation*}
-                        p(a)=.
-                    \end{equation*}
-                \end{definition}
+                Važno je napomenuti kako funkcija gustoće vjerojatnosti $f(x)$ nema značenje vjerojatnosti, već umnožak $f(x)dx$ možemo smatrati relativnom mjerom koja opisuje hoće li slučajna varijabla $X$ poprimiti vrijednosti u okolini proizvoljno odabrane točke $x$. Iz samog izraza $f(x)dx$ možemo zaključiti kako za odabir točke (umjesto intervala) vrijedila konstatacija $dx=0$ -- iz čega slijedi kako je vjerojatnost da kontinuirana slučajna varijabla poprimi vrijednosti u jednoj točki jednaka nuli, tj.
+
+                \begin{equation}
+                    P(X=x_0)=0.                    
+                \end{equation}
+                
+                Prisjetimo li se određenih integrala, izraz \ref{eq:46} možemo raspisati kao
+
+                \begin{equation}
+                    P(a\leq X\leq b)=\displaystyle\int_{a}^{b}f(x)dx=F(b)-F(a),
+                \end{equation}
+                
+                gdje je $F(x)$ \textit{funkcija distribucije kontinuirane slučajne varijable}. Uzmemo li primjer pronalaska vrijednosti funkcije distribucije u točki $x=a$, temeljem novodobivenoga izraza zaključujemo kako ćemo istu dobiti kao površinu ispod krivulje funkcije gustoće na intervalu $\langle-\infty,a]$ kao što je prikazano na slici \ref{fig:44}.
+
+                \begin{figure}[H]
+                    \centering
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            standard,
+                            %xlabel={$\sigma$},
+                            enlarge x limits=false,
+                            axis y line*= none,
+                            axis y line = none,
+                            grid = none,
+                            domain = -4:4,
+                            xmin = -4, xmax = 4,
+                            ymin = 0, ymax = 0.4,
+                            xtick = {-1},
+                            xticklabels = {a},
+                            height = 7cm,                    
+                        ],
+                            \addplot [smooth, very thick, black] {gauss(0,1)} \closedcycle;
+                            \addplot [very thick, domain=-4:-1, fill=gray!60, pattern color=black, pattern=north east lines] {gauss(0,1)} \closedcycle;
+                            \draw [-{Latex[length=3mm]}] (-2.75,0.14) -- (-1.5,0.05);
+                            \node [rectangle, fill=white!0, font=\small, align=center, scale=0.75] at (-2.5,0.14) {$F(a)=P(X\leq a)$};
+                        \end{axis} 
+                    \end{tikzpicture}
+                    \caption{Površina ispod funkcije gustoće vjerojatnosti na intervalu $\langle-\infty,a]$.}
+                    \label{fig:44}
+                \end{figure}
+
+                \subsubsection{Višedimenzionalne distribucije vjerojatnosti}
+
+                Iz prethodnih vjerojatnostnih opisa diskretnih i kontinuiranih slučajnih varijabli, možemo zaključiti kako diskretne slučajne varijable nemaju funkciju gustoće vjerojatnosti $f(x)$, dok kontinuirane nasumične varijable nemaju funkciju vjerojatnosti $p(x_i)$. Također, možemo zaključiti da obje vrste slučajnih varijabli imaju funkciju distribucije nasumične varijable $F(x)$. U praksi, vrlo često vršimo promatranja procesa s više od jedne slučajne varijable, te se nerijetko traži povezanost između dvaju ili više slučajnih varijabli. Poopćavanjem funkcije distribucije na $n$ slučajnih varijabli, tj. poopćavanjem za slučaj $n$-dimenzionalnog vektora $X=(X_1,X_2,\ldots,X_n)$ u točki $x=(x_1,x_2,\ldots,x_n)$ dobivamo izraz:
+
+                \begin{equation}
+                    F_{X_1,X_2,\ldots,X_n}(x=(x_1,x_2,\ldots,x_n)=P(X_1\leq x_1,X_2\leq x_2,\ldots,X_n\leq x_n,)
+                \end{equation}
+
+                Višedimenzionalne distribucije možemo dalje raspisati za konkretne slučajeve višedimenzionalnih diskretnih ili kontinuiranih slučajnih varijabli. Više o različitim vrstama distribucija vjerojatnosti slučajnih varijabli i njihovim pripadajućim definicijama može se saznati u referiranoj literaturi \cite{Bahovec, Dekking}.
+
+                Prije zaključivanja ovoga potpoglavlja, valja napomenuti kako za sve funkcije distribucije vjerojatnosti općenito vrijedi:
+
+                \begin{enumerate}
+                    \item Za $a\leq b$ vrijedi $F(a)\leq F(b)$ temeljem opažanja iz kojega slijedi da je događaj $\left\{X\leq a\right\}$ dio događaja ${X\leq b}$,
+                    \item $F(x)$ predstavlja vjerojatnostnu značajku, te za njezine vrijednosti uvijek vrijedi $0\leq F(x)\leq 1$ za svaki $x$, tj.
+
+                    \begin{align*}
+                        \begin{split}
+                            \lim\limits_{a\to+\infty}F(x)&=\lim\limits_{a\to+\infty}P(X\leq x)=1\\
+                            \lim\limits_{a\to-\infty}F(x)&=\lim\limits_{a\to-\infty}P(X\leq x)=0.
+                        \end{split}
+                    \end{align*}
+                    \item $F(x)$ ne može poprimiti manju vrijednost od vrijednosti koju je imala za prethodni član. Točnije, za proizvoljni $h\geq 0$ i za svaki $x$ vrijedi:
+                    
+                    \begin{equation}
+                        F(x+h)\geq F(x).
+                    \end{equation}
+
+                    \item Desni limes funkcije distribucije vjerojatnosti $F(x)$ postoji za svaki $x$, tj. temeljem slike \ref{fig:44} vrijedi
+                    
+                    \begin{equation}
+                        \lim\limits_{\epsilon\to 0+}F(x+\epsilon)=F(x).
+                    \end{equation}
+                \end{enumerate}
+
+                Samo i samo ako neka funkcija $F$ zadovoljava sve prethodno navedene uvjete, za nju možemo konstatirati da je funkcija distribucije vjerojatnosti neke nasumične varijable.
+                
+                Obzirom na važnost funkcija distribucije vjerojatnosti, za daljnja razmatranja prognostičkih modela potrebno je opisati određene karakteristike distribucija vjerojatnosti kako bismo lakše razumjeli koncept i svojstva navedenih prognostičkih modela.
+
+            \subsection{Karakteristike distribucija vjerojatnosti}
+
+                Slučajne varijable u praksi sadrže vrlo mnogo podataka nekog pojedinog eksperimenta, te ih kao takve treba na praktičan način opisati. U prethodnom potpoglavlju smo saznali nešto više o različitim vjerojatnostim funkcijama kojima možemo opisati slučajne varijable, no želimo li sustav rješavati analitički -- a najčešće želimo -- potrebno je u potpunosti poznavati analitičke izraze pripadajućih funkcija. Iako smo definirali svaku od navedenih pripadajućih vjerojatnostnih funkcija, nekada ih je praktičnije opisati pomoću \textit{momenata slučajne varijable}.
+
+                Kako bismo lakše razumjeli momente slučajne varijable, prisjetiti ćemo se osnovnih statističkih značajki: \textit{srednje vrijednosti $\mu$} i \textit{varijance $\sigma^2$}.
 
         \section{Vremenski nizovi}
 
-            Vremenske nizove povezujemo uz bilo kakavu reprezentzaciju vrijednosti u ovisnosti o vremenskoj konstanti -- neovisno radi li se o vrijednostima koje prate neko determinističko načelo ili načelo nasumičnosti. Drugim rječima, vremenske nizove možemo opisati kao stohastički signal s kronološki raspoređenim opažanjima uzorkovanim u redovitim vremenskim razmacima. Mogu se pojavljivati kao podaci o fizičkim veličinama, kao ekonomski ili financijski podaci, demografski podaci, itd.. Opažanja ili mjerenja navedenih podataka provedena su u proizvoljnim vremenskim intervalima -- svake sekunde, svakoga sata, svakoga dana, svakoga mjeseca, i sl.. U analizi vremenskih nizova, takve skupove podataka uobičajeno reprezentiramo konačnim brojem mjerenja promatranog nasumičnog procesa $X(t)$ za, primjerice, $t=1,2,\ldots,N$.\cite{Priestley}Vremenske nizove možemo analitički zapisati i na sljedeće načine:
+            Vremenske nizove povezujemo uz bilo kakavu reprezentzaciju vrijednosti u ovisnosti o vremenskoj konstanti -- neovisno radi li se o vrijednostima koje prate neko determinističko načelo ili načelo nasumičnosti. Drugim rječima, vremenske nizove možemo opisati kao stohastički signal s kronološki raspoređenim opažanjima uzorkovanim u redovitim vremenskim razmacima. Mogu se pojavljivati kao podaci o fizičkim veličinama, kao ekonomski ili financijski podaci, demografski podaci, itd.. Opažanja ili mjerenja navedenih podataka provedena su u proizvoljnim vremenskim intervalima -- svake sekunde, svakoga sata, svakoga dana, svakoga mjeseca, i sl.. U analizi vremenskih nizova, takve skupove podataka uobičajeno reprezentiramo konačnim brojem mjerenja promatranog nasumičnog procesa $X(t)$ za, primjerice, $t=1,2,\ldots,N$ \cite{Priestley}. Vremenske nizove možemo analitički zapisati i na sljedeće načine:
 
             \begin{equation}
                 X=\{X_1,X_2,\ldots\}
