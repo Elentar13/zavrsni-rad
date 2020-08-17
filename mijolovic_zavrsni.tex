@@ -927,12 +927,12 @@
                     \begin{equation*}
                         p(x_i)\geq 0 \quad \land \quad \displaystyle\sum_{i}^{}p(x_i)=1
                     \end{equation*}
-                    \label{random_discrete_variable}
+                    \label{def:random_discrete_variable}
                 \end{definition}
 
-                Funkcija $p(x_i)$ iz definicije \ref{random_discrete_variable} svakoj vrijednosti slučajne varijable pridružuje određenu vjerojatnost, te se naziva \textit{funkcija vjerojatnosti diskretne slučajne varijable}. Na primjer, ukoliko slučajna diskretna varijabla $X$ može poprimiti vrijednosti $x_1,x_2,\ldots,x_i$, onda temeljem definicije \ref{random_discrete_variable} vrijedi $p(x_i)>0$, $p(x_1)+p(x_2)+\ldots+p(x_i)=1$, dok za sve ostale vrijednosti $x$ vrijedi $p(x)=0$.
+                Funkcija $p(x_i)$ iz definicije \ref{def:random_discrete_variable} svakoj vrijednosti slučajne varijable pridružuje određenu vjerojatnost, te se naziva \textit{funkcija vjerojatnosti diskretne slučajne varijable}. Na primjer, ukoliko slučajna diskretna varijabla $X$ može poprimiti vrijednosti $x_1,x_2,\ldots,x_i$, onda temeljem definicije \ref{def:random_discrete_variable} vrijedi $p(x_i)>0$, $p(x_1)+p(x_2)+\ldots+p(x_i)=1$, dok za sve ostale vrijednosti $x$ vrijedi $p(x)=0$.
 
-                Funkcija vjerojatnosti diskretne varijable $p(x_i)$ može biti zadana analitički, grafički ili tabelarno. Želimo li pronaći vjerojatnost poprimanja vrijednosti $x\leq5$, primjenom definicije \ref{random_discrete_variable} to ćemo zapisati kao $P[X\leq 5]$ -- uz uvjet promatranja isključivo cjelobronih brojeva iz skupa realnih brojeva $\mathbb{R}$, tj. podskupa cijelih brojeva $\mathbb{Z}$. U protivnom, promatranjem skupa realnih brojeva $\mathbb{R}$ bez odgovarajućih ograničenja mogli bismo doći do krivih zaključaka uslijed teoretske mogućnosti poprimanja infinitemozno mnogo vrijednosti -- što je kontradiktorno diskretnoj slučajnoj varijabli. Takav slučaj promatranja infinitemozno mnogo vrijednosti pripisati ćemo svojstvima kontinuirane slučajne varijable, koju ćemo pravovremeno definirati.
+                Funkcija vjerojatnosti diskretne varijable $p(x_i)$ može biti zadana analitički, grafički ili tabelarno. Želimo li pronaći vjerojatnost poprimanja vrijednosti $x\leq5$, primjenom definicije \ref{def:random_discrete_variable} to ćemo zapisati kao $P[X\leq 5]$ -- uz uvjet promatranja isključivo cjelobronih brojeva iz skupa realnih brojeva $\mathbb{R}$, tj. podskupa cijelih brojeva $\mathbb{Z}$. U protivnom, promatranjem skupa realnih brojeva $\mathbb{R}$ bez odgovarajućih ograničenja mogli bismo doći do krivih zaključaka uslijed teoretske mogućnosti poprimanja infinitemozno mnogo vrijednosti -- što je kontradiktorno diskretnoj slučajnoj varijabli. Takav slučaj promatranja infinitemozno mnogo vrijednosti pripisati ćemo svojstvima kontinuirane slučajne varijable, koju ćemo pravovremeno definirati.
 
                 Skup uređenih parova
                 \begin{equation}
@@ -947,10 +947,10 @@
                     \begin{equation}
                         F(x)=P(X\leq x)     \quad   \text{za } -\infty<x<\infty.
                     \end{equation}
-                    \label{random_discrete_distribution_function}
+                    \label{def:random_discrete_distribution_function}
                 \end{definition}
 
-                Iako iz definicije \ref{random_discrete_variable} i definicije \ref{random_discrete_distribution_function} uočavamo bitne razlike u svojstvima navedenih značajki, iz istih možemo zaključiti kako će odabir samo jedne od navedenih vjerojatnostnih značajki biti dovoljan za vjerojatnostni opis nasumičnih diskretnih varijabli. Štoviše, poveznicu između funkcije vjerojatnosti diskretne slučajne varijable i funkcije distribucije vjerojatnosti diskretne slučajne varijable možemo zapisati izrazom
+                Iako iz definicije \ref{def:random_discrete_variable} i definicije \ref{def:random_discrete_distribution_function} uočavamo bitne razlike u svojstvima navedenih značajki, iz istih možemo zaključiti kako će odabir samo jedne od navedenih vjerojatnostnih značajki biti dovoljan za vjerojatnostni opis nasumičnih diskretnih varijabli. Štoviše, poveznicu između funkcije vjerojatnosti diskretne slučajne varijable i funkcije distribucije vjerojatnosti diskretne slučajne varijable možemo zapisati izrazom
 
                 \begin{equation}
                     F(x)=\displaystyle\sum_{x_i<x}^{}p(x_i).
@@ -1112,13 +1112,142 @@
 
             \subsection{Karakteristike distribucija vjerojatnosti}
 
-                Slučajne varijable u praksi sadrže vrlo mnogo podataka nekog pojedinog eksperimenta, te ih kao takve treba na praktičan način opisati. U prethodnom potpoglavlju smo saznali nešto više o različitim vjerojatnostim funkcijama kojima možemo opisati slučajne varijable, no želimo li sustav rješavati analitički -- a najčešće želimo -- potrebno je u potpunosti poznavati analitičke izraze pripadajućih funkcija. Iako smo definirali svaku od navedenih pripadajućih vjerojatnostnih funkcija, nekada ih je praktičnije opisati pomoću \textit{momenata slučajne varijable}.
+                Slučajne varijable u praksi sadrže vrlo mnogo podataka nekog pojedinog eksperimenta, te ih kao takve treba na praktičan način opisati. U prethodnom potpoglavlju smo saznali nešto više o različitim vjerojatnostim funkcijama kojima možemo opisati slučajne varijable, no želimo li sustav opisati analitički -- a najčešće želimo -- potrebno je u potpunosti poznavati analitičke izraze pripadajućih funkcija. Iako smo definirali svaku od navedenih pripadajućih vjerojatnostnih funkcija, nekada ih je za velike količine podataka praktičnije opisati pomoću \textit{momenata slučajnih varijabli}.
 
-                Kako bismo lakše razumjeli momente slučajne varijable, prisjetiti ćemo se osnovnih statističkih značajki: \textit{srednje vrijednosti $\mu$} i \textit{varijance $\sigma^2$}.
+                Općenito, momenti u statistici predstavlaju kvantitativne karakteristike koji analitički opisuju graf neke proizvoljno promatrane funkcije. Promotrimo li proizvoljni skup podataka koji se sastoji od vrijednosti $[4,5,5,6,7,8,8,8,9]$, preslikavanjem vrijednosti skupa na brojevni pravac dobivamo vizualni dojam centralne tendencije i rasapa promatranog skupa podataka kao što je prikazano na slici \ref{fig:45}.
+
+                \begin{figure}[H]
+                    \centering
+                    \begin{tikzpicture}
+                        \draw[latex-latex] (-0.5,0) -- (10,0);
+                        \foreach \x in {0,...,9}
+                        \draw[shift={(\x,0)},color=black] (0pt,0pt) -- (0pt,-3pt) node[below] {$\x$};
+                        \filldraw
+                            (4,0) circle (2pt)
+                            (5,0.075) circle (2pt)
+                            (5,-0.075) circle (2pt)
+                            (6,0) circle (2pt)
+                            (7,0) circle (2pt)
+                            (8,0.15) circle (2pt)
+                            (8,0) circle (2pt)
+                            (8,-0.15) circle (2pt)
+                            (9,0) circle (2pt);
+                    \end{tikzpicture}
+                    \caption{Prikaz vrijednosti proizvoljnog skupa podataka na brojevnom pravcu}
+                    \label{fig:45}
+                \end{figure}
+
+                Temeljem slike \ref{fig:45} također možemo bolje pojasniti intinuitivnost momenta funkcije. Želimo li analitički opisati proizvoljni skup podataka u svrhu predodžbe centralne tendencije u odnosu na referentnu vrijednost $0$, rješiti ćemo izraz $\frac{\sum x_i}{n}$. Naravno, promatranjem stvarnih fizikalnih pojava trebamo odrediti neku referentnu vrijednost budući da vrijednost $0$ nije nužno sadržana u rezultatima mjerenja ili nije praktična za korištenje. Iz tog razloga, prethodno navedeni izraz možemo općenitije opisati izrazom
+
+                \begin{equation}
+                    \frac{1}{n}\displaystyle\sum_{i}^{}(x_i-\mu),
+                \end{equation}
+
+                gdje je $\mu$ procjenitelj kojega odabiremo za referentnu vrijednost u prethodno promatranom slučaju.
+
+                Očekivana vrijednost je broj ili konstanta i prvi je moment oko nule slučajne varijable $X$ \cite{Bahovec}. Najčešće se označava s
+
+                \begin{equation}
+                    E\left[X\right]=\mu,
+                    \label{eq:412}
+                \end{equation}
+                
+                gdje je vrijednost procjenitelja $\mu$ moguće odrediti aritmetičkom sredinom promatranih podataka koja je definirana izrazom
+
+                \begin{equation}
+                    \mu=\frac{1}{n}\displaystyle\sum_{i}^{}x_i
+                \end{equation}
+
+                Kako bismo lakše razumjeli momente slučajne varijable, prvo ćemo opisati statističke značajke distribucija slučajnih varijabli. Promotrimo li slučajni eksperiment s $n$ mjerenja, te pretpostavimo li ponavljanje određenih vrijednosti $n_k$ puta tako da vrijedi $(n_1+n_2+\ldots,+n_i)=n$, aritmetičku sredinu diskretne slučajne varijable koja se pojavljuje u eksperimentu možemo definiramo izrazom
+
+                \begin{equation}
+                    \bar{x}=\frac{1}{n}\displaystyle\sum_{i=1}^{k}n_ix_i.
+                \end{equation}
+
+                Aritmetičku sredinu diskretne slučajne varijable još nazivamo \textit{srednjom vrijednosti uzorka}, a pokazuje centralnu tendenciju promatrane diskretne slučajne varijable. Uz centralnu tendenciju, u statističkim obradama podataka vrlo često se koriste i pokazatelji rasapa vrijednosti -- točnije, za slučaj diskretne slučajne varijable koristi se pojam \textit{varijance uzorka} koji je definiran izrazom
+
+                \begin{equation}
+                    \sigma^2=\frac{1}{n}\displaystyle\sum_{i=1}^{k}n_i(x_i-\bar{x})^2.
+                \end{equation}
+
+                Varijanca slučajne varijable $X$ je ujedno i drugi moment oko sredine definiran izrazom
+
+                \begin{equation}
+                    \mathrm{Var}(X)=E\big(X-E(X)\big)^2=E(X-\mu)^2.
+                    \label{eq:variance}
+                \end{equation}
+
+                Uvedemo li hipotetski slučaj promatranja eksperimenta s vrlo velikim brojem ponavljanja $n$, temeljem frekvencijskog pristupa vjerojatnosti pretpostaviti ćemo da vrijedi izraz \cite{Priestley}:
+
+                \begin{equation}
+                    \frac{n_i}{n}\sim P[X=x_i]=p(x_i).
+                \end{equation}
+
+                Zaključno, dolazimo do konačne definicije koja vrijedi za diskretne slučajne varijable:
+
+                \begin{definition}[\cite{Priestley}]
+                    Neka je $X$ diskretna slučajna varijabla za koju vrijedi $p(x_i)=P[X=x_i]$, $i\in\mathbb{N}$. Srednju vrijednost uzorka $\mu$ i varijancu uzorka $\sigma^2$ takve diskretne slučajne varijable definiramo izrazima
+
+                    \begin{equation}
+                        \mu=\displaystyle\sum_{i}^{}p(x_i)x_i.
+                        \label{eq:discrete_random_mu}
+                    \end{equation}
+
+                    i
+
+                    \begin{equation}
+                        \sigma^2=\displaystyle\sum_{i}^{}p_i(x_i)(x_i-\mu)^2.
+                        \label{eq:discrete_random_sigma}
+                    \end{equation}
+                    \label{def:discrete_probabilistic_parameters}
+                \end{definition}
+
+                Analogno definiciji \ref{def:discrete_probabilistic_parameters} možemo dobiti izraze koji odgovaraju definiciji odgovarajućih statističkih pokazatelja kontinuiranih slučajnih varijabli. Srednju vrijednost uzorka i varijancu uzorka možemo dobiti na način da u jednadžbama definicije \ref{def:discrete_probabilistic_parameters} zamijenimo simbol sume integralom s pripadajućim granicama $\langle-\infty,+\infty\rangle$.
+
+                \begin{definition}
+                    Neka je $X$ kontinuirana slučajna varijabla s pripadajućom funkcijom gustoće vjerojatnosti $f(x)$. Srednja vrijednost $\mu$ i varijanca $\sigma^2$ funkcije $f(x)$ definirane su izrazima
+
+                    \begin{equation}
+                        \mu=\displaystyle\int_{-\infty}^{+\infty}xf(x)dx
+                        \label{eq:continous_random_mu}
+                    \end{equation}
+
+                    i
+
+                    \begin{equation}
+                        \sigma^2=\displaystyle\int_{-\infty}^{+\infty}(x-\mu)^2f(x)dx;
+                        \label{eq:continous_random_sigma}
+                    \end{equation}
+                    \label{def:continous_probabilistic_parameters}
+                \end{definition}
+
+                uz uvjet da integral u izrazu \ref{def:continous_probabilistic_parameters} konvergira.
+
+                Temeljem izraza \ref{eq:discrete_random_mu} i izraza \ref{eq:continous_random_mu} možemo doći do izraza za očekivanu vrijednost slučajne varijable na način da ih uvrstimo u izraz \ref{eq:412} -- iz čega slijedi:
+
+                \begin{equation}
+                    E\left[X\right]=
+                    \begin{cases}
+                        \displaystyle\sum_{i}^{}p(x_i)x_i. & \text{za diskretnu slučajnu varijablu } X,\\
+                        \displaystyle\int_{-\infty}^{+\infty}xf(x)dx & \text{za kontinuiranu slučajnu varijablu } X;
+                    \end{cases}
+                    \label{eq:joint_expectation}      
+                \end{equation}
+
+                gdje vrijednosti slučajne varijable $x_i$ možemo zamijeniti sa primadajućom jednoznačnom funkcijom slučajne varijalbe $X$.
+
+                Kao što smo već prethodno konstatirali, prilikom vršenja prognostičkih eksperimenata najčešće promatramo više od jedne slučajne varijable, te je u te svrhe potrebno definitirati još jednu analitičku karakteristiku višedimenzionalnih funkcija distribucije. Odnos među slučajnim varijablama $X$ i $Y$ opisuje \textit{kovarijanca} \cite{Bahovec} definirana izrazom
+
+                \begin{equation}
+                    \mathrm{Cov}(X,Y)=E\left[\big(X-E(X)\big)\big(Y-E(Y)\big)\right]=E(XY)-E(X)E(Y).
+                    \label{eq:covariance}
+                \end{equation}
+
+                \textbf{Dovršiti ovo prema Dekkingu i YT. 104. strana Priestleya "Multivariate Distributions" za poopćenje nekih gornjih izraza.}
 
         \section{Vremenski nizovi}
 
-            Vremenske nizove povezujemo uz bilo kakavu reprezentzaciju vrijednosti u ovisnosti o vremenskoj konstanti -- neovisno radi li se o vrijednostima koje prate neko determinističko načelo ili načelo nasumičnosti. Drugim rječima, vremenske nizove možemo opisati kao stohastički signal s kronološki raspoređenim opažanjima uzorkovanim u redovitim vremenskim razmacima. Mogu se pojavljivati kao podaci o fizičkim veličinama, kao ekonomski ili financijski podaci, demografski podaci, itd.. Opažanja ili mjerenja navedenih podataka provedena su u proizvoljnim vremenskim intervalima -- svake sekunde, svakoga sata, svakoga dana, svakoga mjeseca, i sl.. U analizi vremenskih nizova, takve skupove podataka uobičajeno reprezentiramo konačnim brojem mjerenja promatranog nasumičnog procesa $X(t)$ za, primjerice, $t=1,2,\ldots,N$ \cite{Priestley}. Vremenske nizove možemo analitički zapisati i na sljedeće načine:
+            Vremenske nizove povezujemo uz bilo kakavu reprezentzaciju vrijednosti u ovisnosti o vremenskoj konstanti -- neovisno radi li se o vrijednostima koje prate neko determinističko načelo ili načelo nasumičnosti. Drugim rječima, vremenske nizove možemo opisati kao stohastički signal s kronološki raspoređenim opažanjima uzorkovanim u redovitim vremenskim razmacima. Mogu se pojavljivati kao podaci o fizičkim veličinama, kao ekonomski ili financijski podaci, demografski podaci, itd.. Opažanja ili mjerenja navedenih podataka provedena su u proizvoljnim vremenskim intervalima -- svake sekunde, svakoga sata, svakoga dana, svakoga mjeseca, i sl.. U analizi vremenskih nizova, takve skupove podataka uobičajeno reprezentiramo konačnim brojem mjerenja promatranog nasumičnog procesa $X(t)$ za, primjerice, $t=1,2,\ldots,N$ \cite{Priestley}. Vremenske nizove možemo analitički zapisati na sljedeće načine:
 
             \begin{equation}
                 X=\{X_1,X_2,\ldots\}
@@ -1226,6 +1355,8 @@
                 Random Variables: Page 37,\\
                 Means, Variances and Moments: Page 47,\\
                 Properties of Means and Variances of Random samples: Page 96,\\
+
+            \textbf{Ovo potpoglavlje ide ća. Autokovarijancu opisati u nekom drugom potpoglavlju}
             \subsection{Srednja vrijednost}
             \subsection{Varijanca}
             \subsection{Kovarijanca}
@@ -1432,7 +1563,7 @@
                     \mathbb{E(\mu,\phi_1,\ldots,\phi_p)}&=\displaystyle\sum_{t=p+1}^N\epsilon_t^2\\
                     & =\displaystyle\sum_{t=p+1}^N\left\{x_t-\mu_x+\phi_1\left(x_{t-1}-\mu_x\right)+\ldots+\phi_p\left(x_{t-p}-\mu_x\right)+\omega_t\right\}^2.
                 \end{split}
-                \label{eq:56}
+                \label{eq:58}
             \end{equation}
 
             Minimizacijom izraza \ref{eq:55} dolazimo do izraza
@@ -1464,6 +1595,11 @@
         \section{ARMA (p,q) proces}
         \section{ARIMA proces}
     \chapter{Pokus}
+        Mogući set podataka sa:
+
+        https://academictorrents.com/details/78d14c9cb4fa765b3c323c1a26bd114e2b30ef34
+
+        https://academictorrents.com/details/bcad357813557c282527317a5a5cf593df8eb7a9
     \chapter{Zaključak}
         \textbf{(Tu ide rezime core teme rada. Dodatno se može iskoristiti "Ken Holden, David A. Peel, John L. Thompson - Economic Forecasting: An Introduction-Cambridge University Press (1990)" kao outro; nadograditi vrlo dobrim dodatnim zaključcima koji su dati u konkretnom primjeru, ali poopćiti budući da nakon uvoda treba održati elektrotehniku dominantnom temom.)} % (page 29 - 33)
         \ldots{}
