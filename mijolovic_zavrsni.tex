@@ -280,34 +280,35 @@
         \thispagestyle{empty}
         \newpage
             \thispagestyle{empty}
-            Na mjesto ovo stranice je potrebno umetnunti izvornik zadatka
+            \includepdf{zavrsni_rad_zadatak.pdf}
         \newpage
             \thispagestyle{empty}
-                \begin{center}\linespread{1.8}\fontsize{16}{16}
-                    {\textbf{
-                        IZJAVA
-                        }
-                    }
-                \end{center}
-            \vspace{5cm}
-            Sukladno članku 8. Pravilnika o završnom radu, završnom ispitu i završetku prediplomskih sveučilišnih studija/stručnih studija
-			Tehničkog fakulteta Sveučilišta u Rijeci od 1. veljače 2020., izjavljujem da sam samostalno izradio završni rad
-            prema zadatku preuzetom dana 18. ožujka 2019. godine.
-            \vspace{3cm}
+            \includepdf{izjava_autenticnost.pdf}
+            %     \begin{center}\linespread{1.8}\fontsize{16}{16}
+            %         {\textbf{
+            %             IZJAVA
+            %             }
+            %         }
+            %     \end{center}
+            % \vspace{5cm}
+            % Sukladno članku 8. Pravilnika o završnom radu, završnom ispitu i završetku prediplomskih sveučilišnih studija/stručnih studija
+			% Tehničkog fakulteta Sveučilišta u Rijeci od 1. veljače 2020., izjavljujem da sam samostalno izradio završni rad
+            % prema zadatku preuzetom dana 18. ožujka 2019. godine.
+            % \vspace{3cm}
 
 
-            \begin{tabular}[t]{@{}l}
-                \normalfont{
-                    Rijeka, \today
-                }
-            \end{tabular}
-            \hfill
-            \begin{tabular}[t]{@{}l} 
-                \fontsize{14}{14}\hrulefill\\
-                \fontsize{12}{12}\normalfont{
-                    \phantom{Raz}Denis Mijolović\phantom{Raz}
-                }
-            \end{tabular}
+            % \begin{tabular}[t]{@{}l}
+            %     \normalfont{
+            %         Rijeka, 14. rujna 2020.
+            %     }
+            % \end{tabular}
+            % \hfill
+            % \begin{tabular}[t]{@{}l} 
+            %     \fontsize{14}{14}\hrulefill\\
+            %     \fontsize{12}{12}\normalfont{
+            %         \phantom{Raz}Denis Mijolović\phantom{Raz}
+            %     }
+            % \end{tabular}
             \newpage
                 \thispagestyle{empty}
                 $ $
@@ -1236,14 +1237,25 @@
 
                 gdje vrijednosti slučajne varijable $x_i$ možemo zamijeniti sa primadajućom jednoznačnom funkcijom slučajne varijalbe $X$.
 
-                Kao što smo već prethodno konstatirali, prilikom vršenja prognostičkih eksperimenata najčešće promatramo više od jedne slučajne varijable, te je u te svrhe potrebno definitirati još jednu analitičku karakteristiku višedimenzionalnih funkcija distribucije. Odnos među slučajnim varijablama $X$ i $Y$ opisuje \textit{kovarijanca} \cite{Bahovec} definirana izrazom
+                Kao što smo već prethodno konstatirali, prilikom vršenja prognostičkih eksperimenata najčešće promatramo više od jedne slučajne varijable, te je u te svrhe potrebno definitirati još jednu analitičku značajku višedimenzionalnih funkcija distribucije. Odnos među slučajnim varijablama $X$ i $Y$ opisuje \textit{kovarijanca} \cite{Bahovec} definirana izrazom
 
                 \begin{equation}
                     \mathrm{Cov}(X,Y)=E\left[\big(X-E(X)\big)\big(Y-E(Y)\big)\right]=E(XY)-E(X)E(Y).
                     \label{eq:covariance}
                 \end{equation}
 
-                \textbf{Dovršiti ovo prema Dekkingu i YT. 104. strana Priestleya "Multivariate Distributions" za poopćenje nekih gornjih izraza.}
+                Temeljem izraza \ref{eq:covariance} možemo općenito konstatirati kako je kovarijanca mjera varijance između dviju promatranih varijabli. Štoviše, poznavanjem iznosa kovarijanca možemo ustanoviti međusobnu korelaciju promatranih slučajnih varijabli kako slijedi:
+
+                \begin{enumerate}
+                    \item Pozitivna kovarijanca (\textit{pozitivna korelacija}) -- predstavlja tendenciju porasta dviju slučajnih varijabli u istom smjeru (npr. povećanje slučajne varijable $X$ rezultira povećanjem slučajne varijable $Y$),
+                    \item Negativna kovarijanca (\textit{negativna korelacija}) -- predstavlja tendeciju porasta dviju slučajnih varijabli u međusobno suprotnim smjerovima (npr. povećanje slučajne varijable $X$ rezultira smanjenjem slučajne varijable $Y$).
+                \end{enumerate}
+
+                U iznimnom slučaju kada vrijedi $\mathrm{Cov}(X,Y)=0$, možemo zaključiti kako ne postoji korelacija između dviju promatranih slučajnih varijabli. Prikikom izrade financijskih analiza, korištenje principa kovarijance i prethodno navedenoga iznimnoga slučaja značajno je za kvantitativnu analizu diverzifikacije sredstava u svrhu smanjenja različitih rizika koji ne proizlaze iz pogrešaka samoga sustava.
+                
+                Prilikom promatranja prethodno navedenih statističkih značajki, od iznimne je važnosti razlikovati korištene termine \textit{korelacije} i \textit{nezavisnosti}. Uzmemo li primjer dviju nezavisnih varijabli, logički je za pretpostaviti kako nisu u korelaciji. No, uzmemo li primjer dviju varijabli koje nisu u korelaciji, valja logički uočiti kako navedene varijable \textit{nisu nužno} međusobno nezavisne.
+
+                % \textbf{Dovršiti ovo prema Dekkingu i YT. 104. strana Priestleya "Multivariate Distributions" za poopćenje nekih gornjih izraza.}
 
         \section{Vremenski nizovi}
 
@@ -1334,6 +1346,9 @@
 
 
         \section{Osnovni statistički pokazatelji}
+
+            Umjesto ovoga ide zamjena sa nekim naslovom u kojemu će se opisati stohastički procesi budući da je dolje navedeno opisano u pretprehodnom potpoglavlju (ostale autokovarijanca i takve stvari, ali to treba vidjeti gdje je bolje opisati radi čitljivosti rada):
+
             varijanca i kovarijanca -- potrebno poslije za pojašnjenje stacionarnih i nestacionarnih signala
             \textbf{(uzorak (sample space), srednja vrijednost, varijanca, kovarijanca, stacionarni procesi, autokovarijanca...)}
 
@@ -1356,10 +1371,6 @@
                 Means, Variances and Moments: Page 47,\\
                 Properties of Means and Variances of Random samples: Page 96,\\
 
-            \textbf{Ovo potpoglavlje ide ća. Autokovarijancu opisati u nekom drugom potpoglavlju}
-            \subsection{Srednja vrijednost}
-            \subsection{Varijanca}
-            \subsection{Kovarijanca}
                 \subsubsection{Autokovarijanca}
             \subsection{Očekivana vrijednost slučajne varijable}
 
