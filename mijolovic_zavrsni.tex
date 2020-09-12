@@ -283,6 +283,9 @@
             \includepdf{zavrsni_rad_zadatak.pdf}
         \newpage
             \thispagestyle{empty}
+            \includepdf{zavrsni_rad_rjesenje_produljenje.pdf}
+        \newpage
+            \thispagestyle{empty}
             \includepdf{izjava_autenticnost.pdf}
             %     \begin{center}\linespread{1.8}\fontsize{16}{16}
             %         {\textbf{
@@ -657,7 +660,7 @@
                     \label{eq:31}
                 \end{equation}
 
-                Iz navedenog izraza možemo zaključiti kako je zajednička distribucija vjerojojatnosti rezultantni produkt distribucije vjerojatnosti za svakog pojedinog člana $x_n$. Izraz za zajedničku distribuciju vjerojatnosti $f(x,\theta)$ iz jednadžbe \ref{eq:31} koristi se u teoriji vjerojatnosti za procjenu vrijednosti skupa $X$ kada je poznata vrijednost parametra $\theta$. Ukoliko vrijedi
+                Iz navedenog izraza možemo zaključiti kako je zajednička distribucija vjerojojatnosti rezultantni produkt distribucije vjerojatnosti za svakog pojedinog člana $x_n$. Izraz za zajedničku distribuciju vjerojatnosti $f(x,\theta)$ iz jednadžbe \eqref{eq:31} koristi se u teoriji vjerojatnosti za procjenu vrijednosti skupa $X$ kada je poznata vrijednost parametra $\theta$. Ukoliko vrijedi
 
                 \begin{equation}
                     f(x_1,\theta)> f(x_2,\theta),
@@ -705,7 +708,7 @@
                     \label{eq:33}
                 \end{equation}
 
-            dolazimo do zaključka kako se veća vrijednost nepoznatog parametra $\theta_2$ može pripisati kao vjerodostojnija, a samim time je i vjerojatnosti pojavljivanja izmjerenoga člana $x$ kao vrijednosti skupa $X$ veća. Takva razmatranja ne mogu se pripisati \textit{a priori}, već se pretpostavljena vrijednost nepoznatog parametra $\theta$ dodatno testira substitucijom u jednadžbu \ref{eq:31} -- nakon čega se vrši usporedba dobivenih vrijednosti sa izmjerenim vrijednostima iz skupa $X$ \cite{Broersen}.
+            dolazimo do zaključka kako se veća vrijednost nepoznatog parametra $\theta_2$ može pripisati kao vjerodostojnija, a samim time je i vjerojatnosti pojavljivanja izmjerenoga člana $x$ kao vrijednosti skupa $X$ veća. Takva razmatranja ne mogu se pripisati \textit{a priori}, već se pretpostavljena vrijednost nepoznatog parametra $\theta$ dodatno testira substitucijom u jednadžbu \eqref{eq:31} -- nakon čega se vrši usporedba dobivenih vrijednosti sa izmjerenim vrijednostima iz skupa $X$ \cite{Broersen}.
 
                 Konačno, slijedi osnovni postulat metode procjene maksimalne vrijednosti koji nalaže postupak procjenjivanja vrijednosti parametra $\theta$ i odabir one vrijednosti koja će dati najvjerodostojniji rezultat. U praktičnoj primjeni, češće se koristi logaritamski oblik funkcije vjerodostojnosti
                 
@@ -762,7 +765,7 @@
                     \label{eq:36}
                 \end{equation}
 
-                gdje su vrijednosti varijabli $x_1,x_2,\ldots,x_q$ poznanice (vrijednosti mjerenih otpora), a vrijednosti nepoznatog parametara $theta_1,\theta_2,\ldots,\theta_q$ nepoznanice. Nadalje, izraz \ref{eq:36} možemo razvesti kao
+                gdje su vrijednosti varijabli $x_1,x_2,\ldots,x_q$ poznanice (vrijednosti mjerenih otpora), a vrijednosti nepoznatog parametara $theta_1,\theta_2,\ldots,\theta_q$ nepoznanice. Nadalje, izraz \eqref{eq:36} možemo razvesti kao
 
                 \begin{equation}
                     y=\theta_1x_1+\theta_2x_2+\ldots+\theta_qx_q+\epsilon,
@@ -771,7 +774,7 @@
 
                 za koji pretpostavljamo $E(\epsilon)=0$. Nasumičnu varijablu $\epsilon$ nazivamo mjernom pogreškom \cite{Priestley}. Mjerna pogreška ili odstupanje može nastati iz različitih razloga, od kojih su u elektrotehnici najčešći nesavršenosti mjerne opreme, neispravnost mjernog postupka, nevjerodostojno stanje mjernog objekta, vanjski utjecaji, itd.
 
-                Izraz \ref{eq:36} daje nam linearnu korelaciju vrijednosti $y$ kao sume $q$ članova poznatih vrijednosti $x$. Želimo li odrediti vrijednost $y$ za točno određeni broj članova, izraz \ref{eq:36} možemo zapisati i kao
+                Izraz \eqref{eq:36} daje nam linearnu korelaciju vrijednosti $y$ kao sume $q$ članova poznatih vrijednosti $x$. Želimo li odrediti vrijednost $y$ za točno određeni broj članova, izraz \eqref{eq:36} možemo zapisati i kao
                 
                 \begin{equation}
                     y_i=\theta_1x_{1i}+\theta_2x_{2i}+\ldots+\theta_qx_{qi}+\epsilon_i, \quad i=1,\ldots,n,
@@ -792,7 +795,7 @@
                     \label{eq:310}
                 \end{equation}
 
-                Jednadžbom \ref{eq:310} zaključujemo ovo poglavlje. U sljedećem poglavlju opisati ćemo osnovne statističke pokazatelje signala i vremenskih nizova koji čine osnovu svih statističkih modela, pa tako i onih navedenih u ovom potpoglavlju.        
+                Jednadžbom \eqref{eq:310} zaključujemo ovo poglavlje. U sljedećem poglavlju opisati ćemo osnovne statističke pokazatelje signala i vremenskih nizova koji čine osnovu svih statističkih modela, pa tako i onih navedenih u ovom potpoglavlju.        
 
     \chapter{Osnovni pojmovi teorije vjerojatnosti i statistike pri obradi signala}
 
@@ -899,7 +902,7 @@
                 \caption{Vennovi dijagrami presjeka, unije i komplementa unije}
             \end{figure}
 
-            \subsection{Slučajne varijable i distribucije vjerojatnosti}
+            \subsection{Slučajne varijable i distribucije vjerojatnosti} \label{random_variable}
 
                 Kada govorimo o slučajnim i elementarnim događajima, najčešće govorimo o grupiranju dobivenih rezultata u smislene cjeline koje su dio većeg skupa dobivenih podataka. Kako bismo mogli izvršiti detaljnu prognostičku analizu slučajnih događaja, potrebno je osmisliti način preslikavanja elementarnih događaja u prigodniji oblik za obradu podataka. Navedeno postižemo procesom \textit{kvantifikacije}, tj. određivanjem realnih numeričih vrijednosti kojima ćemo pripisati neka fizikalna svojstva. Na primjer, želimo li odraditi računalnu statističku analizu za prethodno navedeni pokus bacanja novčića, možemo kvantificirati elementarne događaje \textit{pismo} i \textit{glava} kao realne vrijednosti $0$ i $1$ -- koje se pripisuju kao moguće rezultantne vrijednosti \textit{slučajne varijable}
 
@@ -1037,7 +1040,7 @@
                     P(X=x_0)=0.                    
                 \end{equation}
                 
-                Prisjetimo li se određenih integrala, izraz \ref{eq:46} možemo raspisati kao
+                Prisjetimo li se određenih integrala, izraz \eqref{eq:46} možemo raspisati kao
 
                 \begin{equation}
                     P(a\leq X\leq b)=\displaystyle\int_{a}^{b}f(x)dx=F(b)-F(a),
@@ -1224,7 +1227,7 @@
 
                 uz uvjet da integral u izrazu \ref{def:continous_probabilistic_parameters} konvergira.
 
-                Temeljem izraza \ref{eq:discrete_random_mu} i izraza \ref{eq:continous_random_mu} možemo doći do izraza za očekivanu vrijednost slučajne varijable na način da ih uvrstimo u izraz \ref{eq:412} -- iz čega slijedi:
+                Temeljem izraza \eqref{eq:discrete_random_mu} i izraza \eqref{eq:continous_random_mu} možemo doći do izraza za očekivanu vrijednost slučajne varijable na način da ih uvrstimo u izraz \eqref{eq:412} -- iz čega slijedi:
 
                 \begin{equation}
                     E\left[X\right]=
@@ -1244,7 +1247,7 @@
                     \label{eq:covariance}
                 \end{equation}
 
-                Temeljem izraza \ref{eq:covariance} možemo općenito konstatirati kako je kovarijanca mjera varijance između dviju promatranih varijabli. Štoviše, poznavanjem iznosa kovarijanca možemo ustanoviti međusobnu korelaciju promatranih slučajnih varijabli kako slijedi:
+                Temeljem izraza \eqref{eq:covariance} možemo općenito konstatirati kako je kovarijanca mjera varijance između dviju promatranih varijabli. Štoviše, poznavanjem iznosa kovarijanca možemo ustanoviti međusobnu korelaciju promatranih slučajnih varijabli kako slijedi:
 
                 \begin{enumerate}
                     \item Pozitivna kovarijanca (\textit{pozitivna korelacija}) -- predstavlja tendenciju porasta dviju slučajnih varijabli u istom smjeru (npr. povećanje slučajne varijable $X$ rezultira povećanjem slučajne varijable $Y$),
@@ -1256,10 +1259,94 @@
                 Prilikom promatranja prethodno navedenih statističkih značajki, od iznimne je važnosti razlikovati korištene termine \textit{korelacije} i \textit{nezavisnosti}. Uzmemo li primjer dviju nezavisnih varijabli, logički je za pretpostaviti kako nisu u korelaciji. No, uzmemo li primjer dviju varijabli koje nisu u korelaciji, valja logički uočiti kako navedene varijable \textit{nisu nužno} međusobno nezavisne.
 
                 % \textbf{Dovršiti ovo prema Dekkingu i YT. 104. strana Priestleya "Multivariate Distributions" za poopćenje nekih gornjih izraza.}
+ 
+        \section{Stohastički procesi} \label{stoh_proc}
+            %Objasniti na temelju par primjera i utjecaj određenih varijabli (random walk, ...)
+            %https://www.youtube.com/watch?v=TuTmC8aOQJE
 
-        \section{Vremenski nizovi}
+            % Umjesto ovoga ide zamjena sa nekim naslovom u kojemu će se opisati stohastički procesi budući da je dolje navedeno opisano u pretprehodnom potpoglavlju (ostale autokovarijanca i takve stvari, ali to treba vidjeti gdje je bolje opisati radi čitljivosti rada):
 
-            Vremenske nizove povezujemo uz bilo kakavu reprezentzaciju vrijednosti u ovisnosti o vremenskoj konstanti -- neovisno radi li se o vrijednostima koje prate neko determinističko načelo ili načelo nasumičnosti. Drugim rječima, vremenske nizove možemo opisati kao stohastički signal s kronološki raspoređenim opažanjima uzorkovanim u redovitim vremenskim razmacima. Mogu se pojavljivati kao podaci o fizičkim veličinama, kao ekonomski ili financijski podaci, demografski podaci, itd.. Opažanja ili mjerenja navedenih podataka provedena su u proizvoljnim vremenskim intervalima -- svake sekunde, svakoga sata, svakoga dana, svakoga mjeseca, i sl.. U analizi vremenskih nizova, takve skupove podataka uobičajeno reprezentiramo konačnim brojem mjerenja promatranog nasumičnog procesa $X(t)$ za, primjerice, $t=1,2,\ldots,N$ \cite{Priestley}. Vremenske nizove možemo analitički zapisati na sljedeće načine:
+            % varijanca i kovarijanca -- potrebno poslije za pojašnjenje stacionarnih i nestacionarnih signala
+            % \textbf{(uzorak (sample space), srednja vrijednost, varijanca, kovarijanca, stacionarni procesi, autokovarijanca...)}
+
+            Za razliku od nasumičnih varijabli opisanih u potpoglavlju \ref{random_variable}, procese možemo konceptuilizirati pomoću trivijaliziranog opisa signala kao nosioca informacije, tj. skupa podataka. Stohastički (ili nasumični) proces $X(t)$ je kronološki raspoređena familija slučajnih varijabli čiji su članovi pripisani pripadajućim vremenskim trenutcima. Točnije, stohastički proces možemo formalnije opisato pomoću sljedećih definicija:
+
+            \begin{definition}[\cite{Bahovec}]
+                Slučajni (ili stohastički) proces ${X(t)}$ je familija indeksiranih slučajnih varijabli definiranih nad prostorom događaja $S$.
+            \end{definition}
+
+            \begin{definition}[\cite{Priestley}]
+                Ukoliko $t$ poprima kontinuirane vrijednosti iz skupa realnih brojeva, pri čemu vrijedi odnos $T\subseteq \mathbb{R}$, proces ${X(t)}$ nazivamo stohastičkim procesom s kontinuiranim parametrom. Ukoliko $t$ poprima diskretne vrijednosti, proces ${X(t)}$ nazivamo stohastičkim procesom s diskretnim parametrom.
+            \end{definition}
+
+            Pretpostavimo stohastički proces ${X(t)}$ koji je rezultat provođenja nekog slučajnog eksperimenta kojega je moguće ponavljati u identičnim uvjetima. Provođenjem prvog kruga slučajnog eksperimenta doći ćemo do zapisa procesa ${X(t)}$, te je logično zaključiti kako ćemo -- uslijed definicije slučajne varijable -- u daljnim ponavljanjima slučajnog eksperimenta dobivati i drugačije vrijednosti, a samim time i drugačiji zapis, tj. skup vrijednosti procesa ${X(t)}$. Iz navedenoga intuitivno slijedi pojam \textit{realizacije procesa} kao skupa vrijednosti procesa ${X(t)}$ za točno određenu permutaciju slučajnog eksperimenta. Skup svih mogućih realizacija naziva se \textit{ansambl} ili \textit{populacija}.
+
+            Dvije osnovne vrste stohastičkih procesa obzirom na vjerojatnostna svojstva su:
+
+            \begin{enumerate}
+                \item \textit{Stacionarni}: vjerojatnostna svojstva se ne mijenjaju s vremenom,
+                \item \textit{Nestacionarni}: vjerojatnostna svojstva se mijenjaju s vremenom.
+            \end{enumerate}
+
+            U sklopu ovoga rada značajni će biti stacionarni stohastički procesi, te ćemo ih detaljnije pojasniti u sklopu stacionarnih vremenskih nizova -- koji čine najčešće korištenu realizaciju stohastičkog procesa u statističkoj analizi.
+
+            Iz navedenoga možemo pretpostaviti korisnost koncepta stohastičkog procesa u primjeni znanstvene metode, pritom nastojeći odgovoriti na opća pitanja:
+
+            \begin{enumerate}
+                \item Postoji li i koja je korelacija među vrijednostima promatranih uzoraka stohastičkog procesa,
+                \item Je li moguće opisati dugoročno ponašanje promatranog uzorka stohastičkog procesa (uz primjenu određenih teorema poput zakona velikih brojeva i centralnog graničnog teorema),
+                \item Postoje li i koja su ograničenja promatranog stohastičkog procesa (npr. pojava anomalija, ekstremni uvjeti, financijske krize, i sl.).
+            \end{enumerate}
+
+            % Jedan od najjednostavnijih je Simple Random Walk. Markovljev lanac - stohastički procesi čiji je utjecaj prošlih događaja na buduće događaje opisan samo trenutnim stanjem (važna samo zadnja vrijednost, sve korelacije su zapisane u toj jednoj vrijednosti...npr. to je simple random walk).
+
+            % Montgomery and Rugner:\\
+            % Random Variables: Chap. 2 Page 53,\\
+
+            % Holden:\\
+            % Stohastic models of time series: Page 45,\\
+            % Deterministic and Stohastic Trends: Page 80,\\
+
+            % Dekking:\\
+            % Discrete Random Variables: Page 41,\\
+            % Continous Random Variables: Page 57,\\
+            % Variance: Page 96,\\
+            % Covariance and Correlation: Page 135,\\
+
+
+            % Broersen:\\
+            % Random Variables: Page 11,\\
+            % Functions of Random Variables: Page 18,\\
+            % Stohastic Processes: Page 29,\\
+            % Autocorrelation Function: Page 31,\\
+            % Estimation of Mean and Variance: Page 38,\\
+            % Autocorrelation Estimation: Page 40,\\
+
+            % Priestley:\\
+            % Random Processes: Page 10,\\
+            % Stationary Random Processes: Page 14,\\
+            % Random Variables: Page 37,\\
+            % Stationary Random Processes: Page 100,\\
+            % Stationary Processes: Page 104,\\
+            % The Autocovariance and Autocorrelation Functions: Page 106,\\
+            % Special Discrete Parameter Models (White Noise): Page 114,\\
+
+            % \textbf{(The words “process” and “model” are often used to describe more or less the same
+            % system. Process is generally used to describe the actual process of generating the
+            % data, which are also called the observations or signal. Each stationary stochastic
+            % data set has one generating process. The word model is more associated with the
+            % estimation based on given observations. Different types of models can be calculated
+            % for measured data, for which the generating process might be unknown. In the
+            % literature, the difference between the words process and model is not always used
+            % very strictly. This does not lead to much confusion because the actual meaning
+            % 60 Automatic Autocorrelation and Spectral Analysis
+            % follows from the context. Petrus)}
+   
+        %Signals and Systems DeMYSTiFieD A Self-Teaching Guide (dobro za elektrotehničke primjere autokorelacijske analize)
+    
+        \subsection{Vremenski nizovi}
+
+            Vremenske nizove povezujemo uz bilo kakavu reprezentzaciju vrijednosti u ovisnosti o vremenskoj konstanti -- neovisno radi li se o vrijednostima koje prate neko determinističko načelo ili načelo nasumičnosti. Drugim rječima, vremenske nizove možemo opisati kao stohastički signal s kronološki raspoređenim opažanjima uzorkovanim u redovitim vremenskim razmacima -- točnije, iz opisa stohastičkog procesa slijedi zaključak kako se vremenski niz može tretirati kao konačna realizacija nekog stohastičkog procesa. Mogu se pojavljivati kao podaci o fizičkim veličinama, kao ekonomski ili financijski podaci, demografski podaci, itd.. Opažanja ili mjerenja navedenih podataka provedena su u proizvoljnim vremenskim intervalima -- svake sekunde, svakoga sata, svakoga dana, svakoga mjeseca, i sl.. U analizi vremenskih nizova, takve skupove podataka uobičajeno reprezentiramo konačnim brojem mjerenja promatranog nasumičnog procesa $X(t)$ za, primjerice, $t=1,2,\ldots,N$ \cite{Priestley}. Vremenske nizove možemo analitički zapisati na sljedeće načine:
 
             \begin{equation}
                 X=\{X_1,X_2,\ldots\}
@@ -1273,161 +1360,163 @@
             
             U daljnjim razmatranjima teme ovoga rada, prateći generalni koncenzus u nomenklaturi stručnih izvora, pod analizom vremenskih nizova smatrati ćemo principe i modele koji analiziraju promatrane vrijednosti nasumičnih procesa -- koje ćemo detaljnije opisati u nadolazećim potpoglavljima.
 
-        \subsection{Primjeri analize vremenskih nizova u elektrotehnici}
-            %Priestley:
-                %Estimation of transfer functions: Page 20,
-                %Prediciton and filtering problems: Page 25,
-                %Estimation in time domain: Page 291,
-                %The prediction problem: Page 727,
-                %The Wiener Approach: Page 748
-            %https://ieeexplore.ieee.org/document/6073967
-            %https://ieeexplore.ieee.org/document/6057422
-            %https://ieeexplore.ieee.org/document/4524543
-            %https://www.wikiwand.com/en/Wiener_filter
-            Temeljem definicije vremenskog niza, prirodno se nameće korelacija i korištenje istih u ekonomiji i poslovnim sustavima, koji navedene koriste za prognostičko modeliranje u prije spomenute svrhe koje će polučiti konkretni rezultat koji će poslije biti predmet daljnjeg proučavanja.
+            Osnovni modeli vremenskih nizova koji se koriste čine osnovu statističe analize su \cite{Bahovec}:
 
-            Korištene metodologije u takvim procesima nisu samostalno svrsihodne u inženjerstvu, tj. nadopunjuju se tehničkom terminologijom i stručnim saznanjima o fenomenima, ograničenjima primjene i fizikalnim pojavama promatranih sustava. Iz toga proizlazi teza o korištenju analize vremenskih nizova kao jednog od alata za daljnje inženjerske analize.
+            \begin{enumerate}
+                \item \textit{Aditivni model} \\
 
+                    \begin{equation}
+                        Y_t=T_t+C_t+S_t+e_t,
+                    \end{equation}
 
-            U uvodnom poglavlju naveli smo neke od temeljnih važnosti i značajki prognoiziranja u ostvarivanju tržišnih. strateških i sigurnostnih ciljeva -- gdje smo čvrsto ustanovili sveprisutnost potrebe za statističkim modeliranjem, tj. prognoziranjem. Baš kao i u navedenim primjerima ekonomske i upravljačke prirode, prognoziranje i odgovarajuće metodologije od iznimne su koristi današnjim inženjerima pri analizi fizikalnih sustava. 
-            
-            Primjer korištenja istih može se uočiti na primjeru ranoga razvoja modernih vojnih rješenja za protuavionsku obranu. Navedena rješenja proizlašla su kao odgovor na postojeći problem brzorastućeg razvoja ofenzivnih oružja za vrijeme 2. svjetskog rata, što je dovelo do prirodne potrebe za odgovarajućim sustavima zaštite u svrhu očuvanja nacionalne  sigurnosti. Razvoj protuavionskih obrambenih sustava temeljio se na pronalasku korelacije koja će s visokom uspješnošću predvidjeti poziciju neautoriziranih objekata u zračnom prostoru u odnosu na trenutnu poziciju obrambenog projektila u svrhu najučinkovitijega nahođena koje će rezultirati terminacijom potencijalne prijetnje.
-            
-            Iz procesa pronalaska navedenoga rješenja, proizašao je današnji \textit{Wienerov filter}, koji ima široku primjenu u elektrotehnici i drugim inženjerskim branšama -- ponajviše prilikom obrade signala, digitalne obrade slike, sinteze sustava upravljanja, te u razvoju digitalnih komunikacija. U općem smislu, koristi je za identifikaciju sustava, dekonvoluciju, odšumljivanje i uočavanje signala.
+                \item \textit{Multiplikativni model} \\
+                
+                    \begin{equation}
+                        Y_t=T_t\cdot I_{C_t}\cdot I_{S_t}\cdot e_t,
+                    \end{equation}
 
-            Temeljem prethodno navedenoga povoda za razvojem Wienerova filtra možemo lakše shvatiti njegovu funkciju, a to je statistički proračun ponašanja nepoznatog signala pomoću referentnog ulaznog signala koji, propagacijom kroz filter, daje izlaznu (prognoziranu) vrijednost. Točnije, za kauzalne diskretne signale s konačnom vrijednošću Wienerov filter pronalazi optimalne koeficijente pomoću statističkog modeliranja pomoću poznatih prethodnih vrijednosti ulaznog i izlaznog signala -- populirajući matricu ulaznih signala s prognoziranim vrijednostima autokorelacije ulaznog signala, dok vrši sličnu radnju populacijom matrice izlaznih signala s prognoziranim vrijednostima unakrsne korelacije između izlaznih i ulaznih signala.
+            \end{enumerate}
 
-            \begin{figure}[H]
+            gdje su
+
+            \begin{table}[H]
                 \centering
-                \begin{tikzpicture}[node distance=2.5cm, auto,>=latex']
+                \begin{tabular*}{0.9\textwidth}{l p{13cm}}
+                    \textit{$T_t$} & trend\footnotemark ,\\
+                    \textit{$C_t$} & ciklička komponenta\footnotemark ,\\
+                    \textit{$S_t$} & sezonska konponenta\footnotemark ,\\
+                    \textit{$e_t$} & slučajna komponenta\footnotemark .
+                \end{tabular*}
+            \end{table}
+
+            \footnotetext[1]{Dugoročna tendencija razvoja pojave u vremenu; Niz vrijednosti kroz koje bi promatrana pojava prolazila da nije bilo sezonskih ili slučajnih činbenika (vremenska razdoblja duža od 5 godina).}
+            \footnotetext[2]{Odnosi se na redovne fluktuacije oko trenda koja su sustavna (vremenska razdoblja od jedne i više godine).}
+            \footnotetext[3]{Očituje se u sustavnim kretanjima pojave unutar jedne godine.}
+            \footnotetext[4]{Izražava nesistematske utjecaje na razvoj pojave \cite{Bahovec}.}
+            
+            Modeli koji analiziraju ponašanje stohastičkih procesa u vremenskoj domeni poprimaju formu jednog od dvaju prethodno navedenih modela ili iz klase linearnih stohastičkih modela kojima se opisuju stacionarni procesi -- koje ćemo dalje opisati.
+
+            \subsubsection{Stacionarni vremenski nizovi}
+
+            Za stacionarni vremenski niz općenito moraju vrijediti sljedeće konstatacije:
+
+            \begin{itemize}
+                \item Vremenski niz ne sadrži trend komponentu,
+                \item Vremenski niz nema prisutne striktno periodske varijacije,
+                \item Varijanca vremenskoga niza ne ovisi o vremenu.
+            \end{itemize}
+
+            Prilikom provedbe detaljne statističke analize, stohastičke procese je ponekad lakše opisati nešto manje formalnom definicijom kao funkcijom distribucije u nekom vremenskom intervalu.
+
+            Odaberemo li proizvoljno prirodni broj $n\in \mathbb{N}$ i svaki pomak $k\in \mathbb{N}$, $n$-dimenzionalna funkcija distribucije zadovoljava jednadžbu \cite{Bahovec}:
+
+            \begin{equation}
+                F_{X_1,X_2,\ldots,X_n}(x_1,x_2,\ldots,x_n)=F_{X_{1+k},X_{2+k},\ldots,X_{n+k}}
+                \label{eq:428}
+            \end{equation}
+
+            Proces za koji vrijedi izraz \eqref{eq:428} za svaki $n=1,2,\ldots$ je \textit{strikto stacionaran}, te su za takav proces funkcije distribucije jednake za sve $t$. Temeljem navedenoga, očekivana vrijednost procesa
+
+            \begin{equation}
+                E(X_t)=\mu, \quad \mu < \infty
+            \end{equation}
+
+            je kosntanta ako je $E(|X_t|)<\infty$. Analogno tome, varijanca procesa definirana je kao
+
+            \begin{equation}
+                \mathrm{Var}(X_t)=E\big(X_t-E(X_t)\big)^2=E(X_t-\mu)^2=\sigma^2.
+            \end{equation}
+
+            uz uvjet da je $E(|X_t^2|)<\infty$.
+
+            Primjer striktno stacionarnog procesa u praksi najčešće je \textit{bijeli šum} (čisti slučajni proces). Iako ga se u istoj ne susreće kao poticajnu komponentu nekog stacionarnog vremenskog niza, učestalost njegova korištenja proizlazi iz pogodnosti korištenja istoga za opisivanje dinamike slučajne komponente. Štoviše, bijeli šum čini osnove regresijskog modela u kojemu su relacijske greške članovi bijelog šuma.
+            
+            Takav proces definiran je kao niz nekoreliranih jednako distribuiranih slučajnih varijabli s konačnom vrijednošću očekivane vrijendosti.
+
+            Za potrebe ovoga rada, proces ${\epsilon_t, t=\pm 1, \pm 2, \ldots}$ je čisti slučajni proces ako za svaki promatrani $t=0,\pm 1, \pm 2,\ldots$ vrijedi da je \cite{Bahovec}:
+
+            \begin{itemize}
+                \item $E(\epsilon_t)=0$,
+                \item $\mathrm{Var}(\epsilon_t)=\sigma^2$,
+                \item $\mathrm{Cov}(\epsilon_t,\epsilon_s)=0$ za svaki $t\neq s$, gdje $t$ i $s$ predstavljaju bilo koje dvije točke u vremenu.
+            \end{itemize}
+
+            Kroz literaturu i ovaj rad koristiti ćemo skraćeni oblik navedenih svostava pomoću oznake $\epsilon_t\sim WN(0,\sigma^2)$.
+
+            Detaljna analiza bijelog šuma, tj. striktno stacionarnih procesa, detaljnije je pojašnjena u citiranoj literaturi \cite{Priestley}\cite{Bahovec}. U istoj je dodatno pojašnjena ovisnost kovarijance o vremenskom intervalu te neovisnost iste o položaju točaka na vremenskoj osi.
+
+            \subsection{Autokovarijanca}
+
+            \subsubsection{Primjeri analize vremenskih nizova u elektrotehnici}
+                %Priestley:
+                    %Estimation of transfer functions: Page 20,
+                    %Prediciton and filtering problems: Page 25,
+                    %Estimation in time domain: Page 291,
+                    %The prediction problem: Page 727,
+                    %The Wiener Approach: Page 748
+                %https://ieeexplore.ieee.org/document/6073967
+                %https://ieeexplore.ieee.org/document/6057422
+                %https://ieeexplore.ieee.org/document/4524543
+                %https://www.wikiwand.com/en/Wiener_filter
+                Temeljem definicije vremenskog niza, prirodno se nameće korelacija i korištenje istih u ekonomiji i poslovnim sustavima, koji navedene koriste za prognostičko modeliranje u prije spomenute svrhe koje će polučiti konkretni rezultat koji će poslije biti predmet daljnjeg proučavanja.
+
+                Korištene metodologije u takvim procesima nisu samostalno svrsihodne u inženjerstvu, tj. nadopunjuju se tehničkom terminologijom i stručnim saznanjima o fenomenima, ograničenjima primjene i fizikalnim pojavama promatranih sustava. Iz toga proizlazi teza o korištenju analize vremenskih nizova kao jednog od alata za daljnje inženjerske analize.
+
+
+                U uvodnom poglavlju naveli smo neke od temeljnih važnosti i značajki prognoiziranja u ostvarivanju tržišnih. strateških i sigurnostnih ciljeva -- gdje smo čvrsto ustanovili sveprisutnost potrebe za statističkim modeliranjem, tj. prognoziranjem. Baš kao i u navedenim primjerima ekonomske i upravljačke prirode, prognoziranje i odgovarajuće metodologije od iznimne su koristi današnjim inženjerima pri analizi fizikalnih sustava. 
+                
+                Primjer korištenja istih može se uočiti na primjeru ranoga razvoja modernih vojnih rješenja za protuavionsku obranu. Navedena rješenja proizlašla su kao odgovor na postojeći problem brzorastućeg razvoja ofenzivnih oružja za vrijeme 2. svjetskog rata, što je dovelo do prirodne potrebe za odgovarajućim sustavima zaštite u svrhu očuvanja nacionalne  sigurnosti. Razvoj protuavionskih obrambenih sustava temeljio se na pronalasku korelacije koja će s visokom uspješnošću predvidjeti poziciju neautoriziranih objekata u zračnom prostoru u odnosu na trenutnu poziciju obrambenog projektila u svrhu najučinkovitijega nahođena koje će rezultirati terminacijom potencijalne prijetnje.
+                
+                Iz procesa pronalaska navedenoga rješenja, proizašao je današnji \textit{Wienerov filter}, koji ima široku primjenu u elektrotehnici i drugim inženjerskim branšama -- ponajviše prilikom obrade signala, digitalne obrade slike, sinteze sustava upravljanja, te u razvoju digitalnih komunikacija. U općem smislu, koristi je za identifikaciju sustava, dekonvoluciju, odšumljivanje i uočavanje signala.
+
+                Temeljem prethodno navedenoga povoda za razvojem Wienerova filtra možemo lakše shvatiti njegovu funkciju, a to je statistički proračun ponašanja nepoznatog signala pomoću referentnog ulaznog signala koji, propagacijom kroz filter, daje izlaznu (prognoziranu) vrijednost. Točnije, za kauzalne diskretne signale s konačnom vrijednošću Wienerov filter pronalazi optimalne koeficijente pomoću statističkog modeliranja pomoću poznatih prethodnih vrijednosti ulaznog i izlaznog signala -- populirajući matricu ulaznih signala s prognoziranim vrijednostima autokorelacije ulaznog signala, dok vrši sličnu radnju populacijom matrice izlaznih signala s prognoziranim vrijednostima unakrsne korelacije između izlaznih i ulaznih signala.
+
+                \begin{figure}[H]
                     \centering
-                    \node [input, name=input] {};
-                    \node [block, align=center, right of=input, node distance=4cm] (wiener_filter) {$G(z)=\displaystyle\sum_{i=0}^{N}a_i z^{-i}$};
-                    \node [sum, right of=wiener_filter, label={[above=0.20cm]center:$-$}, label={[left=0.20cm]center:$+$}] (sum) {};
-                    \node [input, above of=sum] (error) {};
-                    \node [output, right of=sum] (output) {};
+                    \begin{tikzpicture}[node distance=2.5cm, auto,>=latex']
+                        \centering
+                        \node [input, name=input] {};
+                        \node [block, align=center, right of=input, node distance=4cm] (wiener_filter) {$G(z)=\displaystyle\sum_{i=0}^{N}a_i z^{-i}$};
+                        \node [sum, right of=wiener_filter, label={[above=0.20cm]center:$-$}, label={[left=0.20cm]center:$+$}] (sum) {};
+                        \node [input, above of=sum] (error) {};
+                        \node [output, right of=sum] (output) {};
 
-                    \path[->] (input) edge node {$w[n]$} (wiener_filter);
-                    \path[->] (wiener_filter) edge node {$x[n]$} (sum);
-                    \path[->] (error) edge node {$s[n]$} (sum);
-                    \path[->] (sum) edge node {$e[n]$} (output);
-                \end{tikzpicture}
-                \caption{Blokovski prikaz FIR Wiener filtra za diskretne signale.}
-                \label{fig:U5}
-            \end{figure}
-            Iz blokovnskog prikaza FIR Wiener filtra sa slike \ref{fig:U5}, uočavamo propagaciju diskretnog ulaznog signala $w[n]$ kroz Wienerov filtar -- kojim se modelira učestalost otipkavanja $N$ i odabir koeficijenata ${a_0,\dotsm,a_N}$. Izlazni signal $x[n]$ iz FIR Wienerova filtra zadan je izrazom
+                        \path[->] (input) edge node {$w[n]$} (wiener_filter);
+                        \path[->] (wiener_filter) edge node {$x[n]$} (sum);
+                        \path[->] (error) edge node {$s[n]$} (sum);
+                        \path[->] (sum) edge node {$e[n]$} (output);
+                    \end{tikzpicture}
+                    \caption{Blokovski prikaz FIR Wiener filtra za diskretne signale.}
+                    \label{fig:U5}
+                \end{figure}
+                Iz blokovnskog prikaza FIR Wiener filtra sa slike \ref{fig:U5}, uočavamo propagaciju diskretnog ulaznog signala $w[n]$ kroz Wienerov filtar -- kojim se modelira učestalost otipkavanja $N$ i odabir koeficijenata ${a_0,\dotsm,a_N}$. Izlazni signal $x[n]$ iz FIR Wienerova filtra zadan je izrazom
 
-            \begin{equation}
-                x[n]=\displaystyle\sum_{i=0}^{N}a_i w[n-i].
-            \end{equation}
+                \begin{equation}
+                    x[n]=\displaystyle\sum_{i=0}^{N}a_i w[n-i].
+                \end{equation}
 
-            Na temelju zadanoga izraza, možemo uočiti prethodno navedeno korištenje vremenskih nizova kao dio većeg "sustava alata" kojima se inženjeri koriste u svakodnevici. U konkretnom slučaju, FIR Wiener filtara prognozira vrijednosti signala $x[n]$ temeljem prethodnih vrijednosti ulaznog signala $w[n-i]$ uz ugođavanje autokorelacijskih koeficijenta $a_i$ -- pritom imajući na umu temeljne pretpostavke i uvjete. Jedan od tih uvjeta je minimizacija srednje kvadrane pogreške koja se koristi kao jedan od analitičkih faktora ocjene kvalitete sustava.
+                Na temelju zadanoga izraza, možemo uočiti prethodno navedeno korištenje vremenskih nizova kao dio većeg "sustava alata" kojima se inženjeri koriste u svakodnevici. U konkretnom slučaju, FIR Wiener filtara prognozira vrijednosti signala $x[n]$ temeljem prethodnih vrijednosti ulaznog signala $w[n-i]$ uz ugođavanje autokorelacijskih koeficijenta $a_i$ -- pritom imajući na umu temeljne pretpostavke i uvjete. Jedan od tih uvjeta je minimizacija srednje kvadrane pogreške koja se koristi kao jedan od analitičkih faktora ocjene kvalitete sustava.
 
-            Kako bismo pronašli srednju kvadratnu pogrešku sustava $E[e^2[n]]$, potrebno je definirati signal pogreške $e[n]$. U slučaju blokovskog prikaza sa slike \ref{fig:U5}, signal pogreške definiramo kao razliku vrijednosti izlaznog signala iz FIR Wienerova filtra $x[n]$ i vrijednosti referentnog signala $s[n]$, dolazimo do sljedećih izraza:
+                Kako bismo pronašli srednju kvadratnu pogrešku sustava $E[e^2[n]]$, potrebno je definirati signal pogreške $e[n]$. U slučaju blokovskog prikaza sa slike \ref{fig:U5}, signal pogreške definiramo kao razliku vrijednosti izlaznog signala iz FIR Wienerova filtra $x[n]$ i vrijednosti referentnog signala $s[n]$, dolazimo do sljedećih izraza:
 
-            \begin{equation}
-                e[n]=x[n]-s[n],
-            \end{equation}
-        
-            \begin{equation}
-                \begin{split}
-                    E\left[e^2[n]\right]&=E\left[\left(x[n]-s[n]\right)^2\right] \\
-                    & = E\left[x^2[n]\right]-2E\left[x[n]s[n]\right]+E\left[s^2[n]\right] \\
-                    & = E\left[\left(\displaystyle\sum_{i=0}^{N}a_i w[n-i]\right)^2\right]-2E\left[\displaystyle\sum_{i=0}^{N}a_i w[n-i]s[n]\right]+E\left[s^2[n]\right].
-                \end{split}
-                \label{eq:U2}
-            \end{equation}
-
-            Parcijalnim deriviranjem jednadžbe \ref{eq:U2} po autokorelacijskom koeficijentu $a_i$, možemo doći do konkretnog izraza za izračun minimuma funkcije srednje kvadratne pogreške $\frac{\partial E[e^2[n]]}{\partial a_i}$. Daljnji proračun tog izraza možemo intuitivno povezati s postupkom minimizacije funkcije metode najmanjih kvadrata opisanoj u potpoglavlju \ref{subs:LS}, te ga nije potrebno dalje analizirati.
+                \begin{equation}
+                    e[n]=x[n]-s[n],
+                \end{equation}
             
-            Zaključno, u ovom potpoglavlju smo potvrdili tezu o korisnosti kroištenja statističke analize vremenskih nizova u elektrotehnici. Jedna od konkretnih primjena Wienerova filtra u elektrotehnici je uočavanje pojave neočekivanoga šuma u električnoj mreži i daljnja regulacija sustava temeljem vrijednosti signala pogreške koji nastaje uslijed pojave navedenoga šuma. Korištenje FIR Wienerova filtra i filtra sličnih funkcija od iznimne je koristi za pravovremenost regulacije sustava upravljanja. U slučaju izostanka pravovremene regulacije sustava upravljanja, može doći do oštećenja sustava i njegovih komponenti, pojave nestabilnosti u sustavu, te drugih nepoželjnih svojstva.
+                \begin{equation}
+                    \begin{split}
+                        E\left[e^2[n]\right]&=E\left[\left(x[n]-s[n]\right)^2\right] \\
+                        & = E\left[x^2[n]\right]-2E\left[x[n]s[n]\right]+E\left[s^2[n]\right] \\
+                        & = E\left[\left(\displaystyle\sum_{i=0}^{N}a_i w[n-i]\right)^2\right]-2E\left[\displaystyle\sum_{i=0}^{N}a_i w[n-i]s[n]\right]+E\left[s^2[n]\right].
+                    \end{split}
+                    \label{eq:U2}
+                \end{equation}
 
-            % \textbf{(Dodati neki primjer iz elektrotehnike. U Pristleyu ima predetaljno razrađeni primjer za filtriranje (može se koristiti za dobivanje više stranica, više naginje korištenju vremenskih nizova i nekog općeg nasumičnog signala...ovo trenutno napisano je nekako više "stručno", ali se može staviti kao konkretizacija tog općeg primjera), IEEE Xplore kao dodatni primjeri (uz rastavljanje potpoglavnja))}
+                Parcijalnim deriviranjem jednadžbe \eqref{eq:U2} po autokorelacijskom koeficijentu $a_i$, možemo doći do konkretnog izraza za izračun minimuma funkcije srednje kvadratne pogreške $\frac{\partial E[e^2[n]]}{\partial a_i}$. Daljnji proračun tog izraza možemo intuitivno povezati s postupkom minimizacije funkcije metode najmanjih kvadrata opisanoj u potpoglavlju \ref{subs:LS}, te ga nije potrebno dalje analizirati.
+                
+                Zaključno, u ovom potpoglavlju smo potvrdili tezu o korisnosti kroištenja statističke analize vremenskih nizova u elektrotehnici. Jedna od konkretnih primjena Wienerova filtra u elektrotehnici je uočavanje pojave neočekivanoga šuma u električnoj mreži i daljnja regulacija sustava temeljem vrijednosti signala pogreške koji nastaje uslijed pojave navedenoga šuma. Korištenje FIR Wienerova filtra i filtra sličnih funkcija od iznimne je koristi za pravovremenost regulacije sustava upravljanja. U slučaju izostanka pravovremene regulacije sustava upravljanja, može doći do oštećenja sustava i njegovih komponenti, pojave nestabilnosti u sustavu, te drugih nepoželjnih svojstva.
 
-
-        \section{Osnovni statistički pokazatelji}
-
-            Umjesto ovoga ide zamjena sa nekim naslovom u kojemu će se opisati stohastički procesi budući da je dolje navedeno opisano u pretprehodnom potpoglavlju (ostale autokovarijanca i takve stvari, ali to treba vidjeti gdje je bolje opisati radi čitljivosti rada):
-
-            varijanca i kovarijanca -- potrebno poslije za pojašnjenje stacionarnih i nestacionarnih signala
-            \textbf{(uzorak (sample space), srednja vrijednost, varijanca, kovarijanca, stacionarni procesi, autokovarijanca...)}
-
-            Dekking:\\
-            Sample Spaces: Page 13,
-
-
-            
-            Montgomery and Runger:\\
-            Collecting Engineering Data: Chap 1. Page 5,\\
-            Sample Spaces and Events: Chap 2. Page 17,\\
-            Mean and Variance of a Discrete Random Variable: Chap 3. Page 66,\\
-            Mean and Variance of a Continous Random Variable: Chap 4. Page 105,\\
-            Data Summary and Display: Page 230,\\
-
-
-            Priestley:\\
-                Probability Spaces: 34,\\
-                Random Variables: Page 37,\\
-                Means, Variances and Moments: Page 47,\\
-                Properties of Means and Variances of Random samples: Page 96,\\
-
-                \subsubsection{Autokovarijanca}
-            \subsection{Očekivana vrijednost slučajne varijable}
-
-        \section{Stohastički procesi} \label{stoh_proc}
-            %Objasniti na temelju par primjera i utjecaj određenih varijabli (random walk, ...)
-            %https://www.youtube.com/watch?v=TuTmC8aOQJE
-            Montgomery and Rugner:\\
-            Random Variables: Chap. 2 Page 53,\\
-
-            Holden:\\
-            Stohastic models of time series: Page 45,\\
-            Deterministic and Stohastic Trends: Page 80,\\
-
-            Dekking:\\
-            Discrete Random Variables: Page 41,\\
-            Continous Random Variables: Page 57,\\
-            Variance: Page 96,\\
-            Covariance and Correlation: Page 135,\\
-
-
-            Broersen:\\
-            Random Variables: Page 11,\\
-            Functions of Random Variables: Page 18,\\
-            Stohastic Processes: Page 29,\\
-            Autocorrelation Function: Page 31,\\
-            Estimation of Mean and Variance: Page 38,\\
-            Autocorrelation Estimation: Page 40,\\
-
-            Priestley:\\
-            Random Processes: Page 10,\\
-            Stationary Random Processes: Page 14,\\
-            Random Variables: Page 37,\\
-            Stationary Random Processes: Page 100,\\
-            Stationary Processes: Page 104,\\
-            The Autocovariance and Autocorrelation Functions: Page 106,\\
-            Special Discrete Parameter Models (White Noise): Page 114,\\
-
-            \textbf{(The words “process” and “model” are often used to describe more or less the same
-            system. Process is generally used to describe the actual process of generating the
-            data, which are also called the observations or signal. Each stationary stochastic
-            data set has one generating process. The word model is more associated with the
-            estimation based on given observations. Different types of models can be calculated
-            for measured data, for which the generating process might be unknown. In the
-            literature, the difference between the words process and model is not always used
-            very strictly. This does not lead to much confusion because the actual meaning
-            60 Automatic Autocorrelation and Spectral Analysis
-            follows from the context. Petrus)}
-   
-        %Signals and Systems DeMYSTiFieD A Self-Teaching Guide (dobro za elektrotehničke primjere autokorelacijske analize)
-    
-        
-        \section{Bijeli šum}
-                Petrus:\\
-                    White Noise: Page 60,\\
-
-                Priestley:\\
-                    Purely Random Processes; "White Noise": Page 114,\\
+                % \textbf{(Dodati neki primjer iz elektrotehnike. U Pristleyu ima predetaljno razrađeni primjer za filtriranje (može se koristiti za dobivanje više stranica, više naginje korištenju vremenskih nizova i nekog općeg nasumičnog signala...ovo trenutno napisano je nekako više "stručno", ali se može staviti kao konkretizacija tog općeg primjera), IEEE Xplore kao dodatni primjeri (uz rastavljanje potpoglavnja))}
 
     \chapter{Autoregresivni modeli}
             
@@ -1486,14 +1575,14 @@
                 \end{tabular*}
             \end{table}
 
-            Ukoliko iz izraza \ref{eq:51} želimo definirati vrijednost člana procesa $x_n$, dolazimo do izvedenice
+            Ukoliko iz izraza \eqref{eq:51} želimo definirati vrijednost člana procesa $x_n$, dolazimo do izvedenice
 
             \begin{equation}
                 (x_t-\mu_x)=\epsilon_t-\phi_1(x_{t-1}-\mu_x)-\phi_2(x_{t-2}-\mu_x)-\ldots-\phi_p(x_{t-p}-\mu_x)+\theta_0.
                 \label{eq:52}
             \end{equation}
 
-            Izraz \ref{eq:52} predstavlja opći eksplicitni prikaz autoregresijskog modela reda $p$.
+            Izraz \eqref{eq:52} predstavlja opći eksplicitni prikaz autoregresijskog modela reda $p$.
 
             Neke od općih pretpostavki kojima se ne gubi općenitost prethodno opisanih izraza, a koje će nam biti od u budućim raspisima, su:
 
@@ -1508,7 +1597,7 @@
                 \end{equation}
             \end{itemize}
 
-            Ukoliko s $B$ označimo \textit{operator pomaka}, te primjenimo li pretpostavku definiranu jednadžbom \ref{eq:53}, dolazimo do definicijskog izraza
+            Ukoliko s $B$ označimo \textit{operator pomaka}, te primjenimo li pretpostavku definiranu jednadžbom \eqref{eq:53}, dolazimo do definicijskog izraza
 
             \begin{align}
                 \begin{split}
@@ -1520,7 +1609,7 @@
                 \label{eq:54}
             \end{align}
 
-            Daljnjim uvrštavanjem izraza \ref{eq:54} u izraz \ref{eq:51} dobivamo
+            Daljnjim uvrštavanjem izraza \eqref{eq:54} u izraz \eqref{eq:51} dobivamo
 
             \begin{align}
                 \begin{split}
@@ -1532,7 +1621,7 @@
 
             
         
-            Iz izraza \ref{eq:55} možemo definirati razvoj općeg polinoma koji opisuje autoregresijske parametre kako slijedi:
+            Iz izraza \eqref{eq:55} možemo definirati razvoj općeg polinoma koji opisuje autoregresijske parametre kako slijedi:
 
             \begin{equation}
                 \phi(B)=1+\phi_1B+\phi_2B^2+\ldots+\phi_pB^p.
@@ -1577,7 +1666,7 @@
                 \label{eq:58}
             \end{equation}
 
-            Minimizacijom izraza \ref{eq:55} dolazimo do izraza
+            Minimizacijom izraza \eqref{eq:55} dolazimo do izraza
             
             \begin{equation}
                 \displaystyle\sum_{t=p+1}^N\left\{x_t-\mu_x+\phi_1\left(x_{t-1}-\mu_x\right)+\ldots+\phi_p\left(x_{t-p}-\mu_x\right)+\omega_t\right\}=0,
