@@ -7,10 +7,13 @@
 
 \usepackage[intlimits]{amsmath}     %omogućava postavljanje granica integrala u formulama
 \usepackage{amsthm}         %matematički teoremi, leme i sl.
+\usepackage{amssymb}
 \usepackage{siunitx}        %podrška za korištenje SI sustava mjernih jedinica
 \usepackage{mathrsfs}
 \usepackage{venndiagram}
 \usepackage{nicefrac}
+\usepackage{epigraph}
+\setlength{\epigraphwidth}{0.7\textwidth}
 
 %encoding fontova i jezika
 \usepackage[croatian]{babel}
@@ -99,6 +102,11 @@
 \pgfmathsmuggle\pgfmathresult\endgroup}
 \pgfmathdeclarefunction{gauss}{2}{%
   \pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
+}
+\pgfmathsetseed{\number\pdfrandomseed}
+
+\newcommand{\InitVariables}{%
+  \pgfmathsetmacro{\a}{int(ifthenelse(rand > 0, 1, -1)*random(1,5))}%
 }
 
 
@@ -220,7 +228,7 @@
         \vfill\noindent
         \begin{tabular}[t]{l@{}}
             \fontsize{14}{14}\normalfont{
-                Rijeka, \today
+                Rijeka, rujan 2020.
             }
         \end{tabular}
         \hfill
@@ -265,7 +273,7 @@
         \vfill\noindent
         \begin{tabular}[t]{@{}l}
             \fontsize{14}{14}\normalfont{
-                Rijeka, \today
+                Rijeka, rujan 2020.
             }        
         \end{tabular}
         \hfill
@@ -315,49 +323,50 @@
             \newpage
                 \thispagestyle{empty}
                 $ $
-                    \vspace{5cm}
-                    \textit{
-                        \\
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et ante a mauris consequat tempor. Donec vulputate, nulla pharetra finibus finibus, ipsum ante molestie mauris, in tincidunt libero augue sit amet arcu. In hac habitasse platea dictumst. Nulla sagittis ante ac augue volutpat cursus. Ut gravida odio malesuada, vestibulum mi at, dignissim leo. Morbi semper finibus est, id maximus mauris auctor eget.
+                    \vfill
+                    \textit{Ovaj rad posvećujem sebi kao dokaz kako u svojim ciljevima treba ustrajati, te nakon svakog pada naučiti se podignuti. Nakon dugog vremenskog razdoblja provedenog na studiju, ne ostaje mi ništa drugo nego biti zahvalan što sam dobio najvrijedniji dar od svih -- a to je pronalazak samoga sebe. Pritom moram zahvaliti svim ljudima koji su mi pomogli u tome kakva osoba ne želim biti, ali ujedino i izraziti najveću zahvalnost onima koji su bili uz mene kada je bilo najteže -- ma koliko god sam sebi to tada nisam mogao priznati. Vaša vjera u mene kao osobu pomogla mi je da prebrodim i one najteže trenutke kada sam bio pred odustajanjem i propitkivanjem svojih vlastitih vrijednosti. Znate tko ste.
                     }
+                    \epigraph{\textit{You can fool the whole world down the pathway of years,\\
+                    And get pats on the back as you pass,\\
+                    But your final reward will be heartaches and tears\\
+                    If you've cheated the guy in the glass.}}{Dale Wimbrow}
+                    \vfill
     \end{titlingpage}
     \begin{KeepFromToc}
         \tableofcontents
     \end{KeepFromToc}
     \chapter{Uvod}
         %Potrebno je prepraviti uvod na način da opisuje povod za pisanje završnog rada -- dodati malo elektrotehnike u priču
-        \textbf{(Definicija podataka i informacija na zanimljiv način...ako je takvo što moguće)}
 
-        Vratimo li se u prošlost, važnost podataka i njihova inerpretacija u svrhu stvaranja informacija bila je neminovna za civilizacijske strukture koje danas poznajemo. Od početka razvoja primitnivnih tehnologija i njezinoga korištenja za optimizaciju životnih procesa, do razvoja trgovine i financijskih instrumenata; čovjek je sve efikasnije koračao prema evolucijskom vrhu uspješnom utilizacijom svoje okoline. Daljnjim razvojem, čovjek je nadišao barijeru vlastite memorije za obradu podataka, te se počeo približavati točki zasićenja - uslijed koje se javila potreba za stvaranjem boljega i efikasnijega načina obrade podataka i njihove pretvorbe u sažetiju i jednako kvalitetnu informaciju.
+        Vratimo li se u prošlost, važnost podataka i njihova interpretacija u svrhu stvaranja informacija bila je neminovna za civilizacijske strukture koje danas poznajemo. Od početka razvoja primitivnih tehnologija i njezinoga korištenja za optimizaciju životnih procesa, do razvoja trgovine i financijskih instrumenata; čovjek je sve efikasnije koračao prema evolucijskom vrhu uspješnom utilizacijom svoje okoline. Daljnjim razvojem, čovjek je nadišao barijeru vlastite memorije za obradu podataka, te se počeo približavati točki zasićenja - uslijed koje se javila potreba za stvaranjem boljega i efikasnijega načina obrade podataka i njihove pretvorbe u sažetiju i jednako kvalitetnu informaciju.
 
-        Kao i kod većine velikih znanstvenih otkrića koja su obilježila svoje razdoblje kao pretkretnice stoljeća u ratnim okolnostima, tako je i tijekom Drugog svjetskog rata otkriven novi izum kao odgovor na Enigmu - stroj koji je kodirao njemačke vojne i diplomatske poruke te čija se šifra smatrala nerješivom. Uzevši u obzir širenje nacističke Njemačke i prijetnju koja je prijetila ljudskim slobodama, javila se jasna potreba za stvaranjem rješenja koje će nadići čovjekova fizička i psihička ograničenja te biti u mogućnosti procesuirati veliku količinu podataka u vrlo kratkom vremenu -- radeći neprestano i ne osjećajući umor te, konzekventno, ne stvarajući greške. Imajući to na umu, Englezi su tada izumili \textit{Colossus} -- uređaj koji je pomogao kriptoanalitičarima da dešifriraju njemačke poruke i dao im stratešku prednost pri prognozorianju daljnih koraka tijekom ratnog razdoblja. Taj uređaj se u današnje vrijeme smatra pretečom prvoga računala kakvim ga danas poznajemo.
+        Kao i kod većine velikih znanstvenih otkrića koja su obilježila svoje razdoblje kao prekretnice stoljeća u ratnim okolnostima, tako je i tijekom Drugog svjetskog rata otkriven novi izum kao odgovor na Enigmu - stroj koji je kodirao njemačke vojne i diplomatske poruke te čija se šifra smatrala nerješivom. Uzevši u obzir širenje nacističke Njemačke i prijetnju koja je prijetila ljudskim slobodama, javila se jasna potreba za stvaranjem rješenja koje će nadići čovjekova fizička i psihička ograničenja te biti u mogućnosti procesuirati veliku količinu podataka u vrlo kratkom vremenu -- radeći neprestano i ne osjećajući umor te, konzekventno, ne stvarajući greške. Imajući to na umu, Englezi su tada izumili \textit{Colossus} -- uređaj koji je pomogao kripto analitičarima da dešifriraju njemačke poruke i dao im stratešku prednost pri prognoziranju daljnjih koraka tijekom ratnog razdoblja. Taj uređaj se u današnje vrijeme smatra pretečom prvoga računala kakvim ga danas poznajemo.
 
         Baš kao i tada, te kroz cijelu ljudsku povijest, ispravna interpretacija podataka u informaciju koju krajnji korisnik može iskoristiti u svrhu kvalitetnijeg donošenja važnih odluka, iskazala se kao značajan faktor u očuvanju civilizacijske i sveopće stabilnosti -- stanja koje je najpotentnije za budući razvoj, a time i blagostanje. Kako je civilizacija težila ka tehnološkom društvu, tako je eksponencijalno rasla i količina podataka koju je bilo potrebno interpretirati; te se javila potreba za sve preciznijim prognoziranjem budućega ponašanja sustava kako ne bi došlo do destrukcije vitalnih procesa i porasta volatilnosti sustava - a samim time i povećanjem vjerojatnosti za njegovim urušavanjem.
 
         Slijedno tome, važnost prognoziranja proizlazi iz dvije osnovne činjenice:
         \begin{enumerate}
-            \item budućnost je nepredvidiva
-            \item poduzete akcije u vrijeme donošenja odluke vrlo često nemaju trenutne posljedice sve do određenoga trenutka u budućnosti
+            \item budućnost je nepredvidiva,
+            \item poduzete akcije u vrijeme donošenja odluke vrlo često nemaju trenutne posljedice sve do određenoga trenutka u budućnosti.
         \end{enumerate}
 
 
-        Imajući na umu prethodno navedene činjenice, slijedno je zaključiti da precizne prognoze budućih događaja pospješuju efikasnost postupka donošenja odluka. Štoviše, većina odluka od posebnog poslovnog ili političkog značaja imaju nužan uvjet pozitivnih prognostičkih indikatora prezentiranih kroz studije izvedivnosti ili ispitivanja javnoga mnijenja -- čija je zadaća što preciznije prognozirati buduću potražnju za proizvodima i uslugama koje su predmet proizvodnih, industrijskih ili inih procesa. U konkretnijem, mikroekonomskom smislu, dalo bi se konstatirati da je prognoziranje implementirano u gotovo sve odluke koje su dio naše svakodnevice: poduzeće će početi izgradnju nove proizvodne jedinice kako bi osiguralo rastuću potražnju na tržištu; zaposleni radnici početi će štedjeti kako bi si mogli priuštiti godišni odmor ili kupnju vrijednosnica s ciljem ostvarivanja prava na buduću kapitalnu dobit; rektor sveučilišta donesti će odluku o otvaranju novog studijskog programa kako bi povećao broj studenata i uskladio broj obrazovanih stručnjaka s budućim tržišnim potrebama. Ukratko, svaki od navedenih procesa zahtjeva inicijalnu percepciju utjecaja donešenih odluka na povećanje vjerojatnosti ostvarivanja zadanih ciljeva -- i to prije donošenja samih odluka.
+        Imajući na umu prethodno navedene činjenice, slijedno je zaključiti da precizne prognoze budućih događaja pospješuju efikasnost postupka donošenja odluka. Štoviše, većina odluka od posebnog poslovnog ili političkog značaja imaju nužan uvjet pozitivnih prognostičkih indikatora prezentiranih kroz studije izvedivosti ili ispitivanja javnoga mnijenja -- čija je zadaća što preciznije prognozirati buduću potražnju za proizvodima i uslugama koje su predmet proizvodnih, industrijskih ili inih procesa. U konkretnijem, mikroekonomskom smislu, dalo bi se konstatirati da je prognoziranje implementirano u gotovo sve odluke koje su dio naše svakodnevice: poduzeće će početi izgradnju nove proizvodne jedinice kako bi osiguralo rastuću potražnju na tržištu; zaposleni radnici početi će štedjeti kako bi si mogli priuštiti godišnji odmor ili kupnju vrijednosnica s ciljem ostvarivanja prava na buduću kapitalnu dobit; rektor sveučilišta donesti će odluku o otvaranju novog studijskog programa kako bi povećao broj studenata i uskladio broj obrazovanih stručnjaka s budućim tržišnim potrebama. Ukratko, svaki od navedenih procesa zahtjeva inicijalnu percepciju utjecaja donesenih odluka na povećanje vjerojatnosti ostvarivanja zadanih ciljeva -- i to prije donošenja samih odluka.
 
 
-        Ostanemo li na mikroekonomskoj razini, možemo reći da je poslovanje poduzeća zahvaćeno trima faktorima: makroekonomskim prilikama, industrijskim pokazateljima i samim uređenjem poduzeća. Obzirom da direktor takvoga poduzeća najčešće ima mogućnost direktnoga djelovanja jedino na poslijednja dva faktora, od iznimne je važnosti da bude što bolje informiran o vanjskim utjecajima i trendovima na koje ne može izravno djelovati -- poput donošenja novih zakonskih regulativa ili razvoja globalne virusne pandemije. Važnost ispravnog prognoziranja čimbenika na koje se nema direktan utjecaj od iznimne je važnosti za većinu projekta iznimno velike vrijednosti. Tako, na prijmer, projekti s velikim početnim ulaganjima poput izgradnje novih jedinica za opskrbu električnom energijom, mogu imati vrijeme izrade studije izvedivosti u trajanju od 10 ili više godina prije nego što li se započnu radovi. Budući da opskrba električnom energijom ovisi o stupnju razvijenosti regije ili područja, potrebno je izraditi valjane prognoze koje će pomoći u procjeni trenutne, kratkoročne i dugoročne isplativosti novih opskrbnih jedinica za opskrbljivača, ostale projektne partnere, te za lokalni i regijalni razvoj. U tom slučaju, prisutnost raznovrsnih rizika utječe na sve dionike projekta -- od nacionalne, regionalne ili lokalne uprave ili samouprave; do svih industrijskih poduzeća koja se nalaze na tom području. Ti rizici mogu biti smanjenje likvidnosti tržišta, kreditni status\footnote{Usporedba potraživanja i dugovanja nekoga poduzeća koje se dalje koriste za utvrđivanje kreditnog rejtinga.}, kamatni rizik\footnote{Moguće smanjenje vrijednosti financijskih instrumenata javno dostupnoga poduzeća uslijed promjene razine kamatnih stopa na tržištu.},valutni rizik\footnote{Osjetljivost financijskih instrumenata na fluktuacije tečajeva stranih valuta. Značajno za multinacionalna poduzeća s viševalutnim potraživanjima i dugovanjima.}, strateški rizik\footnote{Rizik za prihode ili kapital koji nastaje kao posljedica neadekvatnih poslovnih odluka ili nepravilnog vođenja poduzeća.}, stanje tržišta rada i još mnogi drugi. Pritom je važno napomenti važnost osjetljivosti modela prognoziranja na fluktuacije u svakoj stavci procjene ukupnoga rizika, tj. isti prognostički model se ne bi trebao koristiti za prognoziranje u različitim zakonskim i regulativnim okvirima -- što pridonosi kompleksnosti izrade samoga modela i porastu troškova izrade kvalitetne studije.
-
+        Ostanemo li na mikroekonomskoj razini, možemo reći da je poslovanje poduzeća zahvaćeno trima faktorima: makroekonomskim prilikama, industrijskim pokazateljima i samim uređenjem poduzeća. Obzirom da direktor takvoga poduzeća najčešće ima mogućnost direktnoga djelovanja jedino na posljednja dva faktora, od iznimne je važnosti da bude što bolje informiran o vanjskim utjecajima i trendovima na koje ne može izravno djelovati -- poput donošenja novih zakonskih regulativa ili razvoja globalne virusne pandemije. Važnost ispravnog prognoziranja čimbenika na koje se nema direktan utjecaj od iznimne je važnosti za većinu projekta iznimno velike vrijednosti. Tako, na primjer, projekti s velikim početnim ulaganjima poput izgradnje novih jedinica za opskrbu električnom energijom, mogu imati vrijeme izrade studije izvedivosti u trajanju od 10 ili više godina prije nego što li se započnu radovi. Budući da opskrba električnom energijom ovisi o stupnju razvijenosti regije ili područja, potrebno je izraditi valjane prognoze koje će pomoći u procjeni trenutne, kratkoročne i dugoročne isplativosti novih opskrbnih jedinica za opskrbljivača, ostale projektne partnere, te za lokalni i regionalni razvoj. U tom slučaju, prisutnost raznovrsnih rizika utječe na sve dionike projekta -- od nacionalne, regionalne ili lokalne uprave ili samouprave; do svih industrijskih poduzeća koja se nalaze na tom području. Ti rizici mogu biti smanjenje likvidnosti tržišta, kreditni status, kamatni rizik, valutni rizik, strateški rizik, stanje tržišta rada i još mnogi drugi. Pritom je važno napomenuti važnost osjetljivosti modela prognoziranja na fluktuacije u svakoj stavci procjene ukupnoga rizika, tj. isti prognostički model se ne bi trebao koristiti za prognoziranje u različitim zakonskim i regulativnim okvirima -- što pridonosi kompleksnosti izrade samoga modela i porastu troškova izrade kvalitetne studije.
         \section{Važnost prognoziranja u inženjerstvu}
-            U navedenim primjerima nastojali smo nešto konkretnije opisati važnost prognoziranja kroz opće primjere iz prakse. Kako bismo zaokružili sadržaj ovoga poglavlja, osvrnuti ćemo se na stavrni primjer jedne od najutjecajnijih nesreća koje su obilježile prošlo stoljeće --  no ovoga puta fokusirajući se na ispravnoj interpretaciji prognostičkih procesa i važnosti najnasumičnijeg čimbenika u cijelome procesu odlučivanja, tj. čovjeka.
+            U navedenim primjerima nastojali smo nešto konkretnije opisati važnost prognoziranja kroz opće primjere iz prakse. Kako bismo zaokružili sadržaj ovoga poglavlja, osvrnuti ćemo se na stvarni primjer jedne od najutjecajnijih nesreća koje su obilježile prošlo stoljeće --  no ovoga puta fokusirajući se na ispravnoj interpretaciji prognostičkih procesa i važnosti najnasumičnijeg čimbenika u cijelome procesu odlučivanja, tj. čovjeka.
 
 
             28. siječnja 1986. godine, svemirska letjelica \textit{Challanger} eksplodirala je otprilike 70 sekundi nakon polijetanja iz svemirskog centra John F. Kennedy u Floridi. Sedmero astronauta je poginulo, a svemirska letjelica u potpunosti je uništena. Uzrok nesreće bila je eksplozija spremnika za raketno gorivo, prouzrokovana zapaljenjem plina u pomoćnim raketama za uzlijetanje.
 
-            Pomoćne rakete za uzlijetanje bile su predmet zabrinutnosti još pri samim počecima razvoja aeronautike. Proizvodnja istih realizira se spajanjem više manjih segmenata uz veliki broj spojišta koji moraju zadovoljavati niz projektom predodređenih uvjeta -- među kojima je postizanje nepropusnosti spojišta brtvljenjem. U ovom konkretnom slučaju, korištene su meke profilne brtve s elastičnim deformacijama (također poznate kao o-prsteni) uz sloj ljepila. Prilikom zapaljenja raketnog motora, u sustavu se stvaraju visoke temperature i visoki tlak -- što utječe na otapanje ljepila i posljedično habanje brtve, te propuštanja eksplozivnog medija.
+            Pomoćne rakete za uzlijetanje bile su predmet zabrinutosti još pri samim počecima razvoja aeronautike. Proizvodnja istih realizira se spajanjem više manjih segmenata uz veliki broj spojišta koji moraju zadovoljavati niz projektom predodređenih uvjeta -- među kojima je postizanje nepropusnosti spojišta brtvljenjem. U ovom konkretnom slučaju, korištene su meke profilne brtve s elastičnim deformacijama (također poznate kao o-prsteni) uz sloj ljepila. Prilikom zapaljenja raketnog motora, u sustavu se stvaraju visoke temperature i visoki tlak -- što utječe na otapanje ljepila i posljedično habanje brtve, te propuštanja eksplozivnog medija.
 
-            Nakon eksplozije, istražni stožer objavio je izvješće u kojemu su navedene okolnosti koje su dovele do uzroka nesreće. Utvrđeno je kako je prethodne večeri, 27. siječnja, donesena odluka o lansiranju letjelice sljedećega dana usprkos nepovoljnoj prognozi temperaturnih uvjeta određenih radnom temperaturom deklariranom od strane proizvođaća pomoćnih raketa. Protivno apelu inženjera za obustavom lansiranja, odluka uprave bila je da će se lansiranje ipak provesti, što je rezultiralo kobnim posljedicama.
+            Nakon eksplozije, istražni stožer objavio je izvješće u kojemu su navedene okolnosti koje su dovele do uzroka nesreće. Utvrđeno je kako je prethodne večeri, 27. siječnja, donesena odluka o lansiranju letjelice sljedećega dana usprkos nepovoljnoj prognozi temperaturnih uvjeta određenih radnom temperaturom deklariranom od strane proizvođača pomoćnih raketa. Protivno apelu inženjera za obustavom lansiranja, odluka uprave bila je da će se lansiranje ipak provesti, što je rezultiralo kobnim posljedicama.
 
 
-            Kako bi izradili model vjerojatnosti zakazivanja brtvi, koristiti ćemo podatke o učestalosti kvarova brtvi prilikom prethodnih lansiranja -- budući da je lansiranje \textit{Challanger}-a bilo 24. lansiranje aktualnog svemirskoga programa. Budući da su za svaku pomoćnu raketu korištena tri o-prstena te da su za dotadašnja lansiranja korištene dvije pomoćne rakete po lansiranju, razmatrati ćemo korištenje 6 o-prstena po lansiranju. Uslijed zavisnosti karakteristika brtve o temperaturi, razmotriti ćemo ovisnost zakazivanja brtve o temperaturi koline prilikom lansiranja. Slika \ref{fig:M1} prikazuje podatke o učestalost kvarova brtvi pri određenim temperaturama prilikom testnih lansiranja. Iz navedene uočavamo veću učestalost kvarova pri nižim temperaturuama -- što odgovara svojstvu amorfnih materijala, koji na temperaturama nižim od temperature prelaska u staklo imaju veću tvrdoću i lomljivost.
+            Kako bi izradili model vjerojatnosti zakazivanja brtvi, koristiti ćemo podatke o učestalosti kvarova brtvi prilikom prethodnih lansiranja -- budući da je lansiranje \textit{Challanger}-a bilo 24. lansiranje aktualnog svemirskoga programa. Budući da su za svaku pomoćnu raketu korištena tri o-prstena te da su za dotadašnja lansiranja korištene dvije pomoćne rakete po lansiranju, razmatrati ćemo korištenje 6 o-prstena po lansiranju. Uslijed zavisnosti karakteristika brtve o temperaturi, razmotriti ćemo ovisnost zakazivanja brtve o temperaturi okoline prilikom lansiranja. Slika \ref{fig:M1} prikazuje podatke o učestalost kvarova brtvi pri određenim temperaturama prilikom testnih lansiranja. Iz navedene uočavamo veću učestalost kvarova pri nižim temperaturama -- što odgovara svojstvu amorfnih materijala, koji na temperaturama nižim od temperature prelaska u staklo imaju veću tvrdoću i lomljivost.
 
             %https://history.nasa.gov/rogersrep/v1p146.htm
             %DTIC_ADA171402 (page 151) --> temperature na page 136
@@ -413,7 +422,7 @@
                     \draw[-] (8.25,0.15) -- (8.25,0.25) -- (13.35,0.25) -- (13.35,0.15);
                     \draw[-{Latex[length=3mm]}] (13,1.25) node[rectangle, fill=white, draw, very thick, font=\small, align=center] {USPJEŠNA\\LANSIRANJA} -- (11,1.25) -- (11,0.25);
                 \end{tikzpicture}
-                \caption{Podaci o učestalosti kvarova brtvi prilikom testnih lansiranja koja su prethodila Challanger-u \cite{NASA}}
+                \caption{Podaci o učestalosti kvarova brtvi prilikom testnih lansiranja koja su prethodila Challanger-u. Izvor:\cite{NASA}}
                 \label{fig:M1}
             \end{figure}
             
@@ -421,7 +430,7 @@
             Model prikazan jednadžbom \eqref{eq:U1} reprezentira vjerojatnost kvara $p(t)$ pojedine brtve u ovisnosti o temperaturi spojišta $t$ prilikom lansiranja.
             
             \begin{equation}
-                \nasavjerojatnost
+                \nasavjerojatnost,
                 \label{eq:U1}
             \end{equation}
 
@@ -429,15 +438,14 @@
             \begin{table}[H]
                 \centering
                 \begin{tabular*}{0.9\textwidth}{>{\bfseries}l p{13cm}}
-                    \textit{\textbf{t}} & \textit{temperatura brtve izražena u \textdegree F}\\
-                    \textit{\textbf{a,b}} & \textit{konstante dobivene statističkim modeliranjem metodom procjene maksimalne vrijednsosti}\\
+                    \textit{\textbf{t}} & \textit{temperatura brtve izražena u \textdegree F},\\
+                    \textit{\textbf{a,b}} & \textit{konstante dobivene statističkim modeliranjem metodom procjene maksimalne vrijednosti}.\\
                 \end{tabular*}
             \end{table}
             % \indent\indent \textit{\textbf{t} \quad temperatura brtve izražena u \textdegree F}\\
-            % \indent\indent \textit{\textbf{a, b} \quad konstante dobivene statističkim modeliranjem metodom procjene maksimalne vrijednsosti}
+            % \indent\indent \textit{\textbf{a, b} \quad konstante dobivene statističkim modeliranjem metodom procjene maksimalne vrijednosti}
             
-
-            Vrijednost konstanti $a$ i $b$ određene su podacima, tj. odabirom vrijednosti $a$ i $b$ tako da dobijemo što točniju aproksimaciju u okolini podatkovnih točaka prikazanih na slici \ref{fig:M1}. Budući da sinteza navedenoga statističkoga modela ne obuhvaća temu ovoga rada, nećemo analizirati statistički izračun konstanti $a$ i $b$ za slučaj Celzijeve temperature, već ćemo koristiti postejeće konstante iz literature ($a=5.085$ i $b=-0.1156$)\cite{Dekking} u svrhu izrade grafičkog prikaza vjerojatnosti kvara brtvi pri određenim temperaturama -- kao što je prikazano na slici \ref{fig:M2}.
+            Vrijednost konstanti $a$ i $b$ određene su podacima, tj. odabirom vrijednosti $a$ i $b$ tako da dobijemo što točniju aproksimaciju u okolini podatkovnih točaka prikazanih na slici \ref{fig:M1}. Budući da sinteza navedenoga statističkoga modela ne obuhvaća temu ovoga rada, nećemo analizirati statistički izračun konstanti $a$ i $b$ za slučaj Celzijeve temperature, već ćemo koristiti postojeće konstante iz literature ($a=5.085$ i $b=-0.1156$)\cite{Dekking} u svrhu izrade grafičkog prikaza vjerojatnosti kvara brtvi pri određenim temperaturama -- kao što je prikazano na slici \ref{fig:M2}.
             
             \begin{figure}[H]
                 \centering
@@ -488,12 +496,12 @@
                         \draw[black] (visualization cs: x=45, y=3.5) node[above, font=\footnotesize] {$6 \cdot p(t)$};
                     };
                 \end{tikzpicture}
-                \caption{Grafički prikaz modela \eqref{eq:U1} u odnosu na diskretne vrijednosti mjerenih podataka \cite{Dekking}}
+                \caption{Grafički prikaz modela \eqref{eq:U1} u odnosu na diskretne vrijednosti mjerenih podataka. Izvor: \cite{Dekking}}
                 \label{fig:M2}
             \end{figure}
 
 
-            Valjano je, temeljem prethodnih primjera, zaključiti da uspješnost ispunjavanja zadanih ciljeva uveliko ovisi o mogućnostima glavnih aktera da što brže i točnije predvide posljedice kako bi se što bolje pripremili za daljnje korake. Pouzdane prognoze upravo to i omogućuju -- da se donesu pravovremene odluke koje su temeljene na valjanim planovima. U poglavljima koja slijede, detaljnije ćemo definirati određene pojmove, pomoću kojih ćemo biti u mogućnosti lakše prevesti prognoziranje iz lingvističke apstrakcije u jezik matematike -- najprecizniji i najrašireniji jezik koji čovjek poznaje.
+            Valjano je, temeljem prethodnih primjera, zaključiti da uspješnost ispunjavanja zadanih ciljeva uvelike ovisi o mogućnostima glavnih aktera da što brže i točnije predvide posljedice kako bi se što bolje pripremili za daljnje korake. Pouzdane prognoze upravo to i omogućuju -- da se donesu pravovremene odluke koje su temeljene na valjanim planovima. U poglavljima koja slijede, detaljnije ćemo definirati određene pojmove, pomoću kojih ćemo biti u mogućnosti lakše prevesti prognoziranje iz lingvističke apstrakcije u jezik matematike -- najprecizniji i najrašireniji jezik koji čovjek poznaje.
 
             %znam da mi rad vjerojatno neće pročitati više od 5 osoba, ali se trudim da bude bar malo gripping.
 
@@ -501,7 +509,7 @@
         %SiS_Oppenheim,_Willsky_-_Signals_and_Systems_(1997)
         %Benoit Boulet  - Fundamentals of Signals and Systems   - 1584503815
 
-        Prije matematičkoga opisa prognostičkih modela, potrebno je pobliže opisati pojam \textit{signala} kao realnu ili kompleksnu funkciju vremena. U elektrotehnici je takav opis signala od iznimne važnosti, pritom posebnu pažnju pridodajemo sinusoidnim signalima zbog karakterističnih svojstva takvih signala. Ta karakteristična svojstva pokazala su se od iznimne koristi za modeliranje fizikalnih pojava pomoću aproksimacije praktičih rezultata dobivenih pripadajućim mjernim metodama. Osim u elektrotehnici, signali su sveprisutni u gotovo svim znanstvenim disciplinama i granama.U širem smislu, valjano je reći da je signal skup podataka ili informacija, pa tako možemo konstatirati da su neki od primjera signala struja i napon, sila i brzina, tlak i protok, govor, video ili burzovni indeksi. Usprkos svojoj sveprisutnosti, signali su u suštini zadržali svoju nominalnu jednostavnost -- a to je činjenica da je signal u suštini funckija jedne ili više nezavisnih varijabli koje opisuju ponašanje promatranih fenomena. 
+        Prije matematičkoga opisa prognostičkih modela, potrebno je pobliže opisati pojam \textit{signala} kao realnu ili kompleksnu funkciju vremena. U elektrotehnici je takav opis signala od iznimne važnosti, pritom posebnu pažnju pridodajemo sinusoidnim signalima zbog karakterističnih svojstva takvih signala. Ta karakteristična svojstva pokazala su se od iznimne koristi za modeliranje fizikalnih pojava pomoću aproksimacije praktičih rezultata dobivenih pripadajućim mjernim metodama. Osim u elektrotehnici, signali su sveprisutni u gotovo svim znanstvenim disciplinama i granama. U širem smislu, valjano je reći da je signal skup podataka ili informacija, pa tako možemo konstatirati da su neki od primjera signala struja i napon, sila i brzina, tlak i protok, govor, video ili burzovni indeksi. Usprkos svojoj sveprisutnosti, signali su u suštini zadržali svoju nominalnu jednostavnost -- a to je činjenica da je signal u suštini funkcija jedne ili više nezavisnih varijabli koje opisuju ponašanje promatranih fenomena. 
 
         %Primjer analize ponašanja signala propagacijom kroz punovalni ispravljač
         %http://www.texample.net/tikz/examples/power-electronics-rectifier/ 
@@ -514,7 +522,7 @@
                 \item \textit{vremenski diskretni signali:} $x[n], n \in \mathcal{Z}$.
             \end{enumerate}
 
-            U vremenski \textit{kontinuiranim signalima} vremenska konstanta $t$ je kontinuirana i njezina domena, što rezultira i konrinuiranim vrijednostima slike promatrane funkcije. Navedeno se može grafički predočiti pomoću glatke neprekidne linije kao što je prikazano na Slici \ref{fig:M31} koja prikazuje vremenski kontinuirani signal $x(t)=sin(\frac{n\pi}{2})$. Za razliku od vremenski kontinuiranih signala, u vremenski \textit{diskretnim signalima} vremenska konstanta je definirana u točno određenim -- diskretnim -- vremenima. Posljedično, vrijednosti slike promatrane funkcije biti će poznate samo u prethodno definiranim diskretnim vremenima. Primjer vremenski diskretnog signala $x[n]=sin(\frac{n\pi}{2})$ grafički je prikazan na Slici \ref{fig:M32}.
+            U vremenski \textit{kontinuiranim signalima} vremenska konstanta $t$ je kontinuirana i njezina domena, što rezultira i kontinuiranim vrijednostima slike promatrane funkcije. Navedeno se može grafički predočiti pomoću glatke neprekidne linije kao što je prikazano na Slici \ref{fig:M31} koja prikazuje vremenski kontinuirani signal $x(t)=sin(\frac{n\pi}{2})$. Za razliku od vremenski kontinuiranih signala, u vremenski \textit{diskretnim signalima} vremenska konstanta je definirana u točno određenim -- diskretnim -- vremenima. Posljedično, vrijednosti slike promatrane funkcije biti će poznate samo u prethodno definiranim diskretnim vremenima. Primjer vremenski diskretnog signala $x[n]=sin(\frac{n\pi}{2})$ grafički je prikazan na Slici \ref{fig:M32}.
 
             \begin{figure}[H]
                 \centering
@@ -562,7 +570,6 @@
                 \caption{Prikaz vremenski kontinuiranoga i vremenski diskretnoga signala funkcije $sin(\frac{n\pi}{2})$}
                 \label{fig:M3}    
             \end{figure}
-
             
             Neki od primjera vremenski kontinuiranih signala su brzina, pozicija vozila, govor ili zvuk iz audio sustava; dok su primjeri vremenski diskretnih signala mjesečne vrijednosti dionica, demografski pokazatelji poput nataliteta i sl..
             
@@ -571,7 +578,7 @@
         \section{Vrste sustava}
             Uz signale se nerijetko veže i ideja \textit{sustava}, te je stoga potrebno definirati koncept sustava kao spone između ulaznoga i izlaznoga signala. Za razliku od jednostavnosti ideje signala, navedeno će možda izazvati određene poteškoće -- budući da je sustav u općem smislu shvaćen kao cjelokupno i dovršeno projektantsko rješenje (npr. sustav za prijenos električne energije), dok je matematička reprezentacija takvoga sustava predočena kao model sustava. Štoviše, opisujući sustav u užem smislu, i dalje dolazimo do vrlo širokoga polja istraživanja i unutar točno određenoga znanstvenoga područja. Zadržimo li se isključivo na području elektrotehnike, sustavi mogu biti određeni kao sustavi programske podrške, sustavi regulacije, elektronički sustavi, ugradbeni sustavi, mehanički sustavi, elektromehanički sustavi itd.. Valjano je zaključiti da je potrebno odrediti nužne granice idejnoga razmatranja sustava kako bi izbjegli neizbježnu apstrakciju beskonačne kvantizacije opisa sustava. Iz toga proizlazi ideja i potreba za prethodno spomenutim razmatranjem sustava kao poveznice između ulaznoga i izlaznoga signala, što se ispostavilo kao koristan alat inženjerima prilikom analize propagacije ulaznih signala u regulacijskim krugovima ili prilikom prognoziranja ponašanja sustava na određene pobude tijekom projektiranja samoga sustava.
 
-            Matematički, sustavi predstavljaju modele koji repretentiraju transformaciju ulaznog signala $x(t)$ u izlazni signal $y(t)$. Navedeno se može opisati relacijom $y(t)=Hx(t)$, gdje $H$ predstavlja matematički model transformacije signala -- tj. sustav. Analogna relacija vrijedi i za slučaj transformacije vremenski diskretnoga signala $x[n]$, kao što je prikazano na Slici \ref{fig:U4}.
+            Matematički, sustavi predstavljaju modele koji reprezentiraju transformaciju ulaznog signala $x(t)$ u izlazni signal $y(t)$. Navedeno se može opisati relacijom $y(t)=Hx(t)$, gdje $H$ predstavlja matematički model transformacije signala -- tj. sustav. Analogna relacija vrijedi i za slučaj transformacije vremenski diskretnoga signala $x[n]$, kao što je prikazano na Slici \ref{fig:U4}.
             
             Kao i kod signala, dvije osnovne vrste sustava prema prirodi vremenske varijable su:
             \begin{enumerate}
@@ -616,9 +623,9 @@
                 Iako signali i sustavi imaju niz matematičkih svojstva koja se koriste u svakodnevnoj primjeni, u svrhu pojašnjenja budićih termina ukratko ćemo pojasniti pojam kauzalnosti sustava.
 
 
-                Sukladno definiciji, sustav je \textit{kauzalan} ukoliko signal koji propagira kroz sustav ovisi isključivo o trenutnim ili prošlim vrijednostima ulaznoga signala. Drugim rječima, izlazni signal ne predviđa vrijednosti odziva na buduće vrijednosti ulaznoga signala. Konzekventno, sustav \textit{nije kauzalan} ukoliko vrijednost izlaznoga signala ovisi o budućoj vrijednosti ulaznoga signala. Primjer kauzalnog sustava je
+                Sukladno definiciji, sustav je \textit{kauzalan} ukoliko signal koji propagira kroz sustav ovisi isključivo o trenutnim ili prošlim vrijednostima ulaznoga signala. Drugim riječima, izlazni signal ne predviđa vrijednosti odziva na buduće vrijednosti ulaznoga signala. Konzekventno, sustav \textit{nije kauzalan} ukoliko vrijednost izlaznoga signala ovisi o budućoj vrijednosti ulaznoga signala. Primjer kauzalnog sustava je
                 \begin{equation}
-                    \kauzalni
+                    \kauzalni,
                 \end{equation}
                 dok je
                 \begin{equation}
@@ -626,28 +633,27 @@
                 \end{equation}
                 primjer sustava koji nije kauzalan.
 
-                Iako su kauzalni sustavi vrlo važni zbog prirode realnih rješenja koja aktuiraju temeljem prethodno očitanih vrijednosti, već sada možemo naslutiti važnost nekauzalnih sustava prilikom uočavanja kretanja trendova prilikom prognoziranja ili sinteze sustava regulacije s ciljem otstranjivanja šumova i sl..
+                Iako su kauzalni sustavi vrlo važni zbog prirode realnih rješenja koja aktuiraju temeljem prethodno očitanih vrijednosti, već sada možemo naslutiti važnost nekauzalnih sustava prilikom uočavanja kretanja trendova prilikom prognoziranja ili sinteze sustava regulacije s ciljem odstranjivanja šumova i sl..
 
     \chapter{Opće metodologije prognoziranja}
         Obzirom na sveprisutnost prognoziranja, baš kao i signala i sustava, klasificirati ćemo dvije osnovne vrste prognoza -- subjektivne prognoze i prognoze temeljene na statističkim modelima.\cite{Holden}
 
         \section{Subjektivne prognoze}
-            Subjektivne prognoze temelje se na pogađanjima, prethodnim iskustvima i intuiciji. Takve prognoze nemaju predodređena i utvrđena pravila procesuiranja informacija, već se svode na donošenje zaključaka temeljem osobnog mišljenja osobe koja iznosi prognozu. Na primjer, dva će ekonomska analitičara iznesti različite prognoze za ponašanje tržišta i vrijednosti financijskih instrumenata u slučaju kriznih situacija poput pandemije koronavirusa. Dok će jedan analitičar smatrati da će vrijednosti financijskih instrumenata imati negativan trend u nadolazećem kvartalu uslijed restriktivnih mjera koje imaju nepovoljan utjecaj na tržište, drugi će prognozirati rast temeljem povećanog prilijeva kapitala od strane povećanog broja ulagača koji prvi puta ulaze na tržište kapitala uslijed straha neiskorištavanja volotilnosti tržišta za ostvarivanje dugoročnih kapitalnih dobitaka (engl. \textit{fear of missing-out}). Iako ovakve metode prognoziranja uistinu mogu rezultirati donekle točnim prognozama, kao što je to bilo u slučaju tzv. kratkih prodaja (engl. \textit{short-sell}) prilikom kraha američkog tržišta nekretnina ili prilikom razotkrivanja prikrivanja neispravnih rezultata mjerenja dušičnih oksida dizelskih automobila Volkswagen grupe; one su dokazano manje točne od prognoza temeljenih na statističkim modelima.
+            Subjektivne prognoze temelje se na pogađanjima, prethodnim iskustvima i intuiciji. Takve prognoze nemaju predodređena i utvrđena pravila procesuiranja informacija, već se svode na donošenje zaključaka temeljem osobnog mišljenja osobe koja iznosi prognozu. Na primjer, dva će ekonomska analitičara iznesti različite prognoze za ponašanje tržišta i vrijednosti financijskih instrumenata u slučaju kriznih situacija poput pandemije korona virusa. Dok će jedan analitičar smatrati da će vrijednosti financijskih instrumenata imati negativan trend u nadolazećem kvartalu uslijed restriktivnih mjera koje imaju nepovoljan utjecaj na tržište, drugi će prognozirati rast temeljem povećanog prilijeva kapitala od strane povećanog broja ulagača koji prvi puta ulaze na tržište kapitala uslijed straha neiskorištavanja volatilnosti tržišta za ostvarivanje dugoročnih kapitalnih dobitaka (engl. \textit{fear of missing-out}). Iako ovakve metode prognoziranja uistinu mogu rezultirati donekle točnim prognozama, kao što je to bilo u slučaju tzv. kratkih prodaja (engl. \textit{short-sell}) prilikom kraha američkog tržišta nekretnina ili prilikom razotkrivanja prikrivanja neispravnih rezultata mjerenja dušičnih oksida dizelskih automobila Volkswagen grupe; one su dokazano manje točne od prognoza temeljenih na statističkim modelima.
 
         \section{Prognoze temeljene na statističkim modelima}
             Za razliku od subjektivnih prognoza, prognoze koje su temeljene na statističkim modelima prate jasno određeni i sistematizirani kvantitativni obrazac definiran međuodnosom utjecajnih varijabli. Navedeni modeli mogu se razvrstati na \textit{kauzalne modele} i \textit{nekauzalne modele}.\cite{Holden}
             
-            Analogno prethodno spomenutim kauzalnim signalima, kauzalni prognostički modeli nastoje detaljno opisati matematičku genezu diskretnih mjernih podataka i pokušati pronaći relaciju koja opisuje determinirani način dobivanja vrijednosti zasebnih varijabli u svakoj točki prošloga vremena. Takvi modeli kreću od premise nužnosti što boljega poznavanja prošloga ponašanja kako bi se predvidjela budućnosti. Nadalje, kauzalne prognostičke signale možemo dalje podijeliti na \textit{kvalitativne} -- koji daju informaciju o tendenciji rasta ili pada budućih vrijednsoti -- te \textit{kvantitativne}, koji daju informaciju o brojčanoj vrijednosti rasta ili pada budućih vrijednosti.
+            Analogno prethodno spomenutim kauzalnim signalima, kauzalni prognostički modeli nastoje detaljno opisati matematičku genezu diskretnih mjernih podataka i pokušati pronaći relaciju koja opisuje determinirani način dobivanja vrijednosti zasebnih varijabli u svakoj točki prošloga vremena. Takvi modeli kreću od premise nužnosti što boljega poznavanja prošloga ponašanja kako bi se predvidjela budućnosti. Nadalje, kauzalne prognostičke signale možemo dalje podijeliti na \textit{kvalitativne} -- koji daju informaciju o tendenciji rasta ili pada budućih vrijednosti -- te \textit{kvantitativne}, koji daju informaciju o brojčanoj vrijednosti rasta ili pada budućih vrijednosti.
             
             
-            U odnosu na kauzalne prognostičke modele, nekauzalni prognostički modeli nastoje predvidjeti buduće iznose vrijednosti podataka bez dubljega razumjevanja geneze prethodno mjerenih podataka; već fokusirajući se na projekciju njihova međusobnog odnosa na budućnost. Takvi modeli imaju prednost ekonomičnosti budući da se ne orijentiraju na detaljna istraživanja ponašanja svakog parametra, što je povoljno za prognoziranje trenda čimbenika niže važnosti. Navedena prednost može se gledati i kao nedostatak, budući da premisa o istovjetnosti ponašanja vrijednosti signala u prošlosti i budućnosti ne predviđa pojavu smetnji u sustavu -- poput pojave prenapona mreže, kratkog spoja u visokonaponskim energetskim sustavima ili pojave velike gospodarske krize. 
+            U odnosu na kauzalne prognostičke modele, nekauzalni prognostički modeli nastoje predvidjeti buduće iznose vrijednosti podataka bez dubljega razumijevanja geneze prethodno mjerenih podataka; već fokusirajući se na projekciju njihova međusobnog odnosa na budućnost. Takvi modeli imaju prednost ekonomičnosti budući da se ne orijentiraju na detaljna istraživanja ponašanja svakog parametra, što je povoljno za prognoziranje trenda čimbenika niže važnosti. Navedena prednost može se gledati i kao nedostatak, budući da premisa o istovjetnosti ponašanja vrijednosti signala u prošlosti i budućnosti ne predviđa pojavu smetnji u sustavu -- poput pojave prenapona mreže, kratkog spoja u visokonaponskim energetskim sustavima ili pojave velike gospodarske krize. 
             
             
             Naravno, navedeno vrijedi u slučaju jednostavnih prognostičkih modela, te ćemo u nadolazećim poglavljima proučiti detalje kompleksnih nekauzalnih prognostičkih modela temeljenih na vremenskim nizovima. No, prije toga ćemo definirati dvije opće prognostičke metode koje će nam služiti kao osnova budućih razmatranja.
 
             \subsection{Procjena maksimalne vrijednosti}
             \label{subs:ML}
-
                 %Priestley:
                 %   Method of maximum likelihood: Page 305,
                 %   Properties of maximum likelihood estimators: Page 307,
@@ -671,7 +677,7 @@
                 
                 Kako bi lakše predočili razliku između vjerojatnosti i vjerodostojnosti, pretpostavimo zadani skup podataka s normalnom distribucijom kao što je prikazano na slici \ref{fig:31}. Vjerojatnost možemo opisati kao površinu ispod krivulje normalne distribucije skupa $X$. Iz navedenoga, odaberemo li nasumičan član navedenoga skupa, vjerojatnost da je nasumični član skupa unutar granica $\mu\pm1\sigma$ iznosi \SI{68.27}{\percent}.
                 
-                Za razliku od vjerojatnosti, vjerodostojnost možemo opisati kao vrijednost ordinatnog položaja točke $\mathbf{A}$. Kako bismo znali odrediti prethodno navedeni položaj, potrebno je poznavati srednju vrijednost $\mu$ i standardnu devijaciju $\sigma$ promatranog skupa -- temeljem kojih možemo odrediti točku $\mathbf{A}$ kao sjecište pravca okomitog na apcisu u točki $\mu\pm\sigma$ i krivulje normalne distribucije skupa $X$.
+                Za razliku od vjerojatnosti, vjerodostojnost možemo opisati kao vrijednost ordinatnog položaja točke $\mathbf{A}$. Kako bismo znali odrediti prethodno navedeni položaj, potrebno je poznavati srednju vrijednost $\mu$ i standardnu devijaciju $\sigma$ promatranog skupa -- temeljem kojih možemo odrediti točku $\mathbf{A}$ kao sjecište pravca okomitog na apscisu u točki $\mu\pm\sigma$ i krivulje normalne distribucije skupa $X$.
 
                 \begin{figure}[H]
                     \centering
@@ -696,7 +702,7 @@
                             \node [rectangle, fill=white, draw, very thick, font=\small, align=center, scale=0.75] at (1.5,0.04) {\SI{13.60}{\percent}};
                         \end{axis} 
                     \end{tikzpicture}
-                    \caption{Prikaz normalne distribucije s naznačenom vjerojatnošću i vjerodostojnošću}
+                    \caption{Prikaz normalne distribucije s naznačenom vjerojatnošću i vjerodostojnošću.}
                     \label{fig:31}
                 \end{figure}
                 
@@ -708,7 +714,7 @@
                     \label{eq:33}
                 \end{equation}
 
-            dolazimo do zaključka kako se veća vrijednost nepoznatog parametra $\theta_2$ može pripisati kao vjerodostojnija, a samim time je i vjerojatnosti pojavljivanja izmjerenoga člana $x$ kao vrijednosti skupa $X$ veća. Takva razmatranja ne mogu se pripisati \textit{a priori}, već se pretpostavljena vrijednost nepoznatog parametra $\theta$ dodatno testira substitucijom u jednadžbu \eqref{eq:31} -- nakon čega se vrši usporedba dobivenih vrijednosti sa izmjerenim vrijednostima iz skupa $X$ \cite{Broersen}.
+            dolazimo do zaključka kako se veća vrijednost nepoznatog parametra $\theta_2$ može pripisati kao vjerodostojnija, a samim time je i vjerojatnosti pojavljivanja izmjerenoga člana $x$ kao vrijednosti skupa $X$ veća. Takva razmatranja ne mogu se pripisati \textit{a priori}, već se pretpostavljena vrijednost nepoznatog parametra $\theta$ dodatno testira supstitucijom u jednadžbu \eqref{eq:31} -- nakon čega se vrši usporedba dobivenih vrijednosti sa izmjerenim vrijednostima iz skupa $X$ \cite{Broersen}.
 
                 Konačno, slijedi osnovni postulat metode procjene maksimalne vrijednosti koji nalaže postupak procjenjivanja vrijednosti parametra $\theta$ i odabir one vrijednosti koja će dati najvjerodostojniji rezultat. U praktičnoj primjeni, češće se koristi logaritamski oblik funkcije vjerodostojnosti
                 
@@ -726,7 +732,7 @@
 
             \subsection{Metoda najmanjih kvadrata}
             \label{subs:LS}
-                Metoda najmanjih kvadrata je jedna od najranijih metoda prognoziranja, no njezina primjena zamjetna je i danas. Cilj korištenja metode najmanjih kvadrata je pronalazak pravca koji minimalizira sumu svih kvadratnih grešaka koje nastaju rezultat korelacijskih jednadžbi, kao što je prikazano na slici \ref{fig:32}. Važno je naglasiti kako prethodno somenuta teza vrijedi isključivo za linearnu metodu najmanjih kvadrata. Uz navedenu, postoji i nelinerana metoda najmanjih kvadrata koju nećemo promatrati.
+                Metoda najmanjih kvadrata je jedna od najranijih metoda prognoziranja, no njezina primjena zamjetna je i danas. Cilj korištenja metode najmanjih kvadrata je pronalazak pravca koji minimalizira sumu svih kvadratnih grešaka koje nastaju rezultat korelacijskih jednadžbi, kao što je prikazano na slici \ref{fig:32}. Važno je naglasiti kako prethodno spomenuta teza vrijedi isključivo za linearnu metodu najmanjih kvadrata. Uz navedenu, postoji i nelinearna metoda najmanjih kvadrata koju nećemo promatrati.
 
                 \begin{figure}[H]
                     \centering
@@ -752,11 +758,11 @@
                             \addlegendentry{Prognozirana vrijednost}
                         \end{axis} 
                     \end{tikzpicture}
-                    \caption{Prikaz stvarne i prognozirane vrijednosti dionica poduzeća "Tesla, Inc."}
+                    \caption{Prikaz stvarne i prognozirane vrijednosti dionica poduzeća "Tesla, Inc.".}
                     \label{fig:32}
                 \end{figure}
 
-                Praktičnu primjenu navedene metode je najintuitivnije, poput prethodno spomenute metode procjene maksimalne vrijednosti, predočiti kroz primjenu u procesu investiranja. Uzmemo li primjer investitora koji nastoji donesti odluku o dugoročnom investiranju u poduzeće "Tesla, Inc." (\$TSLA) s naumom ostvarivanja dobiti kroz idućih 10 godina, korištenjem metode najmanjih kvadrata moguće je izraditi prognostički model koji će pobliže opisati i predočiti trend promjene vrijednosti dionica poduzeća u odnosu na prethodno desetljeće. Rezultat navedene metode jest pravac prikazan na slici \ref{fig:32}, iz kojega investitor može steći subjektivni dojam o trendu vrijednosti dionice, a koji će mu pomoći pri donošenju odluke o insvestiranje. Kao i kod otalih metoda, korištenje ove metode može samo pobliže opisati određeni trend u odnosu na referentni vremenski period ili neku drugu nezavisnu varijablu, no u našem konkretnom primjeru, zbog volatilnosti tržišta kapitala nastoji se izbjegavati donošenje konkretnih odluka temeljem metode najmanjih kvadrata uslijed preširokog vremenskog intervala koji može dati krive rezultate prilikom neočekivanih događaja. Kao što je bilo navedeno i kroz prethodni primjer, jedan od neočekivanih događanja može biti i pojava financijske krize -- koja se otprilike ponavlja svakih 10 godina. Upravo zbog toga, izrada prognostičkih modela ima više čimbenika i indikatora temeljem kojih se može donesti sud o ispravnosti budućih odluka temeljem dubljih analiza na temelju različitih prognostičkih modela -- za koje je nužna logička valjanost korelacije između zavisne i nezavisne varijable. U protivnom, obzirom na proizvoljan odabir zavisne i nezavisne varijable za koju ćemo vršiti promatranja, može doći do logičke neistovjetnosti korelacije i kauzaliteta.
+                Praktičnu primjenu navedene metode je najintuitivnije, poput prethodno spomenute metode procjene maksimalne vrijednosti, predočiti kroz primjenu u procesu investiranja. Uzmemo li primjer investitora koji nastoji donesti odluku o dugoročnom investiranju u poduzeće "Tesla, Inc." (\$TSLA) s naumom ostvarivanja dobiti kroz idućih 10 godina, korištenjem metode najmanjih kvadrata moguće je izraditi prognostički model koji će pobliže opisati i predočiti trend promjene vrijednosti dionica poduzeća u odnosu na prethodno desetljeće. Rezultat navedene metode jest pravac prikazan na slici \ref{fig:32}, iz kojega investitor može steći subjektivni dojam o trendu vrijednosti dionice, a koji će mu pomoći pri donošenju odluke o investiranju. Kao i kod ostalih metoda, korištenje ove metode može samo pobliže opisati određeni trend u odnosu na referentni vremenski period ili neku drugu nezavisnu varijablu, no u našem konkretnom primjeru, zbog volatilnosti tržišta kapitala nastoji se izbjegavati donošenje konkretnih odluka temeljem metode najmanjih kvadrata uslijed preširokog vremenskog intervala koji može dati krive rezultate prilikom neočekivanih događaja. Kao što je bilo navedeno i kroz prethodni primjer, jedan od neočekivanih događanja može biti i pojava financijske krize -- koja se otprilike ponavlja svakih 10 godina. Upravo zbog toga, izrada prognostičkih modela ima više čimbenika i indikatora temeljem kojih se može donesti sud o ispravnosti budućih odluka temeljem dubljih analiza na temelju različitih prognostičkih modela -- za koje je nužna logička valjanost korelacije između zavisne i nezavisne varijable. U protivnom, obzirom na proizvoljan odabir zavisne i nezavisne varijable za koju ćemo vršiti promatranja, može doći do logičke neistovjetnosti korelacije i kauzaliteta.
 
                 Nakon usustavljivanja osnovne predodžbe metode najmanjih kvadrata, svojstva iste nastojati ćemo opisati kroz analizu nasumičnog mjerenje dostavljenih otpornika, čije rezultate možemo prikazati kao opći izraz
 
@@ -802,7 +808,7 @@
         % Petrus M.T. Broersen - Automatic Autocorrelation and Spectral Analysis-Springer (2006)
         % Priestley M.B. - Spectral Analysis and Time Series. Volumes 1,2-AP (1981)
 
-        Kroz prethodna poglavlja ustanovili smo osnovne značajke signala i sustava te prognostike kao discipline koja se bavi predikcijom ponašanja signala temeljem određenih metodologija. Navedene metodologije su kvalitetne koliko i njihova statistička repretentativnost. Kako bi kvantitativno mogli utvrditi statističku reprezentativnost modela za prognoziranje ponašanja signala, potrebno je izvršiti detaljniju \textit{analizu (obradu) signala}.
+        Kroz prethodna poglavlja ustanovili smo osnovne značajke signala i sustava te prognostike kao discipline koja se bavi predikcijom ponašanja signala temeljem određenih metodologija. Navedene metodologije su kvalitetne koliko i njihova statistička reprezentativnost. Kako bi kvantitativno mogli utvrditi statističku reprezentativnost modela za prognoziranje ponašanja signala, potrebno je izvršiti detaljniju \textit{analizu (obradu) signala}.
 
         \begin{figure}[H]
             \centering
@@ -814,14 +820,14 @@
                 \path[very thick, ->] (measured_value) edge node {} (signal_processing);
                 \path[very thick, ->] (signal_processing) edge node {} (math_theory);
             \end{tikzpicture}
-            \caption{Obrada signala čini poveznicu između akumuliranih podataka o nekom fenomenu i teorijskih pojašnjenja tog istog fenomena \cite{Broersen}}
+            \caption{Obrada signala čini poveznicu između akumuliranih podataka o nekom fenomenu i teorijskih pojašnjenja tog istog fenomena. Izvor: \cite{Broersen}}
             \label{fig:41}
         \end{figure}
         
-        U sklopu studijskog programa svuečilišnih studija elektrotehnike, primat kroz više godine studija drži spektralna analiza signala, kojom se nastoji opisati frenkvencijske karakteristike promatranog iznalog signala (poput amplitudno-frenkvencijske karakteristike, fazno-frekvencijske karakteristike ili pojačanja sustava) Navedeno se najčešće realizira kroz određivanje prijenostnih i inih funkcija stustava koje su od značaja za ponašanje elektroničkih sustava čija su baza elektroničke komponente čije karakteristike nisu nužno konstantne pri određenim frekvencijskim pojasevima -- što omogućuje korištenje određenih elektroničkih sustava u svrhu niskopropusnoga ili visokopropusnoga filtriranja, te propusnoga filtriranja određenog frekvencijskog opsega.
+        U sklopu studijskog programa sveučilišnih studija elektrotehnike, primat kroz više godine studija drži spektralna analiza signala, kojom se nastoji opisati frekvencijske  karakteristike promatranog iznalog signala (poput amplitudno-frekvencijske  karakteristike, fazno-frekvencijske karakteristike ili pojačanja sustava) Navedeno se najčešće realizira kroz određivanje prijenosnih i inih funkcija stustava koje su od značaja za ponašanje elektroničkih sustava čija su baza elektroničke komponente čije karakteristike nisu nužno konstantne pri određenim frekvencijskim pojasevima -- što omogućuje korištenje određenih elektroničkih sustava u svrhu niskopropusnoga ili visokopropusnoga filtriranja, te propusnoga filtriranja određenog frekvencijskog opsega.
 
         
-        Drugi pristup analizi signala je analiza ponašanja signala u ovisnosti o vremenu. Štoviše, poznavajući pojam rekostrukcije vremenski kontinuiranih signala iz vremenski diskretnih signala, dolazimo do zaključka da ponašanje signala u vremenu možemo opisati pomoću beskonačno mnogo diskretnih vrijednosti u infinitemozno malim vremenskim razmacima, što nas dalje vodi do uvođenja \textit{vremenskih nizova} -- koje ćemo detaljnije opisati kroz nadolazeća potpoglavlja.
+        Drugi pristup analizi signala je analiza ponašanja signala u ovisnosti o vremenu. Štoviše, poznavajući pojam rekonstrukcije vremenski kontinuiranih signala iz vremenski diskretnih signala, dolazimo do zaključka da ponašanje signala u vremenu možemo opisati pomoću beskonačno mnogo diskretnih vrijednosti u beskonačno malim vremenskim razmacima, što nas dalje vodi do uvođenja \textit{vremenskih nizova} -- koje ćemo detaljnije opisati kroz nadolazeća potpoglavlja.
 
         %https://www.youtube.com/watch?v=ZIWyGjrAlks&list=PLLHpWXO_4bKnIOpVWKtQR9aH58c6AmABO&index=2
 
@@ -833,11 +839,11 @@
 
             Skup svih rezultata slučajnog eksperimenta $\mathscr{E}$ naziva se \textit{prostor elementarnih događanja} ili \textit{prostor uzorka} (engl. sample space) \cite{Bahovec}, kojeg označavamo s $\Omega$. Uzmemo li bacanje novčića kao najosnovniji primjer teorije vjerojatnosti, uz izuzetak mogućnosti pada na rub novčića, prostor uzorka eksperimenta ćemo onda definirati kao $\Omega=\left\{G,P\right\}$ -- gdje smo s $G$ označili slučaj pada novčića s vidljivom stranom "glave", dok smo s $P$ označili slučaj pada novčića s vidljivom stranom "pisma" \cite{Dekking}. Isto tako, vršimo li eksperiment kratkog spoja sinkronog stroja, iz prakse možemo konstatirati kako ćemo mjerenjem dobiti neku konačnu apsolutnu vrijednost struje kratkog spoja. No, teoretski apsolutna vrijednost struje kratkog spoja može zauzeti bilo koju vrijednost ovisno o konstrukcijskim karakteristikama samoga stroja. Shodno tome, statistički je točnije navesti kako prostor uzoraka za navedeni eksperiment iznosi $\Omega=(0,\infty)$ budući da apsolutna vrijednost struje može teorijski iznositi bilo koji pozitivan broj.
 
-            Svaki podskup prostora uzorka $\Omega$ je \textit{slučajni događaj} $E$. Slučajni događaj ostvaruje se ukoliko se ostvari barem jedan od rezultata slučajnog eksperimenta koji su elemnt tog podskupa \cite{Bahovec}. Uzmemo li primjer dimenzioniranja sabirnica elektroenergetskog postrojenja, izabrati ćemo jedan od ponuđenih presjeka sabirnica iz tablice \ref{tab:41}.
+            Svaki podskup prostora uzorka $\Omega$ je \textit{slučajni događaj} $E$. Slučajni događaj ostvaruje se ukoliko se ostvari barem jedan od rezultata slučajnog eksperimenta koji su elementi tog podskupa \cite{Bahovec}. Uzmemo li primjer dimenzioniranja sabirnica elektroenergetskog postrojenja, izabrati ćemo jedan od ponuđenih presjeka sabirnica iz tablice \ref{tab:41}.
 
             \begin{table}[H]
                 \centering
-                \caption{Dopuštena trajna opterećenja u A okruglih profila \cite{Požar}}
+                \caption{Dopuštena trajna opterećenja u A okruglih profila. Izvor: \cite{Požar}}
                 \renewcommand{\arraystretch}{2}
                 \begin{tabular}{|c|c|c|c|c|}
                     \hline
@@ -856,9 +862,9 @@
                 \label{tab:41}
             \end{table}
 
-            Koristimo li analognu tezu iz prethodnog primjera za prostor uzorka vrijednosti struje $\Omega=(0,\infty)$, odaberemo li izvedbu bakrenih sabirnica okruglog profila s obojenjem i promjerom od 16mm iz tablice \ref{tab:41}, slučajni događaj može poprimiti bilo koju vrijednost skupa $A=(0,480)$. Točnije, moramo imati na umu da u bilo kojem trenutku normalnoga rada pogona struja kroz sabirnice ne nadmašuje \SI{480}{\ampere}. Nastane li slučajani događaji prilikom kojih očitamo vrijednosti $B=\left\{100,250,300,420,550\right\}$, presjekom skupova $A\cap B$ možemo filtirati ona mjerenja koja su zadovoljila uvjet dimenziniranja sabirnice i čije vrijednosti ne premašuju dopuštenja naprezanja definirana u tablici \ref{tab:41}.
+            Koristimo li analognu tezu iz prethodnog primjera za prostor uzorka vrijednosti struje $\Omega=(0,\infty)$, odaberemo li izvedbu bakrenih sabirnica okruglog profila s obojenjem i promjerom od 16mm iz tablice \ref{tab:41}, slučajni događaj može poprimiti bilo koju vrijednost skupa $A=(0,480)$. Točnije, moramo imati na umu da u bilo kojem trenutku normalnoga rada pogona struja kroz sabirnice ne nadmašuje \SI{480}{\ampere}. Nastane li slučajni događaji prilikom kojih očitamo vrijednosti $B=\left\{100,250,300,420,550\right\}$, presjekom skupova $A\cap B$ možemo filtrirati ona mjerenja koja su zadovoljila uvjet dimenzioniranja sabirnice i čije vrijednosti ne premašuju dopuštenja naprezanja definirana u tablici \ref{tab:41}.
             
-            Doduše, u praksi je proces dimenzioniranja sabirnice obrnut -- vrši se proračun maksimalnih struja u normalnom pogonu za najnepovoljniji slučaj, po čemu se odabire profil sabirnice na način da se odabere profil sabirnice koji može podnijeti vrijendosti veće od maksimalne dobivene vrijednosti struje u normalnom pogonu. Gornji primjer smo naveli kao hipotetski za slučaj u kojem nisu poznate vrijednosti maksimalne vrijednosti struje u normalnom pogonu, ali u kojem smo imali mogućnost izvesti testna mjerenja uz poznavanje promjera sabirnice.
+            Doduše, u praksi je proces dimenzioniranja sabirnice obrnut -- vrši se proračun maksimalnih struja u normalnom pogonu za najnepovoljniji slučaj, po čemu se odabire profil sabirnice na način da se odabere profil sabirnice koji može podnijeti vrijednosti veće od maksimalne dobivene vrijednosti struje u normalnom pogonu. Gornji primjer smo naveli kao hipotetski za slučaj u kojem nisu poznate vrijednosti maksimalne vrijednosti struje u normalnom pogonu, ali u kojem smo imali mogućnost izvesti testna mjerenja uz poznavanje promjera sabirnice.
 
             Slučajni se događaji označavaju velikim slovima abecede: $A,B,C,\ldots$, a rezultati slučajnog eksperimenta nazivaju se \textit{elementarni događaji}. U našem primjeru, elementarna događanja slučajnog događaja $A$ su $100,250,300,420,550$.
 
@@ -904,7 +910,7 @@
 
             \subsection{Slučajne varijable i distribucije vjerojatnosti} \label{random_variable}
 
-                Kada govorimo o slučajnim i elementarnim događajima, najčešće govorimo o grupiranju dobivenih rezultata u smislene cjeline koje su dio većeg skupa dobivenih podataka. Kako bismo mogli izvršiti detaljnu prognostičku analizu slučajnih događaja, potrebno je osmisliti način preslikavanja elementarnih događaja u prigodniji oblik za obradu podataka. Navedeno postižemo procesom \textit{kvantifikacije}, tj. određivanjem realnih numeričih vrijednosti kojima ćemo pripisati neka fizikalna svojstva. Na primjer, želimo li odraditi računalnu statističku analizu za prethodno navedeni pokus bacanja novčića, možemo kvantificirati elementarne događaje \textit{pismo} i \textit{glava} kao realne vrijednosti $0$ i $1$ -- koje se pripisuju kao moguće rezultantne vrijednosti \textit{slučajne varijable}
+                Kada govorimo o slučajnim i elementarnim događajima, najčešće govorimo o grupiranju dobivenih rezultata u smislene cjeline koje su dio većeg skupa dobivenih podataka. Kako bismo mogli izvršiti detaljnu prognostičku analizu slučajnih događaja, potrebno je osmisliti način preslikavanja elementarnih događaja u prigodniji oblik za obradu podataka. Navedeno postižemo procesom \textit{kvantifikacije}, tj. određivanjem realnih numeričkih vrijednosti kojima ćemo pripisati neka fizikalna svojstva. Na primjer, želimo li odraditi računalnu statističku analizu za prethodno navedeni pokus bacanja novčića, možemo kvantificirati elementarne događaje \textit{pismo} i \textit{glava} kao realne vrijednosti $0$ i $1$ -- koje se pripisuju kao moguće rezultantne vrijednosti \textit{slučajne varijable}
 
                 \begin{equation*}
                     X=\begin{cases}
@@ -936,7 +942,7 @@
 
                 Funkcija $p(x_i)$ iz definicije \ref{def:random_discrete_variable} svakoj vrijednosti slučajne varijable pridružuje određenu vjerojatnost, te se naziva \textit{funkcija vjerojatnosti diskretne slučajne varijable}. Na primjer, ukoliko slučajna diskretna varijabla $X$ može poprimiti vrijednosti $x_1,x_2,\ldots,x_i$, onda temeljem definicije \ref{def:random_discrete_variable} vrijedi $p(x_i)>0$, $p(x_1)+p(x_2)+\ldots+p(x_i)=1$, dok za sve ostale vrijednosti $x$ vrijedi $p(x)=0$.
 
-                Funkcija vjerojatnosti diskretne varijable $p(x_i)$ može biti zadana analitički, grafički ili tabelarno. Želimo li pronaći vjerojatnost poprimanja vrijednosti $x\leq5$, primjenom definicije \ref{def:random_discrete_variable} to ćemo zapisati kao $P[X\leq 5]$ -- uz uvjet promatranja isključivo cjelobronih brojeva iz skupa realnih brojeva $\mathbb{R}$, tj. podskupa cijelih brojeva $\mathbb{Z}$. U protivnom, promatranjem skupa realnih brojeva $\mathbb{R}$ bez odgovarajućih ograničenja mogli bismo doći do krivih zaključaka uslijed teoretske mogućnosti poprimanja infinitemozno mnogo vrijednosti -- što je kontradiktorno diskretnoj slučajnoj varijabli. Takav slučaj promatranja infinitemozno mnogo vrijednosti pripisati ćemo svojstvima kontinuirane slučajne varijable, koju ćemo pravovremeno definirati.
+                Funkcija vjerojatnosti diskretne varijable $p(x_i)$ može biti zadana analitički, grafički ili tabelarno. Želimo li pronaći vjerojatnost poprimanja vrijednosti $x\leq5$, primjenom definicije \ref{def:random_discrete_variable} to ćemo zapisati kao $P[X\leq 5]$ -- uz uvjet promatranja isključivo cjelobrojnih brojeva iz skupa realnih brojeva $\mathbb{R}$, tj. podskupa cijelih brojeva $\mathbb{Z}$. U protivnom, promatranjem skupa realnih brojeva $\mathbb{R}$ bez odgovarajućih ograničenja mogli bismo doći do krivih zaključaka uslijed teoretske mogućnosti poprimanja beskonačno mnogo vrijednosti -- što je kontradiktorno diskretnoj slučajnoj varijabli. Takav slučaj promatranja beskonačno mnogo vrijednosti pripisati ćemo svojstvima kontinuirane slučajne varijable, koju ćemo pravovremeno definirati.
 
                 Skup uređenih parova
                 \begin{equation}
@@ -1046,7 +1052,7 @@
                     P(a\leq X\leq b)=\displaystyle\int_{a}^{b}f(x)dx=F(b)-F(a),
                 \end{equation}
                 
-                gdje je $F(x)$ \textit{funkcija distribucije kontinuirane slučajne varijable}. Uzmemo li primjer pronalaska vrijednosti funkcije distribucije u točki $x=a$, temeljem novodobivenoga izraza zaključujemo kako ćemo istu dobiti kao površinu ispod krivulje funkcije gustoće na intervalu $\langle-\infty,a]$ kao što je prikazano na slici \ref{fig:44}.
+                gdje je $F(x)$ \textit{funkcija distribucije kontinuirane slučajne varijable}. Uzmemo li primjer pronalaska vrijednosti funkcije distribucije u točki $x=a$, temeljem novo dobivenoga izraza zaključujemo kako ćemo istu dobiti kao površinu ispod krivulje funkcije gustoće na intervalu $\langle-\infty,a]$ kao što je prikazano na slici \ref{fig:44}.
 
                 \begin{figure}[H]
                     \centering
@@ -1075,50 +1081,50 @@
                     \label{fig:44}
                 \end{figure}
 
-                \subsubsection{Višedimenzionalne distribucije vjerojatnosti}
+            \subsubsection{Višedimenzionalne distribucije vjerojatnosti}
 
-                Iz prethodnih vjerojatnostnih opisa diskretnih i kontinuiranih slučajnih varijabli, možemo zaključiti kako diskretne slučajne varijable nemaju funkciju gustoće vjerojatnosti $f(x)$, dok kontinuirane nasumične varijable nemaju funkciju vjerojatnosti $p(x_i)$. Također, možemo zaključiti da obje vrste slučajnih varijabli imaju funkciju distribucije nasumične varijable $F(x)$. U praksi, vrlo često vršimo promatranja procesa s više od jedne slučajne varijable, te se nerijetko traži povezanost između dvaju ili više slučajnih varijabli. Poopćavanjem funkcije distribucije na $n$ slučajnih varijabli, tj. poopćavanjem za slučaj $n$-dimenzionalnog vektora $X=(X_1,X_2,\ldots,X_n)$ u točki $x=(x_1,x_2,\ldots,x_n)$ dobivamo izraz:
+                    Iz prethodnih vjerojatnostnih opisa diskretnih i kontinuiranih slučajnih varijabli, možemo zaključiti kako diskretne slučajne varijable nemaju funkciju gustoće vjerojatnosti $f(x)$, dok kontinuirane nasumične varijable nemaju funkciju vjerojatnosti $p(x_i)$. Također, možemo zaključiti da obje vrste slučajnih varijabli imaju funkciju distribucije nasumične varijable $F(x)$. U praksi, vrlo često vršimo promatranja procesa s više od jedne slučajne varijable, te se nerijetko traži povezanost između dvaju ili više slučajnih varijabli. Poopćavanjem funkcije distribucije na $n$ slučajnih varijabli, tj. poopćavanjem za slučaj $n$-dimenzionalnog vektora $X=(X_1,X_2,\ldots,X_n)$ u točki $x=(x_1,x_2,\ldots,x_n)$ dobivamo izraz:
 
-                \begin{equation}
-                    F_{X_1,X_2,\ldots,X_n}(x=(x_1,x_2,\ldots,x_n)=P(X_1\leq x_1,X_2\leq x_2,\ldots,X_n\leq x_n,)
-                \end{equation}
-
-                Višedimenzionalne distribucije možemo dalje raspisati za konkretne slučajeve višedimenzionalnih diskretnih ili kontinuiranih slučajnih varijabli. Više o različitim vrstama distribucija vjerojatnosti slučajnih varijabli i njihovim pripadajućim definicijama može se saznati u referiranoj literaturi \cite{Bahovec, Dekking}.
-
-                Prije zaključivanja ovoga potpoglavlja, valja napomenuti kako za sve funkcije distribucije vjerojatnosti općenito vrijedi:
-
-                \begin{enumerate}
-                    \item Za $a\leq b$ vrijedi $F(a)\leq F(b)$ temeljem opažanja iz kojega slijedi da je događaj $\left\{X\leq a\right\}$ dio događaja ${X\leq b}$,
-                    \item $F(x)$ predstavlja vjerojatnostnu značajku, te za njezine vrijednosti uvijek vrijedi $0\leq F(x)\leq 1$ za svaki $x$, tj.
-
-                    \begin{align*}
-                        \begin{split}
-                            \lim\limits_{a\to+\infty}F(x)&=\lim\limits_{a\to+\infty}P(X\leq x)=1\\
-                            \lim\limits_{a\to-\infty}F(x)&=\lim\limits_{a\to-\infty}P(X\leq x)=0.
-                        \end{split}
-                    \end{align*}
-                    \item $F(x)$ ne može poprimiti manju vrijednost od vrijednosti koju je imala za prethodni član. Točnije, za proizvoljni $h\geq 0$ i za svaki $x$ vrijedi:
-                    
                     \begin{equation}
-                        F(x+h)\geq F(x).
+                        F_{X_1,X_2,\ldots,X_n}(x=(x_1,x_2,\ldots,x_n)=P(X_1\leq x_1,X_2\leq x_2,\ldots,X_n\leq x_n,)
                     \end{equation}
 
-                    \item Desni limes funkcije distribucije vjerojatnosti $F(x)$ postoji za svaki $x$, tj. temeljem slike \ref{fig:44} vrijedi
-                    
-                    \begin{equation}
-                        \lim\limits_{\epsilon\to 0+}F(x+\epsilon)=F(x).
-                    \end{equation}
-                \end{enumerate}
+                    Višedimenzionalne distribucije možemo dalje raspisati za konkretne slučajeve višedimenzionalnih diskretnih ili kontinuiranih slučajnih varijabli. Više o različitim vrstama distribucija vjerojatnosti slučajnih varijabli i njihovim pripadajućim definicijama može se saznati u referiranoj literaturi \cite{Bahovec, Dekking}.
 
-                Samo i samo ako neka funkcija $F$ zadovoljava sve prethodno navedene uvjete, za nju možemo konstatirati da je funkcija distribucije vjerojatnosti neke nasumične varijable.
-                
-                Obzirom na važnost funkcija distribucije vjerojatnosti, za daljnja razmatranja prognostičkih modela potrebno je opisati određene karakteristike distribucija vjerojatnosti kako bismo lakše razumjeli koncept i svojstva navedenih prognostičkih modela.
+                    Prije zaključivanja ovoga potpoglavlja, valja napomenuti kako za sve funkcije distribucije vjerojatnosti općenito vrijedi:
+
+                    \begin{enumerate}
+                        \item Za $a\leq b$ vrijedi $F(a)\leq F(b)$ temeljem opažanja iz kojega slijedi da je događaj $\left\{X\leq a\right\}$ dio događaja ${X\leq b}$,
+                        \item $F(x)$ predstavlja vjerojatnostnu značajku, te za njezine vrijednosti uvijek vrijedi $0\leq F(x)\leq 1$ za svaki $x$, tj.
+
+                        \begin{align*}
+                            \begin{split}
+                                \lim\limits_{a\to+\infty}F(x)&=\lim\limits_{a\to+\infty}P(X\leq x)=1\\
+                                \lim\limits_{a\to-\infty}F(x)&=\lim\limits_{a\to-\infty}P(X\leq x)=0.
+                            \end{split}
+                        \end{align*}
+                        \item $F(x)$ ne može poprimiti manju vrijednost od vrijednosti koju je imala za prethodni član. Točnije, za proizvoljni $h\geq 0$ i za svaki $x$ vrijedi:
+                        
+                        \begin{equation}
+                            F(x+h)\geq F(x).
+                        \end{equation}
+
+                        \item Desni limes funkcije distribucije vjerojatnosti $F(x)$ postoji za svaki $x$, tj. temeljem slike \ref{fig:44} vrijedi
+                        
+                        \begin{equation}
+                            \lim\limits_{\epsilon\to 0+}F(x+\epsilon)=F(x).
+                        \end{equation}
+                    \end{enumerate}
+
+                    Samo i samo ako neka funkcija $F$ zadovoljava sve prethodno navedene uvjete, za nju možemo konstatirati da je funkcija distribucije vjerojatnosti neke nasumične varijable.
+                    
+                    Obzirom na važnost funkcija distribucije vjerojatnosti, za daljnja razmatranja prognostičkih modela potrebno je opisati određene karakteristike distribucija vjerojatnosti kako bismo lakše razumjeli koncept i svojstva navedenih prognostičkih modela.
 
             \subsection{Karakteristike distribucija vjerojatnosti}
 
                 Slučajne varijable u praksi sadrže vrlo mnogo podataka nekog pojedinog eksperimenta, te ih kao takve treba na praktičan način opisati. U prethodnom potpoglavlju smo saznali nešto više o različitim vjerojatnostim funkcijama kojima možemo opisati slučajne varijable, no želimo li sustav opisati analitički -- a najčešće želimo -- potrebno je u potpunosti poznavati analitičke izraze pripadajućih funkcija. Iako smo definirali svaku od navedenih pripadajućih vjerojatnostnih funkcija, nekada ih je za velike količine podataka praktičnije opisati pomoću \textit{momenata slučajnih varijabli}.
 
-                Općenito, momenti u statistici predstavlaju kvantitativne karakteristike koji analitički opisuju graf neke proizvoljno promatrane funkcije. Promotrimo li proizvoljni skup podataka koji se sastoji od vrijednosti $[4,5,5,6,7,8,8,8,9]$, preslikavanjem vrijednosti skupa na brojevni pravac dobivamo vizualni dojam centralne tendencije i rasapa promatranog skupa podataka kao što je prikazano na slici \ref{fig:45}.
+                Općenito, momenti u statistici predstavljaju kvantitativne karakteristike koji analitički opisuju graf neke proizvoljno promatrane funkcije. Promotrimo li proizvoljni skup podataka koji se sastoji od vrijednosti $[4,5,5,6,7,8,8,8,9]$, preslikavanjem vrijednosti skupa na brojevni pravac dobivamo vizualni dojam centralne tendencije i rasapa promatranog skupa podataka kao što je prikazano na slici \ref{fig:45}.
 
                 \begin{figure}[H]
                     \centering
@@ -1137,11 +1143,11 @@
                             (8,-0.15) circle (2pt)
                             (9,0) circle (2pt);
                     \end{tikzpicture}
-                    \caption{Prikaz vrijednosti proizvoljnog skupa podataka na brojevnom pravcu}
+                    \caption{Prikaz vrijednosti proizvoljnog skupa podataka na brojevnom pravcu.}
                     \label{fig:45}
                 \end{figure}
 
-                Temeljem slike \ref{fig:45} također možemo bolje pojasniti intinuitivnost momenta funkcije. Želimo li analitički opisati proizvoljni skup podataka u svrhu predodžbe centralne tendencije u odnosu na referentnu vrijednost $0$, rješiti ćemo izraz $\frac{\sum x_i}{n}$. Naravno, promatranjem stvarnih fizikalnih pojava trebamo odrediti neku referentnu vrijednost budući da vrijednost $0$ nije nužno sadržana u rezultatima mjerenja ili nije praktična za korištenje. Iz tog razloga, prethodno navedeni izraz možemo općenitije opisati izrazom
+                Temeljem slike \ref{fig:45} također možemo bolje pojasniti intuitivnost momenta funkcije. Želimo li analitički opisati proizvoljni skup podataka u svrhu predodžbe centralne tendencije u odnosu na referentnu vrijednost $0$, rješiti ćemo izraz $\frac{\sum x_i}{n}$. Naravno, promatranjem stvarnih fizikalnih pojava trebamo odrediti neku referentnu vrijednost budući da vrijednost $0$ nije nužno sadržana u rezultatima mjerenja ili nije praktična za korištenje. Iz tog razloga, prethodno navedeni izraz možemo općenitije opisati izrazom
 
                 \begin{equation}
                     \frac{1}{n}\displaystyle\sum_{i}^{}(x_i-\mu),
@@ -1238,9 +1244,9 @@
                     \label{eq:joint_expectation}      
                 \end{equation}
 
-                gdje vrijednosti slučajne varijable $x_i$ možemo zamijeniti sa primadajućom jednoznačnom funkcijom slučajne varijalbe $X$.
+                gdje vrijednosti slučajne varijable $x_i$ možemo zamijeniti sa pripadajućom jednoznačnom funkcijom slučajne varijalbe $X$.
 
-                Kao što smo već prethodno konstatirali, prilikom vršenja prognostičkih eksperimenata najčešće promatramo više od jedne slučajne varijable, te je u te svrhe potrebno definitirati još jednu analitičku značajku višedimenzionalnih funkcija distribucije. Odnos među slučajnim varijablama $X$ i $Y$ opisuje \textit{kovarijanca} \cite{Bahovec} definirana izrazom
+                Kao što smo već prethodno konstatirali, prilikom vršenja prognostičkih eksperimenata najčešće promatramo više od jedne slučajne varijable, te je u te svrhe potrebno definirati još jednu analitičku značajku višedimenzionalnih funkcija distribucije. Odnos među slučajnim varijablama $X$ i $Y$ opisuje \textit{kovarijanca} \cite{Bahovec} definirana izrazom
 
                 \begin{equation}
                     \mathrm{Cov}(X,Y)=E\left[\big(X-E(X)\big)\big(Y-E(Y)\big)\right]=E(XY)-E(X)E(Y).
@@ -1251,10 +1257,10 @@
 
                 \begin{enumerate}
                     \item Pozitivna kovarijanca (\textit{pozitivna korelacija}) -- predstavlja tendenciju porasta dviju slučajnih varijabli u istom smjeru (npr. povećanje slučajne varijable $X$ rezultira povećanjem slučajne varijable $Y$),
-                    \item Negativna kovarijanca (\textit{negativna korelacija}) -- predstavlja tendeciju porasta dviju slučajnih varijabli u međusobno suprotnim smjerovima (npr. povećanje slučajne varijable $X$ rezultira smanjenjem slučajne varijable $Y$).
+                    \item Negativna kovarijanca (\textit{negativna korelacija}) -- predstavlja tendenciju porasta dviju slučajnih varijabli u međusobno suprotnim smjerovima (npr. povećanje slučajne varijable $X$ rezultira smanjenjem slučajne varijable $Y$).
                 \end{enumerate}
 
-                U iznimnom slučaju kada vrijedi $\mathrm{Cov}(X,Y)=0$, možemo zaključiti kako ne postoji korelacija između dviju promatranih slučajnih varijabli. Prikikom izrade financijskih analiza, korištenje principa kovarijance i prethodno navedenoga iznimnoga slučaja značajno je za kvantitativnu analizu diverzifikacije sredstava u svrhu smanjenja različitih rizika koji ne proizlaze iz pogrešaka samoga sustava.
+                U iznimnom slučaju kada vrijedi $\mathrm{Cov}(X,Y)=0$, možemo zaključiti kako ne postoji korelacija između dviju promatranih slučajnih varijabli. Prilikom izrade financijskih analiza, korištenje principa kovarijance i prethodno navedenoga iznimnoga slučaja značajno je za kvantitativnu analizu diversifikacije sredstava u svrhu smanjenja različitih rizika koji ne proizlaze iz pogrešaka samoga sustava.
                 
                 Prilikom promatranja prethodno navedenih statističkih značajki, od iznimne je važnosti razlikovati korištene termine \textit{korelacije} i \textit{nezavisnosti}. Uzmemo li primjer dviju nezavisnih varijabli, logički je za pretpostaviti kako nisu u korelaciji. No, uzmemo li primjer dviju varijabli koje nisu u korelaciji, valja logički uočiti kako navedene varijable \textit{nisu nužno} međusobno nezavisne.
 
@@ -1269,7 +1275,7 @@
             % varijanca i kovarijanca -- potrebno poslije za pojašnjenje stacionarnih i nestacionarnih signala
             % \textbf{(uzorak (sample space), srednja vrijednost, varijanca, kovarijanca, stacionarni procesi, autokovarijanca...)}
 
-            Za razliku od nasumičnih varijabli opisanih u potpoglavlju \ref{random_variable}, procese možemo konceptuilizirati pomoću trivijaliziranog opisa signala kao nosioca informacije, tj. skupa podataka. Stohastički (ili nasumični) proces $X(t)$ je kronološki raspoređena familija slučajnih varijabli čiji su članovi pripisani pripadajućim vremenskim trenutcima. Točnije, stohastički proces možemo formalnije opisato pomoću sljedećih definicija:
+            Za razliku od nasumičnih varijabli opisanih u potpoglavlju \ref{random_variable}, procese možemo konceptualizirati pomoću trivijaliziranog opisa signala kao nosioca informacije, tj. skupa podataka. Stohastički (ili nasumični) proces $X(t)$ je kronološki raspoređena familija slučajnih varijabli čiji su članovi pripisani pripadajućim vremenskim trenutcima. Točnije, stohastički proces možemo formalnije opisati pomoću sljedećih definicija:
 
             \begin{definition}[\cite{Bahovec}]
                 Slučajni (ili stohastički) proces ${X(t)}$ je familija indeksiranih slučajnih varijabli definiranih nad prostorom događaja $S$.
@@ -1279,7 +1285,7 @@
                 Ukoliko $t$ poprima kontinuirane vrijednosti iz skupa realnih brojeva, pri čemu vrijedi odnos $T\subseteq \mathbb{R}$, proces ${X(t)}$ nazivamo stohastičkim procesom s kontinuiranim parametrom. Ukoliko $t$ poprima diskretne vrijednosti, proces ${X(t)}$ nazivamo stohastičkim procesom s diskretnim parametrom.
             \end{definition}
 
-            Pretpostavimo stohastički proces ${X(t)}$ koji je rezultat provođenja nekog slučajnog eksperimenta kojega je moguće ponavljati u identičnim uvjetima. Provođenjem prvog kruga slučajnog eksperimenta doći ćemo do zapisa procesa ${X(t)}$, te je logično zaključiti kako ćemo -- uslijed definicije slučajne varijable -- u daljnim ponavljanjima slučajnog eksperimenta dobivati i drugačije vrijednosti, a samim time i drugačiji zapis, tj. skup vrijednosti procesa ${X(t)}$. Iz navedenoga intuitivno slijedi pojam \textit{realizacije procesa} kao skupa vrijednosti procesa ${X(t)}$ za točno određenu permutaciju slučajnog eksperimenta. Skup svih mogućih realizacija naziva se \textit{ansambl} ili \textit{populacija}.
+            Pretpostavimo stohastički proces ${X(t)}$ koji je rezultat provođenja nekog slučajnog eksperimenta kojega je moguće ponavljati u identičnim uvjetima. Provođenjem prvog kruga slučajnog eksperimenta doći ćemo do zapisa procesa ${X(t)}$, te je logično zaključiti kako ćemo -- uslijed definicije slučajne varijable -- u daljnjim ponavljanjima slučajnog eksperimenta dobivati i drugačije vrijednosti, a samim time i drugačiji zapis, tj. skup vrijednosti procesa ${X(t)}$. Iz navedenoga intuitivno slijedi pojam \textit{realizacije procesa} kao skupa vrijednosti procesa ${X(t)}$ za točno određenu permutaciju slučajnog eksperimenta. Skup svih mogućih realizacija naziva se \textit{ansambl} ili \textit{populacija}.
 
             Dvije osnovne vrste stohastičkih procesa obzirom na vjerojatnostna svojstva su:
 
@@ -1296,9 +1302,7 @@
                 \item Postoji li i koja je korelacija među vrijednostima promatranih uzoraka stohastičkog procesa,
                 \item Je li moguće opisati dugoročno ponašanje promatranog uzorka stohastičkog procesa (uz primjenu određenih teorema poput zakona velikih brojeva i centralnog graničnog teorema),
                 \item Postoje li i koja su ograničenja promatranog stohastičkog procesa (npr. pojava anomalija, ekstremni uvjeti, financijske krize, i sl.).
-            \end{enumerate}
-
-            % Jedan od najjednostavnijih je Simple Random Walk. Markovljev lanac - stohastički procesi čiji je utjecaj prošlih događaja na buduće događaje opisan samo trenutnim stanjem (važna samo zadnja vrijednost, sve korelacije su zapisane u toj jednoj vrijednosti...npr. to je simple random walk).
+            \end{enumerate}      
 
             % Montgomery and Rugner:\\
             % Random Variables: Chap. 2 Page 53,\\
@@ -1344,143 +1348,138 @@
    
         %Signals and Systems DeMYSTiFieD A Self-Teaching Guide (dobro za elektrotehničke primjere autokorelacijske analize)
     
-        \subsection{Vremenski nizovi}
+            \subsection{Vremenski nizovi}
+            \label{subs:time_series}
 
-            Vremenske nizove povezujemo uz bilo kakavu reprezentzaciju vrijednosti u ovisnosti o vremenskoj konstanti -- neovisno radi li se o vrijednostima koje prate neko determinističko načelo ili načelo nasumičnosti. Drugim rječima, vremenske nizove možemo opisati kao stohastički signal s kronološki raspoređenim opažanjima uzorkovanim u redovitim vremenskim razmacima -- točnije, iz opisa stohastičkog procesa slijedi zaključak kako se vremenski niz može tretirati kao konačna realizacija nekog stohastičkog procesa. Mogu se pojavljivati kao podaci o fizičkim veličinama, kao ekonomski ili financijski podaci, demografski podaci, itd.. Opažanja ili mjerenja navedenih podataka provedena su u proizvoljnim vremenskim intervalima -- svake sekunde, svakoga sata, svakoga dana, svakoga mjeseca, i sl.. U analizi vremenskih nizova, takve skupove podataka uobičajeno reprezentiramo konačnim brojem mjerenja promatranog nasumičnog procesa $X(t)$ za, primjerice, $t=1,2,\ldots,N$ \cite{Priestley}. Vremenske nizove možemo analitički zapisati na sljedeće načine:
+                Vremenske nizove povezujemo uz bilo kakvu reprezentaciju vrijednosti u ovisnosti o vremenskoj konstanti -- neovisno radi li se o vrijednostima koje prate neko determinističko načelo ili načelo nasumičnosti. Drugim riječima, vremenske nizove možemo opisati kao stohastički signal s kronološki raspoređenim opažanjima uzorkovanim u redovitim vremenskim razmacima -- točnije, iz opisa stohastičkog procesa slijedi zaključak kako se vremenski niz može tretirati kao konačna realizacija nekog stohastičkog procesa. Mogu se pojavljivati kao podaci o fizičkim veličinama, kao ekonomski ili financijski podaci, demografski podaci, itd.. Opažanja ili mjerenja navedenih podataka provedena su u proizvoljnim vremenskim intervalima -- svake sekunde, svakoga sata, svakoga dana, svakoga mjeseca, i sl.. U analizi vremenskih nizova, takve skupove podataka uobičajeno reprezentiramo konačnim brojem mjerenja promatranog nasumičnog procesa $X(t)$ za, primjerice, $t=1,2,\ldots,N$ \cite{Priestley}. Vremenske nizove možemo analitički zapisati na sljedeće načine:
 
-            \begin{equation}
-                X=\{X_1,X_2,\ldots\}
-            \end{equation}
-
-            ili
-
-            \begin{equation}
-                Y=\{Y_t: t\in T\}.
-            \end{equation}
-            
-            U daljnjim razmatranjima teme ovoga rada, prateći generalni koncenzus u nomenklaturi stručnih izvora, pod analizom vremenskih nizova smatrati ćemo principe i modele koji analiziraju promatrane vrijednosti nasumičnih procesa -- koje ćemo detaljnije opisati u nadolazećim potpoglavljima.
-
-            Osnovni modeli vremenskih nizova koji se koriste čine osnovu statističe analize su \cite{Bahovec}:
-
-            \begin{enumerate}
-                \item \textit{Aditivni model} \\
-
-                    \begin{equation}
-                        Y_t=T_t+C_t+S_t+e_t,
-                    \end{equation}
-
-                \item \textit{Multiplikativni model} \\
+                \begin{equation}
+                    X=\{X_1,X_2,\ldots\}
+                \end{equation}
+                ili
+                \begin{equation}
+                    Y=\{Y_t: t\in T\}.
+                \end{equation}
                 
+                U daljnjim razmatranjima teme ovoga rada, prateći generalni koncensus u nomenklaturi stručnih izvora, pod analizom vremenskih nizova smatrati ćemo principe i modele koji analiziraju promatrane vrijednosti nasumičnih procesa -- koje ćemo detaljnije opisati u nadolazećim potpoglavljima.
+
+                Osnovni modeli vremenskih nizova koji se koriste čine osnovu statističke analize su \cite{Bahovec}:
+
+                \begin{enumerate}
+                    \item \textit{Aditivni model} \\
+                        \begin{equation}
+                            Y_t=T_t+C_t+S_t+e_t,
+                        \end{equation}
+                    \item \textit{Multiplikativni model} \\
+                        \begin{equation}
+                            Y_t=T_t\cdot I_{C_t}\cdot I_{S_t}\cdot e_t,
+                        \end{equation}
+                \end{enumerate}
+
+                gdje su
+
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular*}{0.9\textwidth}{l p{13cm}}
+                        \textit{$T_t$} & trend\footnotemark ,\\
+                        \textit{$C_t$} & ciklička komponenta\footnotemark ,\\
+                        \textit{$S_t$} & sezonska konponenta\footnotemark ,\\
+                        \textit{$e_t$} & slučajna komponenta\footnotemark .
+                    \end{tabular*}
+                \end{table}
+
+                \footnotetext[1]{Dugoročna tendencija razvoja pojave u vremenu; Niz vrijednosti kroz koje bi promatrana pojava prolazila da nije bilo sezonskih ili slučajnih čimbenika (vremenska razdoblja duža od 5 godina).}
+                \footnotetext[2]{Odnosi se na redovne fluktuacije oko trenda koja su sustavna (vremenska razdoblja od jedne i više godine).}
+                \footnotetext[3]{Očituje se u sustavnim kretanjima pojave unutar jedne godine.}
+                \footnotetext[4]{Izražava nesistematske utjecaje na razvoj pojave \cite{Bahovec}.}
+                
+                Modeli koji analiziraju ponašanje stohastičkih procesa u vremenskoj domeni poprimaju formu jednog od dvaju prethodno navedenih modela ili iz klase linearnih stohastičkih modela kojima se opisuju stacionarni procesi -- koje ćemo dalje opisati.
+
+                \subsubsection{Stacionarni vremenski nizovi}
+
+                    Za stacionarni vremenski niz općenito moraju vrijediti sljedeće konstatacije:
+
+                    \begin{itemize}
+                        \item Vremenski niz ne sadrži trend komponentu,
+                        \item Vremenski niz nema prisutne striktno periodske varijacije,
+                        \item Varijanca vremenskoga niza ne ovisi o vremenu.
+                    \end{itemize}
+
+                    Prilikom provedbe detaljne statističke analize, stohastičke procese je ponekad lakše opisati nešto manje formalnom definicijom kao funkcijom distribucije u nekom vremenskom intervalu.
+
+                    Odaberemo li proizvoljno prirodni broj $n\in \mathbb{N}$ i svaki pomak $k\in \mathbb{N}$, $n$-dimenzionalna funkcija distribucije zadovoljava jednadžbu \cite{Bahovec}:
+
                     \begin{equation}
-                        Y_t=T_t\cdot I_{C_t}\cdot I_{S_t}\cdot e_t,
+                        F_{X_1,X_2,\ldots,X_n}(x_1,x_2,\ldots,x_n)=F_{X_{1+k},X_{2+k},\ldots,X_{n+k}}.
+                        \label{eq:428}
                     \end{equation}
 
-            \end{enumerate}
+                    Proces za koji vrijedi izraz \eqref{eq:428} za svaki $n=1,2,\ldots$ je \textit{strikto stacionaran}, te su za takav proces funkcije distribucije jednake za sve $t$. Temeljem navedenoga, očekivana vrijednost procesa
 
-            gdje su
+                    \begin{equation}
+                        E(X_t)=\mu, \quad \mu < \infty
+                    \end{equation}
 
-            \begin{table}[H]
-                \centering
-                \begin{tabular*}{0.9\textwidth}{l p{13cm}}
-                    \textit{$T_t$} & trend\footnotemark ,\\
-                    \textit{$C_t$} & ciklička komponenta\footnotemark ,\\
-                    \textit{$S_t$} & sezonska konponenta\footnotemark ,\\
-                    \textit{$e_t$} & slučajna komponenta\footnotemark .
-                \end{tabular*}
-            \end{table}
+                    je konstantna ako je $E(|X_t|)<\infty$. Analogno tome, varijanca procesa definirana je kao
 
-            \footnotetext[1]{Dugoročna tendencija razvoja pojave u vremenu; Niz vrijednosti kroz koje bi promatrana pojava prolazila da nije bilo sezonskih ili slučajnih činbenika (vremenska razdoblja duža od 5 godina).}
-            \footnotetext[2]{Odnosi se na redovne fluktuacije oko trenda koja su sustavna (vremenska razdoblja od jedne i više godine).}
-            \footnotetext[3]{Očituje se u sustavnim kretanjima pojave unutar jedne godine.}
-            \footnotetext[4]{Izražava nesistematske utjecaje na razvoj pojave \cite{Bahovec}.}
-            
-            Modeli koji analiziraju ponašanje stohastičkih procesa u vremenskoj domeni poprimaju formu jednog od dvaju prethodno navedenih modela ili iz klase linearnih stohastičkih modela kojima se opisuju stacionarni procesi -- koje ćemo dalje opisati.
+                    \begin{equation}
+                        \mathrm{Var}(X_t)=E\big(X_t-E(X_t)\big)^2=E(X_t-\mu)^2=\sigma^2.
+                    \end{equation}
 
-            \subsubsection{Stacionarni vremenski nizovi}
+                    uz uvjet da je $E(|X_t^2|)<\infty$.
 
-            Za stacionarni vremenski niz općenito moraju vrijediti sljedeće konstatacije:
+                    Primjer striktno stacionarnog procesa u praksi najčešće je \textit{bijeli šum} (čisti slučajni proces). Iako ga se u istoj ne susreće kao poticajnu komponentu nekog stacionarnog vremenskog niza, učestalost njegova korištenja proizlazi iz pogodnosti korištenja istoga za opisivanje dinamike slučajne komponente. Štoviše, bijeli šum čini osnove regresijskog modela u kojemu su relacijske greške članovi bijelog šuma.
+                    
+                    Takav proces definiran je kao niz nekoreliranih jednako distribuiranih slučajnih varijabli s konačnom vrijednošću očekivane vrijendosti.
 
-            \begin{itemize}
-                \item Vremenski niz ne sadrži trend komponentu,
-                \item Vremenski niz nema prisutne striktno periodske varijacije,
-                \item Varijanca vremenskoga niza ne ovisi o vremenu.
-            \end{itemize}
+                    Za potrebe ovoga rada, proces ${\epsilon_t, t=\pm 1, \pm 2, \ldots}$ je čisti slučajni proces ako za svaki promatrani $t=0,\pm 1, \pm 2,\ldots$ vrijedi da je \cite{Bahovec}:
 
-            Prilikom provedbe detaljne statističke analize, stohastičke procese je ponekad lakše opisati nešto manje formalnom definicijom kao funkcijom distribucije u nekom vremenskom intervalu.
+                    \begin{itemize}
+                        \item $E(\epsilon_t)=0$,
+                        \item $\mathrm{Var}(\epsilon_t)=\sigma^2$,
+                        \item $\mathrm{Cov}(\epsilon_t,\epsilon_s)=0$ za svaki $t\neq s$, gdje $t$ i $s$ predstavljaju bilo koje dvije točke u vremenu.
+                    \end{itemize}
 
-            Odaberemo li proizvoljno prirodni broj $n\in \mathbb{N}$ i svaki pomak $k\in \mathbb{N}$, $n$-dimenzionalna funkcija distribucije zadovoljava jednadžbu \cite{Bahovec}:
+                    Kroz literaturu i ovaj rad koristiti ćemo skraćeni oblik navedenih svojstva pomoću oznake $\epsilon_t\sim WN(0,\sigma^2)$.
 
-            \begin{equation}
-                F_{X_1,X_2,\ldots,X_n}(x_1,x_2,\ldots,x_n)=F_{X_{1+k},X_{2+k},\ldots,X_{n+k}}
-                \label{eq:428}
-            \end{equation}
-
-            Proces za koji vrijedi izraz \eqref{eq:428} za svaki $n=1,2,\ldots$ je \textit{strikto stacionaran}, te su za takav proces funkcije distribucije jednake za sve $t$. Temeljem navedenoga, očekivana vrijednost procesa
-
-            \begin{equation}
-                E(X_t)=\mu, \quad \mu < \infty
-            \end{equation}
-
-            je kosntanta ako je $E(|X_t|)<\infty$. Analogno tome, varijanca procesa definirana je kao
-
-            \begin{equation}
-                \mathrm{Var}(X_t)=E\big(X_t-E(X_t)\big)^2=E(X_t-\mu)^2=\sigma^2.
-            \end{equation}
-
-            uz uvjet da je $E(|X_t^2|)<\infty$.
-
-            Primjer striktno stacionarnog procesa u praksi najčešće je \textit{bijeli šum} (čisti slučajni proces). Iako ga se u istoj ne susreće kao poticajnu komponentu nekog stacionarnog vremenskog niza, učestalost njegova korištenja proizlazi iz pogodnosti korištenja istoga za opisivanje dinamike slučajne komponente. Štoviše, bijeli šum čini osnove regresijskog modela u kojemu su relacijske greške članovi bijelog šuma.
-            
-            Takav proces definiran je kao niz nekoreliranih jednako distribuiranih slučajnih varijabli s konačnom vrijednošću očekivane vrijendosti.
-
-            Za potrebe ovoga rada, proces ${\epsilon_t, t=\pm 1, \pm 2, \ldots}$ je čisti slučajni proces ako za svaki promatrani $t=0,\pm 1, \pm 2,\ldots$ vrijedi da je \cite{Bahovec}:
-
-            \begin{itemize}
-                \item $E(\epsilon_t)=0$,
-                \item $\mathrm{Var}(\epsilon_t)=\sigma^2$,
-                \item $\mathrm{Cov}(\epsilon_t,\epsilon_s)=0$ za svaki $t\neq s$, gdje $t$ i $s$ predstavljaju bilo koje dvije točke u vremenu.
-            \end{itemize}
-
-            Kroz literaturu i ovaj rad koristiti ćemo skraćeni oblik navedenih svostava pomoću oznake $\epsilon_t\sim WN(0,\sigma^2)$.
-
-            Detaljna analiza bijelog šuma, tj. striktno stacionarnih procesa, detaljnije je pojašnjena u citiranoj literaturi \cite{Priestley}\cite{Bahovec}. U istoj je dodatno pojašnjena ovisnost kovarijance o vremenskom intervalu te neovisnost iste o položaju točaka na vremenskoj osi.
+                    Detaljna analiza bijelog šuma, tj. striktno stacionarnih procesa, detaljnije je pojašnjena u citiranoj literaturi \cite{Priestley}\cite{Bahovec}. U istoj je dodatno pojašnjena ovisnost kovarijance o vremenskom intervalu te neovisnost iste o položaju točaka na vremenskoj osi.
 
             \subsection{Autokovarijanca i autokorelacija}
 
-            \textit{Funkcija autokovarijance} uz srednju vrijednost funkcije reprezentira sve nužne informacije koje su nužne za opis funkcije zajedničke distribucije vjerojatnosti nekog promatranog skupa podataka. Točnije, funkcija autokovarijance definira se kao kovarijanca između dviju promatranih vrijednosti $X_t$ i $X_{n+k}$ nekog stacionarnog stohastičkog procesa, tj. opisana je izrazom
+                \textit{Funkcija autokovarijance} uz srednju vrijednost funkcije reprezentira sve nužne informacije koje su nužne za opis funkcije zajedničke distribucije vjerojatnosti nekog promatranog skupa podataka. Točnije, funkcija autokovarijance definira se kao kovarijanca između dviju promatranih vrijednosti $X_t$ i $X_{n+k}$ nekog stacionarnog stohastičkog procesa, tj. opisana je izrazom
 
-            \begin{equation}
-                r(k)=\mathrm{cov}(x_t,x_{n+k})=E\big[(x_t-\mu)(x_{n+k}-\mu)\big], \quad \text{gdje je } K\in \mathbb{Z}.
-                \label{eq:autocovariance}
-            \end{equation}
+                \begin{equation}
+                    r(k)=\mathrm{cov}(x_t,x_{n+k})=E\big[(x_t-\mu)(x_{n+k}-\mu)\big], \quad \text{gdje je } K\in \mathbb{Z}.
+                    \label{eq:autocovariance}
+                \end{equation}
 
-            Iz izaza \eqref{eq:autocovariance} možemo zaključiti kako je $r(k)$ rezultat kovarijance svih proizvoljno odabranih parova vrijednosti međusobno razmaknutih za $k$ -- koji se standardizirano naziva \textit{vremensko zaostajanje} ili \textit{lag}.
-            
-            Već sada možemo intuitivno predočiti važnost funkcije autokorelaciju u prognoziranju budući da nam daje informaciju o korelaciji između odabranih točki promatranja. Normiranu funkciju autokovarijance nazivamo \textit{autokorelacija}, a definirana je izrazom
+                Iz izaza \eqref{eq:autocovariance} možemo zaključiti kako je $r(k)$ rezultat kovarijance svih proizvoljno odabranih parova vrijednosti međusobno razmaknutih za $k$ -- koji se standardizirano naziva \textit{vremensko zaostajanje} ili \textit{lag}.
+                
+                Već sada možemo intuitivno predočiti važnost funkcije autokorelaciju u prognoziranju budući da nam daje informaciju o korelaciji između odabranih točki promatranja. Normiranu funkciju autokovarijance nazivamo \textit{autokorelacija}, a definirana je izrazom
 
-            \begin{equation}
-                \rho(k)=\frac{r(k)}{r(0)}=\frac{r(k)}{E\big[(x_t-\mu)^2\big]}=\frac{r(k)}{\sigma};
-                \label{autocorrelation}
-            \end{equation}
+                \begin{equation}
+                    \rho(k)=\frac{r(k)}{r(0)}=\frac{r(k)}{E\big[(x_t-\mu)^2\big]}=\frac{r(k)}{\sigma};
+                    \label{autocorrelation}
+                \end{equation}
 
-            pri čemu za stacionarni proces vrijedi\cite{Bahovec}:
+                pri čemu za stacionarni proces vrijedi\cite{Bahovec}:
 
-            \begin{enumerate}
-                \item $\rho(0)=1$,
-                \item $-1\leq \rho(k)\leq 1$, \quad svojstvo normiranosti,
-                \item $\rho(k)=\rho(-k)$, \quad svojstvo simetričnosti,
-                \item $\displaystyle\sum_i\sum_j\alpha_i\alpha_j\rho(i-j)\geq0$, \quad svojstvo pozitivne semidefinitnosti.
-            \end{enumerate}
+                \begin{enumerate}
+                    \item $\rho(0)=1$,
+                    \item $-1\leq \rho(k)\leq 1$, \quad svojstvo normiranosti,
+                    \item $\rho(k)=\rho(-k)$, \quad svojstvo simetričnosti,
+                    \item $\displaystyle\sum_i\sum_j\alpha_i\alpha_j\rho(i-j)\geq0$, \quad svojstvo pozitivne semidefinitnosti.
+                \end{enumerate}
 
-            Kako bi proizvoljna funkcija, koja zadovoljava uvjete (1)-(3) bila autokorelacijska funkcija stohastičkog procesa, nužan je uvjet pozitivne semidefinitnosti o kojem se može više saznati u stručnoj literaturi \cite{Priestley}.
+                Kako bi proizvoljna funkcija, koja zadovoljava uvjete (1)-(3) bila autokorelacijska funkcija stohastičkog procesa, nužan je uvjet pozitivne semidefinitnosti o kojem se može više saznati u stručnoj literaturi \cite{Priestley}.
 
-            \begin{figure}[H]
-                \centering
-                \includegraphics[width=.75\linewidth]{graphs/price_autocorrelations.pdf}
-                \caption{Primjer funkcije autokorelacije stacionarnog vremenskog niza cijene solarne energije u Španjolskoj 2015. godine.}
-            \end{figure}
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=.75\linewidth]{graphs/price_autocorrelations.pdf}
+                    \caption{Grafički prikaz funkcije autokorelacije stacionarnog vremenskog niza (temeljem podataka o kretanju cijene solarne energije u Španjolskoj 2015. godine).}
+                \end{figure}
 
-            Funkciju autokorelacije u trivijalnom smislu smatramo korelacijom signala s vlastitom pomaknutom kopijom, te ju to čini snažnim alatom za obradu signala u bilo kojoj sferi znanosti. Primjer korištenja iste je korekcija propagirajućeg položaja u GPS sustavima navigacije ili kardiovaskularne medicinske analize čije daljnje akcije nužno ovise o prethodnim pozicijskim vrijednostima; dok se istu može koristiti u glazbeno-produkcijske svrhe uslijed mogućnosti određivanja tempa, tj. eng. \textit{Beats Per Minute} koji se koristi kao kvantitativni indikator koji pomaže pri odabiru pjesama koje će imati blažu tranziciju u tempu te time smanjiti psihološku neugodu koju grublje tranzicije izazivaju.
+                Funkciju autokorelacije u trivijalnom smislu smatramo korelacijom signala s vlastitom pomaknutom kopijom, te ju to čini snažnim alatom za obradu signala u bilo kojoj sferi znanosti. Primjer korištenja iste je korekcija propagirajućeg položaja u GPS sustavima navigacije ili kardiovaskularne medicinske analize čije daljnje akcije nužno ovise o prethodnim pozicijskim vrijednostima; dok se istu može koristiti u glazbeno-produkcijske svrhe uslijed mogućnosti određivanja tempa, tj. eng. \textit{beats per minute} koji se koristi kao kvantitativni indikator koji pomaže pri odabiru pjesama koje će imati blažu tranziciju u tempu te time smanjiti psihološku neugodu koju grublje tranzicije izazivaju.
 
             \subsubsection{Primjeri analize vremenskih nizova u elektrotehnici}
                 %Priestley:
@@ -1495,12 +1494,12 @@
                 %https://www.wikiwand.com/en/Wiener_filter
                 Temeljem definicije vremenskog niza, prirodno se nameće korelacija i korištenje istih u ekonomiji i poslovnim sustavima, koji navedene koriste za prognostičko modeliranje u prije spomenute svrhe koje će polučiti konkretni rezultat koji će poslije biti predmet daljnjeg proučavanja.
 
-                Korištene metodologije u takvim procesima nisu samostalno svrsihodne u inženjerstvu, tj. nadopunjuju se tehničkom terminologijom i stručnim saznanjima o fenomenima, ograničenjima primjene i fizikalnim pojavama promatranih sustava. Iz toga proizlazi teza o korištenju analize vremenskih nizova kao jednog od alata za daljnje inženjerske analize.
+                Korištene metodologije u takvim procesima nisu samostalno svrsishodne u inženjerstvu, tj. nadopunjuju se tehničkom terminologijom i stručnim saznanjima o fenomenima, ograničenjima primjene i fizikalnim pojavama promatranih sustava. Iz toga proizlazi teza o korištenju analize vremenskih nizova kao jednog od alata za daljnje inženjerske analize.
 
 
-                U uvodnom poglavlju naveli smo neke od temeljnih važnosti i značajki prognoiziranja u ostvarivanju tržišnih. strateških i sigurnostnih ciljeva -- gdje smo čvrsto ustanovili sveprisutnost potrebe za statističkim modeliranjem, tj. prognoziranjem. Baš kao i u navedenim primjerima ekonomske i upravljačke prirode, prognoziranje i odgovarajuće metodologije od iznimne su koristi današnjim inženjerima pri analizi fizikalnih sustava. 
+                U uvodnom poglavlju naveli smo neke od temeljnih važnosti i značajki prognoziranja u ostvarivanju tržišnih. strateških i sigurnosnih ciljeva -- gdje smo čvrsto ustanovili sveprisutnost potrebe za statističkim modeliranjem, tj. prognoziranjem. Baš kao i u navedenim primjerima ekonomske i upravljačke prirode, prognoziranje i odgovarajuće metodologije od iznimne su koristi današnjim inženjerima pri analizi fizikalnih sustava. 
                 
-                Primjer korištenja istih može se uočiti na primjeru ranoga razvoja modernih vojnih rješenja za protuavionsku obranu. Navedena rješenja proizlašla su kao odgovor na postojeći problem brzorastućeg razvoja ofenzivnih oružja za vrijeme 2. svjetskog rata, što je dovelo do prirodne potrebe za odgovarajućim sustavima zaštite u svrhu očuvanja nacionalne  sigurnosti. Razvoj protuavionskih obrambenih sustava temeljio se na pronalasku korelacije koja će s visokom uspješnošću predvidjeti poziciju neautoriziranih objekata u zračnom prostoru u odnosu na trenutnu poziciju obrambenog projektila u svrhu najučinkovitijega nahođena koje će rezultirati terminacijom potencijalne prijetnje.
+                Primjer korištenja istih može se uočiti na primjeru ranoga razvoja modernih vojnih rješenja za protuavionsku obranu. Navedena rješenja proizašla su kao odgovor na postojeći problem brzorastućeg razvoja ofenzivnih oružja za vrijeme 2. svjetskog rata, što je dovelo do prirodne potrebe za odgovarajućim sustavima zaštite u svrhu očuvanja nacionalne  sigurnosti. Razvoj protuavionskih obrambenih sustava temeljio se na pronalasku korelacije koja će s visokom uspješnošću predvidjeti poziciju neautoriziranih objekata u zračnom prostoru u odnosu na trenutnu poziciju obrambenog projektila u svrhu najučinkovitijega nahođenja koje će rezultirati uklanjanjem potencijalne prijetnje.
                 
                 Iz procesa pronalaska navedenoga rješenja, proizašao je današnji \textit{Wienerov filter}, koji ima široku primjenu u elektrotehnici i drugim inženjerskim branšama -- ponajviše prilikom obrade signala, digitalne obrade slike, sinteze sustava upravljanja, te u razvoju digitalnih komunikacija. U općem smislu, koristi je za identifikaciju sustava, dekonvoluciju, odšumljivanje i uočavanje signala.
 
@@ -1524,13 +1523,13 @@
                     \caption{Blokovski prikaz FIR Wiener filtra za diskretne signale.}
                     \label{fig:U5}
                 \end{figure}
-                Iz blokovnskog prikaza FIR Wiener filtra sa slike \ref{fig:U5}, uočavamo propagaciju diskretnog ulaznog signala $w[n]$ kroz Wienerov filtar -- kojim se modelira učestalost otipkavanja $N$ i odabir koeficijenata ${a_0,\dotsm,a_N}$. Izlazni signal $x[n]$ iz FIR Wienerova filtra zadan je izrazom
+                Iz blokovskog prikaza FIR Wiener filtra sa slike \ref{fig:U5}, uočavamo propagaciju diskretnog ulaznog signala $w[n]$ kroz Wienerov filtar -- kojim se modelira učestalost otipkavanja $N$ i odabir koeficijenata ${a_0,\dotsm,a_N}$. Izlazni signal $x[n]$ iz FIR Wienerova filtra zadan je izrazom
 
                 \begin{equation}
                     x[n]=\displaystyle\sum_{i=0}^{N}a_i w[n-i].
                 \end{equation}
 
-                Na temelju zadanoga izraza, možemo uočiti prethodno navedeno korištenje vremenskih nizova kao dio većeg "sustava alata" kojima se inženjeri koriste u svakodnevici. U konkretnom slučaju, FIR Wiener filtara prognozira vrijednosti signala $x[n]$ temeljem prethodnih vrijednosti ulaznog signala $w[n-i]$ uz ugođavanje autokorelacijskih koeficijenta $a_i$ -- pritom imajući na umu temeljne pretpostavke i uvjete. Jedan od tih uvjeta je minimizacija srednje kvadrane pogreške koja se koristi kao jedan od analitičkih faktora ocjene kvalitete sustava.
+                Na temelju zadanoga izraza, možemo uočiti prethodno navedeno korištenje vremenskih nizova kao dio većeg "sustava alata" kojima se inženjeri koriste u svakodnevici. U konkretnom slučaju, FIR Wiener filtara prognozira vrijednosti signala $x[n]$ temeljem prethodnih vrijednosti ulaznog signala $w[n-i]$ uz ugađivanje autokorelacijskih koeficijenta $a_i$ -- pritom imajući na umu temeljne pretpostavke i uvjete. Jedan od tih uvjeta je minimizacija srednje kvadratne pogreške koja se koristi kao jedan od analitičkih faktora ocjene kvalitete sustava.
 
                 Kako bismo pronašli srednju kvadratnu pogrešku sustava $E[e^2[n]]$, potrebno je definirati signal pogreške $e[n]$. U slučaju blokovskog prikaza sa slike \ref{fig:U5}, signal pogreške definiramo kao razliku vrijednosti izlaznog signala iz FIR Wienerova filtra $x[n]$ i vrijednosti referentnog signala $s[n]$, dolazimo do sljedećih izraza:
 
@@ -1549,13 +1548,13 @@
 
                 Parcijalnim deriviranjem jednadžbe \eqref{eq:U2} po autokorelacijskom koeficijentu $a_i$, možemo doći do konkretnog izraza za izračun minimuma funkcije srednje kvadratne pogreške $\frac{\partial E[e^2[n]]}{\partial a_i}$. Daljnji proračun tog izraza možemo intuitivno povezati s postupkom minimizacije funkcije metode najmanjih kvadrata opisanoj u potpoglavlju \ref{subs:LS}, te ga nije potrebno dalje analizirati.
                 
-                Zaključno, u ovom potpoglavlju smo potvrdili tezu o korisnosti kroištenja statističke analize vremenskih nizova u elektrotehnici. Jedna od konkretnih primjena Wienerova filtra u elektrotehnici je uočavanje pojave neočekivanoga šuma u električnoj mreži i daljnja regulacija sustava temeljem vrijednosti signala pogreške koji nastaje uslijed pojave navedenoga šuma. Korištenje FIR Wienerova filtra i filtra sličnih funkcija od iznimne je koristi za pravovremenost regulacije sustava upravljanja. U slučaju izostanka pravovremene regulacije sustava upravljanja, može doći do oštećenja sustava i njegovih komponenti, pojave nestabilnosti u sustavu, te drugih nepoželjnih svojstva.
+                Zaključno, u ovom potpoglavlju smo potvrdili tezu o korisnosti korištenja statističke analize vremenskih nizova u elektrotehnici. Jedna od konkretnih primjena Wienerova filtra u elektrotehnici je uočavanje pojave neočekivanoga šuma u električnoj mreži i daljnja regulacija sustava temeljem vrijednosti signala pogreške koji nastaje uslijed pojave navedenoga šuma. Korištenje FIR Wienerova filtra i filtra sličnih funkcija od iznimne je koristi za pravovremenost regulacije sustava upravljanja. U slučaju izostanka pravovremene regulacije sustava upravljanja, može doći do oštećenja sustava i njegovih komponenti, pojave nestabilnosti u sustavu, te drugih nepoželjnih svojstva.
 
                 % \textbf{(Dodati neki primjer iz elektrotehnike. U Pristleyu ima predetaljno razrađeni primjer za filtriranje (može se koristiti za dobivanje više stranica, više naginje korištenju vremenskih nizova i nekog općeg nasumičnog signala...ovo trenutno napisano je nekako više "stručno", ali se može staviti kao konkretizacija tog općeg primjera), IEEE Xplore kao dodatni primjeri (uz rastavljanje potpoglavnja))}
 
     \chapter{Autoregresivni modeli}
             
-        Prilikom prognoziranja vrijednosti autokovarijančne funkcije s koeficijentima kašnjenja nailazi se na problem stalnog porasta količine članova funkcije koji su u direktnoj korelaciji s porastom učestalosti uzorkovanja. Takav prikaz za velike količine članova pokazivati će rezultate s velikom preciznošću, no zbog ograničenosti resursa navedeno rješenje nije svrsihodno. Budući da ne postoje konačna saznanja ili koncenzus o konačnom broju koji će reprezentirati najprecizniji prognostički model autokovarijančne funkcije s koeficijentima kašnenja, u temi ovoga rada razmatrati ćemo prognostičke modele koji kao uvjet imaju neprestan dotok najnovijih podataka uz ograničenje ukupnog broja članova prognostičke funkcije.
+        Prilikom prognoziranja vrijednosti autokovarijančne funkcije s koeficijentima kašnjenja nailazi se na problem stalnog porasta količine članova funkcije koji su u direktnoj korelaciji s porastom učestalosti uzorkovanja. Takav prikaz za velike količine članova pokazivati će rezultate s velikom preciznošću, no zbog ograničenosti resursa navedeno rješenje nije svrsishodno. Budući da ne postoje konačna saznanja ili koncensus o konačnom broju koji će reprezentirati najprecizniji prognostički model autokovarijančne funkcije s koeficijentima kašnjenja, u temi ovoga rada razmatrati ćemo prognostičke modele koji kao uvjet imaju neprestan dotok najnovijih podataka uz ograničenje ukupnog broja članova prognostičke funkcije.
 
         Navedene prognostičke modele možemo opisati pomoću triju osnovnih modela stacionarnih stohastičkih procesa \cite{Broersen}:
         
@@ -1586,7 +1585,7 @@
             %   Autoregressive Processes: Page 63,\\
             Za neki određeni statistički model konstatiramo da je autoregresijski ukoliko prognozira buduće vrijednosti temeljem prethodno ostvarenih vrijednosti. Pri analizi financijskih tržišta, autoregresijski model koristi se za predviđanje buduće cijene vrijednosnih papira na temelju njihovih vrijednosti iz prethodnog razdoblja. Već u samome početku možemo zaključiti da navedeni model ima jedan praktičan nedostatak, a to je određeni stupanj nepouzdanosti temeljem implikativne predodređenosti budućeg ponašanja sustava u ovisnosti o prošlom ponašanju -- što je posebice izraženo prilikom nepredvidivih pojava u sustavu. Iako primjera za neočekivane pojave u svakodnevnim sustavima ne nedostaje, najintuitivniji su pojave financijskih kriza ili nagli razvoj određene industrije.
 
-            Primjerice, investitor koji koristi autoregresijski model za prognoziranje vrijednosti neke vrijednosnice, pretpostaviti će da su novi kupci i prodavači navedene vrijednosnice prilikom određivanja cijena akvizicije ili prodaje pod psihološki značajnim utjecajem nedavnih događanja na financijskim tržištima. Iako se navedeni model pokazao investitorima kao vjerodostojan, te im omogućio pozitivan prilijev financijskih sredstava u godinama koje su prethodile 2008. godini, model se dokazao kao nepouzdan u slučaju kada većina investitora nije bila upoznata s rizikom koji su predstavljali vrijednosni papiri osigurani nekom vrstom hipoteke. Povoz za sumnju i povećanje rizičnosti takvih vrijednosnih papira ponukan je sumnjom nekolicine iskusnih investitora u svjetski renomirane rejting agencije -- čija je zadaća bila sa što većom preciznošću evaluirati i ocijeniti vrijednost nekretnina, pokretnina te financijskih sredstava pod hipotekom. Ne ulazeći dublje u praktičnu problematiku, navedena sumnja ispostavila se opravdanom, a dospijećem informacije o neispravnom postupanju prilikom ocijenjivanja uzrokovalo je krah financijskih tržišta i početak nove ekonomske krize 2008. godine. Ukoliko je u novonastalom razdoblju investitor bio predan korištenju autoregresijskog modela, na temelju današnjih saznanja možemo sa velikom sigurnošću konstatirati kako je otvario značajni negativni prilijev financijskih sredstava -- koji je potencijalno mogao rezultirati i proglašenjem osobnog bankrota. Također, važno je naglasiti snažan utjecaj kratkotrajnih neočekivanih pojava na sve buduće prognozirane vrijednosti autoregresijskog modela, što bi značilo da je navedena financijska kriza iz 2008. godine i dalje "prisutna" prilikom korištenja današnjeg korištenja autoregresijskog modela.
+            Primjerice, investitor koji koristi autoregresijski model za prognoziranje vrijednosti neke vrijednosnice, pretpostaviti će da su novi kupci i prodavači navedene vrijednosnice prilikom određivanja cijena akvizicije ili prodaje pod psihološki značajnim utjecajem nedavnih događanja na financijskim tržištima. Iako se navedeni model pokazao investitorima kao vjerodostojan, te im omogućio pozitivan priljev financijskih sredstava u godinama koje su prethodile 2008. godini, model se dokazao kao nepouzdan u slučaju kada većina investitora nije bila upoznata s rizikom koji su predstavljali vrijednosni papiri osigurani nekom vrstom hipoteke. Povod za sumnju i povećanje rizičnosti takvih vrijednosnih papira ponukan je sumnjom nekolicine iskusnih investitora u svjetski renomirane rejting agencije -- čija je zadaća bila sa što većom preciznošću evaluirati i ocijeniti vrijednost nekretnina, pokretnina te financijskih sredstava pod hipotekom. Ne ulazeći dublje u praktičnu problematiku, navedena sumnja ispostavila se opravdanom, a dospijećem informacije o neispravnom postupanju prilikom ocjenjivanja uzrokovalo je krah financijskih tržišta i početak nove ekonomske krize 2008. godine. Ukoliko je u novonastalom razdoblju investitor bio predan korištenju autoregresijskog modela, na temelju današnjih saznanja možemo sa velikom sigurnošću konstatirati kako je ostvario značajni negativni priljev financijskih sredstava -- koji je potencijalno mogao rezultirati i proglašenjem osobnog bankrota. Također, važno je naglasiti snažan utjecaj kratkotrajnih neočekivanih pojava na sve buduće prognozirane vrijednosti autoregresijskog modela, što bi značilo da je navedena financijska kriza iz 2008. godine i dalje "prisutna" prilikom korištenja današnjeg korištenja autoregresijskog modela.
 
             Sada kada smo ustanovili prednosti i mane korištenja autoregresijskog modela u praksi, možemo započeti sa dubinskom matematičkom analizom istoga.
 
@@ -1601,17 +1600,16 @@
             \begin{table}[H]
                 \centering
                 \begin{tabular*}{0.9\textwidth}{>{\bfseries}l p{13cm}}
-                    \textit{\textbf{$\boldsymbol{\epsilon_t}$}} & \textit{bijeli šum; nasumični stacionarni proces s pripadajućim statističkim parametrima $\mu_x$ i $\sigma_x^2$}\\
-                    \textit{\textbf{$\boldsymbol{x_t}$}} & \textit{nezavisna varijabla promatranog skupa}\\
-                    \textit{\textbf{$\boldsymbol{\mu_x}$}} & \textit{očekivana vrijednost slučajne varijable}\\
-                    \textit{\textbf{$\boldsymbol{\phi_p}$}} & \textit{autoregresijski parametar}\\
-                    \textit{\textbf{$\theta_0$}} & \textit{konstantni član}\\
-                    \textit{\textbf{$\boldsymbol{p}$}} & \textit{red autoregresijskog modela}\\
+                    \textit{\textbf{$\boldsymbol{\epsilon_t}$}} & \textit{bijeli šum; nasumični stacionarni proces s pripadajućim statističkim parametrima $\mu_x$ i $\sigma_x^2$},\\
+                    \textit{\textbf{$\boldsymbol{x_t}$}} & \textit{nezavisna varijabla promatranog skupa},\\
+                    \textit{\textbf{$\boldsymbol{\mu_x}$}} & \textit{očekivana vrijednost slučajne varijable},\\
+                    \textit{\textbf{$\boldsymbol{\phi_p}$}} & \textit{autoregresijski parametar},\\
+                    \textit{\textbf{$\theta_0$}} & \textit{konstantni član},\\
+                    \textit{\textbf{$\boldsymbol{p}$}} & \textit{red autoregresijskog modela}.\\
                 \end{tabular*}
             \end{table}
 
             Ukoliko iz izraza \eqref{eq:51} želimo definirati vrijednost člana procesa $x_n$, dolazimo do izvedenice
-
             \begin{equation}
                 (x_t-\mu_x)=\epsilon_t-\phi_1(x_{t-1}-\mu_x)-\phi_2(x_{t-2}-\mu_x)-\ldots-\phi_p(x_{t-p}-\mu_x)+\theta_0.
                 \label{eq:52}
@@ -1625,15 +1623,13 @@
                 \item autoregresijski parametri zaprimaju isključivo ne-nulte vrijednosti ($\phi_p\neq0$),
                 \item utjecaj konstantnog člana možemo zanemariti ($\theta_0=0$),
                 \item u budućim razmatranjima, vršiti ćemo analizu centriranog procesa opisanog jednadžbom:
-                
                 \begin{equation}
                     Z_t=x_t-E(x_t)=x_t-\mu_x.
                     \label{eq:53}
                 \end{equation}
             \end{itemize}
 
-            Ukoliko s $B$ označimo \textit{operator pomaka}, te primjenimo li pretpostavku definiranu jednadžbom \eqref{eq:53}, dolazimo do definicijskog izraza
-
+            Ukoliko s $B$ označimo \textit{operator pomaka}, te primijenimo li pretpostavku definiranu jednadžbom \eqref{eq:53}, dolazimo do definicijskog izraza
             \begin{align}
                 \begin{split}
                     BZ_t&=Z_{t-1},\\
@@ -1645,7 +1641,6 @@
             \end{align}
 
             Daljnjim uvrštavanjem izraza \eqref{eq:54} u izraz \eqref{eq:51} dobivamo
-
             \begin{align}
                 \begin{split}
                     \epsilon_t&=Z_t+\phi_1BZ_t+\phi_2B^2Z_t+\ldots+\phi_pB^pZ_t,\\
@@ -1653,8 +1648,6 @@
                 \end{split}
                 \label{eq:55}
             \end{align}
-
-            
         
             Iz izraza \eqref{eq:55} možemo definirati razvoj općeg polinoma koji opisuje autoregresijske parametre kako slijedi:
 
@@ -1664,104 +1657,359 @@
             \end{equation}
 
             Zaključno, iz prethodnih izraza slijedi sažetiji opći oblik \textit{AR(p)} modela:
-
             \begin{equation}
                 \phi(B)Z_t=\epsilon_t.
                 \label{eq:57}
             \end{equation}
 
-            \subsection{Dodatne pretpostavke}
+            Budući da ćemo se u modeliranju vremenskih nizova baviti isključivo kauzalnim i striktno stacionarnim stohastičkim procesima, nužno je ispunjenje uvjeta da svi korijeni polinoma\footnotemark[5] $\phi(B)$ moraju biti izvan jediničnog kruga.
+
+            \footnotetext[5]{Rješenja pripadne karakteristične jednadžbe $\phi(B)$=0.}
             
-            U svrhu lakšeg pronalaska vrijednosti autoregresijskih koeficijenata, potrebno je definirati dodatne pretpostavke koje će nam biti korisne u budućim razmatranjima. \textbf{Opisati zašto $\mu_x=0$ i važnost svojstva stacionarnosti te povezivanje sa MA(q)}
+            \subsubsection{Dodatne pretpostavke}
             
-            
-            Detaljnija pojašnjenja spomenutih pretpostavki detaljnije ćemo opisati kroz primjere \textit{AR(1)} i \textit{AR(2)} u potpoglavnjima \ref{subs:512} i \ref{subs:513}.
-            
-            
-            
-            % Temeljne pretpostavke da vrijednost autoregresijskog koeficijenta zaprima isključivo ne nulte vrijednosti ($\phi_p\neq0$), te da srednja vrijednost stacionarnog nasumičnog procesa $x_t$ odgovara vrijednosti $\mathbb{E}[x_t]=\mu_x$; najčešće pretpostavljamo sljedeće dodatne pretpostavke:
+                U svrhu lakšeg pronalaska vrijednosti autoregresijskih koeficijenata i jednostavnosti zapisa određenih izraza, potrebno je definirati dodatne pretpostavke koje će nam biti korisne u budućim razmatranjima. Prilikom promatranja slučajnih signala primjer dobre prakse je korištenje pretpostavke $\mu_x=0$, tj. oduzimanje srednje vrijednosti signala prije provedbe same analize. Navedeno slijedi iz redudancije informacije koju $\mu_x$ pruža za prognoziranje ponašanja sustava s brzim oscilacijama. Iz navedene pretpostavke slijedi i pretpostavka o očekivanoj vrijednosti nezavisne varijable\footnotemark[6] $E[x_t]=0$.
 
+                \footnotetext[6]{Detaljnije pojašnjenje i izvod dostupni u literaturi \cite{Broersen}.}
 
-            \textbf{Dodati intro u sljedeća potpoglavlja s nastojanjem pojašnjenja konkretnih svojstava autoregresijskih modela na primjueru modela nižeg reda}
+            \subsection{Autoregresijski proces prvog reda -- AR(1) proces}
 
-            \subsection{Metode određivanja vrijednosti nepoznatih koeficijenata}
+                Autoregresijski proces prvog reda definiran je izrazom
 
-            % Broersen:
-            %   AR Estimation Methods: Page 124,
+                \begin{equation}
+                    \epsilon_t=Z_t(1+\phi_1B)=Z_t+\phi_1Z_{t-1},
+                \end{equation}
 
-            \subsubsection{Metoda najmanjih kvadrata}
+                iz čega slijedi:
 
-            Jedna od metoda dobivanja vrijednosti parametara \textbf{ovaj shit nadopuniti}. Prisjetimo li metode najmanjih kvadrata u potpoglavlju \ref{subs:LS}, njezinom direktnom primjenom slijedi odabir vrijednosti parametara $\mu,\phi_1,\ldots,\phi_p$ koji će zadovoljavati uvjet minimizacije funkcije srednje kvadratne greške
-            
-            \begin{equation}
-                \begin{split}
-                    \mathbb{E(\mu,\phi_1,\ldots,\phi_p)}&=\displaystyle\sum_{t=p+1}^N\epsilon_t^2\\
-                    & =\displaystyle\sum_{t=p+1}^N\left\{x_t-\mu_x+\phi_1\left(x_{t-1}-\mu_x\right)+\ldots+\phi_p\left(x_{t-p}-\mu_x\right)+\omega_t\right\}^2.
-                \end{split}
-                \label{eq:58}
-            \end{equation}
+                \begin{equation}
+                    Z_t=\epsilon_t-\phi_1Z_{t-1}.
+                \end{equation}
 
-            Minimizacijom izraza \eqref{eq:55} dolazimo do izraza
-            
-            \begin{equation}
-                \displaystyle\sum_{t=p+1}^N\left\{x_t-\mu_x+\phi_1\left(x_{t-1}-\mu_x\right)+\ldots+\phi_p\left(x_{t-p}-\mu_x\right)+\omega_t\right\}=0,
-            \end{equation}
-            \label{subs:511}
+                Kao što smo već spomenuli u prethodnom potpoglavlju, nužan je uvjet da karakteristični polinom AR(1) procesa ima korijene izvan jediničnog kruga. Temeljem toga, pripadna karakteristična jednadžba definirana je izrazom
 
-            iz kojega konačno slijedi izraz
+                \begin{equation}
+                    \phi(B)=1-\phi_1B=0 \quad \therefore \quad B= \frac{1}{\phi_1}.
+                    \label{eq:ar1_stationary}
+                \end{equation}
 
+                Iz izraza \eqref{eq:ar1_stationary} možemo zaključiti kako će za stacionaran \textit{AR}(1) proces nužno vrijediti izraz $\left|B\right|=\left|\frac{1}{\phi_1}\right|$, tj. da je vrijednost autoregresijskog parametra iz intervala $-1<\phi_1<1$. Temeljem predznaka autoregresijskog parametra možemo odrediti i oblik normirane autokorelacijske funkcije \textit{AR}(1) procesa, koja je definirana izrazom
 
-            \subsection{Autoregresijski model 1. reda}
-            \label{subs:512}
-            % Priestley:
-            %   First Order Autoregressive Process (Linear Markov Processes): Page 116,
-            % Petrus:
-            %   AR(1) Processes: Page 64,
-            \subsection{Autoregresijski model 2. reda}
-            \label{subs:513}
+                \begin{equation}
+                    \rho(k)=
+                    \begin{cases}
+                        \phi_1 & k=1\\
+                        \phi_1^k & k>1
+                    \end{cases}.
+                    \label{eq:ar1_autocorrelation}
+                \end{equation}
 
+                Primijenimo li ograničenje vrijednosti autoregresijskog parametra $\left|\phi_1\right|$ na izraz \eqref{eq:ar1_autocorrelation}, dedukcijom zaključujemo kako će oblik autokorelacijske funkcije $\rho(k)$ uvijek odgovarati eksponencijalnoj karakteristici koja teži k nuli. Također možemo napomenut kako će negativne vrijednosti parametra $\phi_1$ rezultirati alternirajućim diskretnim vrijednostima koje će i dalje naizmjenično pratiti funkciju eksponencijalnoga pada ili rasta s krajnjom graničnom vrijednošću koja teži k nuli.
 
+                \textit{AR}(1) proces poznatiji je i kao \textit{Markovljev proces}. Budući da je za \textit{AR}(1) trenutna vrijedost procesa $Z_t$ određena vrijednošću procesa u točno jednom prethodnom trenutku, ponašanje takvog procesa je u skladu s definicijom Markovljevog lanaca -- koji je definiran kao skup stohastičkih procesa čiji je utjecaj prošlih događaja na buduće događaje opisan samo trenutnim stanjem. To bi značilo da je prilikom modeliranja važna samo zadnja vrijednost, te da su sve prethodne korelacije zapisane u toj vrijednosti -- što je ujedno i istinito temeljem izraza za autokorelacijsku funkciju koja je određena samo jednim parametrom.
 
+            \subsection{Autoregresijski proces drugog reda -- AR(2) proces}
+
+                Autoregresijski proces drugog reda definiran je izrazom
+
+                \begin{equation}
+                    \epsilon_t=Z_t(1+\phi_1B+\phi_2B^2)=Z_t+\phi_1Z_{t-1}+\phi_2Z_{t-2},
+                \end{equation}
+
+                iz čega slijedi:
+
+                \begin{equation}
+                    Z_t=\epsilon_t-\phi_1Z_{t-1}-\phi_2Z_{t-2}.
+                \end{equation}
+
+                Uvjet stacionaranosti \textit{AR}(2) procesa nešto je kompliciraniji obzirom na veći red modela, a samim time i više autoregresijskih parametara čiji međuodnosi određuju nule karakteristične jednadžbe $\phi(B)=1+\phi_1B^{-1}+\phi_2B^{-2}=0$, koje čine polove cjelokupnog procesa. Daljnjom analizom utvrđuje se kako je \textit{AR}(2) proces stacionaran isključivo u slučaju apsolutne vrijednosti polova manjih od 1, tj. ukoliko se nalaze unutar jediničnog kruga. Iz navedenoga proizlaze uvjetovani međuodnosi autoregresijskih parametara $\phi_1$ i $\phi_2$ \cite{Bahovec}:
+
+                \begin{align*}
+                    \phi_1 + \phi_2 < 1,\\
+                    \phi_2 - \phi_1 < 1,\\
+                    -1<\phi_2<1.
+                \end{align*}
+
+                Normirana autokorelacijska funkcija \textit{AR}(2) procesa definirana je rekurzivnom\footnotemark[7] formulom \cite{Bahovec}:
+                \footnotetext[7]{Funkcija čije trenutne vrijednosti ovise o prethodnim vrijednostima te iste funkcije.}
+
+                \begin{equation}
+                    \rho(k)=\phi_1\rho(k-1)+\phi_2\rho(k-2).
+                \end{equation}
+
+                % \subsubsection{Metoda najmanjih kvadrata}
+
+                % Jedna od metoda dobivanja vrijednosti parametara \textbf{ovaj shit nadopuniti}. Prisjetimo li metode najmanjih kvadrata u potpoglavlju \ref{subs:LS}, njezinom direktnom primjenom slijedi odabir vrijednosti parametara $\mu,\phi_1,\ldots,\phi_p$ koji će zadovoljavati uvjet minimizacije funkcije srednje kvadratne greške
+                
+                % \begin{equation}
+                %     \begin{split}
+                %         \mathbb{E(\mu,\phi_1,\ldots,\phi_p)}&=\displaystyle\sum_{t=p+1}^N\epsilon_t^2\\
+                %         & =\displaystyle\sum_{t=p+1}^N\left\{x_t-\mu_x+\phi_1\left(x_{t-1}-\mu_x\right)+\ldots+\phi_p\left(x_{t-p}-\mu_x\right)+\omega_t\right\}^2.
+                %     \end{split}
+                %     \label{eq:58}
+                % \end{equation}
+
+                % Minimizacijom izraza \eqref{eq:55} dolazimo do izraza
+                
+                % \begin{equation}
+                %     \displaystyle\sum_{t=p+1}^N\left\{x_t-\mu_x+\phi_1\left(x_{t-1}-\mu_x\right)+\ldots+\phi_p\left(x_{t-p}-\mu_x\right)+\omega_t\right\}=0,
+                % \end{equation}
+                % \label{subs:511}
+
+                % iz kojega konačno slijedi izraz
 
         \section{Pomična srednja vrijednost (MA)}
             % Petrus:\\
             %   Moving Average Processes: Page 61,\\
+            % Priestley:\\
+            %   Moving Average Processes: Page 135,\\
 
-        \section{ARMA (p,q) proces}
+            Model pomične srednje vrijednosti reda q, \textit{MA}(q), koristi se za modeliranje vremenskih nizova čija je vrijednost tekućeg perioda povezana s greškama relacije tekućeg i prethodnih razdoblja. U financijskim analizama, model pomične srednje vrijednosti koristi se za izradu tehničke analize ili za leveliranje stalne fluktuacije cijene dionica. Primjenom pomične srednje vrijednosti uklanja se utjecaj slučajnih i kratkoročnih fluktuacija u cijeni tijekom nekog dužeg vremenskog razdoblja. Povećanjem promatranog vremenskog razdoblja, logično je zaključiti da će doći i do povećanja vremenskog zaostajanja budući da će model uzimati u obzir stare cijene dionica koje možda, u trenutnim tržišnim uvjetima, nisu relevantne. Unatoč tome, da se zaključiti kako se pomična srednja vrijednost rjeđe koristi za sezonske i kratkoročne prognoze, te da je primjenjivija u analizi trendova. Konačno, može se konstatirati da će pomična srednja vrijednost biti osjetljivija na oscilacije u slučaju vrlo kratkih perioda promatranja, dok će za povećanje perioda promatranja biti sve rezistentniji na navedene oscilacije.
 
+            \textit{MA}(q) definiran je izrazom
+
+            \begin{equation}
+                x_t-\mu_x=\epsilon_t+\theta_1(\epsilon_{t-1}-\mu_x)+\ldots+\theta_q(\epsilon_{t-q}-\mu_x)+\theta_0.
+            \end{equation}
+
+            Baš kao i kod \textit{AR}(q) modela, pretpostaviti ćemo vrijednost konstantnog člana $\theta_0=0$. Sukladno svojoj definiciji, \textit{MA}(q) proces je grešaka relacije, tj. niz nekolineiranih, jednako distribuiranih slučajnih varijabli s očekivanjem nula i konstantnom varijancom $\sigma^2$. Prisjetimo li se potpoglavlja \ref{subs:time_series}, možemo uočiti kako navedene karakteristike odgovaraju čistom slučajnom procesu, tj. bijelom šumu $\epsilon_t\sim WN(0,\sigma^2)$. Iz navedenoga slijedi jednostavniji izraz
+
+            \begin{equation}
+                x_t=\epsilon_t+\theta_1\epsilon_{t-1}+\ldots+\theta_q\epsilon_{t-q},
+            \end{equation}
+
+            to jest
+
+            \begin{equation}
+                x_t=\theta(B)\epsilon_t, \quad \text{pri čemu je } \theta(B)=1+\theta_1B^{-1}+\ldots+\theta_qB^{-q}.
+                \label{eq:theta}
+            \end{equation}
+
+            Promotrimo li isključivo odgovarajući centrirani proces, opći oblik \textit{MA}(q) modela je:
+
+            \begin{equation}
+                Z_t=\theta(B)\epsilon_t
+                \label{eq:zt_ma}
+            \end{equation}
+
+            Temeljem izraza \eqref{eq:theta} možemo zaključiti da je proces uvijek stacionaran za bilo koju vrijednost parametra $\theta_1,\ldots,\theta_q$. S druge strane, za \textit{MA}(q) proces važna je invertabilnost procesa na način da ga se može prikazati kao \textit{AR}($\infty$) proces. Tada iz izraza \eqref{eq:zt_ma} slijedi
+
+            \begin{equation}
+                \frac{1}{\theta(B)}Z_t=\epsilon_t.
+            \end{equation}
+
+            Sve nule polinoma $\theta^{-1}(B)$ moraju se nalaziti unutar jediničnog kruga kako bi vrijedio uvjet invertabilnosti.
+
+            \subsection{Proces pomičnih presjeka prvog reda -- MA(1) proces}
+
+                Proces pomičnih presjeka prvog reda definiran je izrazom
+
+                \begin{equation}
+                    Z_t=(1+\theta_1B)\epsilon_t=\epsilon_t+\theta_1\epsilon_{t-1}.
+                \end{equation}
+
+                Autokorelacijska funkcija \textit{MA}(q) modela ima drugačiji oblik u odnosu na autokorelacijsku funkciju \textit{AR}(q) modela, pa samim time iz konačnog izraza za normiranu autokorelacijsku funkciju \textit{MA}(1) modela
+
+                \begin{equation}
+                    \rho(k)=
+                    \begin{cases}
+                       \frac{-\theta_1}{1+\theta_1^2}   &   k=1,\\
+                        0   &   k>1.
+                    \end{cases};
+                \end{equation}
+
+                možemo zaključiti kako funkcija iščezava za vrijednosti $k$ veće od reda modela $q$. Analogno vrijedi i za \textit{MA}(2), gdje autokorelacijska funkcija iščezava nakon pomaka $k=2$, te uslijed toga nećemo vršiti detaljniju analizu navedenoga procesa.
+
+        \section{Mješoviti ARMA(p,q) proces}
+
+            Kao što se da pretpostaviti, mješoviti \textit{ARMA}(p,q) proces sastoji se od \textit{AR}(p) i \textit{MA}(q) komponenti, pritom kombinirajući svojstva oba procesa u svrhu što bolje prognoze nekog stohastičkog procesa. Navedeno je vrlo smisleno želimo li provesti analize signala koji su skloni šokovima u sustavu, tj. slučajnim oscilacijama visoke vrijednosti.  
+
+            Mješoviti \textit{ARMA}(p,q) proces definiran je općim izrazom
+
+            \begin{equation}
+                x_t+\phi_1x_{t-1}+\ldots+\phi_px_{t-p}=\epsilon_t+\theta_1\epsilon_{t-1}+\ldots+\theta_q\epsilon_{t-q},
+            \end{equation}
+
+            te pripadajućim skraćenim izrazom za odgovarajući centrirani proces
+
+            \begin{equation}
+                \phi(z)x_t=\theta(z)\epsilon_t.
+            \end{equation}
+
+            Navedeni izrazi vrijede u slučaju prethodno korištenim pretpostavki iz \textit{AR}(p) i \textit{MA}(q) modela.
+
+            \textit{ARMA}(p,q) proces možemo reprezentirati serijskim ekvivalentom \textit{AR}(p) i \textit{MA}(q) procesa, kao što je vidljivo na slici \ref{fig:ARMA_blok}.
+
+            \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}[node distance=2.5cm, auto,>=latex']
+                    \centering
+                    \node [input, name=input] {};
+                    \node [block, align=center, right of=input, node distance=4cm] (ar_component) {$\frac{1}{\phi(B)}$};
+                    \node [block, align=center, right of=ar_component, node distance=4cm] (ma_component) {$\theta(B)$};
+                    \node [output, right of=sum] (output) {};
+
+                    \path[->] (input) edge node {$\epsilon_t$} (ar_component);
+                    \path[->] (ar_component) edge node {$v_t$} (ma_component);
+                    \path[->] (ma_component) edge node {$x_t$} (output);
+                \end{tikzpicture}
+                \caption{Blokovski prikaz \textit{ARMA}(p,q) procesa. Izvor: \cite{Broersen}}
+                \label{fig:ARMA_blok}
+            \end{figure}
+            
+            Iz navedene korištenjem blokovske algebre možemo doći do izraza
+
+            \begin{equation}
+                x_t=\frac{\theta(B)}{\phi(B)}\epsilon_t,
+                \label{eq:ARMA_blok}
+            \end{equation}
+
+            iz kojega zaključujemo kako \textit{ARMA}(p,q) proces ima $p$ polova i $q$ nula funkcije. Da bi proces bio invertibilan, sve nultočke polinoma $\theta(B)$ moraju se nalaziti izvan jediničnog kruga; dok je uvjet za stacionarnost taj da se sve nultočke polinoma $\phi(B)$ moraju nalaziti izvan jediničnog kruga. Kao i u teoriji stabilnosti regulacijskih stustava i električnih mreža, polinomi $\phi(B)$ i $\theta(B)$ ne smiju imati zajedničke nultočke. Temeljem izraza \eqref{eq:ARMA_blok} može se doći i do detaljnijeg izvoda funkcije autokovarijance kao što je navedeno u literaturi \cite{Broersen}, no za naše potrebe normiranu funkciju autokorelacije možemo definirati izrazom \cite{Bahovec}:
+
+            \begin{equation}
+                \rho(k)=\phi_1\rho(k-1)+\ldots+\phi_p\rho(k-p), \quad \quad k\geq(q+1).
+                \label{eq:ARMA_autocorrelation}
+            \end{equation}
+
+            Izraz \eqref{eq:ARMA_autocorrelation} dovoljan je budući da, kao i u citiranoj literaturi, dovodi do zaključka kako vrijednosti $\rho(k)$ za $ k\geq(q+1)$ ovise samo o autoregresijskim parametrima. Također, valja napomentuti kako prvih $q$ vrijednosti autokorelacijske funkcije ovise o parametrima $\theta_1,\theta_2,\ldots+\theta_k$ i $\phi_1+\phi_2+\ldots+\phi_p$ \cite{Bahovec}.
     \chapter{Pokus}
-        Mogući set podataka sa:
+        Kako bismo dokazali iskoristivnost autoregresijskih modela u obradi signala u polju elektrotehnike, promatrati ćemo javno dostupne podatke o količini generirane električne energije iz solarnih izvora u Španjolskoj -- budući da su isti u Hrvatskoj dostupni isključivo na zahtjev. Vrijednosti generirane solarne energije izražene su u megavatima, te su za svaki trenutak mjerenja zabilježene odgovarajuće trenutne cijene energije izražene u $\text{€}/MWh$ kao što je prikazano na slici \ref{fig:solar_price}.
 
-        https://academictorrents.com/details/bcad357813557c282527317a5a5cf593df8eb7a9
-        https://www.physionet.org/content/rvmh1/1.0.0/
-        https://www.physionet.org/content/plantar/1.0.0/
-        https://www.physionet.org/content/butqdb/1.0.0/
-        https://www.physionet.org/content/ecg-spider-clip/1.0.0/
-        https://www.physionet.org/content/mimic3wdb/1.0/
-        https://academictorrents.com/details/c5a49e46249fef6a3219919fef96fd0265da4d3a
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}[b] {0.6\linewidth}
+                \centering
+                \includegraphics[width=\textwidth]{graphs/solar_graph.pdf}
+                \caption{Izmjerena vrijednost generirane električne energije iz solarnog izvora}
+                \label{fig:solar_graph}
+            \end{subfigure}
+            \\~\\
+            \begin{subfigure}[b] {0.6\linewidth}
+                \centering
+                \includegraphics[width=\textwidth]{graphs/price_graph.pdf}
+                \caption{Izmjereno kretanje cijene solarne energije}      
+                \label{fig:price_graph}
+            \end{subfigure}
+            \caption{Grafički prikaz skupa testnih podataka.}
+            \label{fig:solar_price}    
+        \end{figure}
 
+        Početna hipoteza pokusa bila je istražiti pouzdanost \textit{AR}(p), \textit{MA}(q) i \textit{ARMA}(p,q) modela za prognoziranje sljedeće vrijednosti generirane električne energije i cijene iste. Statističkom obradom došli smo do sljedećih rezultata za prethodno spomenute modele kao što je prikazano na slikama \ref{fig:solar_models}. i \ref{fig:price_models}, te tablicama \ref{tab:solar} i \ref{tab:price}.
+
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}[b] {0.50\linewidth}
+                \centering
+                \includegraphics[width=\textwidth]{graphs/solar_graph_ar.pdf}
+                \caption{Prognoza \textit{AR}(p) modelom}
+                \label{fig:solar_graph_ar}
+            \end{subfigure}
+            \\~\\
+            \begin{subfigure}[b] {0.50\linewidth}
+                \centering
+                \includegraphics[width=\textwidth]{graphs/solar_graph_ma.pdf}
+                \caption{Prognoza \textit{MA}(q) modelom}      
+                \label{fig:solar_graph_ma}
+            \end{subfigure}
+            \\~\\
+            \begin{subfigure}[b] {0.50\linewidth}
+                \centering
+                \includegraphics[width=\textwidth]{graphs/solar_graph_arma.pdf}
+                \caption{Prognoza \textit{ARMA}(p,q) modelom}      
+                \label{fig:solar_graph_ma}
+            \end{subfigure}
+            \caption{Grafički prikaz rezultata prognostičkih modela generacije električne energije.}
+            \label{fig:solar_models}    
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}[b] {0.50\linewidth}
+                \centering
+                \includegraphics[width=\textwidth]{graphs/price_graph_ar.pdf}
+                \caption{Prognoza \textit{AR}(p) modelom}
+                \label{fig:price_graph_ar}
+            \end{subfigure}
+            \\~\\
+            \begin{subfigure}[b] {0.50\linewidth}
+                \centering
+                \includegraphics[width=\textwidth]{graphs/price_graph_ma.pdf}
+                \caption{Prognoza \textit{MA}(q) modelom}      
+                \label{fig:price_graph_ma}
+            \end{subfigure}
+            \\~\\
+            \begin{subfigure}[b] {0.50\linewidth}
+                \centering
+                \includegraphics[width=\textwidth]{graphs/price_graph_arma.pdf}
+                \caption{Prognoza \textit{ARMA}(p,q) modelom}      
+                \label{fig:price_graph_ma}
+            \end{subfigure}
+            \caption{Grafički prikaz rezultata prognostičkih modela za kretanje cijene generirane električne energije.}
+            \label{fig:price_models}    
+        \end{figure}
+
+        \begin{table}[H]
+            \caption{Rezultati prognostičkih modela generacije električne energije.}
+            \renewcommand{\arraystretch}{2}
+            \begin{tabular}{|l|c|c|l|}
+                \hline
+                \textbf{Model} & \textbf{Stvarna trenutna vrijednost} & \textbf{Prognozirana vrijednost} & \multicolumn{1}{r|}{\textbf{Greška}} \\ \hline
+                AR(1)          & \multirow{10}{*}{570}                & 701,8745                         & 131,8745                             \\ \cline{1-1} \cline{3-4} 
+                AR(2)          &                                      & 733,2734                         & 163,2734                             \\ \cline{1-1} \cline{3-4} 
+                AR(3)          &                                      & 689,6152                         & 119,6152                             \\ \cline{1-1} \cline{3-4} 
+                MA(1)          &                                      & 983,6185                         & 413,6185                             \\ \cline{1-1} \cline{3-4} 
+                MA(2)          &                                      & 918,0532                         & 348,0532                             \\ \cline{1-1} \cline{3-4} 
+                MA(3)          &                                      & 550,6108                         & -19,3892                             \\ \cline{1-1} \cline{3-4} 
+                ARMA(1,1)      &                                      & 672,298                          & 102,2980                             \\ \cline{1-1} \cline{3-4} 
+                ARMA(1,2)      &                                      & 600,314                          & 30,3140                              \\ \cline{1-1} \cline{3-4} 
+                ARMA(2,1)      &                                      & 677,6562                         & 107,6562                             \\ \cline{1-1} \cline{3-4} 
+                ARMA(2,2)      &                                      & 673,4166                         & 103,4166                             \\ \hline
+            \end{tabular}
+            \renewcommand{\arraystretch}{1}
+            \label{tab:solar}
+        \end{table}
+
+        \hfill
+
+        \begin{table}[H]
+            \centering
+            \caption{Rezultati prognostičkih modela za kretanje cijene generirane električne energije.}
+            \renewcommand{\arraystretch}{2}
+            \begin{tabular}{|l|c|c|c|}
+                \hline
+                \textbf{Model} & \textbf{Stvarna trenutna vrijednost} & \textbf{Prognozirana vrijednost} & \multicolumn{1}{r|}{\textbf{Greška}} \\ \hline
+                AR(1)          & \multirow{10}{*}{58.04}              & 64,77402                         & \multicolumn{1}{r|}{6.73402}         \\ \cline{1-1} \cline{3-4} 
+                AR(2)          &                                      & 61,61461                         & 3.47461                              \\ \cline{1-1} \cline{3-4} 
+                AR(3)          &                                      & 61,61461                         & 3.47461                              \\ \cline{1-1} \cline{3-4} 
+                MA(1)          &                                      & 60,73316                         & 2.69316                              \\ \cline{1-1} \cline{3-4} 
+                MA(2)          &                                      & 60,12947                         & 2.08947                              \\ \cline{1-1} \cline{3-4} 
+                MA(3)          &                                      & 60,92448                         & 2.88448                              \\ \cline{1-1} \cline{3-4} 
+                ARMA(1,1)      &                                      & 62,00137                         & 3.96137                              \\ \cline{1-1} \cline{3-4} 
+                ARMA(1,2)      &                                      & 62,06522                         & 4.02522                              \\ \cline{1-1} \cline{3-4} 
+                ARMA(2,1)      &                                      & 61,89864                         & 3.85864                              \\ \cline{1-1} \cline{3-4} 
+                ARMA(2,2)      &                                      & 61,61936                         & 3.57936                              \\ \hline
+            \end{tabular}
+            \renewcommand{\arraystretch}{1}
+            \label{tab:price}
+        \end{table}
 
     \chapter{Zaključak}
-        \textbf{(Tu ide rezime core teme rada. Dodatno se može iskoristiti "Ken Holden, David A. Peel, John L. Thompson - Economic Forecasting: An Introduction-Cambridge University Press (1990)" kao outro; nadograditi vrlo dobrim dodatnim zaključcima koji su dati u konkretnom primjeru, ali poopćiti budući da nakon uvoda treba održati elektrotehniku dominantnom temom.)} % (page 29 - 33)
-        \ldots{}
 
+        U ovome radu pojasnili smo pojmove vremenskih nizova i stohastičkih procesa, te opisali važnost istih za obradu signala neovisno o polju primjene. Prezentirani su primjeri iz različitih struka, dok su primjene u elektrotehnici primarno svedene na elektroenergetiku i sustave regulacije kao glavnog područja interesa autora.
+        
+        Temeljem stečenih saznanja i dobivenih rezultata, dokazana je korisnost primjene autoregresijskih modela u obradi signala u polju elektrotehnike temeljem analize podataka iz domene elektroenergetike. Sukladno dobivenim rezultatima, potvrđena je hipoteza o primjenjivosti autoregresijskih modela u obradi signala, što je dokazano zadovoljavajućom prognozom količine generirane električne energije za iduće vremensko razdoblje. Navedena informacija omogućava prušateljima energenata mogućnost prilagođavanja mreže ili poslovnih procesa koji mogu uključivati najpovoljnije vrijeme za radove održavanja. Uz navedeno, pokusom su izrađene estimacije budućega kretanja cijene električne energije generirane iz solarnih izvora, što omogućava daljnju stratešku i financijsku analizu te mogućnost izvršenja korekcije cijene energenta na regionalnom ili globalnom tržištu.
 
-        Temeljem stečenih saznanja, zaključujemo da se konstrukcija modela i njihovo korištenje u prognostici može sažeti u sljedeće korake:
-        \begin{enumerate}
-            \item Odabir valjane teorije koja najbolje opisuje ponašanje promatranih podataka i relevantnih faktora -- koje mogu biti klasificirani kao endogeni faktori, čije je ponašanje predmet konstruiranoga modela, ili egzogeni faktori, čije je ponašanje promatrano deterministički i neovisno o egzaktnom skupu parametara određenih konstruiranim modelom.
-            \item Matematički zapis korištene teorije, koji povezuje prethodno navedene faktore pomoću složene matematičke jednadžbe. Poseban naglasak pri određivanju međusobnog odnosa parametara ima rezultantni odnos prethođenja ili kašnjenja konstruiranoga modela spram varijable matematičkoga očekivanja i diskretnih mjernih podataka.
-            \item Pronalazak najreprezentativnijega skupa podataka, čije su vrijednosti u skladu s mjeriteljskim normama koje podržavaju korištenu opisnu teoriju.
-            \item Korištenje prikladnih kvantitativnih metoda za procjenu numeričkih vrijednosti nepoznatih parametara matematičke jednadžbe koji će najbolje aproksimirati vrijednosti u području korištenog skupa podataka.
-            \item Prognoziranje budućega ponašanja predmeta konstruiranoga modela temeljem prognoziranih vrijednosti kauzalnog modela egzogenih faktora -- iz kojih nadalje proizlaze prognozirane vrijednosti endogenih faktora. Vjerodostojnost navedenoga postupka proizlazi iz poznavanja budućega ponašanja egzogenih faktora, što spriječava neželjeni efekt projekcije prošlih vrijednosti na budućnost.
-        \end{enumerate}
-        $$\fourierovred$$
+        Sukladno analitičkim rezultatima, ustanovljeno je kako je \textit{MA}(3) model dao najbolju prognozu buduće vrijednosti generacije električne energije, dok je \textit{MA}(2) model dao najbolju prognozu budućega kretanja vrijednosti električne energije.
+
+        Modeli koji su bili temelj ovoga završnog rada predmet su istraživanja čija je svrha pronaći što bolji odabir parametara koji će dati što manju grešku estimacije. Budući da nije moguće konstatirati koji je model univerzalno najbolji, u našem pokusu ustanovljeni su najprecizniji modeli za promatrani skup podataka. Odabir parametara svakog od modela ovisi o karakteristici promatranog skupa podataka, za koji je nužno da je u skladu s mjeriteljskim normama koje podržavaju korištenu teoriju iz pripadajućega znanstvenoga polja. Sam proces korištenja određenih kvantitativnih metoda za procjenu numeričkih vrijednosti parametara nadilazi temu ovoga rada, no uslijed prirode stohastičkih procesa moguće je konstatirati kako će razvoj algoritama za odabir istih biti predmet budućih istraživanja kao rezultat daljnjeg razvoja strojnog učenja i povećanja računalnog kapaciteta sukladno tehnološkom razvoju.
+ 
     \begin{thebibliography}{9}
-        \bibitem{Priestley} Priestley, M.B.: "Spectral Analysis and Time Series (Vols. 1 \& 2)", Academic Press, London, 1981.
-        \bibitem{Bahovec} Bahovec, V.; Erjavec, N.: "Uvod u ekonometrijsku analizu", Element, Zagreb, 2009.
-        \bibitem{Broersen} Broersen, Piet M.T.: "Automatic Autocorrelation and Spectral Analysis", Springer, London, 2006.
+        \bibitem{NASA} Presidential Commission: "Report of the Presidential Commission on the Space Shuttle Challanger Accident", U.S. Government Printing Office, Washington, D.C., 1986.
         \bibitem{Dekking} F.M. Dekking i dr.: "A Modern Introduction to Probability and Statistics: Understanding Why and How", Springer, London, 2006.
         \bibitem{Holden} Holden, K.; Peel, D.A.; Thompson, J.L: "Economic forecasting: an introduction", Cambridge University Press, Cambridge, 1990.
-        \bibitem{NASA} Presidential Commission: "Report of the Presidential Commission on the Space Shuttle Challanger Accident", U.S. Government Printing Office, Washington, D.C., 1986.
+        \bibitem{Priestley} Priestley, M.B.: "Spectral Analysis and Time Series (Vols. 1 \& 2)", Academic Press, London, 1981.
+        \bibitem{Broersen} Broersen, Piet M.T.: "Automatic Autocorrelation and Spectral Analysis", Springer, London, 2006.
+        \bibitem{Bahovec} Bahovec, V.; Erjavec, N.: "Uvod u ekonometrijsku analizu", Element, Zagreb, 2009.
         \bibitem{Požar} Požar, H.: "Visokonaponska rasklopna postrojenja", Tehnička knjiga, Zagreb, 1978.
     \end{thebibliography}
 \end{document}
